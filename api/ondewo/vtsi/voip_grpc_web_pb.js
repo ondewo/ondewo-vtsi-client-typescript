@@ -6,31 +6,27 @@
 
 // GENERATED CODE -- DO NOT EDIT!
 
-
 /* eslint-disable */
 // @ts-nocheck
-
-
 
 const grpc = {};
 grpc.web = require('grpc-web');
 
+var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 
-var google_api_annotations_pb = require('../../google/api/annotations_pb.js')
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
+var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js');
 
-var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js')
+var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 
-var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js')
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+var ondewo_s2t_speech$to$text_pb = require('../../ondewo/s2t/speech-to-text_pb.js');
 
-var ondewo_s2t_speech$to$text_pb = require('../../ondewo/s2t/speech-to-text_pb.js')
+var ondewo_t2s_text$to$speech_pb = require('../../ondewo/t2s/text-to-speech_pb.js');
 
-var ondewo_t2s_text$to$speech_pb = require('../../ondewo/t2s/text-to-speech_pb.js')
-
-var ondewo_sip_sip_pb = require('../../ondewo/sip/sip_pb.js')
+var ondewo_sip_sip_pb = require('../../ondewo/sip/sip_pb.js');
 const proto = {};
 proto.ondewo = {};
 proto.ondewo.vtsi = require('./voip_pb.js');
@@ -43,23 +39,20 @@ proto.ondewo.vtsi = require('./voip_pb.js');
  * @struct
  * @final
  */
-proto.ondewo.vtsi.VoipSessionsClient =
-    function(hostname, credentials, options) {
-  if (!options) options = {};
-  options.format = 'binary';
+proto.ondewo.vtsi.VoipSessionsClient = function (hostname, credentials, options) {
+	if (!options) options = {};
+	options.format = 'binary';
 
-  /**
-   * @private @const {!grpc.web.GrpcWebClientBase} The client
-   */
-  this.client_ = new grpc.web.GrpcWebClientBase(options);
+	/**
+	 * @private @const {!grpc.web.GrpcWebClientBase} The client
+	 */
+	this.client_ = new grpc.web.GrpcWebClientBase(options);
 
-  /**
-   * @private @const {string} The hostname
-   */
-  this.hostname_ = hostname;
-
+	/**
+	 * @private @const {string} The hostname
+	 */
+	this.hostname_ = hostname;
 };
-
 
 /**
  * @param {string} hostname
@@ -69,23 +62,20 @@ proto.ondewo.vtsi.VoipSessionsClient =
  * @struct
  * @final
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient =
-    function(hostname, credentials, options) {
-  if (!options) options = {};
-  options.format = 'binary';
+proto.ondewo.vtsi.VoipSessionsPromiseClient = function (hostname, credentials, options) {
+	if (!options) options = {};
+	options.format = 'binary';
 
-  /**
-   * @private @const {!grpc.web.GrpcWebClientBase} The client
-   */
-  this.client_ = new grpc.web.GrpcWebClientBase(options);
+	/**
+	 * @private @const {!grpc.web.GrpcWebClientBase} The client
+	 */
+	this.client_ = new grpc.web.GrpcWebClientBase(options);
 
-  /**
-   * @private @const {string} The hostname
-   */
-  this.hostname_ = hostname;
-
+	/**
+	 * @private @const {string} The hostname
+	 */
+	this.hostname_ = hostname;
 };
-
 
 /**
  * @const
@@ -94,20 +84,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_CreateProjectConfigs = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/CreateProjectConfigs',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.CreateProjectConfigsRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.CreateProjectConfigsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/CreateProjectConfigs',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.CreateProjectConfigsRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.CreateProjectConfigsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.CreateProjectConfigsRequest} request The
@@ -119,16 +108,15 @@ const methodDescriptor_VoipSessions_CreateProjectConfigs = new grpc.web.MethodDe
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.createProjectConfigs =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/CreateProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_CreateProjectConfigs,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.createProjectConfigs = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/CreateProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_CreateProjectConfigs,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.CreateProjectConfigsRequest} request The
@@ -138,15 +126,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.createProjectConfigs =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.createProjectConfigs =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/CreateProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_CreateProjectConfigs);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.createProjectConfigs = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/CreateProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_CreateProjectConfigs
+	);
 };
-
 
 /**
  * @const
@@ -155,20 +142,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.createProjectConfigs =
  *   !proto.ondewo.vtsi.GetProjectConfigsResponse>}
  */
 const methodDescriptor_VoipSessions_GetProjectConfigs = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/GetProjectConfigs',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.GetProjectConfigsRequest,
-  proto.ondewo.vtsi.GetProjectConfigsResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.GetProjectConfigsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.GetProjectConfigsResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/GetProjectConfigs',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.GetProjectConfigsRequest,
+	proto.ondewo.vtsi.GetProjectConfigsResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.GetProjectConfigsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.GetProjectConfigsResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetProjectConfigsRequest} request The
@@ -180,16 +166,15 @@ const methodDescriptor_VoipSessions_GetProjectConfigs = new grpc.web.MethodDescr
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.GetProjectConfigsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.getProjectConfigs =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetProjectConfigs,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.getProjectConfigs = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetProjectConfigs,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetProjectConfigsRequest} request The
@@ -199,15 +184,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.getProjectConfigs =
  * @return {!Promise<!proto.ondewo.vtsi.GetProjectConfigsResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getProjectConfigs =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetProjectConfigs);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getProjectConfigs = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetProjectConfigs
+	);
 };
-
 
 /**
  * @const
@@ -216,20 +200,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getProjectConfigs =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_UpdateProjectConfigs = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/UpdateProjectConfigs',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.UpdateProjectConfigsRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.UpdateProjectConfigsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/UpdateProjectConfigs',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.UpdateProjectConfigsRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.UpdateProjectConfigsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.UpdateProjectConfigsRequest} request The
@@ -241,16 +224,15 @@ const methodDescriptor_VoipSessions_UpdateProjectConfigs = new grpc.web.MethodDe
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.updateProjectConfigs =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/UpdateProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_UpdateProjectConfigs,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.updateProjectConfigs = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/UpdateProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_UpdateProjectConfigs,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.UpdateProjectConfigsRequest} request The
@@ -260,15 +242,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.updateProjectConfigs =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.updateProjectConfigs =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/UpdateProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_UpdateProjectConfigs);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.updateProjectConfigs = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/UpdateProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_UpdateProjectConfigs
+	);
 };
-
 
 /**
  * @const
@@ -277,20 +258,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.updateProjectConfigs =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_DeleteProjectConfigs = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/DeleteProjectConfigs',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.DeleteProjectConfigsRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.DeleteProjectConfigsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/DeleteProjectConfigs',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.DeleteProjectConfigsRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.DeleteProjectConfigsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.DeleteProjectConfigsRequest} request The
@@ -302,16 +282,15 @@ const methodDescriptor_VoipSessions_DeleteProjectConfigs = new grpc.web.MethodDe
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.deleteProjectConfigs =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/DeleteProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_DeleteProjectConfigs,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.deleteProjectConfigs = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/DeleteProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_DeleteProjectConfigs,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.DeleteProjectConfigsRequest} request The
@@ -321,15 +300,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.deleteProjectConfigs =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.deleteProjectConfigs =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/DeleteProjectConfigs',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_DeleteProjectConfigs);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.deleteProjectConfigs = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/DeleteProjectConfigs',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_DeleteProjectConfigs
+	);
 };
-
 
 /**
  * @const
@@ -338,20 +316,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.deleteProjectConfigs =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_DeployProject = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/DeployProject',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.DeployProjectRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.DeployProjectRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/DeployProject',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.DeployProjectRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.DeployProjectRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.DeployProjectRequest} request The
@@ -363,16 +340,15 @@ const methodDescriptor_VoipSessions_DeployProject = new grpc.web.MethodDescripto
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.deployProject =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/DeployProject',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_DeployProject,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.deployProject = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/DeployProject',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_DeployProject,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.DeployProjectRequest} request The
@@ -382,15 +358,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.deployProject =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.deployProject =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/DeployProject',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_DeployProject);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.deployProject = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/DeployProject',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_DeployProject
+	);
 };
-
 
 /**
  * @const
@@ -399,20 +374,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.deployProject =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_UndeployProject = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/UndeployProject',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.UndeployProjectRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.UndeployProjectRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/UndeployProject',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.UndeployProjectRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.UndeployProjectRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.UndeployProjectRequest} request The
@@ -424,16 +398,15 @@ const methodDescriptor_VoipSessions_UndeployProject = new grpc.web.MethodDescrip
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.undeployProject =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/UndeployProject',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_UndeployProject,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.undeployProject = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/UndeployProject',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_UndeployProject,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.UndeployProjectRequest} request The
@@ -443,15 +416,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.undeployProject =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.undeployProject =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/UndeployProject',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_UndeployProject);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.undeployProject = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/UndeployProject',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_UndeployProject
+	);
 };
-
 
 /**
  * @const
@@ -460,20 +432,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.undeployProject =
  *   !proto.ondewo.vtsi.StartListenersResponse>}
  */
 const methodDescriptor_VoipSessions_StartListeners = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/StartListeners',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.StartListenersRequest,
-  proto.ondewo.vtsi.StartListenersResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.StartListenersRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.StartListenersResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/StartListeners',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.StartListenersRequest,
+	proto.ondewo.vtsi.StartListenersResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.StartListenersRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.StartListenersResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.StartListenersRequest} request The
@@ -485,16 +456,15 @@ const methodDescriptor_VoipSessions_StartListeners = new grpc.web.MethodDescript
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StartListenersResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.startListeners =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StartListeners',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StartListeners,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.startListeners = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StartListeners',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StartListeners,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.StartListenersRequest} request The
@@ -504,15 +474,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.startListeners =
  * @return {!Promise<!proto.ondewo.vtsi.StartListenersResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startListeners =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StartListeners',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StartListeners);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startListeners = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StartListeners',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StartListeners
+	);
 };
-
 
 /**
  * @const
@@ -521,20 +490,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startListeners =
  *   !proto.ondewo.vtsi.StartCallersResponse>}
  */
 const methodDescriptor_VoipSessions_StartCallers = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/StartCallers',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.StartCallersRequest,
-  proto.ondewo.vtsi.StartCallersResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.StartCallersRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.StartCallersResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/StartCallers',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.StartCallersRequest,
+	proto.ondewo.vtsi.StartCallersResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.StartCallersRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.StartCallersResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.StartCallersRequest} request The
@@ -546,16 +514,15 @@ const methodDescriptor_VoipSessions_StartCallers = new grpc.web.MethodDescriptor
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StartCallersResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.startCallers =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StartCallers',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StartCallers,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.startCallers = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StartCallers',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StartCallers,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.StartCallersRequest} request The
@@ -565,15 +532,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.startCallers =
  * @return {!Promise<!proto.ondewo.vtsi.StartCallersResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startCallers =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StartCallers',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StartCallers);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startCallers = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StartCallers',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StartCallers
+	);
 };
-
 
 /**
  * @const
@@ -582,20 +548,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startCallers =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_StartScheduledCallers = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/StartScheduledCallers',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.StartScheduledCallersRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.StartScheduledCallersRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/StartScheduledCallers',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.StartScheduledCallersRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.StartScheduledCallersRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.StartScheduledCallersRequest} request The
@@ -607,16 +572,15 @@ const methodDescriptor_VoipSessions_StartScheduledCallers = new grpc.web.MethodD
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.startScheduledCallers =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StartScheduledCallers',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StartScheduledCallers,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.startScheduledCallers = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StartScheduledCallers',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StartScheduledCallers,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.StartScheduledCallersRequest} request The
@@ -626,15 +590,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.startScheduledCallers =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startScheduledCallers =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StartScheduledCallers',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StartScheduledCallers);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startScheduledCallers = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StartScheduledCallers',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StartScheduledCallers
+	);
 };
-
 
 /**
  * @const
@@ -643,20 +606,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.startScheduledCallers =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_StopCalls = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/StopCalls',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.StopCallsRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.StopCallsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/StopCalls',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.StopCallsRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.StopCallsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.StopCallsRequest} request The
@@ -668,16 +630,15 @@ const methodDescriptor_VoipSessions_StopCalls = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.stopCalls =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StopCalls',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StopCalls,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.stopCalls = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StopCalls',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StopCalls,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.StopCallsRequest} request The
@@ -687,15 +648,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.stopCalls =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.stopCalls =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StopCalls',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StopCalls);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.stopCalls = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StopCalls',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StopCalls
+	);
 };
-
 
 /**
  * @const
@@ -704,20 +664,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.stopCalls =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_StopAllCalls = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/StopAllCalls',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.StopAllCallsRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.StopAllCallsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/StopAllCalls',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.StopAllCallsRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.StopAllCallsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.StopAllCallsRequest} request The
@@ -729,16 +688,15 @@ const methodDescriptor_VoipSessions_StopAllCalls = new grpc.web.MethodDescriptor
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.stopAllCalls =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StopAllCalls',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StopAllCalls,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.stopAllCalls = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StopAllCalls',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StopAllCalls,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.StopAllCallsRequest} request The
@@ -748,15 +706,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.stopAllCalls =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.stopAllCalls =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/StopAllCalls',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_StopAllCalls);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.stopAllCalls = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/StopAllCalls',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_StopAllCalls
+	);
 };
-
 
 /**
  * @const
@@ -765,20 +722,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.stopAllCalls =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_VoipSessions_TransferCalls = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/TransferCalls',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.TransferCallsRequest,
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.ondewo.vtsi.TransferCallsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/TransferCalls',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.TransferCallsRequest,
+	google_protobuf_empty_pb.Empty,
+	/**
+	 * @param {!proto.ondewo.vtsi.TransferCallsRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	google_protobuf_empty_pb.Empty.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.TransferCallsRequest} request The
@@ -790,16 +746,15 @@ const methodDescriptor_VoipSessions_TransferCalls = new grpc.web.MethodDescripto
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.transferCalls =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/TransferCalls',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_TransferCalls,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.transferCalls = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/TransferCalls',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_TransferCalls,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.TransferCallsRequest} request The
@@ -809,15 +764,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.transferCalls =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.transferCalls =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/TransferCalls',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_TransferCalls);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.transferCalls = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/TransferCalls',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_TransferCalls
+	);
 };
-
 
 /**
  * @const
@@ -826,20 +780,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.transferCalls =
  *   !proto.ondewo.vtsi.GetVoipCallInfoResponse>}
  */
 const methodDescriptor_VoipSessions_GetVoipCallInfo = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/GetVoipCallInfo',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.GetVoipCallInfoRequest,
-  proto.ondewo.vtsi.GetVoipCallInfoResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.GetVoipCallInfoRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.GetVoipCallInfoResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/GetVoipCallInfo',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.GetVoipCallInfoRequest,
+	proto.ondewo.vtsi.GetVoipCallInfoResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.GetVoipCallInfoRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.GetVoipCallInfoResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetVoipCallInfoRequest} request The
@@ -851,16 +804,15 @@ const methodDescriptor_VoipSessions_GetVoipCallInfo = new grpc.web.MethodDescrip
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.GetVoipCallInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.getVoipCallInfo =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetVoipCallInfo',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetVoipCallInfo,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.getVoipCallInfo = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetVoipCallInfo',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetVoipCallInfo,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetVoipCallInfoRequest} request The
@@ -870,15 +822,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.getVoipCallInfo =
  * @return {!Promise<!proto.ondewo.vtsi.GetVoipCallInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getVoipCallInfo =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetVoipCallInfo',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetVoipCallInfo);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getVoipCallInfo = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetVoipCallInfo',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetVoipCallInfo
+	);
 };
-
 
 /**
  * @const
@@ -887,20 +838,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getVoipCallInfo =
  *   !proto.ondewo.vtsi.ListVoipCallInfoResponse>}
  */
 const methodDescriptor_VoipSessions_ListVoipCallInfo = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/ListVoipCallInfo',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.ListVoipCallInfoRequest,
-  proto.ondewo.vtsi.ListVoipCallInfoResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.ListVoipCallInfoRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.ListVoipCallInfoResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/ListVoipCallInfo',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.ListVoipCallInfoRequest,
+	proto.ondewo.vtsi.ListVoipCallInfoResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.ListVoipCallInfoRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.ListVoipCallInfoResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.ListVoipCallInfoRequest} request The
@@ -912,16 +862,15 @@ const methodDescriptor_VoipSessions_ListVoipCallInfo = new grpc.web.MethodDescri
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ListVoipCallInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.listVoipCallInfo =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/ListVoipCallInfo',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_ListVoipCallInfo,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.listVoipCallInfo = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/ListVoipCallInfo',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_ListVoipCallInfo,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.ListVoipCallInfoRequest} request The
@@ -931,15 +880,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.listVoipCallInfo =
  * @return {!Promise<!proto.ondewo.vtsi.ListVoipCallInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.listVoipCallInfo =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/ListVoipCallInfo',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_ListVoipCallInfo);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.listVoipCallInfo = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/ListVoipCallInfo',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_ListVoipCallInfo
+	);
 };
-
 
 /**
  * @const
@@ -948,20 +896,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.listVoipCallInfo =
  *   !proto.ondewo.vtsi.GetAudioFileResponse>}
  */
 const methodDescriptor_VoipSessions_GetAudioFile = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/GetAudioFile',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.GetAudioFileRequest,
-  proto.ondewo.vtsi.GetAudioFileResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.GetAudioFileRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.GetAudioFileResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/GetAudioFile',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.GetAudioFileRequest,
+	proto.ondewo.vtsi.GetAudioFileResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.GetAudioFileRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.GetAudioFileResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetAudioFileRequest} request The
@@ -973,16 +920,15 @@ const methodDescriptor_VoipSessions_GetAudioFile = new grpc.web.MethodDescriptor
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.GetAudioFileResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.getAudioFile =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetAudioFile',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetAudioFile,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.getAudioFile = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetAudioFile',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetAudioFile,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetAudioFileRequest} request The
@@ -992,15 +938,14 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.getAudioFile =
  * @return {!Promise<!proto.ondewo.vtsi.GetAudioFileResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getAudioFile =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetAudioFile',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetAudioFile);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getAudioFile = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetAudioFile',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetAudioFile
+	);
 };
-
 
 /**
  * @const
@@ -1009,20 +954,19 @@ proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getAudioFile =
  *   !proto.ondewo.vtsi.GetFullConversationAudioFileResponse>}
  */
 const methodDescriptor_VoipSessions_GetFullConversationAudioFile = new grpc.web.MethodDescriptor(
-  '/ondewo.vtsi.VoipSessions/GetFullConversationAudioFile',
-  grpc.web.MethodType.UNARY,
-  proto.ondewo.vtsi.GetFullConversationAudioFileRequest,
-  proto.ondewo.vtsi.GetFullConversationAudioFileResponse,
-  /**
-   * @param {!proto.ondewo.vtsi.GetFullConversationAudioFileRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ondewo.vtsi.GetFullConversationAudioFileResponse.deserializeBinary
+	'/ondewo.vtsi.VoipSessions/GetFullConversationAudioFile',
+	grpc.web.MethodType.UNARY,
+	proto.ondewo.vtsi.GetFullConversationAudioFileRequest,
+	proto.ondewo.vtsi.GetFullConversationAudioFileResponse,
+	/**
+	 * @param {!proto.ondewo.vtsi.GetFullConversationAudioFileRequest} request
+	 * @return {!Uint8Array}
+	 */
+	function (request) {
+		return request.serializeBinary();
+	},
+	proto.ondewo.vtsi.GetFullConversationAudioFileResponse.deserializeBinary
 );
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetFullConversationAudioFileRequest} request The
@@ -1034,16 +978,15 @@ const methodDescriptor_VoipSessions_GetFullConversationAudioFile = new grpc.web.
  * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.GetFullConversationAudioFileResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ondewo.vtsi.VoipSessionsClient.prototype.getFullConversationAudioFile =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetFullConversationAudioFile',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetFullConversationAudioFile,
-      callback);
+proto.ondewo.vtsi.VoipSessionsClient.prototype.getFullConversationAudioFile = function (request, metadata, callback) {
+	return this.client_.rpcCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetFullConversationAudioFile',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetFullConversationAudioFile,
+		callback
+	);
 };
-
 
 /**
  * @param {!proto.ondewo.vtsi.GetFullConversationAudioFileRequest} request The
@@ -1053,15 +996,13 @@ proto.ondewo.vtsi.VoipSessionsClient.prototype.getFullConversationAudioFile =
  * @return {!Promise<!proto.ondewo.vtsi.GetFullConversationAudioFileResponse>}
  *     Promise that resolves to the response
  */
-proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getFullConversationAudioFile =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/ondewo.vtsi.VoipSessions/GetFullConversationAudioFile',
-      request,
-      metadata || {},
-      methodDescriptor_VoipSessions_GetFullConversationAudioFile);
+proto.ondewo.vtsi.VoipSessionsPromiseClient.prototype.getFullConversationAudioFile = function (request, metadata) {
+	return this.client_.unaryCall(
+		this.hostname_ + '/ondewo.vtsi.VoipSessions/GetFullConversationAudioFile',
+		request,
+		metadata || {},
+		methodDescriptor_VoipSessions_GetFullConversationAudioFile
+	);
 };
 
-
 module.exports = proto.ondewo.vtsi;
-
