@@ -1,7 +1,7 @@
 {
   "name": "@ondewo/vtsi-client-typescript",
   "version": "5.0.0",
-  "description": "Ondewo Voip Telephone System Integration (VTSI) Client library for typescript as a commonjs module",
+  "description": "ONDEWO Voip Telephone System Integration (VTSI) Client library for typescript",
   "main": "public-api.js",
   "typings": "public-api.d.ts",
   "scripts": {
