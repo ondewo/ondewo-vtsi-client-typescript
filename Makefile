@@ -68,7 +68,7 @@ help: ## Print usage info about help targets
 makefile_chapters: ## Shows all sections of Makefile
 	@echo `cat Makefile| grep "########################################################" -A 1 | grep -v "########################################################"`
 
-check_build: #Checks if all built proto-code is there
+check_build: ## Checks if all built proto-code is there
 	@rm -rf build_check.txt
 	@for proto in `find src/ondewo-vtsi-api/ondewo -iname "*.proto*"`; \
 	do \
