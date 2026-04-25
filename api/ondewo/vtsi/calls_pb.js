@@ -1638,9 +1638,9 @@ proto.ondewo.vtsi.BaseServiceConfig.prototype.toObject = function(opt_includeIns
  */
 proto.ondewo.vtsi.BaseServiceConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    host: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    port: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    grpcCert: jspb.Message.getFieldWithDefault(msg, 3, "")
+host: jspb.Message.getFieldWithDefault(msg, 1, ""),
+port: jspb.Message.getFieldWithDefault(msg, 2, 0),
+grpcCert: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -1828,8 +1828,8 @@ proto.ondewo.vtsi.Credentials.prototype.toObject = function(opt_includeInstance)
  */
 proto.ondewo.vtsi.Credentials.toObject = function(includeInstance, msg) {
   var f, obj = {
-    accountName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    password: jspb.Message.getFieldWithDefault(msg, 2, "")
+accountName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+password: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -2021,16 +2021,16 @@ proto.ondewo.vtsi.NluVtsiConfig.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.vtsi.NluVtsiConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    nluBaseConfig: (f = msg.getNluBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f),
-    credentials: (f = msg.getCredentials()) && proto.ondewo.vtsi.Credentials.toObject(includeInstance, f),
-    authToken: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    agentName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    languageCode: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    initialIntent: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    contextsList: jspb.Message.toObjectList(msg.getContextsList(),
+nluBaseConfig: (f = msg.getNluBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f),
+credentials: (f = msg.getCredentials()) && proto.ondewo.vtsi.Credentials.toObject(includeInstance, f),
+authToken: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
+agentName: jspb.Message.getFieldWithDefault(msg, 4, ""),
+languageCode: jspb.Message.getFieldWithDefault(msg, 5, ""),
+initialIntent: jspb.Message.getFieldWithDefault(msg, 6, ""),
+contextsList: jspb.Message.toObjectList(msg.getContextsList(),
     ondewo_nlu_context_pb.Context.toObject, includeInstance),
-    httpBasicAuthToken: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    platform: jspb.Message.getFieldWithDefault(msg, 9, 0)
+httpBasicAuthToken: jspb.Message.getFieldWithDefault(msg, 8, ""),
+platform: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2492,8 +2492,8 @@ proto.ondewo.vtsi.T2sVtsiConfig.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.vtsi.T2sVtsiConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    t2sBaseConfig: (f = msg.getT2sBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f),
-    t2sRequestConfig: (f = msg.getT2sRequestConfig()) && ondewo_t2s_text$to$speech_pb.RequestConfig.toObject(includeInstance, f)
+t2sBaseConfig: (f = msg.getT2sBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f),
+t2sRequestConfig: (f = msg.getT2sRequestConfig()) && ondewo_t2s_text$to$speech_pb.RequestConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2694,8 +2694,8 @@ proto.ondewo.vtsi.S2tVtsiConfig.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.vtsi.S2tVtsiConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    s2tBaseConfig: (f = msg.getS2tBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f),
-    s2tTranscribeRequestConfig: (f = msg.getS2tTranscribeRequestConfig()) && ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig.toObject(includeInstance, f)
+s2tBaseConfig: (f = msg.getS2tBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f),
+s2tTranscribeRequestConfig: (f = msg.getS2tTranscribeRequestConfig()) && ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2896,7 +2896,7 @@ proto.ondewo.vtsi.AsteriskConfig.prototype.toObject = function(opt_includeInstan
  */
 proto.ondewo.vtsi.AsteriskConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    asteriskBaseConfig: (f = msg.getAsteriskBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f)
+asteriskBaseConfig: (f = msg.getAsteriskBaseConfig()) && proto.ondewo.vtsi.BaseServiceConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3047,10 +3047,10 @@ proto.ondewo.vtsi.CommonServicesConfig.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.CommonServicesConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    s2tVtsiConfig: (f = msg.getS2tVtsiConfig()) && proto.ondewo.vtsi.S2tVtsiConfig.toObject(includeInstance, f),
-    nluVtsiConfig: (f = msg.getNluVtsiConfig()) && proto.ondewo.vtsi.NluVtsiConfig.toObject(includeInstance, f),
-    t2sVtsiConfig: (f = msg.getT2sVtsiConfig()) && proto.ondewo.vtsi.T2sVtsiConfig.toObject(includeInstance, f),
-    csiVtsiConfig: (f = msg.getCsiVtsiConfig()) && proto.ondewo.vtsi.CsiVtsiConfig.toObject(includeInstance, f)
+s2tVtsiConfig: (f = msg.getS2tVtsiConfig()) && proto.ondewo.vtsi.S2tVtsiConfig.toObject(includeInstance, f),
+nluVtsiConfig: (f = msg.getNluVtsiConfig()) && proto.ondewo.vtsi.NluVtsiConfig.toObject(includeInstance, f),
+t2sVtsiConfig: (f = msg.getT2sVtsiConfig()) && proto.ondewo.vtsi.T2sVtsiConfig.toObject(includeInstance, f),
+csiVtsiConfig: (f = msg.getCsiVtsiConfig()) && proto.ondewo.vtsi.CsiVtsiConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3351,7 +3351,7 @@ proto.ondewo.vtsi.SipBaseConfig.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.vtsi.SipBaseConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sipSimVersion: jspb.Message.getFieldWithDefault(msg, 1, "")
+sipSimVersion: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -3481,9 +3481,9 @@ proto.ondewo.vtsi.SipCallerConfig.prototype.toObject = function(opt_includeInsta
  */
 proto.ondewo.vtsi.SipCallerConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sipBaseConfig: (f = msg.getSipBaseConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
-    calleeId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sipHeadersMap: (f = msg.getSipHeadersMap()) ? f.toObject(includeInstance, undefined) : []
+sipBaseConfig: (f = msg.getSipBaseConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
+calleeId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+sipHeadersMap: (f = msg.getSipHeadersMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -3696,12 +3696,12 @@ proto.ondewo.vtsi.CsiVtsiConfig.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.vtsi.CsiVtsiConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    s2tVtsiCallbacks: (f = msg.getS2tVtsiCallbacks()) && proto.ondewo.vtsi.S2tVtsiCallbacks.toObject(includeInstance, f),
-    nluVtsiCallbacks: (f = msg.getNluVtsiCallbacks()) && proto.ondewo.vtsi.NluVtsiCallbacks.toObject(includeInstance, f),
-    t2sVtsiCallbacks: (f = msg.getT2sVtsiCallbacks()) && proto.ondewo.vtsi.T2sVtsiCallbacks.toObject(includeInstance, f),
-    audioObjectStoreConfig: (f = msg.getAudioObjectStoreConfig()) && proto.ondewo.vtsi.AudioObjectStorageConfig.toObject(includeInstance, f),
-    messageBrokerConfig: (f = msg.getMessageBrokerConfig()) && proto.ondewo.vtsi.MessageBrokerConfig.toObject(includeInstance, f),
-    activateControlMessages: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+s2tVtsiCallbacks: (f = msg.getS2tVtsiCallbacks()) && proto.ondewo.vtsi.S2tVtsiCallbacks.toObject(includeInstance, f),
+nluVtsiCallbacks: (f = msg.getNluVtsiCallbacks()) && proto.ondewo.vtsi.NluVtsiCallbacks.toObject(includeInstance, f),
+t2sVtsiCallbacks: (f = msg.getT2sVtsiCallbacks()) && proto.ondewo.vtsi.T2sVtsiCallbacks.toObject(includeInstance, f),
+audioObjectStoreConfig: (f = msg.getAudioObjectStoreConfig()) && proto.ondewo.vtsi.AudioObjectStorageConfig.toObject(includeInstance, f),
+messageBrokerConfig: (f = msg.getMessageBrokerConfig()) && proto.ondewo.vtsi.MessageBrokerConfig.toObject(includeInstance, f),
+activateControlMessages: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -4081,8 +4081,8 @@ proto.ondewo.vtsi.AudioObjectStorageConfig.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.AudioObjectStorageConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    activateAudioObjectStorage: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    audioObjectStorageServicesActivationConfig: (f = msg.getAudioObjectStorageServicesActivationConfig()) && proto.ondewo.vtsi.AudioObjectStorageServicesActivationConfig.toObject(includeInstance, f)
+activateAudioObjectStorage: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+audioObjectStorageServicesActivationConfig: (f = msg.getAudioObjectStorageServicesActivationConfig()) && proto.ondewo.vtsi.AudioObjectStorageServicesActivationConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4262,8 +4262,8 @@ proto.ondewo.vtsi.AudioObjectStorageServicesActivationConfig.prototype.toObject 
  */
 proto.ondewo.vtsi.AudioObjectStorageServicesActivationConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    activateS2t: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    activateT2s: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+activateS2t: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+activateT2s: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -4447,9 +4447,9 @@ proto.ondewo.vtsi.MessageBrokerConfig.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.MessageBrokerConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    activateMessageBroker: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    messageBrokerServicesActivationConfig: (f = msg.getMessageBrokerServicesActivationConfig()) && proto.ondewo.vtsi.MessageBrokerServicesActivationConfig.toObject(includeInstance, f),
-    rabbitMqConfig: (f = msg.getRabbitMqConfig()) && proto.ondewo.vtsi.RabbitMqConfig.toObject(includeInstance, f)
+activateMessageBroker: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+messageBrokerServicesActivationConfig: (f = msg.getMessageBrokerServicesActivationConfig()) && proto.ondewo.vtsi.MessageBrokerServicesActivationConfig.toObject(includeInstance, f),
+rabbitMqConfig: (f = msg.getRabbitMqConfig()) && proto.ondewo.vtsi.RabbitMqConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4679,10 +4679,10 @@ proto.ondewo.vtsi.MessageBrokerServicesActivationConfig.prototype.toObject = fun
  */
 proto.ondewo.vtsi.MessageBrokerServicesActivationConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    activateS2t: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    activateNlu: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    activateT2s: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    activateSip: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+activateS2t: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+activateNlu: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+activateT2s: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+activateSip: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -4899,11 +4899,11 @@ proto.ondewo.vtsi.RabbitMqConfig.prototype.toObject = function(opt_includeInstan
  */
 proto.ondewo.vtsi.RabbitMqConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    host: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    port: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    port2: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    user: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    password: jspb.Message.getFieldWithDefault(msg, 5, "")
+host: jspb.Message.getFieldWithDefault(msg, 1, ""),
+port: jspb.Message.getFieldWithDefault(msg, 2, 0),
+port2: jspb.Message.getFieldWithDefault(msg, 3, 0),
+user: jspb.Message.getFieldWithDefault(msg, 4, ""),
+password: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -5156,8 +5156,8 @@ proto.ondewo.vtsi.S2tVtsiCallbacks.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.S2tVtsiCallbacks.toObject = function(includeInstance, msg) {
   var f, obj = {
-    preS2tCallbacksList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    postS2tCallbacksList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+preS2tCallbacksList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+postS2tCallbacksList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -5361,8 +5361,8 @@ proto.ondewo.vtsi.NluVtsiCallbacks.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.NluVtsiCallbacks.toObject = function(includeInstance, msg) {
   var f, obj = {
-    preNluCallbacksList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    postNluCallbacksList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+preNluCallbacksList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+postNluCallbacksList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -5566,8 +5566,8 @@ proto.ondewo.vtsi.T2sVtsiCallbacks.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.T2sVtsiCallbacks.toObject = function(includeInstance, msg) {
   var f, obj = {
-    preT2sCallbacksList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    postT2sCallbacksList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+preT2sCallbacksList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+postT2sCallbacksList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -5764,10 +5764,10 @@ proto.ondewo.vtsi.Listener.prototype.toObject = function(opt_includeInstance) {
  */
 proto.ondewo.vtsi.Listener.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sipBaseConfig: (f = msg.getSipBaseConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
-    commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+sipBaseConfig: (f = msg.getSipBaseConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
+commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6026,10 +6026,10 @@ proto.ondewo.vtsi.Caller.prototype.toObject = function(opt_includeInstance) {
  */
 proto.ondewo.vtsi.Caller.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sipCallerConfig: (f = msg.getSipCallerConfig()) && proto.ondewo.vtsi.SipCallerConfig.toObject(includeInstance, f),
-    commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+sipCallerConfig: (f = msg.getSipCallerConfig()) && proto.ondewo.vtsi.SipCallerConfig.toObject(includeInstance, f),
+commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6288,9 +6288,9 @@ proto.ondewo.vtsi.StartListenerRequest.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.StartListenerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sipBaseConfig: (f = msg.getSipBaseConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
-    commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sipBaseConfig: (f = msg.getSipBaseConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
+commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6520,9 +6520,9 @@ proto.ondewo.vtsi.StartListenerResponse.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.StartListenerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    listener: (f = msg.getListener()) && proto.ondewo.vtsi.Listener.toObject(includeInstance, f),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+listener: (f = msg.getListener()) && proto.ondewo.vtsi.Listener.toObject(includeInstance, f),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -6738,8 +6738,8 @@ proto.ondewo.vtsi.StartListenersRequest.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.StartListenersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    listenerRequestsList: jspb.Message.toObjectList(msg.getListenerRequestsList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+listenerRequestsList: jspb.Message.toObjectList(msg.getListenerRequestsList(),
     proto.ondewo.vtsi.StartListenerRequest.toObject, includeInstance)
   };
 
@@ -6928,10 +6928,10 @@ proto.ondewo.vtsi.StartListenersResponse.prototype.toObject = function(opt_inclu
  */
 proto.ondewo.vtsi.StartListenersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    listenerResponsesList: jspb.Message.toObjectList(msg.getListenerResponsesList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+listenerResponsesList: jspb.Message.toObjectList(msg.getListenerResponsesList(),
     proto.ondewo.vtsi.StartListenerResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -7141,9 +7141,9 @@ proto.ondewo.vtsi.StartCallerRequest.prototype.toObject = function(opt_includeIn
  */
 proto.ondewo.vtsi.StartCallerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sipCallerConfig: (f = msg.getSipCallerConfig()) && proto.ondewo.vtsi.SipCallerConfig.toObject(includeInstance, f),
-    commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sipCallerConfig: (f = msg.getSipCallerConfig()) && proto.ondewo.vtsi.SipCallerConfig.toObject(includeInstance, f),
+commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7373,9 +7373,9 @@ proto.ondewo.vtsi.StartCallerResponse.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.StartCallerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    caller: (f = msg.getCaller()) && proto.ondewo.vtsi.Caller.toObject(includeInstance, f),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+caller: (f = msg.getCaller()) && proto.ondewo.vtsi.Caller.toObject(includeInstance, f),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -7591,8 +7591,8 @@ proto.ondewo.vtsi.StartCallersRequest.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.StartCallersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callerRequestsList: jspb.Message.toObjectList(msg.getCallerRequestsList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callerRequestsList: jspb.Message.toObjectList(msg.getCallerRequestsList(),
     proto.ondewo.vtsi.StartCallerRequest.toObject, includeInstance)
   };
 
@@ -7781,10 +7781,10 @@ proto.ondewo.vtsi.StartCallersResponse.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.StartCallersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callerResponsesList: jspb.Message.toObjectList(msg.getCallerResponsesList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callerResponsesList: jspb.Message.toObjectList(msg.getCallerResponsesList(),
     proto.ondewo.vtsi.StartCallerResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -7994,9 +7994,9 @@ proto.ondewo.vtsi.ListCallersRequest.prototype.toObject = function(opt_includeIn
  */
 proto.ondewo.vtsi.ListCallersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    callView: jspb.Message.getFieldWithDefault(msg, 3, 0)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pageToken: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
+callView: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -8227,7 +8227,7 @@ proto.ondewo.vtsi.ListCallersResponse.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.ListCallersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    callersList: jspb.Message.toObjectList(msg.getCallersList(),
+callersList: jspb.Message.toObjectList(msg.getCallersList(),
     proto.ondewo.vtsi.Caller.toObject, includeInstance)
   };
 
@@ -8380,9 +8380,9 @@ proto.ondewo.vtsi.GetCallerRequest.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.GetCallerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    callView: jspb.Message.getFieldWithDefault(msg, 3, 0)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+callView: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -8588,9 +8588,9 @@ proto.ondewo.vtsi.ListListenersRequest.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.ListListenersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    callView: jspb.Message.getFieldWithDefault(msg, 3, 0)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pageToken: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
+callView: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -8821,9 +8821,9 @@ proto.ondewo.vtsi.ListListenersResponse.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.ListListenersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    listenersList: jspb.Message.toObjectList(msg.getListenersList(),
+listenersList: jspb.Message.toObjectList(msg.getListenersList(),
     proto.ondewo.vtsi.Listener.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -9004,9 +9004,9 @@ proto.ondewo.vtsi.GetListenerRequest.prototype.toObject = function(opt_includeIn
  */
 proto.ondewo.vtsi.GetListenerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    callView: jspb.Message.getFieldWithDefault(msg, 3, 0)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+callView: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -9212,7 +9212,7 @@ proto.ondewo.vtsi.StopListenerRequest.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.StopListenerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -9342,8 +9342,8 @@ proto.ondewo.vtsi.StopListenerResponse.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.StopListenerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -9509,7 +9509,7 @@ proto.ondewo.vtsi.StopListenersRequest.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.StopListenersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -9665,9 +9665,9 @@ proto.ondewo.vtsi.StopListenersResponse.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.StopListenersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    stopListenerResponsesList: jspb.Message.toObjectList(msg.getStopListenerResponsesList(),
+stopListenerResponsesList: jspb.Message.toObjectList(msg.getStopListenerResponsesList(),
     proto.ondewo.vtsi.StopListenerResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -9848,7 +9848,7 @@ proto.ondewo.vtsi.StopCallerRequest.prototype.toObject = function(opt_includeIns
  */
 proto.ondewo.vtsi.StopCallerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -9978,8 +9978,8 @@ proto.ondewo.vtsi.StopCallerResponse.prototype.toObject = function(opt_includeIn
  */
 proto.ondewo.vtsi.StopCallerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -10145,7 +10145,7 @@ proto.ondewo.vtsi.StopCallersRequest.prototype.toObject = function(opt_includeIn
  */
 proto.ondewo.vtsi.StopCallersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -10301,9 +10301,9 @@ proto.ondewo.vtsi.StopCallersResponse.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.StopCallersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    stopCallerResponsesList: jspb.Message.toObjectList(msg.getStopCallerResponsesList(),
+stopCallerResponsesList: jspb.Message.toObjectList(msg.getStopCallerResponsesList(),
     proto.ondewo.vtsi.StopCallerResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -10484,7 +10484,7 @@ proto.ondewo.vtsi.DeleteListenerRequest.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.DeleteListenerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -10614,8 +10614,8 @@ proto.ondewo.vtsi.DeleteListenerResponse.prototype.toObject = function(opt_inclu
  */
 proto.ondewo.vtsi.DeleteListenerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -10781,7 +10781,7 @@ proto.ondewo.vtsi.DeleteListenersRequest.prototype.toObject = function(opt_inclu
  */
 proto.ondewo.vtsi.DeleteListenersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -10937,9 +10937,9 @@ proto.ondewo.vtsi.DeleteListenersResponse.prototype.toObject = function(opt_incl
  */
 proto.ondewo.vtsi.DeleteListenersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    deleteListenerResponsesList: jspb.Message.toObjectList(msg.getDeleteListenerResponsesList(),
+deleteListenerResponsesList: jspb.Message.toObjectList(msg.getDeleteListenerResponsesList(),
     proto.ondewo.vtsi.DeleteListenerResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -11120,7 +11120,7 @@ proto.ondewo.vtsi.DeleteCallerRequest.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.DeleteCallerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -11250,8 +11250,8 @@ proto.ondewo.vtsi.DeleteCallerResponse.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.DeleteCallerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -11417,7 +11417,7 @@ proto.ondewo.vtsi.DeleteCallersRequest.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.DeleteCallersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -11573,9 +11573,9 @@ proto.ondewo.vtsi.DeleteCallersResponse.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.DeleteCallersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    deleteCallerResponsesList: jspb.Message.toObjectList(msg.getDeleteCallerResponsesList(),
+deleteCallerResponsesList: jspb.Message.toObjectList(msg.getDeleteCallerResponsesList(),
     proto.ondewo.vtsi.DeleteCallerResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -11756,9 +11756,9 @@ proto.ondewo.vtsi.StartScheduledCallerRequest.prototype.toObject = function(opt_
  */
 proto.ondewo.vtsi.StartScheduledCallerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    request: (f = msg.getRequest()) && proto.ondewo.vtsi.StartCallerRequest.toObject(includeInstance, f),
-    scheduledTime: (f = msg.getScheduledTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+request: (f = msg.getRequest()) && proto.ondewo.vtsi.StartCallerRequest.toObject(includeInstance, f),
+scheduledTime: (f = msg.getScheduledTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11995,8 +11995,8 @@ proto.ondewo.vtsi.StartScheduledCallersRequest.prototype.toObject = function(opt
  */
 proto.ondewo.vtsi.StartScheduledCallersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    scheduledCallerRequestsList: jspb.Message.toObjectList(msg.getScheduledCallerRequestsList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+scheduledCallerRequestsList: jspb.Message.toObjectList(msg.getScheduledCallerRequestsList(),
     proto.ondewo.vtsi.StartScheduledCallerRequest.toObject, includeInstance)
   };
 
@@ -12185,8 +12185,8 @@ proto.ondewo.vtsi.StartScheduledCallersResponse.prototype.toObject = function(op
  */
 proto.ondewo.vtsi.StartScheduledCallersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    scheduledCallerResponsesList: jspb.Message.toObjectList(msg.getScheduledCallerResponsesList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+scheduledCallerResponsesList: jspb.Message.toObjectList(msg.getScheduledCallerResponsesList(),
     proto.ondewo.vtsi.StartScheduledCallerResponse.toObject, includeInstance)
   };
 
@@ -12368,9 +12368,9 @@ proto.ondewo.vtsi.StartScheduledCallerResponse.prototype.toObject = function(opt
  */
 proto.ondewo.vtsi.StartScheduledCallerResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    scheduledCaller: (f = msg.getScheduledCaller()) && proto.ondewo.vtsi.ScheduledCaller.toObject(includeInstance, f),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+scheduledCaller: (f = msg.getScheduledCaller()) && proto.ondewo.vtsi.ScheduledCaller.toObject(includeInstance, f),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -12579,11 +12579,11 @@ proto.ondewo.vtsi.ScheduledCaller.prototype.toObject = function(opt_includeInsta
  */
 proto.ondewo.vtsi.ScheduledCaller.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sipConfig: (f = msg.getSipConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
-    commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f),
-    scheduledTime: (f = msg.getScheduledTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+sipConfig: (f = msg.getSipConfig()) && proto.ondewo.vtsi.SipBaseConfig.toObject(includeInstance, f),
+commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f),
+scheduledTime: (f = msg.getScheduledTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -12892,8 +12892,8 @@ proto.ondewo.vtsi.StopCallRequest.prototype.toObject = function(opt_includeInsta
  */
 proto.ondewo.vtsi.StopCallRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -13052,9 +13052,9 @@ proto.ondewo.vtsi.StopCallResponse.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.StopCallResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -13249,8 +13249,8 @@ proto.ondewo.vtsi.StopCallsRequest.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.StopCallsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callNamesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callNamesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -13435,9 +13435,9 @@ proto.ondewo.vtsi.StopCallsResponse.prototype.toObject = function(opt_includeIns
  */
 proto.ondewo.vtsi.StopCallsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    stopCallResponsesList: jspb.Message.toObjectList(msg.getStopCallResponsesList(),
+stopCallResponsesList: jspb.Message.toObjectList(msg.getStopCallResponsesList(),
     proto.ondewo.vtsi.StopCallResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -13618,7 +13618,7 @@ proto.ondewo.vtsi.StopAllCallsRequest.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.StopAllCallsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -13748,9 +13748,9 @@ proto.ondewo.vtsi.TransferCallRequest.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.TransferCallRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    transferId: jspb.Message.getFieldWithDefault(msg, 3, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+transferId: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -13938,10 +13938,10 @@ proto.ondewo.vtsi.TransferCallResponse.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.TransferCallResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    transferId: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 4, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+transferId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -14165,8 +14165,8 @@ proto.ondewo.vtsi.TransferCallsRequest.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.TransferCallsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    transferCallRequestsList: jspb.Message.toObjectList(msg.getTransferCallRequestsList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+transferCallRequestsList: jspb.Message.toObjectList(msg.getTransferCallRequestsList(),
     proto.ondewo.vtsi.TransferCallRequest.toObject, includeInstance)
   };
 
@@ -14355,10 +14355,10 @@ proto.ondewo.vtsi.TransferCallsResponse.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.TransferCallsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    transferCallResponsesList: jspb.Message.toObjectList(msg.getTransferCallResponsesList(),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+transferCallResponsesList: jspb.Message.toObjectList(msg.getTransferCallResponsesList(),
     proto.ondewo.vtsi.TransferCallResponse.toObject, includeInstance),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
+errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -14568,9 +14568,9 @@ proto.ondewo.vtsi.GetCallRequest.prototype.toObject = function(opt_includeInstan
  */
 proto.ondewo.vtsi.GetCallRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    callView: jspb.Message.getFieldWithDefault(msg, 3, 0)
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+callView: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -14776,24 +14776,24 @@ proto.ondewo.vtsi.Call.prototype.toObject = function(opt_includeInstance) {
  */
 proto.ondewo.vtsi.Call.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sipAccount: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    containerName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    callType: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    phoneNumber: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    sipStatusType: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    sipStatus: (f = msg.getSipStatus()) && ondewo_sip_sip_pb.SipStatus.toObject(includeInstance, f),
-    sipStatusHistory: (f = msg.getSipStatusHistory()) && ondewo_sip_sip_pb.SipStatusHistoryResponse.toObject(includeInstance, f),
-    servicesStatuses: (f = msg.getServicesStatuses()) && proto.ondewo.vtsi.AllServicesStatuses.toObject(includeInstance, f),
-    active: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f),
-    sipPort: jspb.Message.getFieldWithDefault(msg, 15, 0),
-    csiPort: jspb.Message.getFieldWithDefault(msg, 16, 0),
-    nluSessionName: jspb.Message.getFieldWithDefault(msg, 17, ""),
-    platforms: jspb.Message.getFieldWithDefault(msg, 18, 0)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sipAccount: jspb.Message.getFieldWithDefault(msg, 2, ""),
+containerName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+callType: jspb.Message.getFieldWithDefault(msg, 4, 0),
+phoneNumber: jspb.Message.getFieldWithDefault(msg, 5, ""),
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+sipStatusType: jspb.Message.getFieldWithDefault(msg, 8, 0),
+sipStatus: (f = msg.getSipStatus()) && ondewo_sip_sip_pb.SipStatus.toObject(includeInstance, f),
+sipStatusHistory: (f = msg.getSipStatusHistory()) && ondewo_sip_sip_pb.SipStatusHistoryResponse.toObject(includeInstance, f),
+servicesStatuses: (f = msg.getServicesStatuses()) && proto.ondewo.vtsi.AllServicesStatuses.toObject(includeInstance, f),
+active: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 13, ""),
+commonServicesConfig: (f = msg.getCommonServicesConfig()) && proto.ondewo.vtsi.CommonServicesConfig.toObject(includeInstance, f),
+sipPort: (f = jspb.Message.getField(msg, 15)) == null ? undefined : f,
+csiPort: (f = jspb.Message.getField(msg, 16)) == null ? undefined : f,
+nluSessionName: (f = jspb.Message.getField(msg, 17)) == null ? undefined : f,
+platforms: (f = jspb.Message.getField(msg, 18)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -15621,21 +15621,21 @@ proto.ondewo.vtsi.CallFilter.prototype.toObject = function(opt_includeInstance) 
  */
 proto.ondewo.vtsi.CallFilter.toObject = function(includeInstance, msg) {
   var f, obj = {
-    callNamesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    nluSessionNamesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
-    sipAccountsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    phoneNumbersList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
-    containerNamesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
-    sipPortsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
-    csiPortsList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
-    callTypesList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
-    sipStatusTypesList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
-    callStatus: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    durationInSMin: jspb.Message.getFloatingPointFieldWithDefault(msg, 13, 0.0),
-    durationInSMax: jspb.Message.getFloatingPointFieldWithDefault(msg, 14, 0.0),
-    platformsList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f
+callNamesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+nluSessionNamesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+sipAccountsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
+phoneNumbersList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
+containerNamesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+sipPortsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
+csiPortsList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+callTypesList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+sipStatusTypesList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
+callStatus: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f,
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+durationInSMin: (f = jspb.Message.getOptionalFloatingPointField(msg, 13)) == null ? undefined : f,
+durationInSMax: (f = jspb.Message.getOptionalFloatingPointField(msg, 14)) == null ? undefined : f,
+platformsList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -16463,10 +16463,10 @@ proto.ondewo.vtsi.ListCallsRequest.prototype.toObject = function(opt_includeInst
  */
 proto.ondewo.vtsi.ListCallsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    callView: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    callFilter: (f = msg.getCallFilter()) && proto.ondewo.vtsi.CallFilter.toObject(includeInstance, f),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+vtsiProjectName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callView: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
+callFilter: (f = msg.getCallFilter()) && proto.ondewo.vtsi.CallFilter.toObject(includeInstance, f),
+pageToken: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -16747,9 +16747,9 @@ proto.ondewo.vtsi.ListCallsResponse.prototype.toObject = function(opt_includeIns
  */
 proto.ondewo.vtsi.ListCallsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    callsList: jspb.Message.toObjectList(msg.getCallsList(),
+callsList: jspb.Message.toObjectList(msg.getCallsList(),
     proto.ondewo.vtsi.Call.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -16930,11 +16930,11 @@ proto.ondewo.vtsi.AllServicesStatuses.prototype.toObject = function(opt_includeI
  */
 proto.ondewo.vtsi.AllServicesStatuses.toObject = function(includeInstance, msg) {
   var f, obj = {
-    statusSip: (f = msg.getStatusSip()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
-    statusAsterisk: (f = msg.getStatusAsterisk()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
-    statusNlu: (f = msg.getStatusNlu()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
-    statusStt: (f = msg.getStatusStt()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
-    statusTts: (f = msg.getStatusTts()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f)
+statusSip: (f = msg.getStatusSip()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
+statusAsterisk: (f = msg.getStatusAsterisk()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
+statusNlu: (f = msg.getStatusNlu()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
+statusStt: (f = msg.getStatusStt()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f),
+statusTts: (f = msg.getStatusTts()) && proto.ondewo.vtsi.ServiceStatus.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -17285,8 +17285,8 @@ proto.ondewo.vtsi.ServiceStatus.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.vtsi.ServiceStatus.toObject = function(includeInstance, msg) {
   var f, obj = {
-    healthy: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+healthy: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {

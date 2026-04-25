@@ -465,22 +465,22 @@ proto.ondewo.vtsi.VtsiProject.prototype.toObject = function(opt_includeInstance)
  */
 proto.ondewo.vtsi.VtsiProject.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    displayName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    maxCallers: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    maxListeners: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    asteriskConfigs: (f = msg.getAsteriskConfigs()) && proto.ondewo.vtsi.AsteriskConfigs.toObject(includeInstance, f),
-    vtsiProjectStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    createdBy: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    modifiedBy: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    activeCallers: jspb.Message.getFieldWithDefault(msg, 11, 0),
-    activeListeners: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    asteriskPort: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    nluAgentNamesList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
-    deployedCallers: jspb.Message.getFieldWithDefault(msg, 15, 0),
-    deployedListeners: jspb.Message.getFieldWithDefault(msg, 16, 0)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+displayName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+maxCallers: jspb.Message.getFieldWithDefault(msg, 3, 0),
+maxListeners: jspb.Message.getFieldWithDefault(msg, 4, 0),
+asteriskConfigs: (f = msg.getAsteriskConfigs()) && proto.ondewo.vtsi.AsteriskConfigs.toObject(includeInstance, f),
+vtsiProjectStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+createdBy: jspb.Message.getFieldWithDefault(msg, 7, ""),
+createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+modifiedBy: jspb.Message.getFieldWithDefault(msg, 9, ""),
+modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+activeCallers: jspb.Message.getFieldWithDefault(msg, 11, 0),
+activeListeners: jspb.Message.getFieldWithDefault(msg, 12, 0),
+asteriskPort: jspb.Message.getFieldWithDefault(msg, 13, 0),
+nluAgentNamesList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
+deployedCallers: jspb.Message.getFieldWithDefault(msg, 15, 0),
+deployedListeners: jspb.Message.getFieldWithDefault(msg, 16, 0)
   };
 
   if (includeInstance) {
@@ -1127,12 +1127,12 @@ proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.AsteriskConfigsVariables.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sipTrunkUsername: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sipTrunkPassword: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sipTrunkHost: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    transferNumber: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    transferNumberHost: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    sipTrunkPhoneNumber: jspb.Message.getFieldWithDefault(msg, 6, "")
+sipTrunkUsername: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sipTrunkPassword: jspb.Message.getFieldWithDefault(msg, 2, ""),
+sipTrunkHost: jspb.Message.getFieldWithDefault(msg, 3, ""),
+transferNumber: jspb.Message.getFieldWithDefault(msg, 4, ""),
+transferNumberHost: jspb.Message.getFieldWithDefault(msg, 5, ""),
+sipTrunkPhoneNumber: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -1407,10 +1407,10 @@ proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.AsteriskConfigsFiles.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sipConfFileString: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extensionsConfFileString: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    queuesConfFileString: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    modulesConfFileString: jspb.Message.getFieldWithDefault(msg, 4, "")
+sipConfFileString: jspb.Message.getFieldWithDefault(msg, 1, ""),
+extensionsConfFileString: jspb.Message.getFieldWithDefault(msg, 2, ""),
+queuesConfFileString: jspb.Message.getFieldWithDefault(msg, 3, ""),
+modulesConfFileString: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1654,10 +1654,10 @@ proto.ondewo.vtsi.AsteriskConfigs.prototype.toObject = function(opt_includeInsta
  */
 proto.ondewo.vtsi.AsteriskConfigs.toObject = function(includeInstance, msg) {
   var f, obj = {
-    asteriskConfigsVariables: (f = msg.getAsteriskConfigsVariables()) && proto.ondewo.vtsi.AsteriskConfigsVariables.toObject(includeInstance, f),
-    asteriskConfigsFiles: (f = msg.getAsteriskConfigsFiles()) && proto.ondewo.vtsi.AsteriskConfigsFiles.toObject(includeInstance, f),
-    asteriskConfigsTargetDirectoryName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    asteriskPort: jspb.Message.getFieldWithDefault(msg, 4, 0)
+asteriskConfigsVariables: (f = msg.getAsteriskConfigsVariables()) && proto.ondewo.vtsi.AsteriskConfigsVariables.toObject(includeInstance, f),
+asteriskConfigsFiles: (f = msg.getAsteriskConfigsFiles()) && proto.ondewo.vtsi.AsteriskConfigsFiles.toObject(includeInstance, f),
+asteriskConfigsTargetDirectoryName: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
+asteriskPort: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1934,8 +1934,8 @@ proto.ondewo.vtsi.CreateVtsiProjectRequest.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.CreateVtsiProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProject: (f = msg.getVtsiProject()) && proto.ondewo.vtsi.VtsiProject.toObject(includeInstance, f),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+vtsiProject: (f = msg.getVtsiProject()) && proto.ondewo.vtsi.VtsiProject.toObject(includeInstance, f),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -2115,8 +2115,8 @@ proto.ondewo.vtsi.CreateVtsiProjectResponse.prototype.toObject = function(opt_in
  */
 proto.ondewo.vtsi.CreateVtsiProjectResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProject: (f = msg.getVtsiProject()) && proto.ondewo.vtsi.VtsiProject.toObject(includeInstance, f),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+vtsiProject: (f = msg.getVtsiProject()) && proto.ondewo.vtsi.VtsiProject.toObject(includeInstance, f),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -2296,8 +2296,8 @@ proto.ondewo.vtsi.GetVtsiProjectRequest.prototype.toObject = function(opt_includ
  */
 proto.ondewo.vtsi.GetVtsiProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    vtsiProjectView: jspb.Message.getFieldWithDefault(msg, 2, 0)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+vtsiProjectView: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -2463,10 +2463,10 @@ proto.ondewo.vtsi.ListVtsiProjectsRequest.prototype.toObject = function(opt_incl
  */
 proto.ondewo.vtsi.ListVtsiProjectsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectView: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    vtsiProjectSorting: (f = msg.getVtsiProjectSorting()) && proto.ondewo.vtsi.VtsiProjectSorting.toObject(includeInstance, f),
-    nluAgentNamesList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
+vtsiProjectView: jspb.Message.getFieldWithDefault(msg, 1, 0),
+pageToken: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
+vtsiProjectSorting: (f = msg.getVtsiProjectSorting()) && proto.ondewo.vtsi.VtsiProjectSorting.toObject(includeInstance, f),
+nluAgentNamesList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2748,9 +2748,9 @@ proto.ondewo.vtsi.ListVtsiProjectsResponse.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.ListVtsiProjectsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProjectsList: jspb.Message.toObjectList(msg.getVtsiProjectsList(),
+vtsiProjectsList: jspb.Message.toObjectList(msg.getVtsiProjectsList(),
     proto.ondewo.vtsi.VtsiProject.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -2931,8 +2931,8 @@ proto.ondewo.vtsi.VtsiProjectSorting.prototype.toObject = function(opt_includeIn
  */
 proto.ondewo.vtsi.VtsiProjectSorting.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sortingField: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    sortingMode: jspb.Message.getFieldWithDefault(msg, 2, 0)
+sortingField: (f = jspb.Message.getField(msg, 1)) == null ? undefined : f,
+sortingMode: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3138,7 +3138,7 @@ proto.ondewo.vtsi.UpdateVtsiProjectRequest.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.UpdateVtsiProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    vtsiProject: (f = msg.getVtsiProject()) && proto.ondewo.vtsi.VtsiProject.toObject(includeInstance, f)
+vtsiProject: (f = msg.getVtsiProject()) && proto.ondewo.vtsi.VtsiProject.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3289,8 +3289,8 @@ proto.ondewo.vtsi.UpdateVtsiProjectResponse.prototype.toObject = function(opt_in
  */
 proto.ondewo.vtsi.UpdateVtsiProjectResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -3449,7 +3449,7 @@ proto.ondewo.vtsi.DeleteVtsiProjectRequest.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.DeleteVtsiProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -3579,8 +3579,8 @@ proto.ondewo.vtsi.DeleteVtsiProjectResponse.prototype.toObject = function(opt_in
  */
 proto.ondewo.vtsi.DeleteVtsiProjectResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -3739,7 +3739,7 @@ proto.ondewo.vtsi.DeployVtsiProjectRequest.prototype.toObject = function(opt_inc
  */
 proto.ondewo.vtsi.DeployVtsiProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -3869,8 +3869,8 @@ proto.ondewo.vtsi.DeployVtsiProjectResponse.prototype.toObject = function(opt_in
  */
 proto.ondewo.vtsi.DeployVtsiProjectResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -4029,7 +4029,7 @@ proto.ondewo.vtsi.UndeployVtsiProjectRequest.prototype.toObject = function(opt_i
  */
 proto.ondewo.vtsi.UndeployVtsiProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -4159,8 +4159,8 @@ proto.ondewo.vtsi.UndeployVtsiProjectResponse.prototype.toObject = function(opt_
  */
 proto.ondewo.vtsi.UndeployVtsiProjectResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
