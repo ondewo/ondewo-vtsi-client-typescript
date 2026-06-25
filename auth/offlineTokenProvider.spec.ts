@@ -30,6 +30,7 @@ import {
   type TokenFetchResponse
 } from "./offlineTokenProvider";
 
+/** Baseline valid login options shared by the test cases (overridden per test via spread). */
 const BASE_OPTIONS: OfflineTokenLoginOptions = {
   keycloakUrl: "https://auth.example.com/auth",
   realm: "ondewo-ccai-platform",
@@ -38,27 +39,43 @@ const BASE_OPTIONS: OfflineTokenLoginOptions = {
   password: "super-secret"
 };
 
+/** The token endpoint URL {@link BASE_OPTIONS} must resolve to (asserted against the recorded calls). */
 const EXPECTED_TOKEN_ENDPOINT: string =
   "https://auth.example.com/auth/realms/ondewo-ccai-platform/protocol/openid-connect/token";
 
+/** One queued response for the fetch stub. */
 interface StubResponse {
+  /** HTTP status to return; defaults to 200 when omitted. */
   status?: number;
+  /** Response body; objects are JSON-stringified, strings are returned verbatim. */
   body: unknown;
 }
 
+/** A single request captured by the fetch stub, for post-hoc assertions. */
 interface RecordedCall {
+  /** The URL the stub was called with. */
   url: string;
+  /** The request init (method, headers, body) the stub received. */
   init: TokenFetchInit;
+  /** The form-encoded body parsed into queryable params. */
   params: URLSearchParams;
 }
 
+/** A fetch stub paired with the list of calls it has recorded. */
 interface FetchStub {
+  /** The injectable fetch to pass as `fetchImpl`. */
   fetchImpl: TokenFetch;
+  /** Calls recorded so far, in order. */
   calls: RecordedCall[];
 }
 
-// Build a fake fetch that returns a sequence of JSON responses (one per call) and records the
-// requests it received, so assertions can inspect the form-encoded body and the URL.
+/**
+ * Build a fake fetch that returns a sequence of JSON responses (one per call) and records the
+ * requests it received, so assertions can inspect the form-encoded body and the URL.
+ *
+ * @param responses - Responses to return in order; the stub throws if called more often than provided.
+ * @returns A {@link FetchStub} exposing the injectable `fetchImpl` and its recorded `calls`.
+ */
 function makeFetchStub(responses: StubResponse[]): FetchStub {
   const calls: RecordedCall[] = [];
   const fetchImpl: TokenFetch = (url: string, init: TokenFetchInit): Promise<TokenFetchResponse> => {
@@ -78,13 +95,18 @@ function makeFetchStub(responses: StubResponse[]): FetchStub {
   return { fetchImpl, calls };
 }
 
-// Yield to the microtask queue so an awaited refresh inside a fired timer can settle.
+/**
+ * Yield to the microtask queue so an awaited refresh inside a fired timer can settle.
+ *
+ * @returns A promise that resolves on the next tick of the event loop.
+ */
 function flushMicrotasks(): Promise<void> {
   return new Promise((resolve: () => void): void => {
     process.nextTick(resolve);
   });
 }
 
+/** Login posts a ROPC + offline_access grant to the realm token endpoint with no client_secret (Q1). */
 runTestCase(
   "login posts ROPC + offline_access to the realm token endpoint with the public client (no secret)",
   async () => {
@@ -114,6 +136,7 @@ runTestCase(
   }
 );
 
+/** The armed timer exchanges the offline refresh_token for a fresh access token before expiry. */
 runTestCase("auto-refresh exchanges the offline refresh_token for a fresh access token before expiry", async () => {
   const stub: FetchStub = makeFetchStub([
     { body: { access_token: "access-1", refresh_token: "offline-1", expires_in: 31 } },
@@ -144,6 +167,7 @@ runTestCase("auto-refresh exchanges the offline refresh_token for a fresh access
   }
 });
 
+/** Once the bounded `tokenExpirationInS` deadline passes, the refresh-at-fire-time check stops the loop. */
 runTestCase("the refresh loop stops after tokenExpirationInS elapses (no further renewal)", async () => {
   const stub: FetchStub = makeFetchStub([
     { body: { access_token: "access-1", refresh_token: "offline-1", expires_in: 31 } }
@@ -175,21 +199,25 @@ runTestCase("the refresh loop stops after tokenExpirationInS elapses (no further
   }
 });
 
+/** A non-2xx token-endpoint response surfaces as a TokenError from login. */
 runTestCase("login rejects a non-2xx token response with TokenError", async () => {
   const stub: FetchStub = makeFetchStub([{ status: 401, body: { error: "invalid_grant" } }]);
   await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
 });
 
+/** A login response without a refresh_token (no offline_access) is rejected with TokenError. */
 runTestCase("login rejects when the token response carries no refresh_token (missing offline_access)", async () => {
   const stub: FetchStub = makeFetchStub([{ body: { access_token: "access-1", expires_in: 300 } }]);
   await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
 });
 
+/** An empty required option (here clientId) is rejected before any network call. */
 runTestCase("login validates required options", async () => {
   const stub: FetchStub = makeFetchStub([]);
   await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl, clientId: "" }), TokenError);
 });
 
+/** Reading the Authorization header before any token exists throws TokenError. */
 runTestCase("getAuthorizationHeader throws before bootstrap when no token is available", () => {
   const stub: FetchStub = makeFetchStub([]);
   const provider: OfflineTokenProvider = new OfflineTokenProvider({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
@@ -197,21 +225,25 @@ runTestCase("getAuthorizationHeader throws before bootstrap when no token is ava
   assert.equal(provider.getAccessToken(), null);
 });
 
+/** A 2xx response with a non-JSON body is rejected with TokenError. */
 runTestCase("login rejects a 2xx token response whose body is not valid JSON", async () => {
   const stub: FetchStub = makeFetchStub([{ body: "<<<not-json>>>" }]);
   await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
 });
 
+/** A parseable JSON body without an access_token is rejected with TokenError. */
 runTestCase("login rejects a parseable token response that carries no access_token", async () => {
   const stub: FetchStub = makeFetchStub([{ body: { refresh_token: "offline-1", expires_in: 300 } }]);
   await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
 });
 
+/** A null or undefined options object is rejected with TokenError before any work. */
 runTestCase("login rejects a missing options object", async () => {
   await assert.rejects(() => login(null as unknown as OfflineTokenLoginOptions), TokenError);
   await assert.rejects(() => login(undefined as unknown as OfflineTokenLoginOptions), TokenError);
 });
 
+/** A failed background refresh is reported to onRefreshError and leaves the previous token intact. */
 runTestCase("a failed background refresh is surfaced to onRefreshError and keeps the stale token", async () => {
   const stub: FetchStub = makeFetchStub([
     { body: { access_token: "access-1", refresh_token: "offline-1", expires_in: 31 } },
@@ -240,6 +272,7 @@ runTestCase("a failed background refresh is surfaced to onRefreshError and keeps
   }
 });
 
+/** Without a registered handler, a failed background refresh is swallowed and never throws. */
 runTestCase("a failed background refresh without a registered handler is swallowed silently", async () => {
   const stub: FetchStub = makeFetchStub([
     { body: { access_token: "access-1", refresh_token: "offline-1", expires_in: 31 } },
@@ -262,6 +295,7 @@ runTestCase("a failed background refresh without a registered handler is swallow
   }
 });
 
+/** When a refresh response omits a rotated refresh_token, the previous offline token is reused. */
 runTestCase("a refresh response without a rotated refresh_token keeps reusing the previous one", async () => {
   const stub: FetchStub = makeFetchStub([
     { body: { access_token: "access-1", refresh_token: "offline-1", expires_in: 31 } },
@@ -289,6 +323,7 @@ runTestCase("a refresh response without a rotated refresh_token keeps reusing th
   }
 });
 
+/** An absent or zero expires_in clamps the scheduled delay to MIN_REFRESH_DELAY_IN_S (no hot loop). */
 runTestCase("an absent/zero expires_in falls back to the minimum refresh delay", async () => {
   const stub: FetchStub = makeFetchStub([
     // No expires_in -> the scheduler must clamp to MIN_REFRESH_DELAY_IN_S (1s), not spin a hot loop.
@@ -313,6 +348,7 @@ runTestCase("an absent/zero expires_in falls back to the minimum refresh delay",
   }
 });
 
+/** A tokenExpirationInS of 0 makes scheduleRefresh see no remaining time and stop without arming a timer. */
 runTestCase("a non-positive tokenExpirationInS lapses the loop immediately at schedule time", async () => {
   const stub: FetchStub = makeFetchStub([
     { body: { access_token: "access-1", refresh_token: "offline-1", expires_in: 31 } }
@@ -344,6 +380,7 @@ runTestCase("a non-positive tokenExpirationInS lapses the loop immediately at sc
   }
 });
 
+/** With no fetchImpl injected, login uses the default `globalThis.fetch` transport. */
 runTestCase("login falls back to the global fetch when no fetchImpl is provided", async () => {
   const calls: string[] = [];
   const originalFetch: typeof globalThis.fetch = globalThis.fetch;
@@ -371,6 +408,7 @@ runTestCase("login falls back to the global fetch when no fetchImpl is provided"
   }
 });
 
+/** Calling stop() while a refresh is in flight lets it finish but suppresses arming the next refresh. */
 runTestCase("stop() during an in-flight refresh suppresses re-arming the next refresh", async () => {
   const calls: URLSearchParams[] = [];
   // Captures the refresh resolver so the test can complete the in-flight refresh on demand.

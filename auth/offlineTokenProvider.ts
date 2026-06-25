@@ -21,11 +21,13 @@
 // token is exposed for an `Authorization: Bearer <token>` gRPC metadata header. The refresh loop stops
 // after `tokenExpirationInS` (if given) has elapsed since login.
 
-// Seconds of head-room subtracted from a token's `expires_in` so the refresh fires before the access
-// token actually lapses (covers clock skew + the round-trip to Keycloak).
+/**
+ * Seconds of head-room subtracted from a token's `expires_in` so the refresh fires before the access
+ * token actually lapses (covers clock skew + the round-trip to Keycloak).
+ */
 const REFRESH_SKEW_IN_S: number = 30;
 
-// Lower bound for the scheduled refresh delay so a tiny/zero `expires_in` cannot spin a hot loop.
+/** Lower bound for the scheduled refresh delay so a tiny/zero `expires_in` cannot spin a hot loop. */
 const MIN_REFRESH_DELAY_IN_S: number = 1;
 
 /**
@@ -33,25 +35,44 @@ const MIN_REFRESH_DELAY_IN_S: number = 1;
  * self-contained (no DOM lib dependency) while still typing the injectable `fetchImpl`.
  */
 export interface TokenFetchResponse {
+  /** Whether the HTTP status is in the 2xx success range. */
   ok: boolean;
+  /** The numeric HTTP status code of the response. */
   status: number;
+  /**
+   * Read the full response body as a string.
+   *
+   * @returns A promise resolving to the raw response body text.
+   */
   text(): Promise<string>;
 }
 
 /** Init object passed to the injectable fetch. */
 export interface TokenFetchInit {
+  /** HTTP method for the request (always `"POST"` for the token endpoint). */
   method: string;
+  /** Request headers (`Content-Type` / `Accept` for the form-encoded token call). */
   headers: Record<string, string>;
+  /** The `application/x-www-form-urlencoded` request body. */
   body: string;
 }
 
-/** Injectable fetch signature (a subset of the global `fetch`) used by the token endpoint call. */
+/**
+ * Injectable fetch signature (a subset of the global `fetch`) used by the token endpoint call.
+ *
+ * @param url - The token endpoint URL to POST to.
+ * @param init - The request method, headers, and form-encoded body.
+ * @returns A promise resolving to the structural {@link TokenFetchResponse}.
+ */
 export type TokenFetch = (url: string, init: TokenFetchInit) => Promise<TokenFetchResponse>;
 
 /** Parsed Keycloak token-endpoint response (only the fields this helper consumes). */
 interface KeycloakTokenResponse {
+  /** The short-lived OIDC access token used for the `Authorization: Bearer` header. */
   access_token: string;
+  /** The offline refresh token (present on login; may be rotated on refresh). */
   refresh_token?: string;
+  /** The access token lifetime in seconds, as reported by Keycloak. */
   expires_in?: number;
 }
 
@@ -77,6 +98,11 @@ export interface OfflineTokenLoginOptions {
 
 /** Error raised on any token-endpoint or token-shape failure. */
 export class TokenError extends Error {
+  /**
+   * Create a token error.
+   *
+   * @param message - Human-readable description of the token-endpoint or token-shape failure.
+   */
   public constructor(message: string) {
     super(message);
     this.name = "TokenError";
@@ -86,6 +112,10 @@ export class TokenError extends Error {
 /**
  * Build the OIDC token endpoint URL for a realm, tolerating a trailing slash on `keycloakUrl` and an
  * optional `/auth` relative path already baked into it.
+ *
+ * @param keycloakUrl - Base Keycloak URL (trailing slash tolerated).
+ * @param realm - Realm name; URL-encoded into the path.
+ * @returns The fully-qualified `.../realms/<realm>/protocol/openid-connect/token` endpoint URL.
  */
 function buildTokenEndpoint(keycloakUrl: string, realm: string): string {
   const base: string = keycloakUrl.replace(/\/+$/, "");
@@ -95,6 +125,12 @@ function buildTokenEndpoint(keycloakUrl: string, realm: string): string {
 /**
  * POST an `application/x-www-form-urlencoded` body to the token endpoint and return the parsed JSON.
  * Raises TokenError on a non-2xx response or unparseable / access_token-less body.
+ *
+ * @param tokenEndpoint - The realm token endpoint URL.
+ * @param params - Form fields to URL-encode into the request body (grant_type, client_id, ...).
+ * @param fetchImpl - The transport used to perform the request.
+ * @returns A promise resolving to the parsed {@link KeycloakTokenResponse}.
+ * @throws {TokenError} On a non-2xx response, a non-JSON body, or a body without an `access_token`.
  */
 async function postTokenRequest(
   tokenEndpoint: string,
@@ -133,19 +169,36 @@ async function postTokenRequest(
  * read {@link getAuthorizationHeader} for the gRPC `Authorization` metadata and call {@link stop} when done.
  */
 export class OfflineTokenProvider {
+  /** The realm token endpoint URL derived from the login options. */
   private readonly tokenEndpoint: string;
+  /** The public SDK client id sent on every token request (no client_secret). */
   private readonly clientId: string;
+  /** Optional cap (seconds) on how long the auto-refresh loop runs after login. */
   private readonly tokenExpirationInS: number | undefined;
+  /** The transport used for token requests (injected in tests, global `fetch` otherwise). */
   private readonly fetchImpl: TokenFetch;
+  /** Epoch-millisecond clock (injected in tests, `Date.now` otherwise). */
   private readonly nowInMs: () => number;
 
+  /** The current access token, or null before bootstrap / after the bounded loop has lapsed. */
   private accessToken: string | null;
+  /** The latest offline refresh token, or null before bootstrap. */
   private refreshToken: string | null;
+  /** Handle of the pending refresh timer, or null when none is armed. */
   private timer: ReturnType<typeof setTimeout> | null;
+  /** Whether {@link stop} has been called; suppresses further refresh scheduling. */
   private stopped: boolean;
+  /** Epoch ms after which the loop stops renewing, or null when unbounded. */
   private deadlineInMs: number | null;
+  /** Optional callback notified of a failed background refresh. */
   private onRefreshErrorHandler: ((error: unknown) => void) | null;
 
+  /**
+   * Build a provider from login options without performing the login. Prefer {@link login}, which
+   * also runs {@link bootstrap} and arms the first refresh.
+   *
+   * @param options - The D18 headless-SDK offline-token login options.
+   */
   public constructor(options: OfflineTokenLoginOptions) {
     this.tokenEndpoint = buildTokenEndpoint(options.keycloakUrl, options.realm);
     this.clientId = options.clientId;
@@ -161,7 +214,14 @@ export class OfflineTokenProvider {
     this.onRefreshErrorHandler = null;
   }
 
-  /** Perform the one-time ROPC login and arm the first refresh. Awaited by {@link login}. */
+  /**
+   * Perform the one-time ROPC login and arm the first refresh. Awaited by {@link login}.
+   *
+   * @param username - The 2FA-exempt technical-user email.
+   * @param password - The technical-user password.
+   * @returns A promise that resolves once the access token is stored and the first refresh is armed.
+   * @throws {TokenError} If the login fails or the response carries no refresh token.
+   */
   public async bootstrap(username: string, password: string): Promise<void> {
     const tokenResponse: KeycloakTokenResponse = await postTokenRequest(
       this.tokenEndpoint,
@@ -191,7 +251,12 @@ export class OfflineTokenProvider {
     this.scheduleRefresh(tokenResponse.expires_in);
   }
 
-  /** Exchange the offline refresh token for a fresh access token and re-arm the next refresh. */
+  /**
+   * Exchange the offline refresh token for a fresh access token and re-arm the next refresh.
+   *
+   * @returns A promise that resolves once the token is refreshed (or the loop has stopped/lapsed).
+   * @throws {TokenError} If the refresh request fails or returns an unusable body.
+   */
   private async refresh(): Promise<void> {
     /* c8 ignore next 3 -- unreachable: stop() always clears the only timer that calls refresh() */
     if (this.stopped) {
@@ -224,6 +289,9 @@ export class OfflineTokenProvider {
   /**
    * Arm a single timer for the next refresh, clamped to the bounded deadline. Stops silently once
    * `tokenExpirationInS` has elapsed (no further renewal -> access lapses -> re-login required).
+   *
+   * @param expiresInRaw - The `expires_in` (seconds) from the latest token response; absent or
+   *   non-positive values clamp to {@link MIN_REFRESH_DELAY_IN_S}.
    */
   private scheduleRefresh(expiresInRaw: number | undefined): void {
     if (this.stopped) {
@@ -258,17 +326,30 @@ export class OfflineTokenProvider {
     }
   }
 
-  /** Register a callback invoked with the error of a failed background refresh (optional diagnostics). */
+  /**
+   * Register a callback invoked with the error of a failed background refresh (optional diagnostics).
+   *
+   * @param handler - Callback receiving the rejection reason of a failed background refresh.
+   */
   public onRefreshError(handler: (error: unknown) => void): void {
     this.onRefreshErrorHandler = handler;
   }
 
-  /** The current access token, or null before bootstrap / after the bounded loop has lapsed. */
+  /**
+   * Read the current access token.
+   *
+   * @returns The current access token, or null before bootstrap / after the bounded loop has lapsed.
+   */
   public getAccessToken(): string | null {
     return this.accessToken;
   }
 
-  /** The value for an `Authorization` gRPC metadata header: `Bearer <access_token>`. */
+  /**
+   * Build the value for an `Authorization` gRPC metadata header: `Bearer <access_token>`.
+   *
+   * @returns The `Bearer <access_token>` header value.
+   * @throws {TokenError} If no access token is available (login has not completed or has lapsed).
+   */
   public getAuthorizationHeader(): string {
     if (this.accessToken === null) {
       throw new TokenError("No access token available; login() has not completed or has lapsed");
@@ -289,6 +370,10 @@ export class OfflineTokenProvider {
 /**
  * One-time ROPC + offline_access login against the PUBLIC SDK client, returning a live token provider
  * whose access token is auto-refreshed in the background until `tokenExpirationInS` elapses.
+ *
+ * @param options - The D18 headless-SDK offline-token login options.
+ * @returns A promise resolving to a bootstrapped {@link OfflineTokenProvider} with a live access token.
+ * @throws {TokenError} If `options` is missing, a required option is absent/empty, or the login fails.
  */
 export async function login(options: OfflineTokenLoginOptions): Promise<OfflineTokenProvider> {
   if (options === undefined || options === null) {
