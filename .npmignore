@@ -3,3 +3,4 @@ src/ondewo-vtsi-api
 coverage/
 .nyc_output/
 auth/*.spec.ts
+examples/*.spec.ts
