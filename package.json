@@ -15,6 +15,13 @@
   ],
   "main": "public-api.js",
   "typings": "public-api.d.ts",
+  "scripts": {
+    "build:test:auth": "tsc auth/offlineTokenProvider.ts auth/offlineTokenProvider.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
+    "build:test:examples": "tsc examples/listVtsiProjects.ts examples/listVtsiProjects.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
+    "typecheck:examples": "tsc examples/runListVtsiProjects.ts examples/listVtsiProjects.ts examples/listVtsiProjects.spec.ts --ignoreConfig --noEmit --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --types node --typeRoots ./node_modules/@types",
+    "pretest": "npm run build:test:auth && npm run build:test:examples && npm run typecheck:examples",
+    "test": "c8 --check-coverage --lines 100 --branches 100 --functions 100 --include '**/offlineTokenProvider.js' --exclude '**/*.spec.js' --reporter text node --test .test-build/offlineTokenProvider.spec.js && node --test .test-build/listVtsiProjects.spec.js"
+  },
   "repository": {
     "type": "git",
     "directory": "https://github.com/ondewo/ondewo-vtsi-client-typescript"
@@ -30,10 +37,12 @@
     "@eslint/js": "^9.39.4",
     "@types/node": "^22.15.27",
     "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "c8": "^11.0.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.39.4",
     "global": "^4.4.0",
     "husky": "^9.1.7",
-    "prettier": "^3.9.4"
+    "prettier": "^3.9.4",
+    "typescript": "^6.0.3"
   }
 }
