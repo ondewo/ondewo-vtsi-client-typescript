@@ -21,11 +21,11 @@
 // runListVtsiProjects.ts.
 
 import {
-  ListVtsiProjectsRequest,
-  VtsiProjectView,
-  type ListVtsiProjectsResponse,
-  type VtsiProject
-} from "../api/ondewo/vtsi/projects_pb";
+	ListVtsiProjectsRequest,
+	VtsiProjectView,
+	type ListVtsiProjectsResponse,
+	type VtsiProject
+} from '../api/ondewo/vtsi/projects_pb';
 
 /**
  * The subset of the generated `ProjectsPromiseClient` this example depends on. Declaring it as a
@@ -33,17 +33,17 @@ import {
  * `ProjectsPromiseClient` still satisfies it (checked at compile time in runListVtsiProjects.ts).
  */
 export interface ProjectLister {
-  /**
-   * List the VTSI projects visible to the caller.
-   *
-   * @param request - The (view-scoped) list request.
-   * @param metadata - gRPC metadata; carries the `Authorization: Bearer <token>` header.
-   * @returns A promise resolving to the list response.
-   */
-  listVtsiProjects(
-    request: ListVtsiProjectsRequest,
-    metadata: Record<string, string>
-  ): Promise<ListVtsiProjectsResponse>;
+	/**
+	 * List the VTSI projects visible to the caller.
+	 *
+	 * @param request - The (view-scoped) list request.
+	 * @param metadata - gRPC metadata; carries the `Authorization: Bearer <token>` header.
+	 * @returns A promise resolving to the list response.
+	 */
+	listVtsiProjects(
+		request: ListVtsiProjectsRequest,
+		metadata: Record<string, string>
+	): Promise<ListVtsiProjectsResponse>;
 }
 
 /**
@@ -57,14 +57,14 @@ export interface ProjectLister {
  * @returns A promise resolving to the display name of every returned VTSI project.
  */
 export async function fetchVtsiProjectDisplayNames(
-  client: ProjectLister,
-  authorizationHeader: string
+	client: ProjectLister,
+	authorizationHeader: string
 ): Promise<string[]> {
-  const request: ListVtsiProjectsRequest = new ListVtsiProjectsRequest();
-  request.setVtsiProjectView(VtsiProjectView.VTSI_PROJECT_VIEW_FULL);
+	const request: ListVtsiProjectsRequest = new ListVtsiProjectsRequest();
+	request.setVtsiProjectView(VtsiProjectView.VTSI_PROJECT_VIEW_FULL);
 
-  const metadata: Record<string, string> = { Authorization: authorizationHeader };
-  const response: ListVtsiProjectsResponse = await client.listVtsiProjects(request, metadata);
+	const metadata: Record<string, string> = { Authorization: authorizationHeader };
+	const response: ListVtsiProjectsResponse = await client.listVtsiProjects(request, metadata);
 
-  return response.getVtsiProjectsList().map((project: VtsiProject): string => project.getDisplayName());
+	return response.getVtsiProjectsList().map((project: VtsiProject): string => project.getDisplayName());
 }

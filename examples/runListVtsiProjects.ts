@@ -29,9 +29,9 @@
 //   KEYCLOAK_USERNAME=tech-user@example.com KEYCLOAK_PASSWORD=... \
 //   node dist/examples/runListVtsiProjects.js
 
-import { login, OfflineTokenProvider } from "../auth/offlineTokenProvider";
-import { ProjectsPromiseClient } from "../api/ondewo/vtsi/projects_grpc_web_pb";
-import { fetchVtsiProjectDisplayNames, type ProjectLister } from "./listVtsiProjects";
+import { login, OfflineTokenProvider } from '../auth/offlineTokenProvider';
+import { ProjectsPromiseClient } from '../api/ondewo/vtsi/projects_grpc_web_pb';
+import { fetchVtsiProjectDisplayNames, type ProjectLister } from './listVtsiProjects';
 
 /**
  * Read a required environment variable or throw a descriptive error.
@@ -40,37 +40,37 @@ import { fetchVtsiProjectDisplayNames, type ProjectLister } from "./listVtsiProj
  * @returns The non-empty environment variable value.
  */
 function requireEnv(name: string): string {
-  const value: string | undefined = process.env[name];
-  if (value === undefined || value.length === 0) {
-    throw new Error(`Missing required environment variable ${name}`);
-  }
-  return value;
+	const value: string | undefined = process.env[name];
+	if (value === undefined || value.length === 0) {
+		throw new Error(`Missing required environment variable ${name}`);
+	}
+	return value;
 }
 
 /** Log in, list the VTSI projects, print their display names, and stop the token-refresh loop. */
 async function main(): Promise<void> {
-  const provider: OfflineTokenProvider = await login({
-    keycloakUrl: requireEnv("KEYCLOAK_URL"),
-    realm: requireEnv("KEYCLOAK_REALM"),
-    // Public headless-SDK client (no client_secret); the technical user must be 2FA-exempt.
-    clientId: "ondewo-nlu-cai-sdk-public",
-    username: requireEnv("KEYCLOAK_USERNAME"),
-    password: requireEnv("KEYCLOAK_PASSWORD")
-  });
+	const provider: OfflineTokenProvider = await login({
+		keycloakUrl: requireEnv('KEYCLOAK_URL'),
+		realm: requireEnv('KEYCLOAK_REALM'),
+		// Public headless-SDK client (no client_secret); the technical user must be 2FA-exempt.
+		clientId: 'ondewo-nlu-cai-sdk-public',
+		username: requireEnv('KEYCLOAK_USERNAME'),
+		password: requireEnv('KEYCLOAK_PASSWORD')
+	});
 
-  try {
-    // The real ProjectsPromiseClient satisfies the ProjectLister the example core depends on.
-    const client: ProjectLister = new ProjectsPromiseClient(requireEnv("ONDEWO_VTSI_GRPC_WEB_URL"));
-    const displayNames: string[] = await fetchVtsiProjectDisplayNames(client, provider.getAuthorizationHeader());
-    process.stdout.write(`VTSI projects (${displayNames.length}): ${displayNames.join(", ")}\n`);
-  } finally {
-    provider.stop();
-  }
+	try {
+		// The real ProjectsPromiseClient satisfies the ProjectLister the example core depends on.
+		const client: ProjectLister = new ProjectsPromiseClient(requireEnv('ONDEWO_VTSI_GRPC_WEB_URL'));
+		const displayNames: string[] = await fetchVtsiProjectDisplayNames(client, provider.getAuthorizationHeader());
+		process.stdout.write(`VTSI projects (${displayNames.length}): ${displayNames.join(', ')}\n`);
+	} finally {
+		provider.stop();
+	}
 }
 
 if (require.main === module) {
-  main().catch((error: unknown): void => {
-    process.stderr.write(`${String(error)}\n`);
-    process.exitCode = 1;
-  });
+	main().catch((error: unknown): void => {
+		process.stderr.write(`${String(error)}\n`);
+		process.exitCode = 1;
+	});
 }
