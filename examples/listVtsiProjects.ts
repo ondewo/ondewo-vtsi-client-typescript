@@ -20,6 +20,8 @@
 // end-to-end wiring (Keycloak offline-token login + a real ProjectsPromiseClient) lives in
 // runListVtsiProjects.ts.
 
+import { RpcError } from 'grpc-web';
+
 import {
 	ListVtsiProjectsRequest,
 	VtsiProjectView,
@@ -64,7 +66,23 @@ export async function fetchVtsiProjectDisplayNames(
 	request.setVtsiProjectView(VtsiProjectView.VTSI_PROJECT_VIEW_FULL);
 
 	const metadata: Record<string, string> = { Authorization: authorizationHeader };
-	const response: ListVtsiProjectsResponse = await client.listVtsiProjects(request, metadata);
 
-	return response.getVtsiProjectsList().map((project: VtsiProject): string => project.getDisplayName());
+	console.log('Requesting VTSI projects (full view) ...');
+	let response: ListVtsiProjectsResponse;
+	try {
+		response = await client.listVtsiProjects(request, metadata);
+	} catch (error: unknown) {
+		if (error instanceof RpcError) {
+			console.error(`listVtsiProjects RPC failed: gRPC code ${error.code} - ${error.message}`);
+		} else {
+			console.error(`listVtsiProjects RPC failed: ${error instanceof Error ? error.message : String(error)}`);
+		}
+		throw error;
+	}
+
+	const displayNames: string[] = response
+		.getVtsiProjectsList()
+		.map((project: VtsiProject): string => project.getDisplayName());
+	console.log(`Received ${displayNames.length} VTSI project(s) from the server.`);
+	return displayNames;
 }

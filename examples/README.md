@@ -14,15 +14,30 @@ or by a mock in tests.
 
 The runnable end-to-end wiring for the current (D18 / Keycloak) auth flow: `login(...)` returns an
 auto-refreshing offline-token provider, a `ProjectsPromiseClient` is constructed against the
-gRPC-web endpoint, the projects are listed and printed, and the refresh loop is stopped. Configure
-it via environment variables:
+gRPC-web endpoint, the projects are listed and printed, and the refresh loop is stopped. It logs
+progress with `console.log`, reports failures with `console.error`, and exits non-zero on error.
+
+Configuration is read from [`environment.env`](./environment.env), which is loaded automatically via
+`dotenv` (the path is resolved relative to the script, so the working directory does not matter).
+Fill in the blank placeholders in that file, then run the compiled example:
 
 ```shell
-ONDEWO_VTSI_GRPC_WEB_URL=https://vtsi.example.com \
-KEYCLOAK_URL=https://auth.example.com/auth KEYCLOAK_REALM=ondewo-ccai-platform \
-KEYCLOAK_USERNAME=tech-user@example.com KEYCLOAK_PASSWORD=... \
 node dist/examples/runListVtsiProjects.js
 ```
+
+`environment.env` uses the canonical variable names:
+
+| Variable                    | Purpose                                                     |
+| --------------------------- | ----------------------------------------------------------- |
+| `ONDEWO_HOST`               | VTSI gRPC-web host                                          |
+| `ONDEWO_PORT`               | VTSI gRPC-web port                                          |
+| `ONDEWO_USE_SECURE_CHANNEL` | `true` for an `https` channel, `false` for `http`           |
+| `KEYCLOAK_URL`              | Base Keycloak URL                                           |
+| `KEYCLOAK_REALM`            | Keycloak realm                                              |
+| `KEYCLOAK_CLIENT_ID`        | Public headless-SDK client id                               |
+| `KEYCLOAK_USER_NAME`        | 2FA-exempt technical-user email                             |
+| `KEYCLOAK_PASSWORD`         | Technical-user password                                     |
+| `KEYCLOAK_VERIFY_SSL`       | `true` to verify the Keycloak TLS certificate, else `false` |
 
 ## `listVtsiProjects.spec.ts`
 
