@@ -11,3 +11,9 @@ src/
 ondewo-proto-compiler
 
 ondewo-vtsi-api
+package-lock.json
+package.json
+npm/
+dist/
+.test-build/
+.test-build-examples/
