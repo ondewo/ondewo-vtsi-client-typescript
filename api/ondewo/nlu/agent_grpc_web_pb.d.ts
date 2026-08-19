@@ -171,6 +171,13 @@ export class AgentsClient {
                response: ondewo_nlu_agent_pb.GetSessionsStatisticsResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_nlu_agent_pb.GetSessionsStatisticsResponse>;
 
+  getSessionsStatisticsTimeSeries(
+    request: ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesResponse>;
+
   setAgentStatus(
     request: ondewo_nlu_agent_pb.SetAgentStatusRequest,
     metadata: grpcWeb.Metadata | undefined,
@@ -297,6 +304,34 @@ export class AgentsClient {
                response: ondewo_nlu_operations_pb.Operation) => void
   ): grpcWeb.ClientReadableStream<ondewo_nlu_operations_pb.Operation>;
 
+  createProjectTechnicalUser(
+    request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse>;
+
+  listProjectTechnicalUsers(
+    request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse>;
+
+  deleteProjectTechnicalUser(
+    request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void
+  ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  rotateProjectTechnicalUserPassword(
+    request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse>;
+
 }
 
 export class AgentsPromiseClient {
@@ -419,6 +454,11 @@ export class AgentsPromiseClient {
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_nlu_agent_pb.GetSessionsStatisticsResponse>;
 
+  getSessionsStatisticsTimeSeries(
+    request: ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesResponse>;
+
   setAgentStatus(
     request: ondewo_nlu_agent_pb.SetAgentStatusRequest,
     metadata?: grpcWeb.Metadata
@@ -508,6 +548,26 @@ export class AgentsPromiseClient {
     request: ondewo_nlu_agent_pb.ReindexAgentRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_nlu_operations_pb.Operation>;
+
+  createProjectTechnicalUser(
+    request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse>;
+
+  listProjectTechnicalUsers(
+    request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse>;
+
+  deleteProjectTechnicalUser(
+    request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<google_protobuf_empty_pb.Empty>;
+
+  rotateProjectTechnicalUserPassword(
+    request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse>;
 
 }
 
