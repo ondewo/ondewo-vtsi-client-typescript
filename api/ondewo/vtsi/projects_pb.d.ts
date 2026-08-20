@@ -175,6 +175,11 @@ export class AsteriskConfigs extends jspb.Message {
   getAsteriskPort(): number;
   setAsteriskPort(value: number): AsteriskConfigs;
 
+  getAsteriskVersion(): string;
+  setAsteriskVersion(value: string): AsteriskConfigs;
+  hasAsteriskVersion(): boolean;
+  clearAsteriskVersion(): AsteriskConfigs;
+
   getAsteriskConfigsOneofCase(): AsteriskConfigs.AsteriskConfigsOneofCase;
 
   serializeBinary(): Uint8Array;
@@ -191,6 +196,7 @@ export namespace AsteriskConfigs {
     asteriskConfigsFiles?: AsteriskConfigsFiles.AsObject,
     asteriskConfigsTargetDirectoryName: string,
     asteriskPort: number,
+    asteriskVersion?: string,
   }
 
   export enum AsteriskConfigsOneofCase { 
@@ -198,6 +204,11 @@ export namespace AsteriskConfigs {
     ASTERISK_CONFIGS_VARIABLES = 1,
     ASTERISK_CONFIGS_FILES = 2,
     ASTERISK_CONFIGS_TARGET_DIRECTORY_NAME = 3,
+  }
+
+  export enum AsteriskVersionCase { 
+    _ASTERISK_VERSION_NOT_SET = 0,
+    ASTERISK_VERSION = 5,
   }
 }
 

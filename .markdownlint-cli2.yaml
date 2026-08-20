@@ -21,13 +21,13 @@ config:
   # Makefile uses to cut the GitHub README section; never strip them as "unused".
   MD053: false
 globs:
-  - "*.md"
+  - '*.md'
 ignores:
-  - "node_modules/**"
-  - "api/**"
-  - "lib/**"
-  - "dist/**"
-  - "build/**"
-  - "src/ondewo-vtsi-api/**"
-  - "ondewo-proto-compiler/**"
-  - ".venv/**"
+  - 'node_modules/**'
+  - 'api/**'
+  - 'lib/**'
+  - 'dist/**'
+  - 'build/**'
+  - 'src/ondewo-vtsi-api/**'
+  - 'ondewo-proto-compiler/**'
+  - '.venv/**'

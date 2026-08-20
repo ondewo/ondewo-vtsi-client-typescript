@@ -223,6 +223,11 @@ export class CommonServicesConfig extends jspb.Message {
   hasCsiVtsiConfig(): boolean;
   clearCsiVtsiConfig(): CommonServicesConfig;
 
+  getVoiceInteractionConfig(): VoiceInteractionConfig | undefined;
+  setVoiceInteractionConfig(value?: VoiceInteractionConfig): CommonServicesConfig;
+  hasVoiceInteractionConfig(): boolean;
+  clearVoiceInteractionConfig(): CommonServicesConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CommonServicesConfig.AsObject;
   static toObject(includeInstance: boolean, msg: CommonServicesConfig): CommonServicesConfig.AsObject;
@@ -237,6 +242,306 @@ export namespace CommonServicesConfig {
     nluVtsiConfig?: NluVtsiConfig.AsObject,
     t2sVtsiConfig?: T2sVtsiConfig.AsObject,
     csiVtsiConfig?: CsiVtsiConfig.AsObject,
+    voiceInteractionConfig?: VoiceInteractionConfig.AsObject,
+  }
+}
+
+export class VoiceInteractionConfig extends jspb.Message {
+  getTurnDetectionConfig(): TurnDetectionConfig | undefined;
+  setTurnDetectionConfig(value?: TurnDetectionConfig): VoiceInteractionConfig;
+  hasTurnDetectionConfig(): boolean;
+  clearTurnDetectionConfig(): VoiceInteractionConfig;
+
+  getInterruptionHandlingConfig(): InterruptionHandlingConfig | undefined;
+  setInterruptionHandlingConfig(value?: InterruptionHandlingConfig): VoiceInteractionConfig;
+  hasInterruptionHandlingConfig(): boolean;
+  clearInterruptionHandlingConfig(): VoiceInteractionConfig;
+
+  getResponseTimingConfig(): ResponseTimingConfig | undefined;
+  setResponseTimingConfig(value?: ResponseTimingConfig): VoiceInteractionConfig;
+  hasResponseTimingConfig(): boolean;
+  clearResponseTimingConfig(): VoiceInteractionConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): VoiceInteractionConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: VoiceInteractionConfig): VoiceInteractionConfig.AsObject;
+  static serializeBinaryToWriter(message: VoiceInteractionConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): VoiceInteractionConfig;
+  static deserializeBinaryFromReader(message: VoiceInteractionConfig, reader: jspb.BinaryReader): VoiceInteractionConfig;
+}
+
+export namespace VoiceInteractionConfig {
+  export type AsObject = {
+    turnDetectionConfig?: TurnDetectionConfig.AsObject,
+    interruptionHandlingConfig?: InterruptionHandlingConfig.AsObject,
+    responseTimingConfig?: ResponseTimingConfig.AsObject,
+  }
+}
+
+export class TurnDetectionConfig extends jspb.Message {
+  getMode(): TurnDetectionConfig.TurnDetectionMode;
+  setMode(value: TurnDetectionConfig.TurnDetectionMode): TurnDetectionConfig;
+
+  getMinEndpointingDelaySeconds(): number;
+  setMinEndpointingDelaySeconds(value: number): TurnDetectionConfig;
+  hasMinEndpointingDelaySeconds(): boolean;
+  clearMinEndpointingDelaySeconds(): TurnDetectionConfig;
+
+  getMaxEndpointingDelaySeconds(): number;
+  setMaxEndpointingDelaySeconds(value: number): TurnDetectionConfig;
+  hasMaxEndpointingDelaySeconds(): boolean;
+  clearMaxEndpointingDelaySeconds(): TurnDetectionConfig;
+
+  getTurnEagerness(): TurnDetectionConfig.TurnEagerness;
+  setTurnEagerness(value: TurnDetectionConfig.TurnEagerness): TurnDetectionConfig;
+
+  getTurnDetectionSystemPrompt(): string;
+  setTurnDetectionSystemPrompt(value: string): TurnDetectionConfig;
+
+  getTurnDetectionUserPrompt(): string;
+  setTurnDetectionUserPrompt(value: string): TurnDetectionConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TurnDetectionConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: TurnDetectionConfig): TurnDetectionConfig.AsObject;
+  static serializeBinaryToWriter(message: TurnDetectionConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TurnDetectionConfig;
+  static deserializeBinaryFromReader(message: TurnDetectionConfig, reader: jspb.BinaryReader): TurnDetectionConfig;
+}
+
+export namespace TurnDetectionConfig {
+  export type AsObject = {
+    mode: TurnDetectionConfig.TurnDetectionMode,
+    minEndpointingDelaySeconds?: number,
+    maxEndpointingDelaySeconds?: number,
+    turnEagerness: TurnDetectionConfig.TurnEagerness,
+    turnDetectionSystemPrompt: string,
+    turnDetectionUserPrompt: string,
+  }
+
+  export enum TurnDetectionMode { 
+    TURN_DETECTION_MODE_UNSPECIFIED = 0,
+    VAD = 1,
+    SEMANTIC_MODEL = 2,
+    AUDIO_MODEL = 3,
+  }
+
+  export enum TurnEagerness { 
+    TURN_EAGERNESS_UNSPECIFIED = 0,
+    PATIENT = 1,
+    NORMAL = 2,
+    EAGER = 3,
+  }
+
+  export enum MinEndpointingDelaySecondsCase { 
+    _MIN_ENDPOINTING_DELAY_SECONDS_NOT_SET = 0,
+    MIN_ENDPOINTING_DELAY_SECONDS = 2,
+  }
+
+  export enum MaxEndpointingDelaySecondsCase { 
+    _MAX_ENDPOINTING_DELAY_SECONDS_NOT_SET = 0,
+    MAX_ENDPOINTING_DELAY_SECONDS = 3,
+  }
+}
+
+export class InterruptionHandlingConfig extends jspb.Message {
+  getEnabled(): boolean;
+  setEnabled(value: boolean): InterruptionHandlingConfig;
+  hasEnabled(): boolean;
+  clearEnabled(): InterruptionHandlingConfig;
+
+  getMinInterruptionDurationSeconds(): number;
+  setMinInterruptionDurationSeconds(value: number): InterruptionHandlingConfig;
+  hasMinInterruptionDurationSeconds(): boolean;
+  clearMinInterruptionDurationSeconds(): InterruptionHandlingConfig;
+
+  getMinInterruptionWords(): number;
+  setMinInterruptionWords(value: number): InterruptionHandlingConfig;
+  hasMinInterruptionWords(): boolean;
+  clearMinInterruptionWords(): InterruptionHandlingConfig;
+
+  getFalseInterruptionTimeoutSeconds(): number;
+  setFalseInterruptionTimeoutSeconds(value: number): InterruptionHandlingConfig;
+  hasFalseInterruptionTimeoutSeconds(): boolean;
+  clearFalseInterruptionTimeoutSeconds(): InterruptionHandlingConfig;
+
+  getResumeAfterFalseInterruption(): boolean;
+  setResumeAfterFalseInterruption(value: boolean): InterruptionHandlingConfig;
+  hasResumeAfterFalseInterruption(): boolean;
+  clearResumeAfterFalseInterruption(): InterruptionHandlingConfig;
+
+  getBackoffSeconds(): number;
+  setBackoffSeconds(value: number): InterruptionHandlingConfig;
+  hasBackoffSeconds(): boolean;
+  clearBackoffSeconds(): InterruptionHandlingConfig;
+
+  getFirstMessageProtectedSeconds(): number;
+  setFirstMessageProtectedSeconds(value: number): InterruptionHandlingConfig;
+  hasFirstMessageProtectedSeconds(): boolean;
+  clearFirstMessageProtectedSeconds(): InterruptionHandlingConfig;
+
+  getTranscribeOnDisabledInterruptions(): boolean;
+  setTranscribeOnDisabledInterruptions(value: boolean): InterruptionHandlingConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): InterruptionHandlingConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: InterruptionHandlingConfig): InterruptionHandlingConfig.AsObject;
+  static serializeBinaryToWriter(message: InterruptionHandlingConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): InterruptionHandlingConfig;
+  static deserializeBinaryFromReader(message: InterruptionHandlingConfig, reader: jspb.BinaryReader): InterruptionHandlingConfig;
+}
+
+export namespace InterruptionHandlingConfig {
+  export type AsObject = {
+    enabled?: boolean,
+    minInterruptionDurationSeconds?: number,
+    minInterruptionWords?: number,
+    falseInterruptionTimeoutSeconds?: number,
+    resumeAfterFalseInterruption?: boolean,
+    backoffSeconds?: number,
+    firstMessageProtectedSeconds?: number,
+    transcribeOnDisabledInterruptions: boolean,
+  }
+
+  export enum EnabledCase { 
+    _ENABLED_NOT_SET = 0,
+    ENABLED = 1,
+  }
+
+  export enum MinInterruptionDurationSecondsCase { 
+    _MIN_INTERRUPTION_DURATION_SECONDS_NOT_SET = 0,
+    MIN_INTERRUPTION_DURATION_SECONDS = 2,
+  }
+
+  export enum MinInterruptionWordsCase { 
+    _MIN_INTERRUPTION_WORDS_NOT_SET = 0,
+    MIN_INTERRUPTION_WORDS = 3,
+  }
+
+  export enum FalseInterruptionTimeoutSecondsCase { 
+    _FALSE_INTERRUPTION_TIMEOUT_SECONDS_NOT_SET = 0,
+    FALSE_INTERRUPTION_TIMEOUT_SECONDS = 4,
+  }
+
+  export enum ResumeAfterFalseInterruptionCase { 
+    _RESUME_AFTER_FALSE_INTERRUPTION_NOT_SET = 0,
+    RESUME_AFTER_FALSE_INTERRUPTION = 5,
+  }
+
+  export enum BackoffSecondsCase { 
+    _BACKOFF_SECONDS_NOT_SET = 0,
+    BACKOFF_SECONDS = 6,
+  }
+
+  export enum FirstMessageProtectedSecondsCase { 
+    _FIRST_MESSAGE_PROTECTED_SECONDS_NOT_SET = 0,
+    FIRST_MESSAGE_PROTECTED_SECONDS = 7,
+  }
+}
+
+export class ResponseTimingConfig extends jspb.Message {
+  getTurnTimeoutSeconds(): number;
+  setTurnTimeoutSeconds(value: number): ResponseTimingConfig;
+  hasTurnTimeoutSeconds(): boolean;
+  clearTurnTimeoutSeconds(): ResponseTimingConfig;
+
+  getSilenceEndCallTimeoutSeconds(): number;
+  setSilenceEndCallTimeoutSeconds(value: number): ResponseTimingConfig;
+  hasSilenceEndCallTimeoutSeconds(): boolean;
+  clearSilenceEndCallTimeoutSeconds(): ResponseTimingConfig;
+
+  getSoftTimeoutConfig(): SoftTimeoutConfig | undefined;
+  setSoftTimeoutConfig(value?: SoftTimeoutConfig): ResponseTimingConfig;
+  hasSoftTimeoutConfig(): boolean;
+  clearSoftTimeoutConfig(): ResponseTimingConfig;
+
+  getPreemptiveGenerationEnabled(): boolean;
+  setPreemptiveGenerationEnabled(value: boolean): ResponseTimingConfig;
+  hasPreemptiveGenerationEnabled(): boolean;
+  clearPreemptiveGenerationEnabled(): ResponseTimingConfig;
+
+  getT2sChunkedStreamingEnabled(): boolean;
+  setT2sChunkedStreamingEnabled(value: boolean): ResponseTimingConfig;
+  hasT2sChunkedStreamingEnabled(): boolean;
+  clearT2sChunkedStreamingEnabled(): ResponseTimingConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResponseTimingConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: ResponseTimingConfig): ResponseTimingConfig.AsObject;
+  static serializeBinaryToWriter(message: ResponseTimingConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResponseTimingConfig;
+  static deserializeBinaryFromReader(message: ResponseTimingConfig, reader: jspb.BinaryReader): ResponseTimingConfig;
+}
+
+export namespace ResponseTimingConfig {
+  export type AsObject = {
+    turnTimeoutSeconds?: number,
+    silenceEndCallTimeoutSeconds?: number,
+    softTimeoutConfig?: SoftTimeoutConfig.AsObject,
+    preemptiveGenerationEnabled?: boolean,
+    t2sChunkedStreamingEnabled?: boolean,
+  }
+
+  export enum TurnTimeoutSecondsCase { 
+    _TURN_TIMEOUT_SECONDS_NOT_SET = 0,
+    TURN_TIMEOUT_SECONDS = 1,
+  }
+
+  export enum SilenceEndCallTimeoutSecondsCase { 
+    _SILENCE_END_CALL_TIMEOUT_SECONDS_NOT_SET = 0,
+    SILENCE_END_CALL_TIMEOUT_SECONDS = 2,
+  }
+
+  export enum PreemptiveGenerationEnabledCase { 
+    _PREEMPTIVE_GENERATION_ENABLED_NOT_SET = 0,
+    PREEMPTIVE_GENERATION_ENABLED = 4,
+  }
+
+  export enum T2sChunkedStreamingEnabledCase { 
+    _T2S_CHUNKED_STREAMING_ENABLED_NOT_SET = 0,
+    T2S_CHUNKED_STREAMING_ENABLED = 5,
+  }
+}
+
+export class SoftTimeoutConfig extends jspb.Message {
+  getTimeoutSeconds(): number;
+  setTimeoutSeconds(value: number): SoftTimeoutConfig;
+  hasTimeoutSeconds(): boolean;
+  clearTimeoutSeconds(): SoftTimeoutConfig;
+
+  getMessagesList(): Array<string>;
+  setMessagesList(value: Array<string>): SoftTimeoutConfig;
+  clearMessagesList(): SoftTimeoutConfig;
+  addMessages(value: string, index?: number): SoftTimeoutConfig;
+
+  getMaxPerGeneration(): number;
+  setMaxPerGeneration(value: number): SoftTimeoutConfig;
+  hasMaxPerGeneration(): boolean;
+  clearMaxPerGeneration(): SoftTimeoutConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SoftTimeoutConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: SoftTimeoutConfig): SoftTimeoutConfig.AsObject;
+  static serializeBinaryToWriter(message: SoftTimeoutConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SoftTimeoutConfig;
+  static deserializeBinaryFromReader(message: SoftTimeoutConfig, reader: jspb.BinaryReader): SoftTimeoutConfig;
+}
+
+export namespace SoftTimeoutConfig {
+  export type AsObject = {
+    timeoutSeconds?: number,
+    messagesList: Array<string>,
+    maxPerGeneration?: number,
+  }
+
+  export enum TimeoutSecondsCase { 
+    _TIMEOUT_SECONDS_NOT_SET = 0,
+    TIMEOUT_SECONDS = 1,
+  }
+
+  export enum MaxPerGenerationCase { 
+    _MAX_PER_GENERATION_NOT_SET = 0,
+    MAX_PER_GENERATION = 3,
   }
 }
 
