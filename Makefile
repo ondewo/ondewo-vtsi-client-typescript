@@ -30,7 +30,7 @@ IMAGE_UTILS_NAME=ondewo-vtsi-client-utils-typescript:${ONDEWO_VTSI_VERSION}
 PRETTIER_WRITE?=
 
 CURRENT_RELEASE_NOTES=`cat RELEASE.md \
-	| perl -ne 'print if /Release ONDEWO VTSI Typescript Client ${ONDEWO_VTSI_VERSION}/../\*\*/'`
+	| perl -ne 'print if /Release ONDEWO VTSI Typescript Client ${ONDEWO_VTSI_VERSION}/../^\*{5}/'`
 
 GH_REPO="https://github.com/ondewo/ondewo-vtsi-client-typescript"
 DEVOPS_ACCOUNT_GIT="ondewo-devops-accounts"
