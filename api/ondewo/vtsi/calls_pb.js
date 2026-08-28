@@ -5625,7 +5625,7 @@ nluVtsiCallbacks: (f = msg.getNluVtsiCallbacks()) && proto.ondewo.vtsi.NluVtsiCa
 t2sVtsiCallbacks: (f = msg.getT2sVtsiCallbacks()) && proto.ondewo.vtsi.T2sVtsiCallbacks.toObject(includeInstance, f),
 audioObjectStoreConfig: (f = msg.getAudioObjectStoreConfig()) && proto.ondewo.vtsi.AudioObjectStorageConfig.toObject(includeInstance, f),
 messageBrokerConfig: (f = msg.getMessageBrokerConfig()) && proto.ondewo.vtsi.MessageBrokerConfig.toObject(includeInstance, f),
-activateControlMessages: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+activateControlMessages: (f = jspb.Message.getBooleanField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -5760,8 +5760,8 @@ proto.ondewo.vtsi.CsiVtsiConfig.serializeBinaryToWriter = function(message, writ
       proto.ondewo.vtsi.MessageBrokerConfig.serializeBinaryToWriter
     );
   }
-  f = message.getActivateControlMessages();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
     writer.writeBool(
       6,
       f
@@ -5969,7 +5969,25 @@ proto.ondewo.vtsi.CsiVtsiConfig.prototype.getActivateControlMessages = function(
  * @return {!proto.ondewo.vtsi.CsiVtsiConfig} returns this
  */
 proto.ondewo.vtsi.CsiVtsiConfig.prototype.setActivateControlMessages = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.vtsi.CsiVtsiConfig} returns this
+ */
+proto.ondewo.vtsi.CsiVtsiConfig.prototype.clearActivateControlMessages = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.vtsi.CsiVtsiConfig.prototype.hasActivateControlMessages = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

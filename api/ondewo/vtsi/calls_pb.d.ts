@@ -619,6 +619,8 @@ export class CsiVtsiConfig extends jspb.Message {
 
   getActivateControlMessages(): boolean;
   setActivateControlMessages(value: boolean): CsiVtsiConfig;
+  hasActivateControlMessages(): boolean;
+  clearActivateControlMessages(): CsiVtsiConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsiVtsiConfig.AsObject;
@@ -635,7 +637,12 @@ export namespace CsiVtsiConfig {
     t2sVtsiCallbacks?: T2sVtsiCallbacks.AsObject,
     audioObjectStoreConfig?: AudioObjectStorageConfig.AsObject,
     messageBrokerConfig?: MessageBrokerConfig.AsObject,
-    activateControlMessages: boolean,
+    activateControlMessages?: boolean,
+  }
+
+  export enum ActivateControlMessagesCase { 
+    _ACTIVATE_CONTROL_MESSAGES_NOT_SET = 0,
+    ACTIVATE_CONTROL_MESSAGES = 6,
   }
 }
 
