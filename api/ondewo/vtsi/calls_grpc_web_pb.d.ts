@@ -134,6 +134,27 @@ export class CallsClient {
                response: ondewo_vtsi_calls_pb.StartScheduledCallersResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.StartScheduledCallersResponse>;
 
+  getScheduledCaller(
+    request: ondewo_vtsi_calls_pb.GetScheduledCallerRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.ScheduledCaller) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.ScheduledCaller>;
+
+  listScheduledCallers(
+    request: ondewo_vtsi_calls_pb.ListScheduledCallersRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.ListScheduledCallersResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.ListScheduledCallersResponse>;
+
+  cancelScheduledCaller(
+    request: ondewo_vtsi_calls_pb.CancelScheduledCallerRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.CancelScheduledCallerResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.CancelScheduledCallerResponse>;
+
   stopCall(
     request: ondewo_vtsi_calls_pb.StopCallRequest,
     metadata: grpcWeb.Metadata | undefined,
@@ -279,6 +300,21 @@ export class CallsPromiseClient {
     request: ondewo_vtsi_calls_pb.StartScheduledCallersRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.StartScheduledCallersResponse>;
+
+  getScheduledCaller(
+    request: ondewo_vtsi_calls_pb.GetScheduledCallerRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.ScheduledCaller>;
+
+  listScheduledCallers(
+    request: ondewo_vtsi_calls_pb.ListScheduledCallersRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.ListScheduledCallersResponse>;
+
+  cancelScheduledCaller(
+    request: ondewo_vtsi_calls_pb.CancelScheduledCallerRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.CancelScheduledCallerResponse>;
 
   stopCall(
     request: ondewo_vtsi_calls_pb.StopCallRequest,

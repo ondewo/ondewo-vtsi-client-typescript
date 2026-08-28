@@ -1810,6 +1810,30 @@ export class ScheduledCaller extends jspb.Message {
   hasScheduledTime(): boolean;
   clearScheduledTime(): ScheduledCaller;
 
+  getSipCallerConfig(): SipCallerConfig | undefined;
+  setSipCallerConfig(value?: SipCallerConfig): ScheduledCaller;
+  hasSipCallerConfig(): boolean;
+  clearSipCallerConfig(): ScheduledCaller;
+
+  getStatus(): ScheduledCallerStatus;
+  setStatus(value: ScheduledCallerStatus): ScheduledCaller;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): ScheduledCaller;
+
+  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): ScheduledCaller;
+  hasCreatedAt(): boolean;
+  clearCreatedAt(): ScheduledCaller;
+
+  getFiredAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setFiredAt(value?: google_protobuf_timestamp_pb.Timestamp): ScheduledCaller;
+  hasFiredAt(): boolean;
+  clearFiredAt(): ScheduledCaller;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): ScheduledCaller;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ScheduledCaller.AsObject;
   static toObject(includeInstance: boolean, msg: ScheduledCaller): ScheduledCaller.AsObject;
@@ -1825,6 +1849,167 @@ export namespace ScheduledCaller {
     sipConfig?: SipBaseConfig.AsObject,
     commonServicesConfig?: CommonServicesConfig.AsObject,
     scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    sipCallerConfig?: SipCallerConfig.AsObject,
+    status: ScheduledCallerStatus,
+    vtsiProjectName: string,
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    firedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    errorMessage: string,
+  }
+}
+
+export class GetScheduledCallerRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): GetScheduledCallerRequest;
+
+  getName(): string;
+  setName(value: string): GetScheduledCallerRequest;
+
+  getCallView(): CallView;
+  setCallView(value: CallView): GetScheduledCallerRequest;
+  hasCallView(): boolean;
+  clearCallView(): GetScheduledCallerRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetScheduledCallerRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetScheduledCallerRequest): GetScheduledCallerRequest.AsObject;
+  static serializeBinaryToWriter(message: GetScheduledCallerRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetScheduledCallerRequest;
+  static deserializeBinaryFromReader(message: GetScheduledCallerRequest, reader: jspb.BinaryReader): GetScheduledCallerRequest;
+}
+
+export namespace GetScheduledCallerRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    name: string,
+    callView?: CallView,
+  }
+
+  export enum CallViewCase { 
+    _CALL_VIEW_NOT_SET = 0,
+    CALL_VIEW = 3,
+  }
+}
+
+export class ListScheduledCallersRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): ListScheduledCallersRequest;
+
+  getPageToken(): string;
+  setPageToken(value: string): ListScheduledCallersRequest;
+  hasPageToken(): boolean;
+  clearPageToken(): ListScheduledCallersRequest;
+
+  getCallView(): CallView;
+  setCallView(value: CallView): ListScheduledCallersRequest;
+  hasCallView(): boolean;
+  clearCallView(): ListScheduledCallersRequest;
+
+  getStatusesList(): Array<ScheduledCallerStatus>;
+  setStatusesList(value: Array<ScheduledCallerStatus>): ListScheduledCallersRequest;
+  clearStatusesList(): ListScheduledCallersRequest;
+  addStatuses(value: ScheduledCallerStatus, index?: number): ListScheduledCallersRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListScheduledCallersRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListScheduledCallersRequest): ListScheduledCallersRequest.AsObject;
+  static serializeBinaryToWriter(message: ListScheduledCallersRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListScheduledCallersRequest;
+  static deserializeBinaryFromReader(message: ListScheduledCallersRequest, reader: jspb.BinaryReader): ListScheduledCallersRequest;
+}
+
+export namespace ListScheduledCallersRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    pageToken?: string,
+    callView?: CallView,
+    statusesList: Array<ScheduledCallerStatus>,
+  }
+
+  export enum PageTokenCase { 
+    _PAGE_TOKEN_NOT_SET = 0,
+    PAGE_TOKEN = 2,
+  }
+
+  export enum CallViewCase { 
+    _CALL_VIEW_NOT_SET = 0,
+    CALL_VIEW = 3,
+  }
+}
+
+export class ListScheduledCallersResponse extends jspb.Message {
+  getScheduledCallersList(): Array<ScheduledCaller>;
+  setScheduledCallersList(value: Array<ScheduledCaller>): ListScheduledCallersResponse;
+  clearScheduledCallersList(): ListScheduledCallersResponse;
+  addScheduledCallers(value?: ScheduledCaller, index?: number): ScheduledCaller;
+
+  getNextPageToken(): string;
+  setNextPageToken(value: string): ListScheduledCallersResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListScheduledCallersResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListScheduledCallersResponse): ListScheduledCallersResponse.AsObject;
+  static serializeBinaryToWriter(message: ListScheduledCallersResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListScheduledCallersResponse;
+  static deserializeBinaryFromReader(message: ListScheduledCallersResponse, reader: jspb.BinaryReader): ListScheduledCallersResponse;
+}
+
+export namespace ListScheduledCallersResponse {
+  export type AsObject = {
+    scheduledCallersList: Array<ScheduledCaller.AsObject>,
+    nextPageToken: string,
+  }
+}
+
+export class CancelScheduledCallerRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): CancelScheduledCallerRequest;
+
+  getName(): string;
+  setName(value: string): CancelScheduledCallerRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelScheduledCallerRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelScheduledCallerRequest): CancelScheduledCallerRequest.AsObject;
+  static serializeBinaryToWriter(message: CancelScheduledCallerRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelScheduledCallerRequest;
+  static deserializeBinaryFromReader(message: CancelScheduledCallerRequest, reader: jspb.BinaryReader): CancelScheduledCallerRequest;
+}
+
+export namespace CancelScheduledCallerRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    name: string,
+  }
+}
+
+export class CancelScheduledCallerResponse extends jspb.Message {
+  getName(): string;
+  setName(value: string): CancelScheduledCallerResponse;
+
+  getStatus(): ScheduledCallerStatus;
+  setStatus(value: ScheduledCallerStatus): CancelScheduledCallerResponse;
+
+  getCancelled(): boolean;
+  setCancelled(value: boolean): CancelScheduledCallerResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): CancelScheduledCallerResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelScheduledCallerResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelScheduledCallerResponse): CancelScheduledCallerResponse.AsObject;
+  static serializeBinaryToWriter(message: CancelScheduledCallerResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelScheduledCallerResponse;
+  static deserializeBinaryFromReader(message: CancelScheduledCallerResponse, reader: jspb.BinaryReader): CancelScheduledCallerResponse;
+}
+
+export namespace CancelScheduledCallerResponse {
+  export type AsObject = {
+    name: string,
+    status: ScheduledCallerStatus,
+    cancelled: boolean,
+    errorMessage: string,
   }
 }
 
@@ -2499,6 +2684,14 @@ export namespace ServiceStatus {
   }
 }
 
+export enum ScheduledCallerStatus { 
+  SCHEDULED_CALLER_STATUS_UNSPECIFIED = 0,
+  SCHEDULED_CALLER_STATUS_PENDING = 1,
+  SCHEDULED_CALLER_STATUS_FIRING = 2,
+  SCHEDULED_CALLER_STATUS_DONE = 3,
+  SCHEDULED_CALLER_STATUS_FAILED = 4,
+  SCHEDULED_CALLER_STATUS_CANCELLED = 5,
+}
 export enum CallView { 
   MINIMUM = 0,
   SHALLOW = 1,

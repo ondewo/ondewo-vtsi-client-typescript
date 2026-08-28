@@ -1194,6 +1194,189 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.startScheduledCallers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.GetScheduledCallerRequest,
+ *   !proto.ondewo.vtsi.ScheduledCaller>}
+ */
+const methodDescriptor_Calls_GetScheduledCaller = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/GetScheduledCaller',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.GetScheduledCallerRequest,
+  proto.ondewo.vtsi.ScheduledCaller,
+  /**
+   * @param {!proto.ondewo.vtsi.GetScheduledCallerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.ScheduledCaller.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.ScheduledCaller)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ScheduledCaller>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.getScheduledCaller =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/GetScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_GetScheduledCaller,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.ScheduledCaller>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.getScheduledCaller =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/GetScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_GetScheduledCaller);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.ListScheduledCallersRequest,
+ *   !proto.ondewo.vtsi.ListScheduledCallersResponse>}
+ */
+const methodDescriptor_Calls_ListScheduledCallers = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/ListScheduledCallers',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.ListScheduledCallersRequest,
+  proto.ondewo.vtsi.ListScheduledCallersResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.ListScheduledCallersRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.ListScheduledCallersResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.ListScheduledCallersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.ListScheduledCallersResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ListScheduledCallersResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.listScheduledCallers =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/ListScheduledCallers',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_ListScheduledCallers,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.ListScheduledCallersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.ListScheduledCallersResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.listScheduledCallers =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/ListScheduledCallers',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_ListScheduledCallers);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.CancelScheduledCallerRequest,
+ *   !proto.ondewo.vtsi.CancelScheduledCallerResponse>}
+ */
+const methodDescriptor_Calls_CancelScheduledCaller = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/CancelScheduledCaller',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.CancelScheduledCallerRequest,
+  proto.ondewo.vtsi.CancelScheduledCallerResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.CancelScheduledCallerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.CancelScheduledCallerResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CancelScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.CancelScheduledCallerResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.CancelScheduledCallerResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.cancelScheduledCaller =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/CancelScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_CancelScheduledCaller,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CancelScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.CancelScheduledCallerResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.cancelScheduledCaller =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/CancelScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_CancelScheduledCaller);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.ondewo.vtsi.StopCallRequest,
  *   !proto.ondewo.vtsi.StopCallResponse>}
  */
