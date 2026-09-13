@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -376,7 +370,7 @@ physicalLineCount: jspb.Message.getFieldWithDefault(msg, 15, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.CallLogEntry}
  */
 proto.ondewo.vtsi.CallLogEntry.deserializeBinary = function(bytes) {
@@ -418,15 +412,15 @@ proto.ondewo.vtsi.CallLogEntry.deserializeBinaryFromReader = function(msg, reade
       msg.setLevel(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setMessage(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setContainerId(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setContainerName(value);
       break;
     case 8:
@@ -438,23 +432,23 @@ proto.ondewo.vtsi.CallLogEntry.deserializeBinaryFromReader = function(msg, reade
       msg.setChannel(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setEmitter(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setThreadName(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setLogStream(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCall(value);
       break;
     case 14:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setNluSessionName(value);
       break;
     case 15:
@@ -934,7 +928,7 @@ value: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.SipHeaderFilter}
  */
 proto.ondewo.vtsi.SipHeaderFilter.deserializeBinary = function(bytes) {
@@ -959,11 +953,11 @@ proto.ondewo.vtsi.SipHeaderFilter.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setKey(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setValue(value);
       break;
     default:
@@ -1131,7 +1125,7 @@ endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObje
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.CallLogFilter}
  */
 proto.ondewo.vtsi.CallLogFilter.deserializeBinary = function(bytes) {
@@ -1156,82 +1150,79 @@ proto.ondewo.vtsi.CallLogFilter.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addCallNames(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addCallerNames(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addListenerNames(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addCallerIds(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addListenerIds(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addCallIds(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addContainerNames(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addContainerIds(value);
       break;
     case 9:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addLogStreamNames(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addSipAccounts(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addSipPorts(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addCsiPorts(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addAsteriskPorts(value);
       break;
     case 14:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addPhoneNumbers(value);
       break;
     case 15:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addCalleeIds(value);
       break;
     case 16:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addNluSessionNames(value);
       break;
     case 17:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addNluSessionUuids(value);
       break;
     case 18:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addNluProjectUuids(value);
       break;
     case 19:
-      var values = /** @type {!Array<!proto.ondewo.vtsi.CallType>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addCallTypes(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getCallTypesList());
       break;
     case 20:
       var value = new proto.ondewo.vtsi.SipHeaderFilter;
@@ -1239,45 +1230,36 @@ proto.ondewo.vtsi.CallLogFilter.deserializeBinaryFromReader = function(msg, read
       msg.addSipHeaders(value);
       break;
     case 21:
-      var values = /** @type {!Array<!proto.ondewo.vtsi.LogSource>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addLogSources(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getLogSourcesList());
       break;
     case 22:
-      var values = /** @type {!Array<!proto.ondewo.vtsi.LogStreamChannel>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addChannels(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getChannelsList());
       break;
     case 23:
       var value = /** @type {!proto.ondewo.nlu.LogSeverity} */ (reader.readEnum());
       msg.setMinLogLevel(value);
       break;
     case 24:
-      var values = /** @type {!Array<!proto.ondewo.nlu.LogSeverity>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addLogLevels(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getLogLevelsList());
       break;
     case 25:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIncludeUnleveledLines(value);
       break;
     case 26:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setText(value);
       break;
     case 27:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setRegex(value);
       break;
     case 28:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addEmitterPrefixes(value);
       break;
     case 29:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addThreadNames(value);
       break;
     case 30:
@@ -2733,7 +2715,7 @@ droppedLineCount: jspb.Message.getFieldWithDefault(msg, 21, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.CallLogStream}
  */
 proto.ondewo.vtsi.CallLogStream.deserializeBinary = function(bytes) {
@@ -2758,15 +2740,15 @@ proto.ondewo.vtsi.CallLogStream.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setContainerName(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setContainerId(value);
       break;
     case 4:
@@ -2774,11 +2756,11 @@ proto.ondewo.vtsi.CallLogStream.deserializeBinaryFromReader = function(msg, read
       msg.setChannel(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setProjectId(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setVoipCallName(value);
       break;
     case 7:
@@ -2786,7 +2768,7 @@ proto.ondewo.vtsi.CallLogStream.deserializeBinaryFromReader = function(msg, read
       msg.setCallType(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSipAccount(value);
       break;
     case 9:
@@ -2802,7 +2784,7 @@ proto.ondewo.vtsi.CallLogStream.deserializeBinaryFromReader = function(msg, read
       msg.setAsteriskPort(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setImage(value);
       break;
     case 13:
@@ -2810,7 +2792,7 @@ proto.ondewo.vtsi.CallLogStream.deserializeBinaryFromReader = function(msg, read
       msg.setCaptureState(value);
       break;
     case 14:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCaptureError(value);
       break;
     case 15:
@@ -3489,7 +3471,7 @@ afterSeq: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.StreamCallLogsRequest}
  */
 proto.ondewo.vtsi.StreamCallLogsRequest.deserializeBinary = function(bytes) {
@@ -3514,7 +3496,7 @@ proto.ondewo.vtsi.StreamCallLogsRequest.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setVtsiProjectName(value);
       break;
     case 2:
@@ -3527,7 +3509,7 @@ proto.ondewo.vtsi.StreamCallLogsRequest.deserializeBinaryFromReader = function(m
       msg.setTailLines(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setResumeToken(value);
       break;
     case 5:
@@ -3823,7 +3805,7 @@ endReason: jspb.Message.getFieldWithDefault(msg, 6, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.StreamCallLogsResponse}
  */
 proto.ondewo.vtsi.StreamCallLogsResponse.deserializeBinary = function(bytes) {
@@ -3857,7 +3839,7 @@ proto.ondewo.vtsi.StreamCallLogsResponse.deserializeBinaryFromReader = function(
       msg.setCaptureState(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCaptureError(value);
       break;
     case 4:
@@ -3865,11 +3847,11 @@ proto.ondewo.vtsi.StreamCallLogsResponse.deserializeBinaryFromReader = function(
       msg.setDroppedLineCount(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setResumeToken(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setEndReason(value);
       break;
     default:
@@ -4126,7 +4108,7 @@ oldestFirst: (f = jspb.Message.getBooleanField(msg, 7)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.ListCallLogsRequest}
  */
 proto.ondewo.vtsi.ListCallLogsRequest.deserializeBinary = function(bytes) {
@@ -4151,7 +4133,7 @@ proto.ondewo.vtsi.ListCallLogsRequest.deserializeBinaryFromReader = function(msg
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setVtsiProjectName(value);
       break;
     case 2:
@@ -4172,7 +4154,7 @@ proto.ondewo.vtsi.ListCallLogsRequest.deserializeBinaryFromReader = function(msg
       msg.setAfterSeq(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setResumeToken(value);
       break;
     case 7:
@@ -4556,7 +4538,7 @@ scopeLimitedFiltersList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? u
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.ListCallLogsResponse}
  */
 proto.ondewo.vtsi.ListCallLogsResponse.deserializeBinary = function(bytes) {
@@ -4606,14 +4588,11 @@ proto.ondewo.vtsi.ListCallLogsResponse.deserializeBinaryFromReader = function(ms
       msg.setHasMoreNewer(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setNextResumeToken(value);
       break;
     case 8:
-      var values = /** @type {!Array<!proto.ondewo.vtsi.CallLogFilterField>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addScopeLimitedFilters(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getScopeLimitedFiltersList());
       break;
     default:
       reader.skipField();
@@ -4933,7 +4912,7 @@ name: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.GetCallLogStreamRequest}
  */
 proto.ondewo.vtsi.GetCallLogStreamRequest.deserializeBinary = function(bytes) {
@@ -4958,11 +4937,11 @@ proto.ondewo.vtsi.GetCallLogStreamRequest.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setVtsiProjectName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     default:
@@ -5094,7 +5073,7 @@ pageToken: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.ListCallLogStreamsRequest}
  */
 proto.ondewo.vtsi.ListCallLogStreamsRequest.deserializeBinary = function(bytes) {
@@ -5119,7 +5098,7 @@ proto.ondewo.vtsi.ListCallLogStreamsRequest.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setVtsiProjectName(value);
       break;
     case 2:
@@ -5128,7 +5107,7 @@ proto.ondewo.vtsi.ListCallLogStreamsRequest.deserializeBinaryFromReader = functi
       msg.setFilter(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPageToken(value);
       break;
     default:
@@ -5330,7 +5309,7 @@ nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.ListCallLogStreamsResponse}
  */
 proto.ondewo.vtsi.ListCallLogStreamsResponse.deserializeBinary = function(bytes) {
@@ -5360,7 +5339,7 @@ proto.ondewo.vtsi.ListCallLogStreamsResponse.deserializeBinaryFromReader = funct
       msg.addLogStreams(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setNextPageToken(value);
       break;
     default:
@@ -5512,7 +5491,7 @@ filter: (f = msg.getFilter()) && proto.ondewo.vtsi.CallLogFilter.toObject(includ
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.DeleteCallLogsRequest}
  */
 proto.ondewo.vtsi.DeleteCallLogsRequest.deserializeBinary = function(bytes) {
@@ -5537,7 +5516,7 @@ proto.ondewo.vtsi.DeleteCallLogsRequest.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setVtsiProjectName(value);
       break;
     case 2:
@@ -5693,7 +5672,7 @@ deletedLogStreamCount: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ondewo.vtsi.DeleteCallLogsResponse}
  */
 proto.ondewo.vtsi.DeleteCallLogsResponse.deserializeBinary = function(bytes) {
