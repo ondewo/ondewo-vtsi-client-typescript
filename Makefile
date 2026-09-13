@@ -14,7 +14,7 @@ export
 # 		Variables
 ########################################################
 
-ONDEWO_VTSI_VERSION=8.7.0
+ONDEWO_VTSI_VERSION=8.7.1
 
 VTSI_API_GIT_BRANCH=tags/8.7.0
 # Must name the tag the committed ondewo-proto-compiler submodule points at, otherwise
@@ -110,6 +110,9 @@ release: ## Create Github and NPM Release
 # neither: leaving them out publishes a change to npm while the git tag of that same version
 # does not contain it, and destroys anything written only in the root README on the next build.
 	git add auth
+# tests/ and .ci-package.json are NOT packaged, but a regression test written alongside a fix
+# must reach the repository or CI never runs it.
+	git add tests .ci-package.json
 	git add README.md
 	git add RELEASE.md
 	git add package.json
