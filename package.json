@@ -20,12 +20,13 @@
     "build": "docker run -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-typescript-proto-compiler ondewo-vtsi-api ondewo",
     "predebug": "mv ondewo-vtsi-api/googleapis/google ondewo-vtsi-api/google",
     "debug": "docker run --entrypoint /bin/bash -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-typescript-proto-compiler",
-    "build:test:auth": "tsc auth/offlineTokenProvider.ts auth/offlineTokenProvider.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
+    "build:test:auth": "tsc auth/offlineTokenProvider.ts auth/offlineTokenProvider.spec.ts auth/grpcWebEndpoint.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
     "build:test:examples": "tsc examples/listVtsiProjects.ts examples/listVtsiProjects.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
     "build:test:protos": "tsc tests/asteriskVersion.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
     "test:protos": "node --test .test-build/asteriskVersion.spec.js",
     "pretest": "npm run build:test:auth && npm run build:test:examples && npm run build:test:protos && npm run typecheck:examples",
-    "test": "c8 --check-coverage --lines 100 --branches 100 --functions 100 --include '**/offlineTokenProvider.js' --exclude '**/*.spec.js' --reporter text node --test .test-build/offlineTokenProvider.spec.js && node --test .test-build/listVtsiProjects.spec.js && npm run test:protos",
+    "test": "c8 --check-coverage --lines 100 --branches 100 --functions 100 --include '**/offlineTokenProvider.js' --include '**/grpcWebEndpoint.js' --exclude '**/*.spec.js' --reporter text node --test .test-build/offlineTokenProvider.spec.js .test-build/grpcWebEndpoint.spec.js && node --test .test-build/listVtsiProjects.spec.js && npm run test:protos && npm run test:release",
+    "test:release": "tsc tests/releaseNotes.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --types node --typeRoots ./node_modules/@types --outDir .test-build && node --test .test-build/releaseNotes.spec.js",
     "typecheck:examples": "tsc examples/runListVtsiProjects.ts examples/listVtsiProjects.ts examples/listVtsiProjects.spec.ts --ignoreConfig --noEmit --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --types node --typeRoots ./node_modules/@types"
   },
   "repository": {
