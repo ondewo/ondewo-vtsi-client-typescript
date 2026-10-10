@@ -23,8 +23,9 @@
 //   * the new messages survive a binary round trip.
 //
 // Loading `calls_grpc_web_pb` is part of the check: it reaches `google/api/annotations_pb`, which requires
-// `google/api/http_pb`. The proto compiler collects only DIRECT google/ imports, so `http_pb` was never
-// generated and this file failed with MODULE_NOT_FOUND until `src/proto-deps.txt` pre-seeded it.
+// `google/api/http_pb`. Up to proto-compiler 5.15.5 only DIRECT google/ imports were collected, so
+// `http_pb` was never generated and this file failed with MODULE_NOT_FOUND; since 5.15.6 the compiler
+// follows google/ imports transitively.
 //
 //   node --test .test-build/vtsiApiSurface.spec.js
 
