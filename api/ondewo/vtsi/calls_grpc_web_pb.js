@@ -37,6 +37,8 @@ var ondewo_s2t_speech$to$text_pb = require('../../ondewo/s2t/speech-to-text_pb.j
 var ondewo_t2s_text$to$speech_pb = require('../../ondewo/t2s/text-to-speech_pb.js')
 
 var ondewo_sip_sip_pb = require('../../ondewo/sip/sip_pb.js')
+
+var ondewo_vtsi_campaigns_pb = require('../../ondewo/vtsi/campaigns_pb.js')
 const proto = {};
 proto.ondewo = {};
 proto.ondewo.vtsi = require('./calls_pb.js');
@@ -1194,6 +1196,128 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.startScheduledCallers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.AddCallersToCampaignRequest,
+ *   !proto.ondewo.vtsi.AddCallersToCampaignResponse>}
+ */
+const methodDescriptor_Calls_AddCallersToCampaign = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/AddCallersToCampaign',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.AddCallersToCampaignRequest,
+  proto.ondewo.vtsi.AddCallersToCampaignResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.AddCallersToCampaignRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.AddCallersToCampaignResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.AddCallersToCampaignRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.AddCallersToCampaignResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.AddCallersToCampaignResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.addCallersToCampaign =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/AddCallersToCampaign',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_AddCallersToCampaign,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.AddCallersToCampaignRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.AddCallersToCampaignResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.addCallersToCampaign =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/AddCallersToCampaign',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_AddCallersToCampaign);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.AddScheduledCallersToCampaignRequest,
+ *   !proto.ondewo.vtsi.AddScheduledCallersToCampaignResponse>}
+ */
+const methodDescriptor_Calls_AddScheduledCallersToCampaign = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/AddScheduledCallersToCampaign',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.AddScheduledCallersToCampaignRequest,
+  proto.ondewo.vtsi.AddScheduledCallersToCampaignResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.AddScheduledCallersToCampaignRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.AddScheduledCallersToCampaignResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.AddScheduledCallersToCampaignRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.AddScheduledCallersToCampaignResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.AddScheduledCallersToCampaignResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.addScheduledCallersToCampaign =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/AddScheduledCallersToCampaign',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_AddScheduledCallersToCampaign,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.AddScheduledCallersToCampaignRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.AddScheduledCallersToCampaignResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.addScheduledCallersToCampaign =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/AddScheduledCallersToCampaign',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_AddScheduledCallersToCampaign);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.ondewo.vtsi.GetScheduledCallerRequest,
  *   !proto.ondewo.vtsi.ScheduledCaller>}
  */
@@ -1798,6 +1922,413 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.listCalls =
       request,
       metadata || {},
       methodDescriptor_Calls_ListCalls);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.StreamCallerStatusRequest,
+ *   !proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ */
+const methodDescriptor_Calls_StreamCallerStatus = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/StreamCallerStatus',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.ondewo.vtsi.StreamCallerStatusRequest,
+  proto.ondewo.vtsi.StreamCallResourceStatusResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.StreamCallerStatusRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.StreamCallResourceStatusResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.StreamCallerStatusRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.streamCallerStatus =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/StreamCallerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_StreamCallerStatus);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.StreamCallerStatusRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.streamCallerStatus =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/StreamCallerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_StreamCallerStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.StreamListenerStatusRequest,
+ *   !proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ */
+const methodDescriptor_Calls_StreamListenerStatus = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/StreamListenerStatus',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.ondewo.vtsi.StreamListenerStatusRequest,
+  proto.ondewo.vtsi.StreamCallResourceStatusResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.StreamListenerStatusRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.StreamCallResourceStatusResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.StreamListenerStatusRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.streamListenerStatus =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/StreamListenerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_StreamListenerStatus);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.StreamListenerStatusRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.streamListenerStatus =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/StreamListenerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_StreamListenerStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.StreamScheduledCallerStatusRequest,
+ *   !proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ */
+const methodDescriptor_Calls_StreamScheduledCallerStatus = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/StreamScheduledCallerStatus',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.ondewo.vtsi.StreamScheduledCallerStatusRequest,
+  proto.ondewo.vtsi.StreamCallResourceStatusResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.StreamScheduledCallerStatusRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.StreamCallResourceStatusResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.StreamScheduledCallerStatusRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.streamScheduledCallerStatus =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/StreamScheduledCallerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_StreamScheduledCallerStatus);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.StreamScheduledCallerStatusRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallResourceStatusResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.streamScheduledCallerStatus =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/StreamScheduledCallerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_StreamScheduledCallerStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.InviteToCallRequest,
+ *   !proto.ondewo.vtsi.InviteToCallResponse>}
+ */
+const methodDescriptor_Calls_InviteToCall = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/InviteToCall',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.InviteToCallRequest,
+  proto.ondewo.vtsi.InviteToCallResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.InviteToCallRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.InviteToCallResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.InviteToCallRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.InviteToCallResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.InviteToCallResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.inviteToCall =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/InviteToCall',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_InviteToCall,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.InviteToCallRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.InviteToCallResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.inviteToCall =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/InviteToCall',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_InviteToCall);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.RemoveCallParticipantRequest,
+ *   !proto.ondewo.vtsi.RemoveCallParticipantResponse>}
+ */
+const methodDescriptor_Calls_RemoveCallParticipant = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/RemoveCallParticipant',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.RemoveCallParticipantRequest,
+  proto.ondewo.vtsi.RemoveCallParticipantResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.RemoveCallParticipantRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.RemoveCallParticipantResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RemoveCallParticipantRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.RemoveCallParticipantResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.RemoveCallParticipantResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.removeCallParticipant =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/RemoveCallParticipant',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_RemoveCallParticipant,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RemoveCallParticipantRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.RemoveCallParticipantResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.removeCallParticipant =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/RemoveCallParticipant',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_RemoveCallParticipant);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.SetCallMediaControlRequest,
+ *   !proto.ondewo.vtsi.SetCallMediaControlResponse>}
+ */
+const methodDescriptor_Calls_SetCallMediaControl = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/SetCallMediaControl',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.SetCallMediaControlRequest,
+  proto.ondewo.vtsi.SetCallMediaControlResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.SetCallMediaControlRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.SetCallMediaControlResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.SetCallMediaControlRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.SetCallMediaControlResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.SetCallMediaControlResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.setCallMediaControl =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/SetCallMediaControl',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_SetCallMediaControl,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.SetCallMediaControlRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.SetCallMediaControlResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.setCallMediaControl =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/SetCallMediaControl',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_SetCallMediaControl);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.ListenCallAudioRequest,
+ *   !proto.ondewo.vtsi.StreamCallAudioResponse>}
+ */
+const methodDescriptor_Calls_ListenCallAudio = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/ListenCallAudio',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.ondewo.vtsi.ListenCallAudioRequest,
+  proto.ondewo.vtsi.StreamCallAudioResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.ListenCallAudioRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.StreamCallAudioResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.ListenCallAudioRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallAudioResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.listenCallAudio =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/ListenCallAudio',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_ListenCallAudio);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.ListenCallAudioRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.StreamCallAudioResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.listenCallAudio =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Calls/ListenCallAudio',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_ListenCallAudio);
 };
 
 

@@ -62,6 +62,11 @@ export class VtsiProject extends jspb.Message {
   getDeployedListeners(): number;
   setDeployedListeners(value: number): VtsiProject;
 
+  getTransferPhoneNumberAllowlistList(): Array<string>;
+  setTransferPhoneNumberAllowlistList(value: Array<string>): VtsiProject;
+  clearTransferPhoneNumberAllowlistList(): VtsiProject;
+  addTransferPhoneNumberAllowlist(value: string, index?: number): VtsiProject;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VtsiProject.AsObject;
   static toObject(includeInstance: boolean, msg: VtsiProject): VtsiProject.AsObject;
@@ -88,6 +93,7 @@ export namespace VtsiProject {
     nluAgentNamesList: Array<string>,
     deployedCallers: number,
     deployedListeners: number,
+    transferPhoneNumberAllowlistList: Array<string>,
   }
 }
 
@@ -110,6 +116,29 @@ export class AsteriskConfigsVariables extends jspb.Message {
   getSipTrunkPhoneNumber(): string;
   setSipTrunkPhoneNumber(value: string): AsteriskConfigsVariables;
 
+  getSipTrunkTransport(): SipTrunkTransport;
+  setSipTrunkTransport(value: SipTrunkTransport): AsteriskConfigsVariables;
+
+  getSipTrunkSourceCidr(): string;
+  setSipTrunkSourceCidr(value: string): AsteriskConfigsVariables;
+  hasSipTrunkSourceCidr(): boolean;
+  clearSipTrunkSourceCidr(): AsteriskConfigsVariables;
+
+  getSipTrunkCaCertificatesPem(): string;
+  setSipTrunkCaCertificatesPem(value: string): AsteriskConfigsVariables;
+  hasSipTrunkCaCertificatesPem(): boolean;
+  clearSipTrunkCaCertificatesPem(): AsteriskConfigsVariables;
+
+  getSipTrunkVerifyServer(): boolean;
+  setSipTrunkVerifyServer(value: boolean): AsteriskConfigsVariables;
+  hasSipTrunkVerifyServer(): boolean;
+  clearSipTrunkVerifyServer(): AsteriskConfigsVariables;
+
+  getSoftphonePermitCidrsList(): Array<string>;
+  setSoftphonePermitCidrsList(value: Array<string>): AsteriskConfigsVariables;
+  clearSoftphonePermitCidrsList(): AsteriskConfigsVariables;
+  addSoftphonePermitCidrs(value: string, index?: number): AsteriskConfigsVariables;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AsteriskConfigsVariables.AsObject;
   static toObject(includeInstance: boolean, msg: AsteriskConfigsVariables): AsteriskConfigsVariables.AsObject;
@@ -126,12 +155,32 @@ export namespace AsteriskConfigsVariables {
     transferNumber: string,
     transferNumberHost: string,
     sipTrunkPhoneNumber: string,
+    sipTrunkTransport: SipTrunkTransport,
+    sipTrunkSourceCidr?: string,
+    sipTrunkCaCertificatesPem?: string,
+    sipTrunkVerifyServer?: boolean,
+    softphonePermitCidrsList: Array<string>,
+  }
+
+  export enum SipTrunkSourceCidrCase { 
+    _SIP_TRUNK_SOURCE_CIDR_NOT_SET = 0,
+    SIP_TRUNK_SOURCE_CIDR = 8,
+  }
+
+  export enum SipTrunkCaCertificatesPemCase { 
+    _SIP_TRUNK_CA_CERTIFICATES_PEM_NOT_SET = 0,
+    SIP_TRUNK_CA_CERTIFICATES_PEM = 9,
+  }
+
+  export enum SipTrunkVerifyServerCase { 
+    _SIP_TRUNK_VERIFY_SERVER_NOT_SET = 0,
+    SIP_TRUNK_VERIFY_SERVER = 10,
   }
 }
 
 export class AsteriskConfigsFiles extends jspb.Message {
-  getSipConfFileString(): string;
-  setSipConfFileString(value: string): AsteriskConfigsFiles;
+  getPjsipConfFileString(): string;
+  setPjsipConfFileString(value: string): AsteriskConfigsFiles;
 
   getExtensionsConfFileString(): string;
   setExtensionsConfFileString(value: string): AsteriskConfigsFiles;
@@ -152,7 +201,7 @@ export class AsteriskConfigsFiles extends jspb.Message {
 
 export namespace AsteriskConfigsFiles {
   export type AsObject = {
-    sipConfFileString: string,
+    pjsipConfFileString: string,
     extensionsConfFileString: string,
     queuesConfFileString: string,
     modulesConfFileString: string,
@@ -574,6 +623,12 @@ export enum VtsiProjectStatus {
   UNDEPLOYING = 5,
   DELETING = 6,
   DELETED = 7,
+}
+export enum SipTrunkTransport { 
+  SIP_TRUNK_TRANSPORT_UNSPECIFIED = 0,
+  SIP_TRUNK_TRANSPORT_TLS = 1,
+  SIP_TRUNK_TRANSPORT_UDP = 2,
+  SIP_TRUNK_TRANSPORT_TCP = 3,
 }
 export enum VtsiProjectSortingMode { 
   ASCENDING = 0,

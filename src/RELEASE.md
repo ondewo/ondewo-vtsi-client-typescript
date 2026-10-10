@@ -2,6 +2,79 @@
 
 *****************
 
+## Release ONDEWO VTSI Typescript Client 9.0.0
+
+### Breaking Changes
+
+* [[OND211-2443]](https://ondewo.atlassian.net/browse/OND211-2443) Regenerated from
+  [ondewo-vtsi-api 9.0.0](https://github.com/ondewo/ondewo-vtsi-api/releases/tag/9.0.0) (was 8.7.0), a MAJOR API
+  release: binary wire-compatible in both directions, source-breaking.
+  * `AsteriskConfigsFiles.sip_conf_file_string` was renamed to `pjsip_conf_file_string` (field number 1 and type
+    unchanged). **Migration:** replace `getSipConfFileString()` / `setSipConfFileString()` with
+    `getPjsipConfFileString()` / `setPjsipConfFileString()`, and the `sipConfFileString` key of `AsObject` / any JSON
+    mapping with `pjsipConfFileString`. There is no deprecated alias; code using the old accessors no longer compiles.
+  * Eleven singular scalars in `ondewo/vtsi/calls.proto` gained explicit presence (`optional`):
+    `InterruptionHandlingConfig.transcribeOnDisabledInterruptions`, `TurnDetectionConfig.turnDetectionSystemPrompt`
+    and `.turnDetectionUserPrompt`, `AudioObjectStorageConfig.activateAudioObjectStorage`,
+    `AudioObjectStorageServicesActivationConfig.activateS2t` and `.activateT2s`,
+    `MessageBrokerConfig.activateMessageBroker` and `MessageBrokerServicesActivationConfig.activateS2t`,
+    `.activateNlu`, `.activateT2s` and `.activateSip`. Each now has `has…()` / `clear…()`, and an explicitly set
+    default (`false`, `""`) is sent on the wire and read back as present. **Migration:** existing getters and setters
+    keep their names; code that relied on "default == not sent" should call `clear…()` instead of setting the default.
+    A message built by an SDK generated before 9.0.0 cannot carry an explicit default, so regenerate (upgrade)
+    every client before relying on it.
+  * The vendored sip protos move to [ondewo-sip-api 5.5.0](https://github.com/ondewo/ondewo-sip-api/releases/tag/5.5.0)
+    (purely additive). If you use this package next to `@ondewo/sip-client-typescript`, take sip-client 5.5.0.
+
+### New Features
+
+* New services, each with a generated `…Client` and `…PromiseClient` and re-exported from the package entry point:
+  * `Softphones` (`api/ondewo/vtsi/softphones_grpc_web_pb`): SIP accounts for humans using a softphone, ten RPCs for
+    accounts (`createSoftphoneAccount`, `getSoftphoneAccount`, `updateSoftphoneAccount`, `deleteSoftphoneAccount`,
+    `listSoftphoneAccounts`, `rotateSoftphoneCredentials`), certificates (`listSoftphoneCertificates`,
+    `getSoftphoneCertificate`, `revokeSoftphoneCertificate`) and `getSoftphoneProvisioning`. Secrets are returned
+    only by the create and rotate responses.
+  * `Campaigns` (`api/ondewo/vtsi/campaigns_grpc_web_pb`): outbound call campaigns with at most `maxParallelCalls`
+    running calls: CRUD, `startCampaign`, `stopCampaign`, `hardStopCampaign`, `resumeCampaign`,
+    `getCampaignStatistics`, `listCampaignCalls` and the server stream `streamCampaignStatus`.
+  * `Events` (`api/ondewo/vtsi/events_grpc_web_pb`): `VtsiEvent` subscriptions and webhooks (CRUD, `testWebhook`)
+    and the server stream `subscribeVtsiEvents`.
+* New `Calls` RPCs: `addCallersToCampaign`, `addScheduledCallersToCampaign`, the server streams
+  `streamCallerStatus`, `streamListenerStatus` and `streamScheduledCallerStatus`, call control with `inviteToCall`,
+  `removeCallParticipant`, `setCallMediaControl`, and the live-audio server stream `listenCallAudio`.
+  `StreamCallAudio` is bidirectional streaming, which gRPC-web cannot express: the generated `CallsClient` /
+  `CallsPromiseClient` have no method for it (its messages are generated), so browsers listen with `listenCallAudio`.
+* New fields and messages, among them: answering machine detection (`AnsweringMachineDetectionConfig`,
+  `Call.redialRecommended`, `.redialReason`, `.answeringMachineDetectionEndDescription`), per-project SIP trunk
+  transport and TLS verification (`AsteriskConfigsVariables.sipTrunkTransport`, `.sipTrunkSourceCidr`,
+  `.sipTrunkCaCertificatesPem`, `.sipTrunkVerifyServer`, `.softphonePermitCidrs`), idempotency keys on the five
+  batch-creating `Calls` requests, typed transfers (`TransferCallRequest.target`, `.mode`, `.headers`,
+  `.ringTimeoutS`, `TransferCallResponse.outcome`, `VtsiProject.transferPhoneNumberAllowlist`), call state on
+  `Call` (`mediaControl`, `participants`, `lastTransfer`, `sipCallId`) and new `VtsiEvent` values. See the
+  [API release notes](https://github.com/ondewo/ondewo-vtsi-api/releases/tag/9.0.0) for the server-side rules
+  (roles, rolling-update behaviour, refusals).
+
+### Bug Fixes
+
+* [[OND211-2443]](https://ondewo.atlassian.net/browse/OND211-2443) The package now ships `api/google/api/http_pb.js`
+  (and its `.d.ts`, re-exported from the entry point). `google/api/annotations_pb.js` requires it, and the vtsi, nlu
+  and qa modules import `annotations_pb`, but the proto compiler generates only the DIRECT `google/` imports of
+  the API protos, so up to 8.7.2 loading e.g. `ondewo/vtsi/calls_grpc_web_pb` failed with
+  `Cannot find module '../../google/api/http_pb.js'`. `src/proto-deps.txt` now pre-seeds `google/api/http.proto`.
+
+### Improvements
+
+* Regenerated with [ondewo-proto-compiler 5.15.5](https://github.com/ondewo/ondewo-proto-compiler/releases/tag/5.15.5)
+  (was 5.15.2); `google-protobuf` stays pinned to `4.0.2`.
+* Tests: `tests/vtsiApiSurface.spec.ts` loads the generated clients (which failed with the missing `http_pb` before),
+  checks every new RPC on both clients of `Softphones`, `Campaigns`, `Events` and `Calls`, that there is no
+  `streamCallAudio` method, the `pjsipConfFileString` rename, explicit presence of a field that gained `optional`,
+  and binary round trips (multi-byte strings included) of the new messages through google-protobuf 4.
+* README: the package-structure tree lists the generated files of this version.
+* Tracking API Version [9.0.0](https://github.com/ondewo/ondewo-vtsi-api/releases/tag/9.0.0) ( [Documentation](https://ondewo.github.io/ondewo-vtsi-api/) )
+
+*****************
+
 ## Release ONDEWO VTSI Typescript Client 8.7.2
 
 ### New Features
