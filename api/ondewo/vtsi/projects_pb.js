@@ -34,6 +34,7 @@ goog.exportSymbol('proto.ondewo.vtsi.DeployVtsiProjectResponse', null, global);
 goog.exportSymbol('proto.ondewo.vtsi.GetVtsiProjectRequest', null, global);
 goog.exportSymbol('proto.ondewo.vtsi.ListVtsiProjectsRequest', null, global);
 goog.exportSymbol('proto.ondewo.vtsi.ListVtsiProjectsResponse', null, global);
+goog.exportSymbol('proto.ondewo.vtsi.SipTrunkTransport', null, global);
 goog.exportSymbol('proto.ondewo.vtsi.UndeployVtsiProjectRequest', null, global);
 goog.exportSymbol('proto.ondewo.vtsi.UndeployVtsiProjectResponse', null, global);
 goog.exportSymbol('proto.ondewo.vtsi.UpdateVtsiProjectRequest', null, global);
@@ -76,7 +77,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.ondewo.vtsi.AsteriskConfigsVariables = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.vtsi.AsteriskConfigsVariables.repeatedFields_, null);
 };
 goog.inherits(proto.ondewo.vtsi.AsteriskConfigsVariables, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -428,7 +429,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.ondewo.vtsi.VtsiProject.repeatedFields_ = [14];
+proto.ondewo.vtsi.VtsiProject.repeatedFields_ = [14,17];
 
 
 
@@ -476,7 +477,8 @@ activeListeners: jspb.Message.getFieldWithDefault(msg, 12, 0),
 asteriskPort: jspb.Message.getFieldWithDefault(msg, 13, 0),
 nluAgentNamesList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
 deployedCallers: jspb.Message.getFieldWithDefault(msg, 15, 0),
-deployedListeners: jspb.Message.getFieldWithDefault(msg, 16, 0)
+deployedListeners: jspb.Message.getFieldWithDefault(msg, 16, 0),
+transferPhoneNumberAllowlistList: (f = jspb.Message.getRepeatedField(msg, 17)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -579,6 +581,10 @@ proto.ondewo.vtsi.VtsiProject.deserializeBinaryFromReader = function(msg, reader
     case 16:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setDeployedListeners(value);
+      break;
+    case 17:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.addTransferPhoneNumberAllowlist(value);
       break;
     default:
       reader.skipField();
@@ -721,6 +727,13 @@ proto.ondewo.vtsi.VtsiProject.serializeBinaryToWriter = function(message, writer
   if (f !== 0) {
     writer.writeInt32(
       16,
+      f
+    );
+  }
+  f = message.getTransferPhoneNumberAllowlistList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      17,
       f
     );
   }
@@ -1091,6 +1104,50 @@ proto.ondewo.vtsi.VtsiProject.prototype.setDeployedListeners = function(value) {
 };
 
 
+/**
+ * repeated string transfer_phone_number_allowlist = 17;
+ * @return {!Array<string>}
+ */
+proto.ondewo.vtsi.VtsiProject.prototype.getTransferPhoneNumberAllowlistList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 17));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.vtsi.VtsiProject} returns this
+ */
+proto.ondewo.vtsi.VtsiProject.prototype.setTransferPhoneNumberAllowlistList = function(value) {
+  return jspb.Message.setField(this, 17, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.vtsi.VtsiProject} returns this
+ */
+proto.ondewo.vtsi.VtsiProject.prototype.addTransferPhoneNumberAllowlist = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 17, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.vtsi.VtsiProject} returns this
+ */
+proto.ondewo.vtsi.VtsiProject.prototype.clearTransferPhoneNumberAllowlistList = function() {
+  return this.setTransferPhoneNumberAllowlistList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.repeatedFields_ = [11];
 
 
 
@@ -1128,7 +1185,12 @@ sipTrunkPassword: jspb.Message.getFieldWithDefault(msg, 2, ""),
 sipTrunkHost: jspb.Message.getFieldWithDefault(msg, 3, ""),
 transferNumber: jspb.Message.getFieldWithDefault(msg, 4, ""),
 transferNumberHost: jspb.Message.getFieldWithDefault(msg, 5, ""),
-sipTrunkPhoneNumber: jspb.Message.getFieldWithDefault(msg, 6, "")
+sipTrunkPhoneNumber: jspb.Message.getFieldWithDefault(msg, 6, ""),
+sipTrunkTransport: jspb.Message.getFieldWithDefault(msg, 7, 0),
+sipTrunkSourceCidr: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f,
+sipTrunkCaCertificatesPem: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f,
+sipTrunkVerifyServer: (f = jspb.Message.getBooleanField(msg, 10)) == null ? undefined : f,
+softphonePermitCidrsList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1188,6 +1250,26 @@ proto.ondewo.vtsi.AsteriskConfigsVariables.deserializeBinaryFromReader = functio
     case 6:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSipTrunkPhoneNumber(value);
+      break;
+    case 7:
+      var value = /** @type {!proto.ondewo.vtsi.SipTrunkTransport} */ (reader.readEnum());
+      msg.setSipTrunkTransport(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSipTrunkSourceCidr(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSipTrunkCaCertificatesPem(value);
+      break;
+    case 10:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSipTrunkVerifyServer(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.addSoftphonePermitCidrs(value);
       break;
     default:
       reader.skipField();
@@ -1257,6 +1339,41 @@ proto.ondewo.vtsi.AsteriskConfigsVariables.serializeBinaryToWriter = function(me
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getSipTrunkTransport();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      7,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 9));
+  if (f != null) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 10));
+  if (f != null) {
+    writer.writeBool(
+      10,
+      f
+    );
+  }
+  f = message.getSoftphonePermitCidrsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      11,
       f
     );
   }
@@ -1371,6 +1488,169 @@ proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.setSipTrunkPhoneNumber = fu
 };
 
 
+/**
+ * optional SipTrunkTransport sip_trunk_transport = 7;
+ * @return {!proto.ondewo.vtsi.SipTrunkTransport}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.getSipTrunkTransport = function() {
+  return /** @type {!proto.ondewo.vtsi.SipTrunkTransport} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.SipTrunkTransport} value
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.setSipTrunkTransport = function(value) {
+  return jspb.Message.setProto3EnumField(this, 7, value);
+};
+
+
+/**
+ * optional string sip_trunk_source_cidr = 8;
+ * @return {string}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.getSipTrunkSourceCidr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.setSipTrunkSourceCidr = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.clearSipTrunkSourceCidr = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.hasSipTrunkSourceCidr = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional string sip_trunk_ca_certificates_pem = 9;
+ * @return {string}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.getSipTrunkCaCertificatesPem = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.setSipTrunkCaCertificatesPem = function(value) {
+  return jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.clearSipTrunkCaCertificatesPem = function() {
+  return jspb.Message.setField(this, 9, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.hasSipTrunkCaCertificatesPem = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional bool sip_trunk_verify_server = 10;
+ * @return {boolean}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.getSipTrunkVerifyServer = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 10, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.setSipTrunkVerifyServer = function(value) {
+  return jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.clearSipTrunkVerifyServer = function() {
+  return jspb.Message.setField(this, 10, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.hasSipTrunkVerifyServer = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * repeated string softphone_permit_cidrs = 11;
+ * @return {!Array<string>}
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.getSoftphonePermitCidrsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.setSoftphonePermitCidrsList = function(value) {
+  return jspb.Message.setField(this, 11, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.addSoftphonePermitCidrs = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.vtsi.AsteriskConfigsVariables} returns this
+ */
+proto.ondewo.vtsi.AsteriskConfigsVariables.prototype.clearSoftphonePermitCidrsList = function() {
+  return this.setSoftphonePermitCidrsList([]);
+};
+
+
 
 
 
@@ -1403,7 +1683,7 @@ proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.toObject = function(opt_include
  */
 proto.ondewo.vtsi.AsteriskConfigsFiles.toObject = function(includeInstance, msg) {
   var f, obj = {
-sipConfFileString: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pjsipConfFileString: jspb.Message.getFieldWithDefault(msg, 1, ""),
 extensionsConfFileString: jspb.Message.getFieldWithDefault(msg, 2, ""),
 queuesConfFileString: jspb.Message.getFieldWithDefault(msg, 3, ""),
 modulesConfFileString: jspb.Message.getFieldWithDefault(msg, 4, "")
@@ -1445,7 +1725,7 @@ proto.ondewo.vtsi.AsteriskConfigsFiles.deserializeBinaryFromReader = function(ms
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
-      msg.setSipConfFileString(value);
+      msg.setPjsipConfFileString(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
@@ -1488,7 +1768,7 @@ proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.serializeBinary = function() {
  */
 proto.ondewo.vtsi.AsteriskConfigsFiles.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSipConfFileString();
+  f = message.getPjsipConfFileString();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -1520,10 +1800,10 @@ proto.ondewo.vtsi.AsteriskConfigsFiles.serializeBinaryToWriter = function(messag
 
 
 /**
- * optional string sip_conf_file_string = 1;
+ * optional string pjsip_conf_file_string = 1;
  * @return {string}
  */
-proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.getSipConfFileString = function() {
+proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.getPjsipConfFileString = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -1532,7 +1812,7 @@ proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.getSipConfFileString = function
  * @param {string} value
  * @return {!proto.ondewo.vtsi.AsteriskConfigsFiles} returns this
  */
-proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.setSipConfFileString = function(value) {
+proto.ondewo.vtsi.AsteriskConfigsFiles.prototype.setPjsipConfFileString = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -4394,6 +4674,16 @@ proto.ondewo.vtsi.VtsiProjectStatus = {
   UNDEPLOYING: 5,
   DELETING: 6,
   DELETED: 7
+};
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.vtsi.SipTrunkTransport = {
+  SIP_TRUNK_TRANSPORT_UNSPECIFIED: 0,
+  SIP_TRUNK_TRANSPORT_TLS: 1,
+  SIP_TRUNK_TRANSPORT_UDP: 2,
+  SIP_TRUNK_TRANSPORT_TCP: 3
 };
 
 /**
