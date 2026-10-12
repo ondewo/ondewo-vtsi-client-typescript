@@ -36,7 +36,7 @@ import { CallsClient, CallsPromiseClient } from '../api/ondewo/vtsi/calls_grpc_w
 import { CampaignsClient, CampaignsPromiseClient } from '../api/ondewo/vtsi/campaigns_grpc_web_pb';
 import { EventsClient, EventsPromiseClient } from '../api/ondewo/vtsi/events_grpc_web_pb';
 import { SoftphonesClient, SoftphonesPromiseClient } from '../api/ondewo/vtsi/softphones_grpc_web_pb';
-import { MessageBrokerServicesActivationConfig } from '../api/ondewo/vtsi/calls_pb';
+import { MessageBrokerServicesActivationConfig } from '../api/ondewo/vtsi/call_configs_pb';
 import { Campaign } from '../api/ondewo/vtsi/campaigns_pb';
 import { AsteriskConfigsFiles, AsteriskConfigsVariables, SipTrunkTransport } from '../api/ondewo/vtsi/projects_pb';
 import { SoftphoneAccount } from '../api/ondewo/vtsi/softphones_pb';
