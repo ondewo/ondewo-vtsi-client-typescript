@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as ondewo_nlu_common_pb from '../../ondewo/nlu/common_pb'; // proto import: "ondewo/nlu/common.proto"
 import * as ondewo_vtsi_calls_pb from '../../ondewo/vtsi/calls_pb'; // proto import: "ondewo/vtsi/calls.proto"
@@ -257,6 +258,21 @@ export class CallLogFilter extends jspb.Message {
   hasEndTime(): boolean;
   clearEndTime(): CallLogFilter;
 
+  getSipPortNumbersList(): Array<number>;
+  setSipPortNumbersList(value: Array<number>): CallLogFilter;
+  clearSipPortNumbersList(): CallLogFilter;
+  addSipPortNumbers(value: number, index?: number): CallLogFilter;
+
+  getCsiPortNumbersList(): Array<number>;
+  setCsiPortNumbersList(value: Array<number>): CallLogFilter;
+  clearCsiPortNumbersList(): CallLogFilter;
+  addCsiPortNumbers(value: number, index?: number): CallLogFilter;
+
+  getAsteriskPortNumbersList(): Array<number>;
+  setAsteriskPortNumbersList(value: Array<number>): CallLogFilter;
+  clearAsteriskPortNumbersList(): CallLogFilter;
+  addAsteriskPortNumbers(value: number, index?: number): CallLogFilter;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CallLogFilter.AsObject;
   static toObject(includeInstance: boolean, msg: CallLogFilter): CallLogFilter.AsObject;
@@ -298,6 +314,9 @@ export namespace CallLogFilter {
     threadNamesList: Array<string>,
     startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    sipPortNumbersList: Array<number>,
+    csiPortNumbersList: Array<number>,
+    asteriskPortNumbersList: Array<number>,
   }
 
   export enum IncludeUnleveledLinesCase { 
@@ -394,6 +413,9 @@ export class CallLogStream extends jspb.Message {
   getDroppedLineCount(): number;
   setDroppedLineCount(value: number): CallLogStream;
 
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): CallLogStream;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CallLogStream.AsObject;
   static toObject(includeInstance: boolean, msg: CallLogStream): CallLogStream.AsObject;
@@ -425,6 +447,7 @@ export namespace CallLogStream {
     maxAvailableSeq: number,
     lineCount: number,
     droppedLineCount: number,
+    vtsiProjectName: string,
   }
 }
 
@@ -511,6 +534,9 @@ export class StreamCallLogsResponse extends jspb.Message {
   getEndReason(): string;
   setEndReason(value: string): StreamCallLogsResponse;
 
+  getEndReasonCode(): LogStreamEndReason;
+  setEndReasonCode(value: LogStreamEndReason): StreamCallLogsResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StreamCallLogsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: StreamCallLogsResponse): StreamCallLogsResponse.AsObject;
@@ -527,6 +553,7 @@ export namespace StreamCallLogsResponse {
     droppedLineCount: number,
     resumeToken: string,
     endReason: string,
+    endReasonCode: LogStreamEndReason,
   }
 }
 
@@ -564,6 +591,14 @@ export class ListCallLogsRequest extends jspb.Message {
   hasOldestFirst(): boolean;
   clearOldestFirst(): ListCallLogsRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListCallLogsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListCallLogsRequest;
+
+  getIncludeCounts(): boolean;
+  setIncludeCounts(value: boolean): ListCallLogsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallLogsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallLogsRequest): ListCallLogsRequest.AsObject;
@@ -581,6 +616,8 @@ export namespace ListCallLogsRequest {
     afterSeq?: number,
     resumeToken?: string,
     oldestFirst?: boolean,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    includeCounts: boolean,
   }
 
   export enum FilterCase { 
@@ -643,6 +680,14 @@ export class ListCallLogsResponse extends jspb.Message {
   clearScopeLimitedFiltersList(): ListCallLogsResponse;
   addScopeLimitedFilters(value: CallLogFilterField, index?: number): ListCallLogsResponse;
 
+  getTotalMatchingCount(): number;
+  setTotalMatchingCount(value: number): ListCallLogsResponse;
+  hasTotalMatchingCount(): boolean;
+  clearTotalMatchingCount(): ListCallLogsResponse;
+
+  getCountByLevelMap(): jspb.Map<string, number>;
+  clearCountByLevelMap(): ListCallLogsResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallLogsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallLogsResponse): ListCallLogsResponse.AsObject;
@@ -661,6 +706,13 @@ export namespace ListCallLogsResponse {
     hasMoreNewer: boolean,
     nextResumeToken: string,
     scopeLimitedFiltersList: Array<CallLogFilterField>,
+    totalMatchingCount?: number,
+    countByLevelMap: Array<[string, number]>,
+  }
+
+  export enum TotalMatchingCountCase { 
+    _TOTAL_MATCHING_COUNT_NOT_SET = 0,
+    TOTAL_MATCHING_COUNT = 9,
   }
 }
 
@@ -670,6 +722,11 @@ export class GetCallLogStreamRequest extends jspb.Message {
 
   getName(): string;
   setName(value: string): GetCallLogStreamRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetCallLogStreamRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): GetCallLogStreamRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetCallLogStreamRequest.AsObject;
@@ -683,6 +740,7 @@ export namespace GetCallLogStreamRequest {
   export type AsObject = {
     vtsiProjectName: string,
     name: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -700,6 +758,19 @@ export class ListCallLogStreamsRequest extends jspb.Message {
   hasPageToken(): boolean;
   clearPageToken(): ListCallLogStreamsRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListCallLogStreamsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListCallLogStreamsRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListCallLogStreamsRequest;
+
+  getCaptureStatesList(): Array<LogCaptureState>;
+  setCaptureStatesList(value: Array<LogCaptureState>): ListCallLogStreamsRequest;
+  clearCaptureStatesList(): ListCallLogStreamsRequest;
+  addCaptureStates(value: LogCaptureState, index?: number): ListCallLogStreamsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallLogStreamsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallLogStreamsRequest): ListCallLogStreamsRequest.AsObject;
@@ -713,6 +784,9 @@ export namespace ListCallLogStreamsRequest {
     vtsiProjectName: string,
     filter?: CallLogFilter.AsObject,
     pageToken?: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    pageSize: number,
+    captureStatesList: Array<LogCaptureState>,
   }
 
   export enum FilterCase { 
@@ -759,6 +833,9 @@ export class DeleteCallLogsRequest extends jspb.Message {
   hasFilter(): boolean;
   clearFilter(): DeleteCallLogsRequest;
 
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): DeleteCallLogsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteCallLogsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteCallLogsRequest): DeleteCallLogsRequest.AsObject;
@@ -771,6 +848,7 @@ export namespace DeleteCallLogsRequest {
   export type AsObject = {
     vtsiProjectName: string,
     filter?: CallLogFilter.AsObject,
+    validateOnly: boolean,
   }
 }
 
@@ -793,6 +871,70 @@ export namespace DeleteCallLogsResponse {
   export type AsObject = {
     deletedLogEntryCount: number,
     deletedLogStreamCount: number,
+  }
+}
+
+export class ExportCallLogsRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): ExportCallLogsRequest;
+
+  getFilter(): CallLogFilter | undefined;
+  setFilter(value?: CallLogFilter): ExportCallLogsRequest;
+  hasFilter(): boolean;
+  clearFilter(): ExportCallLogsRequest;
+
+  getFormat(): LogExportFormat;
+  setFormat(value: LogExportFormat): ExportCallLogsRequest;
+
+  getIncludeMetadata(): boolean;
+  setIncludeMetadata(value: boolean): ExportCallLogsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExportCallLogsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ExportCallLogsRequest): ExportCallLogsRequest.AsObject;
+  static serializeBinaryToWriter(message: ExportCallLogsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExportCallLogsRequest;
+  static deserializeBinaryFromReader(message: ExportCallLogsRequest, reader: jspb.BinaryReader): ExportCallLogsRequest;
+}
+
+export namespace ExportCallLogsRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    filter?: CallLogFilter.AsObject,
+    format: LogExportFormat,
+    includeMetadata: boolean,
+  }
+}
+
+export class ExportCallLogsResponse extends jspb.Message {
+  getChunk(): Uint8Array | string;
+  getChunk_asU8(): Uint8Array;
+  getChunk_asB64(): string;
+  setChunk(value: Uint8Array | string): ExportCallLogsResponse;
+
+  getEntryCount(): number;
+  setEntryCount(value: number): ExportCallLogsResponse;
+
+  getLast(): boolean;
+  setLast(value: boolean): ExportCallLogsResponse;
+
+  getTruncated(): boolean;
+  setTruncated(value: boolean): ExportCallLogsResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExportCallLogsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ExportCallLogsResponse): ExportCallLogsResponse.AsObject;
+  static serializeBinaryToWriter(message: ExportCallLogsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExportCallLogsResponse;
+  static deserializeBinaryFromReader(message: ExportCallLogsResponse, reader: jspb.BinaryReader): ExportCallLogsResponse;
+}
+
+export namespace ExportCallLogsResponse {
+  export type AsObject = {
+    chunk: Uint8Array | string,
+    entryCount: number,
+    last: boolean,
+    truncated: boolean,
   }
 }
 
@@ -825,4 +967,18 @@ export enum CallLogFilterField {
   CALL_LOG_FILTER_FIELD_EMITTER_PREFIXES = 5,
   CALL_LOG_FILTER_FIELD_THREAD_NAMES = 6,
   CALL_LOG_FILTER_FIELD_SIP_HEADERS = 7,
+}
+export enum LogStreamEndReason { 
+  LOG_STREAM_END_REASON_UNSPECIFIED = 0,
+  LOG_STREAM_END_REASON_ALL_CAPTURES_TERMINATED = 1,
+  LOG_STREAM_END_REASON_MAX_DURATION = 2,
+  LOG_STREAM_END_REASON_SERVER_SHUTDOWN = 3,
+  LOG_STREAM_END_REASON_PERMISSION_REVOKED = 4,
+  LOG_STREAM_END_REASON_CREDENTIALS_EXPIRED = 5,
+}
+export enum LogExportFormat { 
+  LOG_EXPORT_FORMAT_UNSPECIFIED = 0,
+  LOG_EXPORT_FORMAT_TEXT = 1,
+  LOG_EXPORT_FORMAT_NDJSON = 2,
+  LOG_EXPORT_FORMAT_CSV = 3,
 }

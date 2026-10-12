@@ -36,6 +36,20 @@ export class CallsClient {
                response: ondewo_vtsi_calls_pb.Caller) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.Caller>;
 
+  updateCaller(
+    request: ondewo_vtsi_calls_pb.UpdateCallerRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.UpdateCallerResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.UpdateCallerResponse>;
+
+  updateCallers(
+    request: ondewo_vtsi_calls_pb.UpdateCallersRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.UpdateCallersResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.UpdateCallersResponse>;
+
   deleteCaller(
     request: ondewo_vtsi_calls_pb.DeleteCallerRequest,
     metadata: grpcWeb.Metadata | undefined,
@@ -106,6 +120,20 @@ export class CallsClient {
                response: ondewo_vtsi_calls_pb.Listener) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.Listener>;
 
+  updateListener(
+    request: ondewo_vtsi_calls_pb.UpdateListenerRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.UpdateListenerResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.UpdateListenerResponse>;
+
+  updateListeners(
+    request: ondewo_vtsi_calls_pb.UpdateListenersRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.UpdateListenersResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.UpdateListenersResponse>;
+
   deleteListener(
     request: ondewo_vtsi_calls_pb.DeleteListenerRequest,
     metadata: grpcWeb.Metadata | undefined,
@@ -162,12 +190,33 @@ export class CallsClient {
                response: ondewo_vtsi_calls_pb.ListScheduledCallersResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.ListScheduledCallersResponse>;
 
+  updateScheduledCaller(
+    request: ondewo_vtsi_calls_pb.UpdateScheduledCallerRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.ScheduledCaller) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.ScheduledCaller>;
+
   cancelScheduledCaller(
     request: ondewo_vtsi_calls_pb.CancelScheduledCallerRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: ondewo_vtsi_calls_pb.CancelScheduledCallerResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.CancelScheduledCallerResponse>;
+
+  cancelScheduledCallers(
+    request: ondewo_vtsi_calls_pb.CancelScheduledCallersRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.CancelScheduledCallersResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.CancelScheduledCallersResponse>;
+
+  retryScheduledCaller(
+    request: ondewo_vtsi_calls_pb.RetryScheduledCallerRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.ScheduledCaller) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.ScheduledCaller>;
 
   stopCall(
     request: ondewo_vtsi_calls_pb.StopCallRequest,
@@ -217,6 +266,27 @@ export class CallsClient {
     callback: (err: grpcWeb.RpcError,
                response: ondewo_vtsi_calls_pb.ListCallsResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.ListCallsResponse>;
+
+  getCallStatistics(
+    request: ondewo_vtsi_calls_pb.GetCallStatisticsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.CallStatistics) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.CallStatistics>;
+
+  updateCall(
+    request: ondewo_vtsi_calls_pb.UpdateCallRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.UpdateCallResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.UpdateCallResponse>;
+
+  updateCalls(
+    request: ondewo_vtsi_calls_pb.UpdateCallsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.UpdateCallsResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.UpdateCallsResponse>;
 
   streamCallerStatus(
     request: ondewo_vtsi_calls_pb.StreamCallerStatusRequest,
@@ -286,6 +356,16 @@ export class CallsPromiseClient {
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.Caller>;
 
+  updateCaller(
+    request: ondewo_vtsi_calls_pb.UpdateCallerRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.UpdateCallerResponse>;
+
+  updateCallers(
+    request: ondewo_vtsi_calls_pb.UpdateCallersRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.UpdateCallersResponse>;
+
   deleteCaller(
     request: ondewo_vtsi_calls_pb.DeleteCallerRequest,
     metadata?: grpcWeb.Metadata
@@ -336,6 +416,16 @@ export class CallsPromiseClient {
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.Listener>;
 
+  updateListener(
+    request: ondewo_vtsi_calls_pb.UpdateListenerRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.UpdateListenerResponse>;
+
+  updateListeners(
+    request: ondewo_vtsi_calls_pb.UpdateListenersRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.UpdateListenersResponse>;
+
   deleteListener(
     request: ondewo_vtsi_calls_pb.DeleteListenerRequest,
     metadata?: grpcWeb.Metadata
@@ -376,10 +466,25 @@ export class CallsPromiseClient {
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.ListScheduledCallersResponse>;
 
+  updateScheduledCaller(
+    request: ondewo_vtsi_calls_pb.UpdateScheduledCallerRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.ScheduledCaller>;
+
   cancelScheduledCaller(
     request: ondewo_vtsi_calls_pb.CancelScheduledCallerRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.CancelScheduledCallerResponse>;
+
+  cancelScheduledCallers(
+    request: ondewo_vtsi_calls_pb.CancelScheduledCallersRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.CancelScheduledCallersResponse>;
+
+  retryScheduledCaller(
+    request: ondewo_vtsi_calls_pb.RetryScheduledCallerRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.ScheduledCaller>;
 
   stopCall(
     request: ondewo_vtsi_calls_pb.StopCallRequest,
@@ -415,6 +520,21 @@ export class CallsPromiseClient {
     request: ondewo_vtsi_calls_pb.ListCallsRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.ListCallsResponse>;
+
+  getCallStatistics(
+    request: ondewo_vtsi_calls_pb.GetCallStatisticsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.CallStatistics>;
+
+  updateCall(
+    request: ondewo_vtsi_calls_pb.UpdateCallRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.UpdateCallResponse>;
+
+  updateCalls(
+    request: ondewo_vtsi_calls_pb.UpdateCallsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.UpdateCallsResponse>;
 
   streamCallerStatus(
     request: ondewo_vtsi_calls_pb.StreamCallerStatusRequest,

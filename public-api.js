@@ -13,6 +13,7 @@ export * from './api/ondewo/sip/sip_pb';
 export * from './api/ondewo/sip/sip_grpc_web_pb';
 export * from './api/ondewo/s2t/speech-to-text_grpc_web_pb';
 export * from './api/ondewo/s2t/speech-to-text_pb';
+export * from './api/ondewo/vtsi/call_configs_pb';
 export * from './api/ondewo/vtsi/softphones_pb';
 export * from './api/ondewo/vtsi/logs_grpc_web_pb';
 export * from './api/ondewo/vtsi/campaigns_pb';

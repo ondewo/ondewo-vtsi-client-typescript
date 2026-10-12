@@ -691,5 +691,66 @@ proto.ondewo.vtsi.SoftphonesPromiseClient.prototype.getSoftphoneProvisioning =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.GetSoftphoneRegistrationRequest,
+ *   !proto.ondewo.vtsi.SoftphoneRegistration>}
+ */
+const methodDescriptor_Softphones_GetSoftphoneRegistration = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Softphones/GetSoftphoneRegistration',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.GetSoftphoneRegistrationRequest,
+  proto.ondewo.vtsi.SoftphoneRegistration,
+  /**
+   * @param {!proto.ondewo.vtsi.GetSoftphoneRegistrationRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.SoftphoneRegistration.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetSoftphoneRegistrationRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.SoftphoneRegistration)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.SoftphoneRegistration>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.SoftphonesClient.prototype.getSoftphoneRegistration =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Softphones/GetSoftphoneRegistration',
+      request,
+      metadata || {},
+      methodDescriptor_Softphones_GetSoftphoneRegistration,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetSoftphoneRegistrationRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.SoftphoneRegistration>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.SoftphonesPromiseClient.prototype.getSoftphoneRegistration =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Softphones/GetSoftphoneRegistration',
+      request,
+      metadata || {},
+      methodDescriptor_Softphones_GetSoftphoneRegistration);
+};
+
+
 module.exports = proto.ondewo.vtsi;
 

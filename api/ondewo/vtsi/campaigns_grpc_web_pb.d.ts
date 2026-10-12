@@ -90,6 +90,34 @@ export class CampaignsClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_campaigns_pb.StreamCampaignStatusResponse>;
 
+  getCampaignCall(
+    request: ondewo_vtsi_campaigns_pb.GetCampaignCallRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_campaigns_pb.CampaignCall) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_campaigns_pb.CampaignCall>;
+
+  cancelCampaignCalls(
+    request: ondewo_vtsi_campaigns_pb.CancelCampaignCallsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_campaigns_pb.CancelCampaignCallsResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_campaigns_pb.CancelCampaignCallsResponse>;
+
+  retryCampaignCalls(
+    request: ondewo_vtsi_campaigns_pb.RetryCampaignCallsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_campaigns_pb.RetryCampaignCallsResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_campaigns_pb.RetryCampaignCallsResponse>;
+
+  cloneCampaign(
+    request: ondewo_vtsi_campaigns_pb.CloneCampaignRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_campaigns_pb.Campaign) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_campaigns_pb.Campaign>;
+
 }
 
 export class CampaignsPromiseClient {
@@ -156,6 +184,26 @@ export class CampaignsPromiseClient {
     request: ondewo_vtsi_campaigns_pb.StreamCampaignStatusRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_campaigns_pb.StreamCampaignStatusResponse>;
+
+  getCampaignCall(
+    request: ondewo_vtsi_campaigns_pb.GetCampaignCallRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_campaigns_pb.CampaignCall>;
+
+  cancelCampaignCalls(
+    request: ondewo_vtsi_campaigns_pb.CancelCampaignCallsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_campaigns_pb.CancelCampaignCallsResponse>;
+
+  retryCampaignCalls(
+    request: ondewo_vtsi_campaigns_pb.RetryCampaignCallsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_campaigns_pb.RetryCampaignCallsResponse>;
+
+  cloneCampaign(
+    request: ondewo_vtsi_campaigns_pb.CloneCampaignRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_campaigns_pb.Campaign>;
 
 }
 

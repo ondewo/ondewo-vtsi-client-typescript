@@ -85,6 +85,13 @@ export class EventsClient {
                response: ondewo_vtsi_events_pb.TestWebhookResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_events_pb.TestWebhookResponse>;
 
+  redeliverWebhookEvents(
+    request: ondewo_vtsi_events_pb.RedeliverWebhookEventsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_events_pb.RedeliverWebhookEventsResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_events_pb.RedeliverWebhookEventsResponse>;
+
   subscribeVtsiEvents(
     request: ondewo_vtsi_events_pb.SubscribeVtsiEventsRequest,
     metadata?: grpcWeb.Metadata
@@ -151,6 +158,11 @@ export class EventsPromiseClient {
     request: ondewo_vtsi_events_pb.TestWebhookRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_events_pb.TestWebhookResponse>;
+
+  redeliverWebhookEvents(
+    request: ondewo_vtsi_events_pb.RedeliverWebhookEventsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_events_pb.RedeliverWebhookEventsResponse>;
 
   subscribeVtsiEvents(
     request: ondewo_vtsi_events_pb.SubscribeVtsiEventsRequest,

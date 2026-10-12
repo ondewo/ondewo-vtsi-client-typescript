@@ -78,6 +78,13 @@ export class SoftphonesClient {
                response: ondewo_vtsi_softphones_pb.SoftphoneProvisioning) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_softphones_pb.SoftphoneProvisioning>;
 
+  getSoftphoneRegistration(
+    request: ondewo_vtsi_softphones_pb.GetSoftphoneRegistrationRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_softphones_pb.SoftphoneRegistration) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_softphones_pb.SoftphoneRegistration>;
+
 }
 
 export class SoftphonesPromiseClient {
@@ -134,6 +141,11 @@ export class SoftphonesPromiseClient {
     request: ondewo_vtsi_softphones_pb.GetSoftphoneProvisioningRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_softphones_pb.SoftphoneProvisioning>;
+
+  getSoftphoneRegistration(
+    request: ondewo_vtsi_softphones_pb.GetSoftphoneRegistrationRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_softphones_pb.SoftphoneRegistration>;
 
 }
 

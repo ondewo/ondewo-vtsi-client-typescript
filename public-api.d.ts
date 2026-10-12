@@ -20,6 +20,7 @@ export * from './api/ondewo/vtsi/projects_grpc_web_pb.d';
 export * from './api/ondewo/vtsi/events_pb.d';
 export * from './api/ondewo/vtsi/logs_pb.d';
 export * from './api/ondewo/vtsi/softphones_grpc_web_pb.d';
+export * from './api/ondewo/vtsi/call_configs_pb.d';
 export * from './api/ondewo/vtsi/calls_grpc_web_pb.d';
 export * from './api/ondewo/vtsi/campaigns_pb.d';
 export * from './api/ondewo/vtsi/campaigns_grpc_web_pb.d';

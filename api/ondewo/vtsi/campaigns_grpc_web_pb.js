@@ -27,6 +27,8 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
 var ondewo_sip_sip_pb = require('../../ondewo/sip/sip_pb.js')
+
+var ondewo_vtsi_call_configs_pb = require('../../ondewo/vtsi/call_configs_pb.js')
 const proto = {};
 proto.ondewo = {};
 proto.ondewo.vtsi = require('./campaigns_pb.js');
@@ -807,6 +809,250 @@ proto.ondewo.vtsi.CampaignsPromiseClient.prototype.streamCampaignStatus =
       request,
       metadata || {},
       methodDescriptor_Campaigns_StreamCampaignStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.GetCampaignCallRequest,
+ *   !proto.ondewo.vtsi.CampaignCall>}
+ */
+const methodDescriptor_Campaigns_GetCampaignCall = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Campaigns/GetCampaignCall',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.GetCampaignCallRequest,
+  proto.ondewo.vtsi.CampaignCall,
+  /**
+   * @param {!proto.ondewo.vtsi.GetCampaignCallRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.CampaignCall.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetCampaignCallRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.CampaignCall)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.CampaignCall>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CampaignsClient.prototype.getCampaignCall =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/GetCampaignCall',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_GetCampaignCall,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetCampaignCallRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.CampaignCall>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CampaignsPromiseClient.prototype.getCampaignCall =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/GetCampaignCall',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_GetCampaignCall);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.CancelCampaignCallsRequest,
+ *   !proto.ondewo.vtsi.CancelCampaignCallsResponse>}
+ */
+const methodDescriptor_Campaigns_CancelCampaignCalls = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Campaigns/CancelCampaignCalls',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.CancelCampaignCallsRequest,
+  proto.ondewo.vtsi.CancelCampaignCallsResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.CancelCampaignCallsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.CancelCampaignCallsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CancelCampaignCallsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.CancelCampaignCallsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.CancelCampaignCallsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CampaignsClient.prototype.cancelCampaignCalls =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/CancelCampaignCalls',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_CancelCampaignCalls,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CancelCampaignCallsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.CancelCampaignCallsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CampaignsPromiseClient.prototype.cancelCampaignCalls =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/CancelCampaignCalls',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_CancelCampaignCalls);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.RetryCampaignCallsRequest,
+ *   !proto.ondewo.vtsi.RetryCampaignCallsResponse>}
+ */
+const methodDescriptor_Campaigns_RetryCampaignCalls = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Campaigns/RetryCampaignCalls',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.RetryCampaignCallsRequest,
+  proto.ondewo.vtsi.RetryCampaignCallsResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.RetryCampaignCallsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.RetryCampaignCallsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RetryCampaignCallsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.RetryCampaignCallsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.RetryCampaignCallsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CampaignsClient.prototype.retryCampaignCalls =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/RetryCampaignCalls',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_RetryCampaignCalls,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RetryCampaignCallsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.RetryCampaignCallsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CampaignsPromiseClient.prototype.retryCampaignCalls =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/RetryCampaignCalls',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_RetryCampaignCalls);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.CloneCampaignRequest,
+ *   !proto.ondewo.vtsi.Campaign>}
+ */
+const methodDescriptor_Campaigns_CloneCampaign = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Campaigns/CloneCampaign',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.CloneCampaignRequest,
+  proto.ondewo.vtsi.Campaign,
+  /**
+   * @param {!proto.ondewo.vtsi.CloneCampaignRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.Campaign.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CloneCampaignRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.Campaign)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.Campaign>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CampaignsClient.prototype.cloneCampaign =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/CloneCampaign',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_CloneCampaign,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CloneCampaignRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.Campaign>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CampaignsPromiseClient.prototype.cloneCampaign =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Campaigns/CloneCampaign',
+      request,
+      metadata || {},
+      methodDescriptor_Campaigns_CloneCampaign);
 };
 
 

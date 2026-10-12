@@ -1,191 +1,17 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_api_annotations_pb from '../../google/api/annotations_pb'; // proto import: "google/api/annotations.proto"
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
-import * as google_protobuf_struct_pb from 'google-protobuf/google/protobuf/struct_pb'; // proto import: "google/protobuf/struct.proto"
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
-import * as ondewo_nlu_context_pb from '../../ondewo/nlu/context_pb'; // proto import: "ondewo/nlu/context.proto"
 import * as ondewo_nlu_intent_pb from '../../ondewo/nlu/intent_pb'; // proto import: "ondewo/nlu/intent.proto"
-import * as ondewo_s2t_speech$to$text_pb from '../../ondewo/s2t/speech-to-text_pb'; // proto import: "ondewo/s2t/speech-to-text.proto"
-import * as ondewo_t2s_text$to$speech_pb from '../../ondewo/t2s/text-to-speech_pb'; // proto import: "ondewo/t2s/text-to-speech.proto"
 import * as ondewo_sip_sip_pb from '../../ondewo/sip/sip_pb'; // proto import: "ondewo/sip/sip.proto"
+import * as ondewo_vtsi_call_configs_pb from '../../ondewo/vtsi/call_configs_pb'; // proto import: "ondewo/vtsi/call_configs.proto"
 import * as ondewo_vtsi_campaigns_pb from '../../ondewo/vtsi/campaigns_pb'; // proto import: "ondewo/vtsi/campaigns.proto"
+import * as ondewo_vtsi_projects_pb from '../../ondewo/vtsi/projects_pb'; // proto import: "ondewo/vtsi/projects.proto"
 
-
-export class BaseServiceConfig extends jspb.Message {
-  getHost(): string;
-  setHost(value: string): BaseServiceConfig;
-
-  getPort(): number;
-  setPort(value: number): BaseServiceConfig;
-
-  getGrpcCert(): string;
-  setGrpcCert(value: string): BaseServiceConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BaseServiceConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: BaseServiceConfig): BaseServiceConfig.AsObject;
-  static serializeBinaryToWriter(message: BaseServiceConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BaseServiceConfig;
-  static deserializeBinaryFromReader(message: BaseServiceConfig, reader: jspb.BinaryReader): BaseServiceConfig;
-}
-
-export namespace BaseServiceConfig {
-  export type AsObject = {
-    host: string,
-    port: number,
-    grpcCert: string,
-  }
-}
-
-export class Credentials extends jspb.Message {
-  getAccountName(): string;
-  setAccountName(value: string): Credentials;
-
-  getPassword(): string;
-  setPassword(value: string): Credentials;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Credentials.AsObject;
-  static toObject(includeInstance: boolean, msg: Credentials): Credentials.AsObject;
-  static serializeBinaryToWriter(message: Credentials, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Credentials;
-  static deserializeBinaryFromReader(message: Credentials, reader: jspb.BinaryReader): Credentials;
-}
-
-export namespace Credentials {
-  export type AsObject = {
-    accountName: string,
-    password: string,
-  }
-}
-
-export class NluVtsiConfig extends jspb.Message {
-  getNluBaseConfig(): BaseServiceConfig | undefined;
-  setNluBaseConfig(value?: BaseServiceConfig): NluVtsiConfig;
-  hasNluBaseConfig(): boolean;
-  clearNluBaseConfig(): NluVtsiConfig;
-
-  getCredentials(): Credentials | undefined;
-  setCredentials(value?: Credentials): NluVtsiConfig;
-  hasCredentials(): boolean;
-  clearCredentials(): NluVtsiConfig;
-
-  getAuthToken(): string;
-  setAuthToken(value: string): NluVtsiConfig;
-
-  getAgentName(): string;
-  setAgentName(value: string): NluVtsiConfig;
-
-  getLanguageCode(): string;
-  setLanguageCode(value: string): NluVtsiConfig;
-
-  getInitialIntent(): string;
-  setInitialIntent(value: string): NluVtsiConfig;
-
-  getContextsList(): Array<ondewo_nlu_context_pb.Context>;
-  setContextsList(value: Array<ondewo_nlu_context_pb.Context>): NluVtsiConfig;
-  clearContextsList(): NluVtsiConfig;
-  addContexts(value?: ondewo_nlu_context_pb.Context, index?: number): ondewo_nlu_context_pb.Context;
-
-  getHttpBasicAuthToken(): string;
-  setHttpBasicAuthToken(value: string): NluVtsiConfig;
-
-  getPlatform(): ondewo_nlu_intent_pb.Intent.Message.Platform;
-  setPlatform(value: ondewo_nlu_intent_pb.Intent.Message.Platform): NluVtsiConfig;
-  hasPlatform(): boolean;
-  clearPlatform(): NluVtsiConfig;
-
-  getAuthenticationCase(): NluVtsiConfig.AuthenticationCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): NluVtsiConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: NluVtsiConfig): NluVtsiConfig.AsObject;
-  static serializeBinaryToWriter(message: NluVtsiConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): NluVtsiConfig;
-  static deserializeBinaryFromReader(message: NluVtsiConfig, reader: jspb.BinaryReader): NluVtsiConfig;
-}
-
-export namespace NluVtsiConfig {
-  export type AsObject = {
-    nluBaseConfig?: BaseServiceConfig.AsObject,
-    credentials?: Credentials.AsObject,
-    authToken: string,
-    agentName: string,
-    languageCode: string,
-    initialIntent: string,
-    contextsList: Array<ondewo_nlu_context_pb.Context.AsObject>,
-    httpBasicAuthToken: string,
-    platform?: ondewo_nlu_intent_pb.Intent.Message.Platform,
-  }
-
-  export enum AuthenticationCase { 
-    AUTHENTICATION_NOT_SET = 0,
-    CREDENTIALS = 2,
-    AUTH_TOKEN = 3,
-  }
-
-  export enum PlatformCase { 
-    _PLATFORM_NOT_SET = 0,
-    PLATFORM = 9,
-  }
-}
-
-export class T2sVtsiConfig extends jspb.Message {
-  getT2sBaseConfig(): BaseServiceConfig | undefined;
-  setT2sBaseConfig(value?: BaseServiceConfig): T2sVtsiConfig;
-  hasT2sBaseConfig(): boolean;
-  clearT2sBaseConfig(): T2sVtsiConfig;
-
-  getT2sRequestConfig(): ondewo_t2s_text$to$speech_pb.RequestConfig | undefined;
-  setT2sRequestConfig(value?: ondewo_t2s_text$to$speech_pb.RequestConfig): T2sVtsiConfig;
-  hasT2sRequestConfig(): boolean;
-  clearT2sRequestConfig(): T2sVtsiConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): T2sVtsiConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: T2sVtsiConfig): T2sVtsiConfig.AsObject;
-  static serializeBinaryToWriter(message: T2sVtsiConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): T2sVtsiConfig;
-  static deserializeBinaryFromReader(message: T2sVtsiConfig, reader: jspb.BinaryReader): T2sVtsiConfig;
-}
-
-export namespace T2sVtsiConfig {
-  export type AsObject = {
-    t2sBaseConfig?: BaseServiceConfig.AsObject,
-    t2sRequestConfig?: ondewo_t2s_text$to$speech_pb.RequestConfig.AsObject,
-  }
-}
-
-export class S2tVtsiConfig extends jspb.Message {
-  getS2tBaseConfig(): BaseServiceConfig | undefined;
-  setS2tBaseConfig(value?: BaseServiceConfig): S2tVtsiConfig;
-  hasS2tBaseConfig(): boolean;
-  clearS2tBaseConfig(): S2tVtsiConfig;
-
-  getS2tTranscribeRequestConfig(): ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig | undefined;
-  setS2tTranscribeRequestConfig(value?: ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig): S2tVtsiConfig;
-  hasS2tTranscribeRequestConfig(): boolean;
-  clearS2tTranscribeRequestConfig(): S2tVtsiConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): S2tVtsiConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: S2tVtsiConfig): S2tVtsiConfig.AsObject;
-  static serializeBinaryToWriter(message: S2tVtsiConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): S2tVtsiConfig;
-  static deserializeBinaryFromReader(message: S2tVtsiConfig, reader: jspb.BinaryReader): S2tVtsiConfig;
-}
-
-export namespace S2tVtsiConfig {
-  export type AsObject = {
-    s2tBaseConfig?: BaseServiceConfig.AsObject,
-    s2tTranscribeRequestConfig?: ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig.AsObject,
-  }
-}
 
 export class AsteriskConfig extends jspb.Message {
-  getAsteriskBaseConfig(): BaseServiceConfig | undefined;
-  setAsteriskBaseConfig(value?: BaseServiceConfig): AsteriskConfig;
+  getAsteriskBaseConfig(): ondewo_vtsi_call_configs_pb.BaseServiceConfig | undefined;
+  setAsteriskBaseConfig(value?: ondewo_vtsi_call_configs_pb.BaseServiceConfig): AsteriskConfig;
   hasAsteriskBaseConfig(): boolean;
   clearAsteriskBaseConfig(): AsteriskConfig;
 
@@ -199,1008 +25,7 @@ export class AsteriskConfig extends jspb.Message {
 
 export namespace AsteriskConfig {
   export type AsObject = {
-    asteriskBaseConfig?: BaseServiceConfig.AsObject,
-  }
-}
-
-export class CommonServicesConfig extends jspb.Message {
-  getS2tVtsiConfig(): S2tVtsiConfig | undefined;
-  setS2tVtsiConfig(value?: S2tVtsiConfig): CommonServicesConfig;
-  hasS2tVtsiConfig(): boolean;
-  clearS2tVtsiConfig(): CommonServicesConfig;
-
-  getNluVtsiConfig(): NluVtsiConfig | undefined;
-  setNluVtsiConfig(value?: NluVtsiConfig): CommonServicesConfig;
-  hasNluVtsiConfig(): boolean;
-  clearNluVtsiConfig(): CommonServicesConfig;
-
-  getT2sVtsiConfig(): T2sVtsiConfig | undefined;
-  setT2sVtsiConfig(value?: T2sVtsiConfig): CommonServicesConfig;
-  hasT2sVtsiConfig(): boolean;
-  clearT2sVtsiConfig(): CommonServicesConfig;
-
-  getCsiVtsiConfig(): CsiVtsiConfig | undefined;
-  setCsiVtsiConfig(value?: CsiVtsiConfig): CommonServicesConfig;
-  hasCsiVtsiConfig(): boolean;
-  clearCsiVtsiConfig(): CommonServicesConfig;
-
-  getVoiceInteractionConfig(): VoiceInteractionConfig | undefined;
-  setVoiceInteractionConfig(value?: VoiceInteractionConfig): CommonServicesConfig;
-  hasVoiceInteractionConfig(): boolean;
-  clearVoiceInteractionConfig(): CommonServicesConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CommonServicesConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: CommonServicesConfig): CommonServicesConfig.AsObject;
-  static serializeBinaryToWriter(message: CommonServicesConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CommonServicesConfig;
-  static deserializeBinaryFromReader(message: CommonServicesConfig, reader: jspb.BinaryReader): CommonServicesConfig;
-}
-
-export namespace CommonServicesConfig {
-  export type AsObject = {
-    s2tVtsiConfig?: S2tVtsiConfig.AsObject,
-    nluVtsiConfig?: NluVtsiConfig.AsObject,
-    t2sVtsiConfig?: T2sVtsiConfig.AsObject,
-    csiVtsiConfig?: CsiVtsiConfig.AsObject,
-    voiceInteractionConfig?: VoiceInteractionConfig.AsObject,
-  }
-}
-
-export class VoiceInteractionConfig extends jspb.Message {
-  getTurnDetectionConfig(): TurnDetectionConfig | undefined;
-  setTurnDetectionConfig(value?: TurnDetectionConfig): VoiceInteractionConfig;
-  hasTurnDetectionConfig(): boolean;
-  clearTurnDetectionConfig(): VoiceInteractionConfig;
-
-  getInterruptionHandlingConfig(): InterruptionHandlingConfig | undefined;
-  setInterruptionHandlingConfig(value?: InterruptionHandlingConfig): VoiceInteractionConfig;
-  hasInterruptionHandlingConfig(): boolean;
-  clearInterruptionHandlingConfig(): VoiceInteractionConfig;
-
-  getResponseTimingConfig(): ResponseTimingConfig | undefined;
-  setResponseTimingConfig(value?: ResponseTimingConfig): VoiceInteractionConfig;
-  hasResponseTimingConfig(): boolean;
-  clearResponseTimingConfig(): VoiceInteractionConfig;
-
-  getAnsweringMachineDetectionConfig(): AnsweringMachineDetectionConfig | undefined;
-  setAnsweringMachineDetectionConfig(value?: AnsweringMachineDetectionConfig): VoiceInteractionConfig;
-  hasAnsweringMachineDetectionConfig(): boolean;
-  clearAnsweringMachineDetectionConfig(): VoiceInteractionConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): VoiceInteractionConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: VoiceInteractionConfig): VoiceInteractionConfig.AsObject;
-  static serializeBinaryToWriter(message: VoiceInteractionConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): VoiceInteractionConfig;
-  static deserializeBinaryFromReader(message: VoiceInteractionConfig, reader: jspb.BinaryReader): VoiceInteractionConfig;
-}
-
-export namespace VoiceInteractionConfig {
-  export type AsObject = {
-    turnDetectionConfig?: TurnDetectionConfig.AsObject,
-    interruptionHandlingConfig?: InterruptionHandlingConfig.AsObject,
-    responseTimingConfig?: ResponseTimingConfig.AsObject,
-    answeringMachineDetectionConfig?: AnsweringMachineDetectionConfig.AsObject,
-  }
-}
-
-export class TurnDetectionConfig extends jspb.Message {
-  getMode(): TurnDetectionConfig.TurnDetectionMode;
-  setMode(value: TurnDetectionConfig.TurnDetectionMode): TurnDetectionConfig;
-
-  getMinEndpointingDelaySeconds(): number;
-  setMinEndpointingDelaySeconds(value: number): TurnDetectionConfig;
-  hasMinEndpointingDelaySeconds(): boolean;
-  clearMinEndpointingDelaySeconds(): TurnDetectionConfig;
-
-  getMaxEndpointingDelaySeconds(): number;
-  setMaxEndpointingDelaySeconds(value: number): TurnDetectionConfig;
-  hasMaxEndpointingDelaySeconds(): boolean;
-  clearMaxEndpointingDelaySeconds(): TurnDetectionConfig;
-
-  getTurnEagerness(): TurnDetectionConfig.TurnEagerness;
-  setTurnEagerness(value: TurnDetectionConfig.TurnEagerness): TurnDetectionConfig;
-
-  getTurnDetectionSystemPrompt(): string;
-  setTurnDetectionSystemPrompt(value: string): TurnDetectionConfig;
-  hasTurnDetectionSystemPrompt(): boolean;
-  clearTurnDetectionSystemPrompt(): TurnDetectionConfig;
-
-  getTurnDetectionUserPrompt(): string;
-  setTurnDetectionUserPrompt(value: string): TurnDetectionConfig;
-  hasTurnDetectionUserPrompt(): boolean;
-  clearTurnDetectionUserPrompt(): TurnDetectionConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TurnDetectionConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: TurnDetectionConfig): TurnDetectionConfig.AsObject;
-  static serializeBinaryToWriter(message: TurnDetectionConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TurnDetectionConfig;
-  static deserializeBinaryFromReader(message: TurnDetectionConfig, reader: jspb.BinaryReader): TurnDetectionConfig;
-}
-
-export namespace TurnDetectionConfig {
-  export type AsObject = {
-    mode: TurnDetectionConfig.TurnDetectionMode,
-    minEndpointingDelaySeconds?: number,
-    maxEndpointingDelaySeconds?: number,
-    turnEagerness: TurnDetectionConfig.TurnEagerness,
-    turnDetectionSystemPrompt?: string,
-    turnDetectionUserPrompt?: string,
-  }
-
-  export enum TurnDetectionMode { 
-    TURN_DETECTION_MODE_UNSPECIFIED = 0,
-    VAD = 1,
-    SEMANTIC_MODEL = 2,
-    AUDIO_MODEL = 3,
-  }
-
-  export enum TurnEagerness { 
-    TURN_EAGERNESS_UNSPECIFIED = 0,
-    PATIENT = 1,
-    NORMAL = 2,
-    EAGER = 3,
-  }
-
-  export enum MinEndpointingDelaySecondsCase { 
-    _MIN_ENDPOINTING_DELAY_SECONDS_NOT_SET = 0,
-    MIN_ENDPOINTING_DELAY_SECONDS = 2,
-  }
-
-  export enum MaxEndpointingDelaySecondsCase { 
-    _MAX_ENDPOINTING_DELAY_SECONDS_NOT_SET = 0,
-    MAX_ENDPOINTING_DELAY_SECONDS = 3,
-  }
-
-  export enum TurnDetectionSystemPromptCase { 
-    _TURN_DETECTION_SYSTEM_PROMPT_NOT_SET = 0,
-    TURN_DETECTION_SYSTEM_PROMPT = 5,
-  }
-
-  export enum TurnDetectionUserPromptCase { 
-    _TURN_DETECTION_USER_PROMPT_NOT_SET = 0,
-    TURN_DETECTION_USER_PROMPT = 6,
-  }
-}
-
-export class InterruptionHandlingConfig extends jspb.Message {
-  getEnabled(): boolean;
-  setEnabled(value: boolean): InterruptionHandlingConfig;
-  hasEnabled(): boolean;
-  clearEnabled(): InterruptionHandlingConfig;
-
-  getMinInterruptionDurationSeconds(): number;
-  setMinInterruptionDurationSeconds(value: number): InterruptionHandlingConfig;
-  hasMinInterruptionDurationSeconds(): boolean;
-  clearMinInterruptionDurationSeconds(): InterruptionHandlingConfig;
-
-  getMinInterruptionWords(): number;
-  setMinInterruptionWords(value: number): InterruptionHandlingConfig;
-  hasMinInterruptionWords(): boolean;
-  clearMinInterruptionWords(): InterruptionHandlingConfig;
-
-  getFalseInterruptionTimeoutSeconds(): number;
-  setFalseInterruptionTimeoutSeconds(value: number): InterruptionHandlingConfig;
-  hasFalseInterruptionTimeoutSeconds(): boolean;
-  clearFalseInterruptionTimeoutSeconds(): InterruptionHandlingConfig;
-
-  getResumeAfterFalseInterruption(): boolean;
-  setResumeAfterFalseInterruption(value: boolean): InterruptionHandlingConfig;
-  hasResumeAfterFalseInterruption(): boolean;
-  clearResumeAfterFalseInterruption(): InterruptionHandlingConfig;
-
-  getBackoffSeconds(): number;
-  setBackoffSeconds(value: number): InterruptionHandlingConfig;
-  hasBackoffSeconds(): boolean;
-  clearBackoffSeconds(): InterruptionHandlingConfig;
-
-  getFirstMessageProtectedSeconds(): number;
-  setFirstMessageProtectedSeconds(value: number): InterruptionHandlingConfig;
-  hasFirstMessageProtectedSeconds(): boolean;
-  clearFirstMessageProtectedSeconds(): InterruptionHandlingConfig;
-
-  getTranscribeOnDisabledInterruptions(): boolean;
-  setTranscribeOnDisabledInterruptions(value: boolean): InterruptionHandlingConfig;
-  hasTranscribeOnDisabledInterruptions(): boolean;
-  clearTranscribeOnDisabledInterruptions(): InterruptionHandlingConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): InterruptionHandlingConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: InterruptionHandlingConfig): InterruptionHandlingConfig.AsObject;
-  static serializeBinaryToWriter(message: InterruptionHandlingConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): InterruptionHandlingConfig;
-  static deserializeBinaryFromReader(message: InterruptionHandlingConfig, reader: jspb.BinaryReader): InterruptionHandlingConfig;
-}
-
-export namespace InterruptionHandlingConfig {
-  export type AsObject = {
-    enabled?: boolean,
-    minInterruptionDurationSeconds?: number,
-    minInterruptionWords?: number,
-    falseInterruptionTimeoutSeconds?: number,
-    resumeAfterFalseInterruption?: boolean,
-    backoffSeconds?: number,
-    firstMessageProtectedSeconds?: number,
-    transcribeOnDisabledInterruptions?: boolean,
-  }
-
-  export enum EnabledCase { 
-    _ENABLED_NOT_SET = 0,
-    ENABLED = 1,
-  }
-
-  export enum MinInterruptionDurationSecondsCase { 
-    _MIN_INTERRUPTION_DURATION_SECONDS_NOT_SET = 0,
-    MIN_INTERRUPTION_DURATION_SECONDS = 2,
-  }
-
-  export enum MinInterruptionWordsCase { 
-    _MIN_INTERRUPTION_WORDS_NOT_SET = 0,
-    MIN_INTERRUPTION_WORDS = 3,
-  }
-
-  export enum FalseInterruptionTimeoutSecondsCase { 
-    _FALSE_INTERRUPTION_TIMEOUT_SECONDS_NOT_SET = 0,
-    FALSE_INTERRUPTION_TIMEOUT_SECONDS = 4,
-  }
-
-  export enum ResumeAfterFalseInterruptionCase { 
-    _RESUME_AFTER_FALSE_INTERRUPTION_NOT_SET = 0,
-    RESUME_AFTER_FALSE_INTERRUPTION = 5,
-  }
-
-  export enum BackoffSecondsCase { 
-    _BACKOFF_SECONDS_NOT_SET = 0,
-    BACKOFF_SECONDS = 6,
-  }
-
-  export enum FirstMessageProtectedSecondsCase { 
-    _FIRST_MESSAGE_PROTECTED_SECONDS_NOT_SET = 0,
-    FIRST_MESSAGE_PROTECTED_SECONDS = 7,
-  }
-
-  export enum TranscribeOnDisabledInterruptionsCase { 
-    _TRANSCRIBE_ON_DISABLED_INTERRUPTIONS_NOT_SET = 0,
-    TRANSCRIBE_ON_DISABLED_INTERRUPTIONS = 8,
-  }
-}
-
-export class ResponseTimingConfig extends jspb.Message {
-  getTurnTimeoutSeconds(): number;
-  setTurnTimeoutSeconds(value: number): ResponseTimingConfig;
-  hasTurnTimeoutSeconds(): boolean;
-  clearTurnTimeoutSeconds(): ResponseTimingConfig;
-
-  getSilenceEndCallTimeoutSeconds(): number;
-  setSilenceEndCallTimeoutSeconds(value: number): ResponseTimingConfig;
-  hasSilenceEndCallTimeoutSeconds(): boolean;
-  clearSilenceEndCallTimeoutSeconds(): ResponseTimingConfig;
-
-  getSoftTimeoutConfig(): SoftTimeoutConfig | undefined;
-  setSoftTimeoutConfig(value?: SoftTimeoutConfig): ResponseTimingConfig;
-  hasSoftTimeoutConfig(): boolean;
-  clearSoftTimeoutConfig(): ResponseTimingConfig;
-
-  getPreemptiveGenerationEnabled(): boolean;
-  setPreemptiveGenerationEnabled(value: boolean): ResponseTimingConfig;
-  hasPreemptiveGenerationEnabled(): boolean;
-  clearPreemptiveGenerationEnabled(): ResponseTimingConfig;
-
-  getT2sChunkedStreamingEnabled(): boolean;
-  setT2sChunkedStreamingEnabled(value: boolean): ResponseTimingConfig;
-  hasT2sChunkedStreamingEnabled(): boolean;
-  clearT2sChunkedStreamingEnabled(): ResponseTimingConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ResponseTimingConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: ResponseTimingConfig): ResponseTimingConfig.AsObject;
-  static serializeBinaryToWriter(message: ResponseTimingConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ResponseTimingConfig;
-  static deserializeBinaryFromReader(message: ResponseTimingConfig, reader: jspb.BinaryReader): ResponseTimingConfig;
-}
-
-export namespace ResponseTimingConfig {
-  export type AsObject = {
-    turnTimeoutSeconds?: number,
-    silenceEndCallTimeoutSeconds?: number,
-    softTimeoutConfig?: SoftTimeoutConfig.AsObject,
-    preemptiveGenerationEnabled?: boolean,
-    t2sChunkedStreamingEnabled?: boolean,
-  }
-
-  export enum TurnTimeoutSecondsCase { 
-    _TURN_TIMEOUT_SECONDS_NOT_SET = 0,
-    TURN_TIMEOUT_SECONDS = 1,
-  }
-
-  export enum SilenceEndCallTimeoutSecondsCase { 
-    _SILENCE_END_CALL_TIMEOUT_SECONDS_NOT_SET = 0,
-    SILENCE_END_CALL_TIMEOUT_SECONDS = 2,
-  }
-
-  export enum PreemptiveGenerationEnabledCase { 
-    _PREEMPTIVE_GENERATION_ENABLED_NOT_SET = 0,
-    PREEMPTIVE_GENERATION_ENABLED = 4,
-  }
-
-  export enum T2sChunkedStreamingEnabledCase { 
-    _T2S_CHUNKED_STREAMING_ENABLED_NOT_SET = 0,
-    T2S_CHUNKED_STREAMING_ENABLED = 5,
-  }
-}
-
-export class SoftTimeoutConfig extends jspb.Message {
-  getTimeoutSeconds(): number;
-  setTimeoutSeconds(value: number): SoftTimeoutConfig;
-  hasTimeoutSeconds(): boolean;
-  clearTimeoutSeconds(): SoftTimeoutConfig;
-
-  getMessagesList(): Array<string>;
-  setMessagesList(value: Array<string>): SoftTimeoutConfig;
-  clearMessagesList(): SoftTimeoutConfig;
-  addMessages(value: string, index?: number): SoftTimeoutConfig;
-
-  getMaxPerGeneration(): number;
-  setMaxPerGeneration(value: number): SoftTimeoutConfig;
-  hasMaxPerGeneration(): boolean;
-  clearMaxPerGeneration(): SoftTimeoutConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SoftTimeoutConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: SoftTimeoutConfig): SoftTimeoutConfig.AsObject;
-  static serializeBinaryToWriter(message: SoftTimeoutConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SoftTimeoutConfig;
-  static deserializeBinaryFromReader(message: SoftTimeoutConfig, reader: jspb.BinaryReader): SoftTimeoutConfig;
-}
-
-export namespace SoftTimeoutConfig {
-  export type AsObject = {
-    timeoutSeconds?: number,
-    messagesList: Array<string>,
-    maxPerGeneration?: number,
-  }
-
-  export enum TimeoutSecondsCase { 
-    _TIMEOUT_SECONDS_NOT_SET = 0,
-    TIMEOUT_SECONDS = 1,
-  }
-
-  export enum MaxPerGenerationCase { 
-    _MAX_PER_GENERATION_NOT_SET = 0,
-    MAX_PER_GENERATION = 3,
-  }
-}
-
-export class AnsweringMachineDetectionConfig extends jspb.Message {
-  getActive(): boolean;
-  setActive(value: boolean): AnsweringMachineDetectionConfig;
-  hasActive(): boolean;
-  clearActive(): AnsweringMachineDetectionConfig;
-
-  getAction(): AnsweringMachineDetectionConfig.AmdAction;
-  setAction(value: AnsweringMachineDetectionConfig.AmdAction): AnsweringMachineDetectionConfig;
-  hasAction(): boolean;
-  clearAction(): AnsweringMachineDetectionConfig;
-
-  getSensitivity(): AnsweringMachineDetectionConfig.AmdSensitivity;
-  setSensitivity(value: AnsweringMachineDetectionConfig.AmdSensitivity): AnsweringMachineDetectionConfig;
-  hasSensitivity(): boolean;
-  clearSensitivity(): AnsweringMachineDetectionConfig;
-
-  getMaxDecisionTimeMs(): number;
-  setMaxDecisionTimeMs(value: number): AnsweringMachineDetectionConfig;
-  hasMaxDecisionTimeMs(): boolean;
-  clearMaxDecisionTimeMs(): AnsweringMachineDetectionConfig;
-
-  getMaxMachineWaitMs(): number;
-  setMaxMachineWaitMs(value: number): AnsweringMachineDetectionConfig;
-  hasMaxMachineWaitMs(): boolean;
-  clearMaxMachineWaitMs(): AnsweringMachineDetectionConfig;
-
-  getBeepWaitAfterGreetingMs(): number;
-  setBeepWaitAfterGreetingMs(value: number): AnsweringMachineDetectionConfig;
-  hasBeepWaitAfterGreetingMs(): boolean;
-  clearBeepWaitAfterGreetingMs(): AnsweringMachineDetectionConfig;
-
-  getInitialSilenceMs(): number;
-  setInitialSilenceMs(value: number): AnsweringMachineDetectionConfig;
-  hasInitialSilenceMs(): boolean;
-  clearInitialSilenceMs(): AnsweringMachineDetectionConfig;
-
-  getMaxHumanGreetingMs(): number;
-  setMaxHumanGreetingMs(value: number): AnsweringMachineDetectionConfig;
-  hasMaxHumanGreetingMs(): boolean;
-  clearMaxHumanGreetingMs(): AnsweringMachineDetectionConfig;
-
-  getGreetingEndSilenceMs(): number;
-  setGreetingEndSilenceMs(value: number): AnsweringMachineDetectionConfig;
-  hasGreetingEndSilenceMs(): boolean;
-  clearGreetingEndSilenceMs(): AnsweringMachineDetectionConfig;
-
-  getBeepDetectionActive(): boolean;
-  setBeepDetectionActive(value: boolean): AnsweringMachineDetectionConfig;
-  hasBeepDetectionActive(): boolean;
-  clearBeepDetectionActive(): AnsweringMachineDetectionConfig;
-
-  getAdditionalMachinePhrasesList(): Array<string>;
-  setAdditionalMachinePhrasesList(value: Array<string>): AnsweringMachineDetectionConfig;
-  clearAdditionalMachinePhrasesList(): AnsweringMachineDetectionConfig;
-  addAdditionalMachinePhrases(value: string, index?: number): AnsweringMachineDetectionConfig;
-
-  getAdditionalHumanPhrasesList(): Array<string>;
-  setAdditionalHumanPhrasesList(value: Array<string>): AnsweringMachineDetectionConfig;
-  clearAdditionalHumanPhrasesList(): AnsweringMachineDetectionConfig;
-  addAdditionalHumanPhrases(value: string, index?: number): AnsweringMachineDetectionConfig;
-
-  getHangUpOnFax(): boolean;
-  setHangUpOnFax(value: boolean): AnsweringMachineDetectionConfig;
-  hasHangUpOnFax(): boolean;
-  clearHangUpOnFax(): AnsweringMachineDetectionConfig;
-
-  getHangUpOnNetworkAnnouncement(): boolean;
-  setHangUpOnNetworkAnnouncement(value: boolean): AnsweringMachineDetectionConfig;
-  hasHangUpOnNetworkAnnouncement(): boolean;
-  clearHangUpOnNetworkAnnouncement(): AnsweringMachineDetectionConfig;
-
-  getHangUpOnIvr(): boolean;
-  setHangUpOnIvr(value: boolean): AnsweringMachineDetectionConfig;
-  hasHangUpOnIvr(): boolean;
-  clearHangUpOnIvr(): AnsweringMachineDetectionConfig;
-
-  getHangUpOnCallScreening(): boolean;
-  setHangUpOnCallScreening(value: boolean): AnsweringMachineDetectionConfig;
-  hasHangUpOnCallScreening(): boolean;
-  clearHangUpOnCallScreening(): AnsweringMachineDetectionConfig;
-
-  getVoiceMessageIntent(): string;
-  setVoiceMessageIntent(value: string): AnsweringMachineDetectionConfig;
-  hasVoiceMessageIntent(): boolean;
-  clearVoiceMessageIntent(): AnsweringMachineDetectionConfig;
-
-  getVoiceMessageMaxBeepWaitMs(): number;
-  setVoiceMessageMaxBeepWaitMs(value: number): AnsweringMachineDetectionConfig;
-  hasVoiceMessageMaxBeepWaitMs(): boolean;
-  clearVoiceMessageMaxBeepWaitMs(): AnsweringMachineDetectionConfig;
-
-  getVoiceMessageTimeoutMs(): number;
-  setVoiceMessageTimeoutMs(value: number): AnsweringMachineDetectionConfig;
-  hasVoiceMessageTimeoutMs(): boolean;
-  clearVoiceMessageTimeoutMs(): AnsweringMachineDetectionConfig;
-
-  getKeywordDetectionActive(): boolean;
-  setKeywordDetectionActive(value: boolean): AnsweringMachineDetectionConfig;
-  hasKeywordDetectionActive(): boolean;
-  clearKeywordDetectionActive(): AnsweringMachineDetectionConfig;
-
-  getCadenceDetectionActive(): boolean;
-  setCadenceDetectionActive(value: boolean): AnsweringMachineDetectionConfig;
-  hasCadenceDetectionActive(): boolean;
-  clearCadenceDetectionActive(): AnsweringMachineDetectionConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AnsweringMachineDetectionConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: AnsweringMachineDetectionConfig): AnsweringMachineDetectionConfig.AsObject;
-  static serializeBinaryToWriter(message: AnsweringMachineDetectionConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AnsweringMachineDetectionConfig;
-  static deserializeBinaryFromReader(message: AnsweringMachineDetectionConfig, reader: jspb.BinaryReader): AnsweringMachineDetectionConfig;
-}
-
-export namespace AnsweringMachineDetectionConfig {
-  export type AsObject = {
-    active?: boolean,
-    action?: AnsweringMachineDetectionConfig.AmdAction,
-    sensitivity?: AnsweringMachineDetectionConfig.AmdSensitivity,
-    maxDecisionTimeMs?: number,
-    maxMachineWaitMs?: number,
-    beepWaitAfterGreetingMs?: number,
-    initialSilenceMs?: number,
-    maxHumanGreetingMs?: number,
-    greetingEndSilenceMs?: number,
-    beepDetectionActive?: boolean,
-    additionalMachinePhrasesList: Array<string>,
-    additionalHumanPhrasesList: Array<string>,
-    hangUpOnFax?: boolean,
-    hangUpOnNetworkAnnouncement?: boolean,
-    hangUpOnIvr?: boolean,
-    hangUpOnCallScreening?: boolean,
-    voiceMessageIntent?: string,
-    voiceMessageMaxBeepWaitMs?: number,
-    voiceMessageTimeoutMs?: number,
-    keywordDetectionActive?: boolean,
-    cadenceDetectionActive?: boolean,
-  }
-
-  export enum AmdAction { 
-    AMD_ACTION_UNSPECIFIED = 0,
-    HANG_UP = 1,
-    DETECT_ONLY = 2,
-    LEAVE_VOICE_MESSAGE = 3,
-  }
-
-  export enum AmdSensitivity { 
-    AMD_SENSITIVITY_UNSPECIFIED = 0,
-    LOW = 1,
-    MEDIUM = 2,
-    HIGH = 3,
-  }
-
-  export enum ActiveCase { 
-    _ACTIVE_NOT_SET = 0,
-    ACTIVE = 1,
-  }
-
-  export enum ActionCase { 
-    _ACTION_NOT_SET = 0,
-    ACTION = 2,
-  }
-
-  export enum SensitivityCase { 
-    _SENSITIVITY_NOT_SET = 0,
-    SENSITIVITY = 3,
-  }
-
-  export enum MaxDecisionTimeMsCase { 
-    _MAX_DECISION_TIME_MS_NOT_SET = 0,
-    MAX_DECISION_TIME_MS = 4,
-  }
-
-  export enum MaxMachineWaitMsCase { 
-    _MAX_MACHINE_WAIT_MS_NOT_SET = 0,
-    MAX_MACHINE_WAIT_MS = 5,
-  }
-
-  export enum BeepWaitAfterGreetingMsCase { 
-    _BEEP_WAIT_AFTER_GREETING_MS_NOT_SET = 0,
-    BEEP_WAIT_AFTER_GREETING_MS = 6,
-  }
-
-  export enum InitialSilenceMsCase { 
-    _INITIAL_SILENCE_MS_NOT_SET = 0,
-    INITIAL_SILENCE_MS = 7,
-  }
-
-  export enum MaxHumanGreetingMsCase { 
-    _MAX_HUMAN_GREETING_MS_NOT_SET = 0,
-    MAX_HUMAN_GREETING_MS = 8,
-  }
-
-  export enum GreetingEndSilenceMsCase { 
-    _GREETING_END_SILENCE_MS_NOT_SET = 0,
-    GREETING_END_SILENCE_MS = 9,
-  }
-
-  export enum BeepDetectionActiveCase { 
-    _BEEP_DETECTION_ACTIVE_NOT_SET = 0,
-    BEEP_DETECTION_ACTIVE = 10,
-  }
-
-  export enum HangUpOnFaxCase { 
-    _HANG_UP_ON_FAX_NOT_SET = 0,
-    HANG_UP_ON_FAX = 13,
-  }
-
-  export enum HangUpOnNetworkAnnouncementCase { 
-    _HANG_UP_ON_NETWORK_ANNOUNCEMENT_NOT_SET = 0,
-    HANG_UP_ON_NETWORK_ANNOUNCEMENT = 14,
-  }
-
-  export enum HangUpOnIvrCase { 
-    _HANG_UP_ON_IVR_NOT_SET = 0,
-    HANG_UP_ON_IVR = 15,
-  }
-
-  export enum HangUpOnCallScreeningCase { 
-    _HANG_UP_ON_CALL_SCREENING_NOT_SET = 0,
-    HANG_UP_ON_CALL_SCREENING = 16,
-  }
-
-  export enum VoiceMessageIntentCase { 
-    _VOICE_MESSAGE_INTENT_NOT_SET = 0,
-    VOICE_MESSAGE_INTENT = 17,
-  }
-
-  export enum VoiceMessageMaxBeepWaitMsCase { 
-    _VOICE_MESSAGE_MAX_BEEP_WAIT_MS_NOT_SET = 0,
-    VOICE_MESSAGE_MAX_BEEP_WAIT_MS = 18,
-  }
-
-  export enum VoiceMessageTimeoutMsCase { 
-    _VOICE_MESSAGE_TIMEOUT_MS_NOT_SET = 0,
-    VOICE_MESSAGE_TIMEOUT_MS = 19,
-  }
-
-  export enum KeywordDetectionActiveCase { 
-    _KEYWORD_DETECTION_ACTIVE_NOT_SET = 0,
-    KEYWORD_DETECTION_ACTIVE = 20,
-  }
-
-  export enum CadenceDetectionActiveCase { 
-    _CADENCE_DETECTION_ACTIVE_NOT_SET = 0,
-    CADENCE_DETECTION_ACTIVE = 21,
-  }
-}
-
-export class SipBaseConfig extends jspb.Message {
-  getSipSimVersion(): string;
-  setSipSimVersion(value: string): SipBaseConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SipBaseConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: SipBaseConfig): SipBaseConfig.AsObject;
-  static serializeBinaryToWriter(message: SipBaseConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SipBaseConfig;
-  static deserializeBinaryFromReader(message: SipBaseConfig, reader: jspb.BinaryReader): SipBaseConfig;
-}
-
-export namespace SipBaseConfig {
-  export type AsObject = {
-    sipSimVersion: string,
-  }
-}
-
-export class SipCallerConfig extends jspb.Message {
-  getSipBaseConfig(): SipBaseConfig | undefined;
-  setSipBaseConfig(value?: SipBaseConfig): SipCallerConfig;
-  hasSipBaseConfig(): boolean;
-  clearSipBaseConfig(): SipCallerConfig;
-
-  getCalleeId(): string;
-  setCalleeId(value: string): SipCallerConfig;
-
-  getSipHeadersMap(): jspb.Map<string, string>;
-  clearSipHeadersMap(): SipCallerConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SipCallerConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: SipCallerConfig): SipCallerConfig.AsObject;
-  static serializeBinaryToWriter(message: SipCallerConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SipCallerConfig;
-  static deserializeBinaryFromReader(message: SipCallerConfig, reader: jspb.BinaryReader): SipCallerConfig;
-}
-
-export namespace SipCallerConfig {
-  export type AsObject = {
-    sipBaseConfig?: SipBaseConfig.AsObject,
-    calleeId: string,
-    sipHeadersMap: Array<[string, string]>,
-  }
-}
-
-export class CsiVtsiConfig extends jspb.Message {
-  getS2tVtsiCallbacks(): S2tVtsiCallbacks | undefined;
-  setS2tVtsiCallbacks(value?: S2tVtsiCallbacks): CsiVtsiConfig;
-  hasS2tVtsiCallbacks(): boolean;
-  clearS2tVtsiCallbacks(): CsiVtsiConfig;
-
-  getNluVtsiCallbacks(): NluVtsiCallbacks | undefined;
-  setNluVtsiCallbacks(value?: NluVtsiCallbacks): CsiVtsiConfig;
-  hasNluVtsiCallbacks(): boolean;
-  clearNluVtsiCallbacks(): CsiVtsiConfig;
-
-  getT2sVtsiCallbacks(): T2sVtsiCallbacks | undefined;
-  setT2sVtsiCallbacks(value?: T2sVtsiCallbacks): CsiVtsiConfig;
-  hasT2sVtsiCallbacks(): boolean;
-  clearT2sVtsiCallbacks(): CsiVtsiConfig;
-
-  getAudioObjectStoreConfig(): AudioObjectStorageConfig | undefined;
-  setAudioObjectStoreConfig(value?: AudioObjectStorageConfig): CsiVtsiConfig;
-  hasAudioObjectStoreConfig(): boolean;
-  clearAudioObjectStoreConfig(): CsiVtsiConfig;
-
-  getMessageBrokerConfig(): MessageBrokerConfig | undefined;
-  setMessageBrokerConfig(value?: MessageBrokerConfig): CsiVtsiConfig;
-  hasMessageBrokerConfig(): boolean;
-  clearMessageBrokerConfig(): CsiVtsiConfig;
-
-  getActivateControlMessages(): boolean;
-  setActivateControlMessages(value: boolean): CsiVtsiConfig;
-  hasActivateControlMessages(): boolean;
-  clearActivateControlMessages(): CsiVtsiConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsiVtsiConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: CsiVtsiConfig): CsiVtsiConfig.AsObject;
-  static serializeBinaryToWriter(message: CsiVtsiConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsiVtsiConfig;
-  static deserializeBinaryFromReader(message: CsiVtsiConfig, reader: jspb.BinaryReader): CsiVtsiConfig;
-}
-
-export namespace CsiVtsiConfig {
-  export type AsObject = {
-    s2tVtsiCallbacks?: S2tVtsiCallbacks.AsObject,
-    nluVtsiCallbacks?: NluVtsiCallbacks.AsObject,
-    t2sVtsiCallbacks?: T2sVtsiCallbacks.AsObject,
-    audioObjectStoreConfig?: AudioObjectStorageConfig.AsObject,
-    messageBrokerConfig?: MessageBrokerConfig.AsObject,
-    activateControlMessages?: boolean,
-  }
-
-  export enum ActivateControlMessagesCase { 
-    _ACTIVATE_CONTROL_MESSAGES_NOT_SET = 0,
-    ACTIVATE_CONTROL_MESSAGES = 6,
-  }
-}
-
-export class AudioObjectStorageConfig extends jspb.Message {
-  getActivateAudioObjectStorage(): boolean;
-  setActivateAudioObjectStorage(value: boolean): AudioObjectStorageConfig;
-  hasActivateAudioObjectStorage(): boolean;
-  clearActivateAudioObjectStorage(): AudioObjectStorageConfig;
-
-  getAudioObjectStorageServicesActivationConfig(): AudioObjectStorageServicesActivationConfig | undefined;
-  setAudioObjectStorageServicesActivationConfig(value?: AudioObjectStorageServicesActivationConfig): AudioObjectStorageConfig;
-  hasAudioObjectStorageServicesActivationConfig(): boolean;
-  clearAudioObjectStorageServicesActivationConfig(): AudioObjectStorageConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AudioObjectStorageConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: AudioObjectStorageConfig): AudioObjectStorageConfig.AsObject;
-  static serializeBinaryToWriter(message: AudioObjectStorageConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AudioObjectStorageConfig;
-  static deserializeBinaryFromReader(message: AudioObjectStorageConfig, reader: jspb.BinaryReader): AudioObjectStorageConfig;
-}
-
-export namespace AudioObjectStorageConfig {
-  export type AsObject = {
-    activateAudioObjectStorage?: boolean,
-    audioObjectStorageServicesActivationConfig?: AudioObjectStorageServicesActivationConfig.AsObject,
-  }
-
-  export enum ActivateAudioObjectStorageCase { 
-    _ACTIVATE_AUDIO_OBJECT_STORAGE_NOT_SET = 0,
-    ACTIVATE_AUDIO_OBJECT_STORAGE = 1,
-  }
-}
-
-export class AudioObjectStorageServicesActivationConfig extends jspb.Message {
-  getActivateS2t(): boolean;
-  setActivateS2t(value: boolean): AudioObjectStorageServicesActivationConfig;
-  hasActivateS2t(): boolean;
-  clearActivateS2t(): AudioObjectStorageServicesActivationConfig;
-
-  getActivateT2s(): boolean;
-  setActivateT2s(value: boolean): AudioObjectStorageServicesActivationConfig;
-  hasActivateT2s(): boolean;
-  clearActivateT2s(): AudioObjectStorageServicesActivationConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AudioObjectStorageServicesActivationConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: AudioObjectStorageServicesActivationConfig): AudioObjectStorageServicesActivationConfig.AsObject;
-  static serializeBinaryToWriter(message: AudioObjectStorageServicesActivationConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AudioObjectStorageServicesActivationConfig;
-  static deserializeBinaryFromReader(message: AudioObjectStorageServicesActivationConfig, reader: jspb.BinaryReader): AudioObjectStorageServicesActivationConfig;
-}
-
-export namespace AudioObjectStorageServicesActivationConfig {
-  export type AsObject = {
-    activateS2t?: boolean,
-    activateT2s?: boolean,
-  }
-
-  export enum ActivateS2tCase { 
-    _ACTIVATE_S2T_NOT_SET = 0,
-    ACTIVATE_S2T = 1,
-  }
-
-  export enum ActivateT2sCase { 
-    _ACTIVATE_T2S_NOT_SET = 0,
-    ACTIVATE_T2S = 2,
-  }
-}
-
-export class MessageBrokerConfig extends jspb.Message {
-  getActivateMessageBroker(): boolean;
-  setActivateMessageBroker(value: boolean): MessageBrokerConfig;
-  hasActivateMessageBroker(): boolean;
-  clearActivateMessageBroker(): MessageBrokerConfig;
-
-  getMessageBrokerServicesActivationConfig(): MessageBrokerServicesActivationConfig | undefined;
-  setMessageBrokerServicesActivationConfig(value?: MessageBrokerServicesActivationConfig): MessageBrokerConfig;
-  hasMessageBrokerServicesActivationConfig(): boolean;
-  clearMessageBrokerServicesActivationConfig(): MessageBrokerConfig;
-
-  getRabbitMqConfig(): RabbitMqConfig | undefined;
-  setRabbitMqConfig(value?: RabbitMqConfig): MessageBrokerConfig;
-  hasRabbitMqConfig(): boolean;
-  clearRabbitMqConfig(): MessageBrokerConfig;
-
-  getMessageBrokerConfigCase(): MessageBrokerConfig.MessageBrokerConfigCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MessageBrokerConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: MessageBrokerConfig): MessageBrokerConfig.AsObject;
-  static serializeBinaryToWriter(message: MessageBrokerConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MessageBrokerConfig;
-  static deserializeBinaryFromReader(message: MessageBrokerConfig, reader: jspb.BinaryReader): MessageBrokerConfig;
-}
-
-export namespace MessageBrokerConfig {
-  export type AsObject = {
-    activateMessageBroker?: boolean,
-    messageBrokerServicesActivationConfig?: MessageBrokerServicesActivationConfig.AsObject,
-    rabbitMqConfig?: RabbitMqConfig.AsObject,
-  }
-
-  export enum MessageBrokerConfigCase { 
-    MESSAGE_BROKER_CONFIG_NOT_SET = 0,
-    RABBIT_MQ_CONFIG = 3,
-  }
-
-  export enum ActivateMessageBrokerCase { 
-    _ACTIVATE_MESSAGE_BROKER_NOT_SET = 0,
-    ACTIVATE_MESSAGE_BROKER = 1,
-  }
-}
-
-export class MessageBrokerServicesActivationConfig extends jspb.Message {
-  getActivateS2t(): boolean;
-  setActivateS2t(value: boolean): MessageBrokerServicesActivationConfig;
-  hasActivateS2t(): boolean;
-  clearActivateS2t(): MessageBrokerServicesActivationConfig;
-
-  getActivateNlu(): boolean;
-  setActivateNlu(value: boolean): MessageBrokerServicesActivationConfig;
-  hasActivateNlu(): boolean;
-  clearActivateNlu(): MessageBrokerServicesActivationConfig;
-
-  getActivateT2s(): boolean;
-  setActivateT2s(value: boolean): MessageBrokerServicesActivationConfig;
-  hasActivateT2s(): boolean;
-  clearActivateT2s(): MessageBrokerServicesActivationConfig;
-
-  getActivateSip(): boolean;
-  setActivateSip(value: boolean): MessageBrokerServicesActivationConfig;
-  hasActivateSip(): boolean;
-  clearActivateSip(): MessageBrokerServicesActivationConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MessageBrokerServicesActivationConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: MessageBrokerServicesActivationConfig): MessageBrokerServicesActivationConfig.AsObject;
-  static serializeBinaryToWriter(message: MessageBrokerServicesActivationConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MessageBrokerServicesActivationConfig;
-  static deserializeBinaryFromReader(message: MessageBrokerServicesActivationConfig, reader: jspb.BinaryReader): MessageBrokerServicesActivationConfig;
-}
-
-export namespace MessageBrokerServicesActivationConfig {
-  export type AsObject = {
-    activateS2t?: boolean,
-    activateNlu?: boolean,
-    activateT2s?: boolean,
-    activateSip?: boolean,
-  }
-
-  export enum ActivateS2tCase { 
-    _ACTIVATE_S2T_NOT_SET = 0,
-    ACTIVATE_S2T = 1,
-  }
-
-  export enum ActivateNluCase { 
-    _ACTIVATE_NLU_NOT_SET = 0,
-    ACTIVATE_NLU = 2,
-  }
-
-  export enum ActivateT2sCase { 
-    _ACTIVATE_T2S_NOT_SET = 0,
-    ACTIVATE_T2S = 3,
-  }
-
-  export enum ActivateSipCase { 
-    _ACTIVATE_SIP_NOT_SET = 0,
-    ACTIVATE_SIP = 4,
-  }
-}
-
-export class RabbitMqConfig extends jspb.Message {
-  getHost(): string;
-  setHost(value: string): RabbitMqConfig;
-
-  getPort(): number;
-  setPort(value: number): RabbitMqConfig;
-
-  getPort2(): number;
-  setPort2(value: number): RabbitMqConfig;
-
-  getUser(): string;
-  setUser(value: string): RabbitMqConfig;
-
-  getPassword(): string;
-  setPassword(value: string): RabbitMqConfig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RabbitMqConfig.AsObject;
-  static toObject(includeInstance: boolean, msg: RabbitMqConfig): RabbitMqConfig.AsObject;
-  static serializeBinaryToWriter(message: RabbitMqConfig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RabbitMqConfig;
-  static deserializeBinaryFromReader(message: RabbitMqConfig, reader: jspb.BinaryReader): RabbitMqConfig;
-}
-
-export namespace RabbitMqConfig {
-  export type AsObject = {
-    host: string,
-    port: number,
-    port2: number,
-    user: string,
-    password: string,
-  }
-}
-
-export class S2tVtsiCallbacks extends jspb.Message {
-  getPreS2tCallbacksList(): Array<string>;
-  setPreS2tCallbacksList(value: Array<string>): S2tVtsiCallbacks;
-  clearPreS2tCallbacksList(): S2tVtsiCallbacks;
-  addPreS2tCallbacks(value: string, index?: number): S2tVtsiCallbacks;
-
-  getPostS2tCallbacksList(): Array<string>;
-  setPostS2tCallbacksList(value: Array<string>): S2tVtsiCallbacks;
-  clearPostS2tCallbacksList(): S2tVtsiCallbacks;
-  addPostS2tCallbacks(value: string, index?: number): S2tVtsiCallbacks;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): S2tVtsiCallbacks.AsObject;
-  static toObject(includeInstance: boolean, msg: S2tVtsiCallbacks): S2tVtsiCallbacks.AsObject;
-  static serializeBinaryToWriter(message: S2tVtsiCallbacks, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): S2tVtsiCallbacks;
-  static deserializeBinaryFromReader(message: S2tVtsiCallbacks, reader: jspb.BinaryReader): S2tVtsiCallbacks;
-}
-
-export namespace S2tVtsiCallbacks {
-  export type AsObject = {
-    preS2tCallbacksList: Array<string>,
-    postS2tCallbacksList: Array<string>,
-  }
-}
-
-export class NluVtsiCallbacks extends jspb.Message {
-  getPreNluCallbacksList(): Array<string>;
-  setPreNluCallbacksList(value: Array<string>): NluVtsiCallbacks;
-  clearPreNluCallbacksList(): NluVtsiCallbacks;
-  addPreNluCallbacks(value: string, index?: number): NluVtsiCallbacks;
-
-  getPostNluCallbacksList(): Array<string>;
-  setPostNluCallbacksList(value: Array<string>): NluVtsiCallbacks;
-  clearPostNluCallbacksList(): NluVtsiCallbacks;
-  addPostNluCallbacks(value: string, index?: number): NluVtsiCallbacks;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): NluVtsiCallbacks.AsObject;
-  static toObject(includeInstance: boolean, msg: NluVtsiCallbacks): NluVtsiCallbacks.AsObject;
-  static serializeBinaryToWriter(message: NluVtsiCallbacks, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): NluVtsiCallbacks;
-  static deserializeBinaryFromReader(message: NluVtsiCallbacks, reader: jspb.BinaryReader): NluVtsiCallbacks;
-}
-
-export namespace NluVtsiCallbacks {
-  export type AsObject = {
-    preNluCallbacksList: Array<string>,
-    postNluCallbacksList: Array<string>,
-  }
-}
-
-export class T2sVtsiCallbacks extends jspb.Message {
-  getPreT2sCallbacksList(): Array<string>;
-  setPreT2sCallbacksList(value: Array<string>): T2sVtsiCallbacks;
-  clearPreT2sCallbacksList(): T2sVtsiCallbacks;
-  addPreT2sCallbacks(value: string, index?: number): T2sVtsiCallbacks;
-
-  getPostT2sCallbacksList(): Array<string>;
-  setPostT2sCallbacksList(value: Array<string>): T2sVtsiCallbacks;
-  clearPostT2sCallbacksList(): T2sVtsiCallbacks;
-  addPostT2sCallbacks(value: string, index?: number): T2sVtsiCallbacks;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): T2sVtsiCallbacks.AsObject;
-  static toObject(includeInstance: boolean, msg: T2sVtsiCallbacks): T2sVtsiCallbacks.AsObject;
-  static serializeBinaryToWriter(message: T2sVtsiCallbacks, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): T2sVtsiCallbacks;
-  static deserializeBinaryFromReader(message: T2sVtsiCallbacks, reader: jspb.BinaryReader): T2sVtsiCallbacks;
-}
-
-export namespace T2sVtsiCallbacks {
-  export type AsObject = {
-    preT2sCallbacksList: Array<string>,
-    postT2sCallbacksList: Array<string>,
+    asteriskBaseConfig?: ondewo_vtsi_call_configs_pb.BaseServiceConfig.AsObject,
   }
 }
 
@@ -1211,15 +36,29 @@ export class Listener extends jspb.Message {
   getCallName(): string;
   setCallName(value: string): Listener;
 
-  getSipBaseConfig(): SipBaseConfig | undefined;
-  setSipBaseConfig(value?: SipBaseConfig): Listener;
+  getSipBaseConfig(): ondewo_vtsi_call_configs_pb.SipBaseConfig | undefined;
+  setSipBaseConfig(value?: ondewo_vtsi_call_configs_pb.SipBaseConfig): Listener;
   hasSipBaseConfig(): boolean;
   clearSipBaseConfig(): Listener;
 
-  getCommonServicesConfig(): CommonServicesConfig | undefined;
-  setCommonServicesConfig(value?: CommonServicesConfig): Listener;
+  getCommonServicesConfig(): ondewo_vtsi_call_configs_pb.CommonServicesConfig | undefined;
+  setCommonServicesConfig(value?: ondewo_vtsi_call_configs_pb.CommonServicesConfig): Listener;
   hasCommonServicesConfig(): boolean;
   clearCommonServicesConfig(): Listener;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): Listener;
+
+  getActive(): boolean;
+  setActive(value: boolean): Listener;
+
+  getSipStatusType(): ondewo_sip_sip_pb.SipStatus.StatusType;
+  setSipStatusType(value: ondewo_sip_sip_pb.SipStatus.StatusType): Listener;
+
+  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Listener;
+  hasCreatedAt(): boolean;
+  clearCreatedAt(): Listener;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Listener.AsObject;
@@ -1233,8 +72,12 @@ export namespace Listener {
   export type AsObject = {
     name: string,
     callName: string,
-    sipBaseConfig?: SipBaseConfig.AsObject,
-    commonServicesConfig?: CommonServicesConfig.AsObject,
+    sipBaseConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject,
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
+    vtsiProjectName: string,
+    active: boolean,
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
@@ -1245,15 +88,35 @@ export class Caller extends jspb.Message {
   getCallName(): string;
   setCallName(value: string): Caller;
 
-  getSipCallerConfig(): SipCallerConfig | undefined;
-  setSipCallerConfig(value?: SipCallerConfig): Caller;
+  getSipCallerConfig(): ondewo_vtsi_call_configs_pb.SipCallerConfig | undefined;
+  setSipCallerConfig(value?: ondewo_vtsi_call_configs_pb.SipCallerConfig): Caller;
   hasSipCallerConfig(): boolean;
   clearSipCallerConfig(): Caller;
 
-  getCommonServicesConfig(): CommonServicesConfig | undefined;
-  setCommonServicesConfig(value?: CommonServicesConfig): Caller;
+  getCommonServicesConfig(): ondewo_vtsi_call_configs_pb.CommonServicesConfig | undefined;
+  setCommonServicesConfig(value?: ondewo_vtsi_call_configs_pb.CommonServicesConfig): Caller;
   hasCommonServicesConfig(): boolean;
   clearCommonServicesConfig(): Caller;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): Caller;
+
+  getActive(): boolean;
+  setActive(value: boolean): Caller;
+
+  getSipStatusType(): ondewo_sip_sip_pb.SipStatus.StatusType;
+  setSipStatusType(value: ondewo_sip_sip_pb.SipStatus.StatusType): Caller;
+
+  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Caller;
+  hasCreatedAt(): boolean;
+  clearCreatedAt(): Caller;
+
+  getPooled(): boolean;
+  setPooled(value: boolean): Caller;
+
+  getCampaignName(): string;
+  setCampaignName(value: string): Caller;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Caller.AsObject;
@@ -1267,8 +130,14 @@ export namespace Caller {
   export type AsObject = {
     name: string,
     callName: string,
-    sipCallerConfig?: SipCallerConfig.AsObject,
-    commonServicesConfig?: CommonServicesConfig.AsObject,
+    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject,
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
+    vtsiProjectName: string,
+    active: boolean,
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    pooled: boolean,
+    campaignName: string,
   }
 }
 
@@ -1276,15 +145,23 @@ export class StartListenerRequest extends jspb.Message {
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartListenerRequest;
 
-  getSipBaseConfig(): SipBaseConfig | undefined;
-  setSipBaseConfig(value?: SipBaseConfig): StartListenerRequest;
+  getSipBaseConfig(): ondewo_vtsi_call_configs_pb.SipBaseConfig | undefined;
+  setSipBaseConfig(value?: ondewo_vtsi_call_configs_pb.SipBaseConfig): StartListenerRequest;
   hasSipBaseConfig(): boolean;
   clearSipBaseConfig(): StartListenerRequest;
 
-  getCommonServicesConfig(): CommonServicesConfig | undefined;
-  setCommonServicesConfig(value?: CommonServicesConfig): StartListenerRequest;
+  getCommonServicesConfig(): ondewo_vtsi_call_configs_pb.CommonServicesConfig | undefined;
+  setCommonServicesConfig(value?: ondewo_vtsi_call_configs_pb.CommonServicesConfig): StartListenerRequest;
   hasCommonServicesConfig(): boolean;
   clearCommonServicesConfig(): StartListenerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StartListenerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StartListenerRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): StartListenerRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StartListenerRequest.AsObject;
@@ -1297,8 +174,10 @@ export class StartListenerRequest extends jspb.Message {
 export namespace StartListenerRequest {
   export type AsObject = {
     vtsiProjectName: string,
-    sipBaseConfig?: SipBaseConfig.AsObject,
-    commonServicesConfig?: CommonServicesConfig.AsObject,
+    sipBaseConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject,
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
   }
 }
 
@@ -1342,6 +221,14 @@ export class StartListenersRequest extends jspb.Message {
   getIdempotencyKey(): string;
   setIdempotencyKey(value: string): StartListenersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StartListenersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StartListenersRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): StartListenersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StartListenersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StartListenersRequest): StartListenersRequest.AsObject;
@@ -1355,6 +242,8 @@ export namespace StartListenersRequest {
     vtsiProjectName: string,
     listenerRequestsList: Array<StartListenerRequest.AsObject>,
     idempotencyKey: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
   }
 }
 
@@ -1390,15 +279,23 @@ export class StartCallerRequest extends jspb.Message {
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartCallerRequest;
 
-  getSipCallerConfig(): SipCallerConfig | undefined;
-  setSipCallerConfig(value?: SipCallerConfig): StartCallerRequest;
+  getSipCallerConfig(): ondewo_vtsi_call_configs_pb.SipCallerConfig | undefined;
+  setSipCallerConfig(value?: ondewo_vtsi_call_configs_pb.SipCallerConfig): StartCallerRequest;
   hasSipCallerConfig(): boolean;
   clearSipCallerConfig(): StartCallerRequest;
 
-  getCommonServicesConfig(): CommonServicesConfig | undefined;
-  setCommonServicesConfig(value?: CommonServicesConfig): StartCallerRequest;
+  getCommonServicesConfig(): ondewo_vtsi_call_configs_pb.CommonServicesConfig | undefined;
+  setCommonServicesConfig(value?: ondewo_vtsi_call_configs_pb.CommonServicesConfig): StartCallerRequest;
   hasCommonServicesConfig(): boolean;
   clearCommonServicesConfig(): StartCallerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StartCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StartCallerRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): StartCallerRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StartCallerRequest.AsObject;
@@ -1411,8 +308,10 @@ export class StartCallerRequest extends jspb.Message {
 export namespace StartCallerRequest {
   export type AsObject = {
     vtsiProjectName: string,
-    sipCallerConfig?: SipCallerConfig.AsObject,
-    commonServicesConfig?: CommonServicesConfig.AsObject,
+    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject,
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
   }
 }
 
@@ -1456,6 +355,14 @@ export class StartCallersRequest extends jspb.Message {
   getIdempotencyKey(): string;
   setIdempotencyKey(value: string): StartCallersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StartCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StartCallersRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): StartCallersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StartCallersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StartCallersRequest): StartCallersRequest.AsObject;
@@ -1469,6 +376,8 @@ export namespace StartCallersRequest {
     vtsiProjectName: string,
     callerRequestsList: Array<StartCallerRequest.AsObject>,
     idempotencyKey: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
   }
 }
 
@@ -1514,6 +423,30 @@ export class ListCallersRequest extends jspb.Message {
   hasCallView(): boolean;
   clearCallView(): ListCallersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListCallersRequest;
+
+  getCampaignName(): string;
+  setCampaignName(value: string): ListCallersRequest;
+
+  getCampaignDisplayName(): string;
+  setCampaignDisplayName(value: string): ListCallersRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListCallersRequest;
+
+  getActiveOnly(): boolean;
+  setActiveOnly(value: boolean): ListCallersRequest;
+
+  getSipStatusTypesList(): Array<ondewo_sip_sip_pb.SipStatus.StatusType>;
+  setSipStatusTypesList(value: Array<ondewo_sip_sip_pb.SipStatus.StatusType>): ListCallersRequest;
+  clearSipStatusTypesList(): ListCallersRequest;
+  addSipStatusTypes(value: ondewo_sip_sip_pb.SipStatus.StatusType, index?: number): ListCallersRequest;
+
+  getCampaignCase(): ListCallersRequest.CampaignCase;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallersRequest): ListCallersRequest.AsObject;
@@ -1527,6 +460,18 @@ export namespace ListCallersRequest {
     vtsiProjectName: string,
     pageToken?: string,
     callView?: CallView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    campaignName: string,
+    campaignDisplayName: string,
+    pageSize: number,
+    activeOnly: boolean,
+    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>,
+  }
+
+  export enum CampaignCase { 
+    CAMPAIGN_NOT_SET = 0,
+    CAMPAIGN_NAME = 5,
+    CAMPAIGN_DISPLAY_NAME = 6,
   }
 
   export enum PageTokenCase { 
@@ -1549,6 +494,9 @@ export class ListCallersResponse extends jspb.Message {
   getNextPageToken(): string;
   setNextPageToken(value: string): ListCallersResponse;
 
+  getTotalSize(): number;
+  setTotalSize(value: number): ListCallersResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallersResponse.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallersResponse): ListCallersResponse.AsObject;
@@ -1561,6 +509,7 @@ export namespace ListCallersResponse {
   export type AsObject = {
     callersList: Array<Caller.AsObject>,
     nextPageToken: string,
+    totalSize: number,
   }
 }
 
@@ -1576,6 +525,11 @@ export class GetCallerRequest extends jspb.Message {
   hasCallView(): boolean;
   clearCallView(): GetCallerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): GetCallerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetCallerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetCallerRequest): GetCallerRequest.AsObject;
@@ -1589,6 +543,7 @@ export namespace GetCallerRequest {
     vtsiProjectName: string,
     name: string,
     callView?: CallView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 
   export enum CallViewCase { 
@@ -1611,6 +566,22 @@ export class ListListenersRequest extends jspb.Message {
   hasCallView(): boolean;
   clearCallView(): ListListenersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListListenersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListListenersRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListListenersRequest;
+
+  getActiveOnly(): boolean;
+  setActiveOnly(value: boolean): ListListenersRequest;
+
+  getSipStatusTypesList(): Array<ondewo_sip_sip_pb.SipStatus.StatusType>;
+  setSipStatusTypesList(value: Array<ondewo_sip_sip_pb.SipStatus.StatusType>): ListListenersRequest;
+  clearSipStatusTypesList(): ListListenersRequest;
+  addSipStatusTypes(value: ondewo_sip_sip_pb.SipStatus.StatusType, index?: number): ListListenersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListListenersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListListenersRequest): ListListenersRequest.AsObject;
@@ -1624,6 +595,10 @@ export namespace ListListenersRequest {
     vtsiProjectName: string,
     pageToken?: string,
     callView?: CallView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    pageSize: number,
+    activeOnly: boolean,
+    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>,
   }
 
   export enum PageTokenCase { 
@@ -1646,6 +621,9 @@ export class ListListenersResponse extends jspb.Message {
   getNextPageToken(): string;
   setNextPageToken(value: string): ListListenersResponse;
 
+  getTotalSize(): number;
+  setTotalSize(value: number): ListListenersResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListListenersResponse.AsObject;
   static toObject(includeInstance: boolean, msg: ListListenersResponse): ListListenersResponse.AsObject;
@@ -1658,6 +636,7 @@ export namespace ListListenersResponse {
   export type AsObject = {
     listenersList: Array<Listener.AsObject>,
     nextPageToken: string,
+    totalSize: number,
   }
 }
 
@@ -1673,6 +652,11 @@ export class GetListenerRequest extends jspb.Message {
   hasCallView(): boolean;
   clearCallView(): GetListenerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetListenerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): GetListenerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetListenerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetListenerRequest): GetListenerRequest.AsObject;
@@ -1686,6 +670,7 @@ export namespace GetListenerRequest {
     vtsiProjectName: string,
     name: string,
     callView?: CallView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 
   export enum CallViewCase { 
@@ -1698,6 +683,11 @@ export class StopListenerRequest extends jspb.Message {
   getName(): string;
   setName(value: string): StopListenerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopListenerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopListenerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopListenerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StopListenerRequest): StopListenerRequest.AsObject;
@@ -1709,6 +699,7 @@ export class StopListenerRequest extends jspb.Message {
 export namespace StopListenerRequest {
   export type AsObject = {
     name: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -1740,6 +731,14 @@ export class StopListenersRequest extends jspb.Message {
   clearNamesList(): StopListenersRequest;
   addNames(value: string, index?: number): StopListenersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopListenersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopListenersRequest;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): StopListenersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopListenersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StopListenersRequest): StopListenersRequest.AsObject;
@@ -1751,6 +750,8 @@ export class StopListenersRequest extends jspb.Message {
 export namespace StopListenersRequest {
   export type AsObject = {
     namesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    vtsiProjectName: string,
   }
 }
 
@@ -1782,6 +783,11 @@ export class StopCallerRequest extends jspb.Message {
   getName(): string;
   setName(value: string): StopCallerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopCallerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopCallerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StopCallerRequest): StopCallerRequest.AsObject;
@@ -1793,6 +799,7 @@ export class StopCallerRequest extends jspb.Message {
 export namespace StopCallerRequest {
   export type AsObject = {
     name: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -1824,6 +831,14 @@ export class StopCallersRequest extends jspb.Message {
   clearNamesList(): StopCallersRequest;
   addNames(value: string, index?: number): StopCallersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopCallersRequest;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): StopCallersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopCallersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StopCallersRequest): StopCallersRequest.AsObject;
@@ -1835,6 +850,8 @@ export class StopCallersRequest extends jspb.Message {
 export namespace StopCallersRequest {
   export type AsObject = {
     namesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    vtsiProjectName: string,
   }
 }
 
@@ -1866,6 +883,11 @@ export class DeleteListenerRequest extends jspb.Message {
   getName(): string;
   setName(value: string): DeleteListenerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): DeleteListenerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): DeleteListenerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteListenerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteListenerRequest): DeleteListenerRequest.AsObject;
@@ -1877,6 +899,7 @@ export class DeleteListenerRequest extends jspb.Message {
 export namespace DeleteListenerRequest {
   export type AsObject = {
     name: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -1908,6 +931,14 @@ export class DeleteListenersRequest extends jspb.Message {
   clearNamesList(): DeleteListenersRequest;
   addNames(value: string, index?: number): DeleteListenersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): DeleteListenersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): DeleteListenersRequest;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): DeleteListenersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteListenersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteListenersRequest): DeleteListenersRequest.AsObject;
@@ -1919,6 +950,8 @@ export class DeleteListenersRequest extends jspb.Message {
 export namespace DeleteListenersRequest {
   export type AsObject = {
     namesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    vtsiProjectName: string,
   }
 }
 
@@ -1950,6 +983,11 @@ export class DeleteCallerRequest extends jspb.Message {
   getName(): string;
   setName(value: string): DeleteCallerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): DeleteCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): DeleteCallerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteCallerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteCallerRequest): DeleteCallerRequest.AsObject;
@@ -1961,6 +999,7 @@ export class DeleteCallerRequest extends jspb.Message {
 export namespace DeleteCallerRequest {
   export type AsObject = {
     name: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -1992,6 +1031,14 @@ export class DeleteCallersRequest extends jspb.Message {
   clearNamesList(): DeleteCallersRequest;
   addNames(value: string, index?: number): DeleteCallersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): DeleteCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): DeleteCallersRequest;
+
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): DeleteCallersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteCallersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteCallersRequest): DeleteCallersRequest.AsObject;
@@ -2003,6 +1050,8 @@ export class DeleteCallersRequest extends jspb.Message {
 export namespace DeleteCallersRequest {
   export type AsObject = {
     namesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    vtsiProjectName: string,
   }
 }
 
@@ -2030,6 +1079,258 @@ export namespace DeleteCallersResponse {
   }
 }
 
+export class UpdateCallerRequest extends jspb.Message {
+  getCaller(): Caller | undefined;
+  setCaller(value?: Caller): UpdateCallerRequest;
+  hasCaller(): boolean;
+  clearCaller(): UpdateCallerRequest;
+
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateCallerRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateCallerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateCallerRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): UpdateCallerRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallerRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallerRequest): UpdateCallerRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallerRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallerRequest;
+  static deserializeBinaryFromReader(message: UpdateCallerRequest, reader: jspb.BinaryReader): UpdateCallerRequest;
+}
+
+export namespace UpdateCallerRequest {
+  export type AsObject = {
+    caller?: Caller.AsObject,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
+  }
+}
+
+export class UpdateCallerResponse extends jspb.Message {
+  getName(): string;
+  setName(value: string): UpdateCallerResponse;
+
+  getCaller(): Caller | undefined;
+  setCaller(value?: Caller): UpdateCallerResponse;
+  hasCaller(): boolean;
+  clearCaller(): UpdateCallerResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): UpdateCallerResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallerResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallerResponse): UpdateCallerResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallerResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallerResponse;
+  static deserializeBinaryFromReader(message: UpdateCallerResponse, reader: jspb.BinaryReader): UpdateCallerResponse;
+}
+
+export namespace UpdateCallerResponse {
+  export type AsObject = {
+    name: string,
+    caller?: Caller.AsObject,
+    errorMessage: string,
+  }
+}
+
+export class UpdateCallersRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): UpdateCallersRequest;
+
+  getUpdateCallerRequestsList(): Array<UpdateCallerRequest>;
+  setUpdateCallerRequestsList(value: Array<UpdateCallerRequest>): UpdateCallersRequest;
+  clearUpdateCallerRequestsList(): UpdateCallersRequest;
+  addUpdateCallerRequests(value?: UpdateCallerRequest, index?: number): UpdateCallerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateCallersRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): UpdateCallersRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallersRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallersRequest): UpdateCallersRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallersRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallersRequest;
+  static deserializeBinaryFromReader(message: UpdateCallersRequest, reader: jspb.BinaryReader): UpdateCallersRequest;
+}
+
+export namespace UpdateCallersRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    updateCallerRequestsList: Array<UpdateCallerRequest.AsObject>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
+  }
+}
+
+export class UpdateCallersResponse extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): UpdateCallersResponse;
+
+  getUpdateCallerResponsesList(): Array<UpdateCallerResponse>;
+  setUpdateCallerResponsesList(value: Array<UpdateCallerResponse>): UpdateCallersResponse;
+  clearUpdateCallerResponsesList(): UpdateCallersResponse;
+  addUpdateCallerResponses(value?: UpdateCallerResponse, index?: number): UpdateCallerResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): UpdateCallersResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallersResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallersResponse): UpdateCallersResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallersResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallersResponse;
+  static deserializeBinaryFromReader(message: UpdateCallersResponse, reader: jspb.BinaryReader): UpdateCallersResponse;
+}
+
+export namespace UpdateCallersResponse {
+  export type AsObject = {
+    vtsiProjectName: string,
+    updateCallerResponsesList: Array<UpdateCallerResponse.AsObject>,
+    errorMessage: string,
+  }
+}
+
+export class UpdateListenerRequest extends jspb.Message {
+  getListener(): Listener | undefined;
+  setListener(value?: Listener): UpdateListenerRequest;
+  hasListener(): boolean;
+  clearListener(): UpdateListenerRequest;
+
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateListenerRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateListenerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateListenerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateListenerRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): UpdateListenerRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateListenerRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateListenerRequest): UpdateListenerRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateListenerRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateListenerRequest;
+  static deserializeBinaryFromReader(message: UpdateListenerRequest, reader: jspb.BinaryReader): UpdateListenerRequest;
+}
+
+export namespace UpdateListenerRequest {
+  export type AsObject = {
+    listener?: Listener.AsObject,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
+  }
+}
+
+export class UpdateListenerResponse extends jspb.Message {
+  getName(): string;
+  setName(value: string): UpdateListenerResponse;
+
+  getListener(): Listener | undefined;
+  setListener(value?: Listener): UpdateListenerResponse;
+  hasListener(): boolean;
+  clearListener(): UpdateListenerResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): UpdateListenerResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateListenerResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateListenerResponse): UpdateListenerResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateListenerResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateListenerResponse;
+  static deserializeBinaryFromReader(message: UpdateListenerResponse, reader: jspb.BinaryReader): UpdateListenerResponse;
+}
+
+export namespace UpdateListenerResponse {
+  export type AsObject = {
+    name: string,
+    listener?: Listener.AsObject,
+    errorMessage: string,
+  }
+}
+
+export class UpdateListenersRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): UpdateListenersRequest;
+
+  getUpdateListenerRequestsList(): Array<UpdateListenerRequest>;
+  setUpdateListenerRequestsList(value: Array<UpdateListenerRequest>): UpdateListenersRequest;
+  clearUpdateListenerRequestsList(): UpdateListenersRequest;
+  addUpdateListenerRequests(value?: UpdateListenerRequest, index?: number): UpdateListenerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateListenersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateListenersRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): UpdateListenersRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateListenersRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateListenersRequest): UpdateListenersRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateListenersRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateListenersRequest;
+  static deserializeBinaryFromReader(message: UpdateListenersRequest, reader: jspb.BinaryReader): UpdateListenersRequest;
+}
+
+export namespace UpdateListenersRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    updateListenerRequestsList: Array<UpdateListenerRequest.AsObject>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
+  }
+}
+
+export class UpdateListenersResponse extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): UpdateListenersResponse;
+
+  getUpdateListenerResponsesList(): Array<UpdateListenerResponse>;
+  setUpdateListenerResponsesList(value: Array<UpdateListenerResponse>): UpdateListenersResponse;
+  clearUpdateListenerResponsesList(): UpdateListenersResponse;
+  addUpdateListenerResponses(value?: UpdateListenerResponse, index?: number): UpdateListenerResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): UpdateListenersResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateListenersResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateListenersResponse): UpdateListenersResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateListenersResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateListenersResponse;
+  static deserializeBinaryFromReader(message: UpdateListenersResponse, reader: jspb.BinaryReader): UpdateListenersResponse;
+}
+
+export namespace UpdateListenersResponse {
+  export type AsObject = {
+    vtsiProjectName: string,
+    updateListenerResponsesList: Array<UpdateListenerResponse.AsObject>,
+    errorMessage: string,
+  }
+}
+
 export class StartScheduledCallerRequest extends jspb.Message {
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartScheduledCallerRequest;
@@ -2044,6 +1345,11 @@ export class StartScheduledCallerRequest extends jspb.Message {
   hasScheduledTime(): boolean;
   clearScheduledTime(): StartScheduledCallerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StartScheduledCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StartScheduledCallerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StartScheduledCallerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StartScheduledCallerRequest): StartScheduledCallerRequest.AsObject;
@@ -2057,6 +1363,7 @@ export namespace StartScheduledCallerRequest {
     vtsiProjectName: string,
     request?: StartCallerRequest.AsObject,
     scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -2072,6 +1379,11 @@ export class StartScheduledCallersRequest extends jspb.Message {
   getIdempotencyKey(): string;
   setIdempotencyKey(value: string): StartScheduledCallersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StartScheduledCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StartScheduledCallersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StartScheduledCallersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StartScheduledCallersRequest): StartScheduledCallersRequest.AsObject;
@@ -2085,6 +1397,7 @@ export namespace StartScheduledCallersRequest {
     vtsiProjectName: string,
     scheduledCallerRequestsList: Array<StartScheduledCallerRequest.AsObject>,
     idempotencyKey: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -2281,13 +1594,13 @@ export class ScheduledCaller extends jspb.Message {
   getCallName(): string;
   setCallName(value: string): ScheduledCaller;
 
-  getSipConfig(): SipBaseConfig | undefined;
-  setSipConfig(value?: SipBaseConfig): ScheduledCaller;
+  getSipConfig(): ondewo_vtsi_call_configs_pb.SipBaseConfig | undefined;
+  setSipConfig(value?: ondewo_vtsi_call_configs_pb.SipBaseConfig): ScheduledCaller;
   hasSipConfig(): boolean;
   clearSipConfig(): ScheduledCaller;
 
-  getCommonServicesConfig(): CommonServicesConfig | undefined;
-  setCommonServicesConfig(value?: CommonServicesConfig): ScheduledCaller;
+  getCommonServicesConfig(): ondewo_vtsi_call_configs_pb.CommonServicesConfig | undefined;
+  setCommonServicesConfig(value?: ondewo_vtsi_call_configs_pb.CommonServicesConfig): ScheduledCaller;
   hasCommonServicesConfig(): boolean;
   clearCommonServicesConfig(): ScheduledCaller;
 
@@ -2296,8 +1609,8 @@ export class ScheduledCaller extends jspb.Message {
   hasScheduledTime(): boolean;
   clearScheduledTime(): ScheduledCaller;
 
-  getSipCallerConfig(): SipCallerConfig | undefined;
-  setSipCallerConfig(value?: SipCallerConfig): ScheduledCaller;
+  getSipCallerConfig(): ondewo_vtsi_call_configs_pb.SipCallerConfig | undefined;
+  setSipCallerConfig(value?: ondewo_vtsi_call_configs_pb.SipCallerConfig): ScheduledCaller;
   hasSipCallerConfig(): boolean;
   clearSipCallerConfig(): ScheduledCaller;
 
@@ -2323,6 +1636,12 @@ export class ScheduledCaller extends jspb.Message {
   getCampaignName(): string;
   setCampaignName(value: string): ScheduledCaller;
 
+  getRetryOfScheduledCallerName(): string;
+  setRetryOfScheduledCallerName(value: string): ScheduledCaller;
+
+  getRetriedByScheduledCallerName(): string;
+  setRetriedByScheduledCallerName(value: string): ScheduledCaller;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ScheduledCaller.AsObject;
   static toObject(includeInstance: boolean, msg: ScheduledCaller): ScheduledCaller.AsObject;
@@ -2335,16 +1654,18 @@ export namespace ScheduledCaller {
   export type AsObject = {
     name: string,
     callName: string,
-    sipConfig?: SipBaseConfig.AsObject,
-    commonServicesConfig?: CommonServicesConfig.AsObject,
+    sipConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject,
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
     scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    sipCallerConfig?: SipCallerConfig.AsObject,
+    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject,
     status: ScheduledCallerStatus,
     vtsiProjectName: string,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     firedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     errorMessage: string,
     campaignName: string,
+    retryOfScheduledCallerName: string,
+    retriedByScheduledCallerName: string,
   }
 }
 
@@ -2360,6 +1681,11 @@ export class GetScheduledCallerRequest extends jspb.Message {
   hasCallView(): boolean;
   clearCallView(): GetScheduledCallerRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetScheduledCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): GetScheduledCallerRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetScheduledCallerRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetScheduledCallerRequest): GetScheduledCallerRequest.AsObject;
@@ -2373,6 +1699,7 @@ export namespace GetScheduledCallerRequest {
     vtsiProjectName: string,
     name: string,
     callView?: CallView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 
   export enum CallViewCase { 
@@ -2400,6 +1727,27 @@ export class ListScheduledCallersRequest extends jspb.Message {
   clearStatusesList(): ListScheduledCallersRequest;
   addStatuses(value: ScheduledCallerStatus, index?: number): ListScheduledCallersRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListScheduledCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListScheduledCallersRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListScheduledCallersRequest;
+
+  getCampaignName(): string;
+  setCampaignName(value: string): ListScheduledCallersRequest;
+
+  getScheduledAfter(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setScheduledAfter(value?: google_protobuf_timestamp_pb.Timestamp): ListScheduledCallersRequest;
+  hasScheduledAfter(): boolean;
+  clearScheduledAfter(): ListScheduledCallersRequest;
+
+  getScheduledBefore(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setScheduledBefore(value?: google_protobuf_timestamp_pb.Timestamp): ListScheduledCallersRequest;
+  hasScheduledBefore(): boolean;
+  clearScheduledBefore(): ListScheduledCallersRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListScheduledCallersRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListScheduledCallersRequest): ListScheduledCallersRequest.AsObject;
@@ -2414,6 +1762,11 @@ export namespace ListScheduledCallersRequest {
     pageToken?: string,
     callView?: CallView,
     statusesList: Array<ScheduledCallerStatus>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    pageSize: number,
+    campaignName: string,
+    scheduledAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    scheduledBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 
   export enum PageTokenCase { 
@@ -2436,6 +1789,9 @@ export class ListScheduledCallersResponse extends jspb.Message {
   getNextPageToken(): string;
   setNextPageToken(value: string): ListScheduledCallersResponse;
 
+  getTotalSize(): number;
+  setTotalSize(value: number): ListScheduledCallersResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListScheduledCallersResponse.AsObject;
   static toObject(includeInstance: boolean, msg: ListScheduledCallersResponse): ListScheduledCallersResponse.AsObject;
@@ -2448,6 +1804,7 @@ export namespace ListScheduledCallersResponse {
   export type AsObject = {
     scheduledCallersList: Array<ScheduledCaller.AsObject>,
     nextPageToken: string,
+    totalSize: number,
   }
 }
 
@@ -2457,6 +1814,11 @@ export class CancelScheduledCallerRequest extends jspb.Message {
 
   getName(): string;
   setName(value: string): CancelScheduledCallerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): CancelScheduledCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): CancelScheduledCallerRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CancelScheduledCallerRequest.AsObject;
@@ -2470,6 +1832,7 @@ export namespace CancelScheduledCallerRequest {
   export type AsObject = {
     vtsiProjectName: string,
     name: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -2503,12 +1866,141 @@ export namespace CancelScheduledCallerResponse {
   }
 }
 
+export class CancelScheduledCallersRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): CancelScheduledCallersRequest;
+
+  getNamesList(): Array<string>;
+  setNamesList(value: Array<string>): CancelScheduledCallersRequest;
+  clearNamesList(): CancelScheduledCallersRequest;
+  addNames(value: string, index?: number): CancelScheduledCallersRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): CancelScheduledCallersRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): CancelScheduledCallersRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelScheduledCallersRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelScheduledCallersRequest): CancelScheduledCallersRequest.AsObject;
+  static serializeBinaryToWriter(message: CancelScheduledCallersRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelScheduledCallersRequest;
+  static deserializeBinaryFromReader(message: CancelScheduledCallersRequest, reader: jspb.BinaryReader): CancelScheduledCallersRequest;
+}
+
+export namespace CancelScheduledCallersRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    namesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+  }
+}
+
+export class CancelScheduledCallersResponse extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): CancelScheduledCallersResponse;
+
+  getCancelScheduledCallerResponsesList(): Array<CancelScheduledCallerResponse>;
+  setCancelScheduledCallerResponsesList(value: Array<CancelScheduledCallerResponse>): CancelScheduledCallersResponse;
+  clearCancelScheduledCallerResponsesList(): CancelScheduledCallersResponse;
+  addCancelScheduledCallerResponses(value?: CancelScheduledCallerResponse, index?: number): CancelScheduledCallerResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): CancelScheduledCallersResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelScheduledCallersResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelScheduledCallersResponse): CancelScheduledCallersResponse.AsObject;
+  static serializeBinaryToWriter(message: CancelScheduledCallersResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelScheduledCallersResponse;
+  static deserializeBinaryFromReader(message: CancelScheduledCallersResponse, reader: jspb.BinaryReader): CancelScheduledCallersResponse;
+}
+
+export namespace CancelScheduledCallersResponse {
+  export type AsObject = {
+    vtsiProjectName: string,
+    cancelScheduledCallerResponsesList: Array<CancelScheduledCallerResponse.AsObject>,
+    errorMessage: string,
+  }
+}
+
+export class UpdateScheduledCallerRequest extends jspb.Message {
+  getScheduledCaller(): ScheduledCaller | undefined;
+  setScheduledCaller(value?: ScheduledCaller): UpdateScheduledCallerRequest;
+  hasScheduledCaller(): boolean;
+  clearScheduledCaller(): UpdateScheduledCallerRequest;
+
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateScheduledCallerRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateScheduledCallerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateScheduledCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateScheduledCallerRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateScheduledCallerRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateScheduledCallerRequest): UpdateScheduledCallerRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateScheduledCallerRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateScheduledCallerRequest;
+  static deserializeBinaryFromReader(message: UpdateScheduledCallerRequest, reader: jspb.BinaryReader): UpdateScheduledCallerRequest;
+}
+
+export namespace UpdateScheduledCallerRequest {
+  export type AsObject = {
+    scheduledCaller?: ScheduledCaller.AsObject,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+  }
+}
+
+export class RetryScheduledCallerRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): RetryScheduledCallerRequest;
+
+  getName(): string;
+  setName(value: string): RetryScheduledCallerRequest;
+
+  getScheduledTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setScheduledTime(value?: google_protobuf_timestamp_pb.Timestamp): RetryScheduledCallerRequest;
+  hasScheduledTime(): boolean;
+  clearScheduledTime(): RetryScheduledCallerRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RetryScheduledCallerRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): RetryScheduledCallerRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RetryScheduledCallerRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RetryScheduledCallerRequest): RetryScheduledCallerRequest.AsObject;
+  static serializeBinaryToWriter(message: RetryScheduledCallerRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RetryScheduledCallerRequest;
+  static deserializeBinaryFromReader(message: RetryScheduledCallerRequest, reader: jspb.BinaryReader): RetryScheduledCallerRequest;
+}
+
+export namespace RetryScheduledCallerRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    name: string,
+    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+  }
+}
+
 export class StopCallRequest extends jspb.Message {
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StopCallRequest;
 
   getCallName(): string;
   setCallName(value: string): StopCallRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopCallRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopCallRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopCallRequest.AsObject;
@@ -2522,6 +2014,7 @@ export namespace StopCallRequest {
   export type AsObject = {
     vtsiProjectName: string,
     callName: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -2560,6 +2053,11 @@ export class StopCallsRequest extends jspb.Message {
   clearCallNamesList(): StopCallsRequest;
   addCallNames(value: string, index?: number): StopCallsRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopCallsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopCallsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopCallsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StopCallsRequest): StopCallsRequest.AsObject;
@@ -2572,6 +2070,7 @@ export namespace StopCallsRequest {
   export type AsObject = {
     vtsiProjectName: string,
     callNamesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -2603,6 +2102,16 @@ export class StopAllCallsRequest extends jspb.Message {
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StopAllCallsRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): StopAllCallsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): StopAllCallsRequest;
+
+  getCallFilter(): CallFilter | undefined;
+  setCallFilter(value?: CallFilter): StopAllCallsRequest;
+  hasCallFilter(): boolean;
+  clearCallFilter(): StopAllCallsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopAllCallsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StopAllCallsRequest): StopAllCallsRequest.AsObject;
@@ -2614,6 +2123,8 @@ export class StopAllCallsRequest extends jspb.Message {
 export namespace StopAllCallsRequest {
   export type AsObject = {
     vtsiProjectName: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    callFilter?: CallFilter.AsObject,
   }
 }
 
@@ -2641,6 +2152,9 @@ export class TransferCallRequest extends jspb.Message {
   getRingTimeoutS(): number;
   setRingTimeoutS(value: number): TransferCallRequest;
 
+  getRequestId(): string;
+  setRequestId(value: string): TransferCallRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TransferCallRequest.AsObject;
   static toObject(includeInstance: boolean, msg: TransferCallRequest): TransferCallRequest.AsObject;
@@ -2658,6 +2172,7 @@ export namespace TransferCallRequest {
     mode: TransferMode,
     headersMap: Array<[string, string]>,
     ringTimeoutS: number,
+    requestId: string,
   }
 }
 
@@ -2872,6 +2387,9 @@ export class CallParticipant extends jspb.Message {
   getBotPolicy(): BotPolicyOnJoin;
   setBotPolicy(value: BotPolicyOnJoin): CallParticipant;
 
+  getEndReasonType(): ParticipantEndReason;
+  setEndReasonType(value: ParticipantEndReason): CallParticipant;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CallParticipant.AsObject;
   static toObject(includeInstance: boolean, msg: CallParticipant): CallParticipant.AsObject;
@@ -2892,6 +2410,7 @@ export namespace CallParticipant {
     endReason: string,
     invitedBy: string,
     botPolicy: BotPolicyOnJoin,
+    endReasonType: ParticipantEndReason,
   }
 }
 
@@ -3416,6 +2935,11 @@ export class GetCallRequest extends jspb.Message {
   hasCallView(): boolean;
   clearCallView(): GetCallRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetCallRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): GetCallRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetCallRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetCallRequest): GetCallRequest.AsObject;
@@ -3429,6 +2953,7 @@ export namespace GetCallRequest {
     vtsiProjectName: string,
     callName: string,
     callView?: CallView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 
   export enum CallViewCase { 
@@ -3487,8 +3012,8 @@ export class Call extends jspb.Message {
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): Call;
 
-  getCommonServicesConfig(): CommonServicesConfig | undefined;
-  setCommonServicesConfig(value?: CommonServicesConfig): Call;
+  getCommonServicesConfig(): ondewo_vtsi_call_configs_pb.CommonServicesConfig | undefined;
+  setCommonServicesConfig(value?: ondewo_vtsi_call_configs_pb.CommonServicesConfig): Call;
   hasCommonServicesConfig(): boolean;
   clearCommonServicesConfig(): Call;
 
@@ -3545,6 +3070,9 @@ export class Call extends jspb.Message {
   getSipCallId(): string;
   setSipCallId(value: string): Call;
 
+  getLabelsMap(): jspb.Map<string, string>;
+  clearLabelsMap(): Call;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Call.AsObject;
   static toObject(includeInstance: boolean, msg: Call): Call.AsObject;
@@ -3568,7 +3096,7 @@ export namespace Call {
     servicesStatuses?: AllServicesStatuses.AsObject,
     active: boolean,
     vtsiProjectName: string,
-    commonServicesConfig?: CommonServicesConfig.AsObject,
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
     sipPort?: number,
     csiPort?: number,
     nluSessionName?: string,
@@ -3580,6 +3108,7 @@ export namespace Call {
     participantsList: Array<CallParticipant.AsObject>,
     lastTransfer?: CallTransferRecord.AsObject,
     sipCallId: string,
+    labelsMap: Array<[string, string]>,
   }
 
   export enum SipStatusCase { 
@@ -3714,6 +3243,47 @@ export class CallFilter extends jspb.Message {
   clearPlatformsList(): CallFilter;
   addPlatforms(value: ondewo_nlu_intent_pb.Intent.Message.Platform, index?: number): CallFilter;
 
+  getCampaignName(): string;
+  setCampaignName(value: string): CallFilter;
+
+  getCampaignDisplayName(): string;
+  setCampaignDisplayName(value: string): CallFilter;
+
+  getLabelsMap(): jspb.Map<string, string>;
+  clearLabelsMap(): CallFilter;
+
+  getCallerNamesList(): Array<string>;
+  setCallerNamesList(value: Array<string>): CallFilter;
+  clearCallerNamesList(): CallFilter;
+  addCallerNames(value: string, index?: number): CallFilter;
+
+  getListenerNamesList(): Array<string>;
+  setListenerNamesList(value: Array<string>): CallFilter;
+  clearListenerNamesList(): CallFilter;
+  addListenerNames(value: string, index?: number): CallFilter;
+
+  getRedialRecommended(): boolean;
+  setRedialRecommended(value: boolean): CallFilter;
+  hasRedialRecommended(): boolean;
+  clearRedialRecommended(): CallFilter;
+
+  getTransferOutcomesList(): Array<TransferOutcome>;
+  setTransferOutcomesList(value: Array<TransferOutcome>): CallFilter;
+  clearTransferOutcomesList(): CallFilter;
+  addTransferOutcomes(value: TransferOutcome, index?: number): CallFilter;
+
+  getSipPortNumbersList(): Array<number>;
+  setSipPortNumbersList(value: Array<number>): CallFilter;
+  clearSipPortNumbersList(): CallFilter;
+  addSipPortNumbers(value: number, index?: number): CallFilter;
+
+  getCsiPortNumbersList(): Array<number>;
+  setCsiPortNumbersList(value: Array<number>): CallFilter;
+  clearCsiPortNumbersList(): CallFilter;
+  addCsiPortNumbers(value: number, index?: number): CallFilter;
+
+  getCampaignCase(): CallFilter.CampaignCase;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CallFilter.AsObject;
   static toObject(includeInstance: boolean, msg: CallFilter): CallFilter.AsObject;
@@ -3739,6 +3309,21 @@ export namespace CallFilter {
     durationInSMin?: number,
     durationInSMax?: number,
     platformsList: Array<ondewo_nlu_intent_pb.Intent.Message.Platform>,
+    campaignName: string,
+    campaignDisplayName: string,
+    labelsMap: Array<[string, string]>,
+    callerNamesList: Array<string>,
+    listenerNamesList: Array<string>,
+    redialRecommended?: boolean,
+    transferOutcomesList: Array<TransferOutcome>,
+    sipPortNumbersList: Array<number>,
+    csiPortNumbersList: Array<number>,
+  }
+
+  export enum CampaignCase { 
+    CAMPAIGN_NOT_SET = 0,
+    CAMPAIGN_NAME = 16,
+    CAMPAIGN_DISPLAY_NAME = 17,
   }
 
   export enum CallStatusCase { 
@@ -3765,6 +3350,38 @@ export namespace CallFilter {
     _DURATION_IN_S_MAX_NOT_SET = 0,
     DURATION_IN_S_MAX = 14,
   }
+
+  export enum RedialRecommendedCase { 
+    _REDIAL_RECOMMENDED_NOT_SET = 0,
+    REDIAL_RECOMMENDED = 21,
+  }
+}
+
+export class CallSorting extends jspb.Message {
+  getSortingField(): CallSorting.CallSortingField;
+  setSortingField(value: CallSorting.CallSortingField): CallSorting;
+
+  getSortingMode(): ondewo_vtsi_projects_pb.VtsiProjectSortingMode;
+  setSortingMode(value: ondewo_vtsi_projects_pb.VtsiProjectSortingMode): CallSorting;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CallSorting.AsObject;
+  static toObject(includeInstance: boolean, msg: CallSorting): CallSorting.AsObject;
+  static serializeBinaryToWriter(message: CallSorting, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CallSorting;
+  static deserializeBinaryFromReader(message: CallSorting, reader: jspb.BinaryReader): CallSorting;
+}
+
+export namespace CallSorting {
+  export type AsObject = {
+    sortingField: CallSorting.CallSortingField,
+    sortingMode: ondewo_vtsi_projects_pb.VtsiProjectSortingMode,
+  }
+
+  export enum CallSortingField { 
+    NO_CALL_SORTING = 0,
+    SORT_CALL_BY_START_TIME = 1,
+  }
 }
 
 export class ListCallsRequest extends jspb.Message {
@@ -3786,6 +3403,19 @@ export class ListCallsRequest extends jspb.Message {
   hasPageToken(): boolean;
   clearPageToken(): ListCallsRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListCallsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListCallsRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListCallsRequest;
+
+  getCallSorting(): CallSorting | undefined;
+  setCallSorting(value?: CallSorting): ListCallsRequest;
+  hasCallSorting(): boolean;
+  clearCallSorting(): ListCallsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallsRequest): ListCallsRequest.AsObject;
@@ -3800,6 +3430,9 @@ export namespace ListCallsRequest {
     callView?: CallView,
     callFilter?: CallFilter.AsObject,
     pageToken?: string,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    pageSize: number,
+    callSorting?: CallSorting.AsObject,
   }
 
   export enum CallViewCase { 
@@ -3827,6 +3460,9 @@ export class ListCallsResponse extends jspb.Message {
   getNextPageToken(): string;
   setNextPageToken(value: string): ListCallsResponse;
 
+  getTotalSize(): number;
+  setTotalSize(value: number): ListCallsResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCallsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: ListCallsResponse): ListCallsResponse.AsObject;
@@ -3839,6 +3475,303 @@ export namespace ListCallsResponse {
   export type AsObject = {
     callsList: Array<Call.AsObject>,
     nextPageToken: string,
+    totalSize: number,
+  }
+}
+
+export class UpdateCallRequest extends jspb.Message {
+  getCall(): Call | undefined;
+  setCall(value?: Call): UpdateCallRequest;
+  hasCall(): boolean;
+  clearCall(): UpdateCallRequest;
+
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateCallRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateCallRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateCallRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateCallRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallRequest): UpdateCallRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallRequest;
+  static deserializeBinaryFromReader(message: UpdateCallRequest, reader: jspb.BinaryReader): UpdateCallRequest;
+}
+
+export namespace UpdateCallRequest {
+  export type AsObject = {
+    call?: Call.AsObject,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+  }
+}
+
+export class UpdateCallResponse extends jspb.Message {
+  getName(): string;
+  setName(value: string): UpdateCallResponse;
+
+  getCall(): Call | undefined;
+  setCall(value?: Call): UpdateCallResponse;
+  hasCall(): boolean;
+  clearCall(): UpdateCallResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): UpdateCallResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallResponse): UpdateCallResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallResponse;
+  static deserializeBinaryFromReader(message: UpdateCallResponse, reader: jspb.BinaryReader): UpdateCallResponse;
+}
+
+export namespace UpdateCallResponse {
+  export type AsObject = {
+    name: string,
+    call?: Call.AsObject,
+    errorMessage: string,
+  }
+}
+
+export class UpdateCallsRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): UpdateCallsRequest;
+
+  getUpdateCallRequestsList(): Array<UpdateCallRequest>;
+  setUpdateCallRequestsList(value: Array<UpdateCallRequest>): UpdateCallsRequest;
+  clearUpdateCallRequestsList(): UpdateCallsRequest;
+  addUpdateCallRequests(value?: UpdateCallRequest, index?: number): UpdateCallRequest;
+
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateCallsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateCallsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallsRequest): UpdateCallsRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallsRequest;
+  static deserializeBinaryFromReader(message: UpdateCallsRequest, reader: jspb.BinaryReader): UpdateCallsRequest;
+}
+
+export namespace UpdateCallsRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    updateCallRequestsList: Array<UpdateCallRequest.AsObject>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+  }
+}
+
+export class UpdateCallsResponse extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): UpdateCallsResponse;
+
+  getUpdateCallResponsesList(): Array<UpdateCallResponse>;
+  setUpdateCallResponsesList(value: Array<UpdateCallResponse>): UpdateCallsResponse;
+  clearUpdateCallResponsesList(): UpdateCallsResponse;
+  addUpdateCallResponses(value?: UpdateCallResponse, index?: number): UpdateCallResponse;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): UpdateCallsResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCallsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCallsResponse): UpdateCallsResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateCallsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCallsResponse;
+  static deserializeBinaryFromReader(message: UpdateCallsResponse, reader: jspb.BinaryReader): UpdateCallsResponse;
+}
+
+export namespace UpdateCallsResponse {
+  export type AsObject = {
+    vtsiProjectName: string,
+    updateCallResponsesList: Array<UpdateCallResponse.AsObject>,
+    errorMessage: string,
+  }
+}
+
+export class GetCallStatisticsRequest extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): GetCallStatisticsRequest;
+
+  getCallFilter(): CallFilter | undefined;
+  setCallFilter(value?: CallFilter): GetCallStatisticsRequest;
+  hasCallFilter(): boolean;
+  clearCallFilter(): GetCallStatisticsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetCallStatisticsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetCallStatisticsRequest): GetCallStatisticsRequest.AsObject;
+  static serializeBinaryToWriter(message: GetCallStatisticsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetCallStatisticsRequest;
+  static deserializeBinaryFromReader(message: GetCallStatisticsRequest, reader: jspb.BinaryReader): GetCallStatisticsRequest;
+}
+
+export namespace GetCallStatisticsRequest {
+  export type AsObject = {
+    vtsiProjectName: string,
+    callFilter?: CallFilter.AsObject,
+  }
+}
+
+export class SipStatusTypeCount extends jspb.Message {
+  getSipStatusType(): ondewo_sip_sip_pb.SipStatus.StatusType;
+  setSipStatusType(value: ondewo_sip_sip_pb.SipStatus.StatusType): SipStatusTypeCount;
+
+  getCount(): number;
+  setCount(value: number): SipStatusTypeCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SipStatusTypeCount.AsObject;
+  static toObject(includeInstance: boolean, msg: SipStatusTypeCount): SipStatusTypeCount.AsObject;
+  static serializeBinaryToWriter(message: SipStatusTypeCount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SipStatusTypeCount;
+  static deserializeBinaryFromReader(message: SipStatusTypeCount, reader: jspb.BinaryReader): SipStatusTypeCount;
+}
+
+export namespace SipStatusTypeCount {
+  export type AsObject = {
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
+    count: number,
+  }
+}
+
+export class CallTypeCount extends jspb.Message {
+  getCallType(): CallType;
+  setCallType(value: CallType): CallTypeCount;
+
+  getCount(): number;
+  setCount(value: number): CallTypeCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CallTypeCount.AsObject;
+  static toObject(includeInstance: boolean, msg: CallTypeCount): CallTypeCount.AsObject;
+  static serializeBinaryToWriter(message: CallTypeCount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CallTypeCount;
+  static deserializeBinaryFromReader(message: CallTypeCount, reader: jspb.BinaryReader): CallTypeCount;
+}
+
+export namespace CallTypeCount {
+  export type AsObject = {
+    callType: CallType,
+    count: number,
+  }
+}
+
+export class AmdVerdictCount extends jspb.Message {
+  getVerdict(): ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict;
+  setVerdict(value: ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict): AmdVerdictCount;
+
+  getCount(): number;
+  setCount(value: number): AmdVerdictCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AmdVerdictCount.AsObject;
+  static toObject(includeInstance: boolean, msg: AmdVerdictCount): AmdVerdictCount.AsObject;
+  static serializeBinaryToWriter(message: AmdVerdictCount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AmdVerdictCount;
+  static deserializeBinaryFromReader(message: AmdVerdictCount, reader: jspb.BinaryReader): AmdVerdictCount;
+}
+
+export namespace AmdVerdictCount {
+  export type AsObject = {
+    verdict: ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict,
+    count: number,
+  }
+}
+
+export class TransferOutcomeCount extends jspb.Message {
+  getOutcome(): TransferOutcome;
+  setOutcome(value: TransferOutcome): TransferOutcomeCount;
+
+  getCount(): number;
+  setCount(value: number): TransferOutcomeCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TransferOutcomeCount.AsObject;
+  static toObject(includeInstance: boolean, msg: TransferOutcomeCount): TransferOutcomeCount.AsObject;
+  static serializeBinaryToWriter(message: TransferOutcomeCount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TransferOutcomeCount;
+  static deserializeBinaryFromReader(message: TransferOutcomeCount, reader: jspb.BinaryReader): TransferOutcomeCount;
+}
+
+export namespace TransferOutcomeCount {
+  export type AsObject = {
+    outcome: TransferOutcome,
+    count: number,
+  }
+}
+
+export class CallStatistics extends jspb.Message {
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): CallStatistics;
+
+  getTotal(): number;
+  setTotal(value: number): CallStatistics;
+
+  getActive(): number;
+  setActive(value: number): CallStatistics;
+
+  getSipStatusTypeCountsList(): Array<SipStatusTypeCount>;
+  setSipStatusTypeCountsList(value: Array<SipStatusTypeCount>): CallStatistics;
+  clearSipStatusTypeCountsList(): CallStatistics;
+  addSipStatusTypeCounts(value?: SipStatusTypeCount, index?: number): SipStatusTypeCount;
+
+  getCallTypeCountsList(): Array<CallTypeCount>;
+  setCallTypeCountsList(value: Array<CallTypeCount>): CallStatistics;
+  clearCallTypeCountsList(): CallStatistics;
+  addCallTypeCounts(value?: CallTypeCount, index?: number): CallTypeCount;
+
+  getEndedCalls(): number;
+  setEndedCalls(value: number): CallStatistics;
+
+  getTotalDurationS(): number;
+  setTotalDurationS(value: number): CallStatistics;
+
+  getAverageDurationS(): number;
+  setAverageDurationS(value: number): CallStatistics;
+
+  getRedialRecommended(): number;
+  setRedialRecommended(value: number): CallStatistics;
+
+  getAmdVerdictCountsList(): Array<AmdVerdictCount>;
+  setAmdVerdictCountsList(value: Array<AmdVerdictCount>): CallStatistics;
+  clearAmdVerdictCountsList(): CallStatistics;
+  addAmdVerdictCounts(value?: AmdVerdictCount, index?: number): AmdVerdictCount;
+
+  getTransferOutcomeCountsList(): Array<TransferOutcomeCount>;
+  setTransferOutcomeCountsList(value: Array<TransferOutcomeCount>): CallStatistics;
+  clearTransferOutcomeCountsList(): CallStatistics;
+  addTransferOutcomeCounts(value?: TransferOutcomeCount, index?: number): TransferOutcomeCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CallStatistics.AsObject;
+  static toObject(includeInstance: boolean, msg: CallStatistics): CallStatistics.AsObject;
+  static serializeBinaryToWriter(message: CallStatistics, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CallStatistics;
+  static deserializeBinaryFromReader(message: CallStatistics, reader: jspb.BinaryReader): CallStatistics;
+}
+
+export namespace CallStatistics {
+  export type AsObject = {
+    vtsiProjectName: string,
+    total: number,
+    active: number,
+    sipStatusTypeCountsList: Array<SipStatusTypeCount.AsObject>,
+    callTypeCountsList: Array<CallTypeCount.AsObject>,
+    endedCalls: number,
+    totalDurationS: number,
+    averageDurationS: number,
+    redialRecommended: number,
+    amdVerdictCountsList: Array<AmdVerdictCount.AsObject>,
+    transferOutcomeCountsList: Array<TransferOutcomeCount.AsObject>,
   }
 }
 
@@ -4154,6 +4087,18 @@ export enum ParticipantState {
   PARTICIPANT_STATE_JOINED = 2,
   PARTICIPANT_STATE_FAILED = 3,
   PARTICIPANT_STATE_LEFT = 4,
+}
+export enum ParticipantEndReason { 
+  PARTICIPANT_END_REASON_UNSPECIFIED = 0,
+  PARTICIPANT_END_REASON_NO_ANSWER = 1,
+  PARTICIPANT_END_REASON_BUSY = 2,
+  PARTICIPANT_END_REASON_CHANNEL_UNAVAILABLE = 3,
+  PARTICIPANT_END_REASON_CALL_ENDED = 4,
+  PARTICIPANT_END_REASON_REMOVED = 5,
+  PARTICIPANT_END_REASON_HANGUP = 6,
+  PARTICIPANT_END_REASON_HANDED_OVER = 7,
+  PARTICIPANT_END_REASON_JOIN_FAILED = 8,
+  PARTICIPANT_END_REASON_TIMEOUT = 9,
 }
 export enum CallAudioMode { 
   CALL_AUDIO_MODE_UNSPECIFIED = 0,

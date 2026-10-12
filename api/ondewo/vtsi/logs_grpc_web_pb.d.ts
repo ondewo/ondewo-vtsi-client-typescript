@@ -41,6 +41,11 @@ export class LogsClient {
                response: ondewo_vtsi_logs_pb.DeleteCallLogsResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_logs_pb.DeleteCallLogsResponse>;
 
+  exportCallLogs(
+    request: ondewo_vtsi_logs_pb.ExportCallLogsRequest,
+    metadata?: grpcWeb.Metadata
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_logs_pb.ExportCallLogsResponse>;
+
 }
 
 export class LogsPromiseClient {
@@ -72,6 +77,11 @@ export class LogsPromiseClient {
     request: ondewo_vtsi_logs_pb.DeleteCallLogsRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_logs_pb.DeleteCallLogsResponse>;
+
+  exportCallLogs(
+    request: ondewo_vtsi_logs_pb.ExportCallLogsRequest,
+    metadata?: grpcWeb.Metadata
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_logs_pb.ExportCallLogsResponse>;
 
 }
 

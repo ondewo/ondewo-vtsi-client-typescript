@@ -20,25 +20,19 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 
-var google_api_annotations_pb = require('../../google/api/annotations_pb.js')
-
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
-
-var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js')
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js')
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
-var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js')
-
 var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js')
-
-var ondewo_s2t_speech$to$text_pb = require('../../ondewo/s2t/speech-to-text_pb.js')
-
-var ondewo_t2s_text$to$speech_pb = require('../../ondewo/t2s/text-to-speech_pb.js')
 
 var ondewo_sip_sip_pb = require('../../ondewo/sip/sip_pb.js')
 
+var ondewo_vtsi_call_configs_pb = require('../../ondewo/vtsi/call_configs_pb.js')
+
 var ondewo_vtsi_campaigns_pb = require('../../ondewo/vtsi/campaigns_pb.js')
+
+var ondewo_vtsi_projects_pb = require('../../ondewo/vtsi/projects_pb.js')
 const proto = {};
 proto.ondewo = {};
 proto.ondewo.vtsi = require('./calls_pb.js');
@@ -336,6 +330,128 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.getCaller =
       request,
       metadata || {},
       methodDescriptor_Calls_GetCaller);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateCallerRequest,
+ *   !proto.ondewo.vtsi.UpdateCallerResponse>}
+ */
+const methodDescriptor_Calls_UpdateCaller = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateCaller',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateCallerRequest,
+  proto.ondewo.vtsi.UpdateCallerResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateCallerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.UpdateCallerResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.UpdateCallerResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.UpdateCallerResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateCaller =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCaller,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.UpdateCallerResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateCaller =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCaller);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateCallersRequest,
+ *   !proto.ondewo.vtsi.UpdateCallersResponse>}
+ */
+const methodDescriptor_Calls_UpdateCallers = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateCallers',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateCallersRequest,
+  proto.ondewo.vtsi.UpdateCallersResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateCallersRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.UpdateCallersResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.UpdateCallersResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.UpdateCallersResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateCallers =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCallers',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCallers,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.UpdateCallersResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateCallers =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCallers',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCallers);
 };
 
 
@@ -952,6 +1068,128 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.getListener =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateListenerRequest,
+ *   !proto.ondewo.vtsi.UpdateListenerResponse>}
+ */
+const methodDescriptor_Calls_UpdateListener = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateListener',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateListenerRequest,
+  proto.ondewo.vtsi.UpdateListenerResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateListenerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.UpdateListenerResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateListenerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.UpdateListenerResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.UpdateListenerResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateListener =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateListener',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateListener,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateListenerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.UpdateListenerResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateListener =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateListener',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateListener);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateListenersRequest,
+ *   !proto.ondewo.vtsi.UpdateListenersResponse>}
+ */
+const methodDescriptor_Calls_UpdateListeners = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateListeners',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateListenersRequest,
+  proto.ondewo.vtsi.UpdateListenersResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateListenersRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.UpdateListenersResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateListenersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.UpdateListenersResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.UpdateListenersResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateListeners =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateListeners',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateListeners,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateListenersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.UpdateListenersResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateListeners =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateListeners',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateListeners);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.ondewo.vtsi.DeleteListenerRequest,
  *   !proto.ondewo.vtsi.DeleteListenerResponse>}
  */
@@ -1440,6 +1678,67 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.listScheduledCallers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateScheduledCallerRequest,
+ *   !proto.ondewo.vtsi.ScheduledCaller>}
+ */
+const methodDescriptor_Calls_UpdateScheduledCaller = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateScheduledCaller',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateScheduledCallerRequest,
+  proto.ondewo.vtsi.ScheduledCaller,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateScheduledCallerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.ScheduledCaller.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.ScheduledCaller)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ScheduledCaller>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateScheduledCaller =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateScheduledCaller,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.ScheduledCaller>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateScheduledCaller =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateScheduledCaller);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.ondewo.vtsi.CancelScheduledCallerRequest,
  *   !proto.ondewo.vtsi.CancelScheduledCallerResponse>}
  */
@@ -1495,6 +1794,128 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.cancelScheduledCaller =
       request,
       metadata || {},
       methodDescriptor_Calls_CancelScheduledCaller);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.CancelScheduledCallersRequest,
+ *   !proto.ondewo.vtsi.CancelScheduledCallersResponse>}
+ */
+const methodDescriptor_Calls_CancelScheduledCallers = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/CancelScheduledCallers',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.CancelScheduledCallersRequest,
+  proto.ondewo.vtsi.CancelScheduledCallersResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.CancelScheduledCallersRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.CancelScheduledCallersResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CancelScheduledCallersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.CancelScheduledCallersResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.CancelScheduledCallersResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.cancelScheduledCallers =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/CancelScheduledCallers',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_CancelScheduledCallers,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.CancelScheduledCallersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.CancelScheduledCallersResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.cancelScheduledCallers =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/CancelScheduledCallers',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_CancelScheduledCallers);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.RetryScheduledCallerRequest,
+ *   !proto.ondewo.vtsi.ScheduledCaller>}
+ */
+const methodDescriptor_Calls_RetryScheduledCaller = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/RetryScheduledCaller',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.RetryScheduledCallerRequest,
+  proto.ondewo.vtsi.ScheduledCaller,
+  /**
+   * @param {!proto.ondewo.vtsi.RetryScheduledCallerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.ScheduledCaller.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RetryScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.ScheduledCaller)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ScheduledCaller>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.retryScheduledCaller =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/RetryScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_RetryScheduledCaller,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RetryScheduledCallerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.ScheduledCaller>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.retryScheduledCaller =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/RetryScheduledCaller',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_RetryScheduledCaller);
 };
 
 
@@ -1922,6 +2343,189 @@ proto.ondewo.vtsi.CallsPromiseClient.prototype.listCalls =
       request,
       metadata || {},
       methodDescriptor_Calls_ListCalls);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.GetCallStatisticsRequest,
+ *   !proto.ondewo.vtsi.CallStatistics>}
+ */
+const methodDescriptor_Calls_GetCallStatistics = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/GetCallStatistics',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.GetCallStatisticsRequest,
+  proto.ondewo.vtsi.CallStatistics,
+  /**
+   * @param {!proto.ondewo.vtsi.GetCallStatisticsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.CallStatistics.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetCallStatisticsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.CallStatistics)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.CallStatistics>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.getCallStatistics =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/GetCallStatistics',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_GetCallStatistics,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.GetCallStatisticsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.CallStatistics>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.getCallStatistics =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/GetCallStatistics',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_GetCallStatistics);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateCallRequest,
+ *   !proto.ondewo.vtsi.UpdateCallResponse>}
+ */
+const methodDescriptor_Calls_UpdateCall = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateCall',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateCallRequest,
+  proto.ondewo.vtsi.UpdateCallResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateCallRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.UpdateCallResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.UpdateCallResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.UpdateCallResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateCall =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCall',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCall,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.UpdateCallResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateCall =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCall',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCall);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.UpdateCallsRequest,
+ *   !proto.ondewo.vtsi.UpdateCallsResponse>}
+ */
+const methodDescriptor_Calls_UpdateCalls = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Calls/UpdateCalls',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.UpdateCallsRequest,
+  proto.ondewo.vtsi.UpdateCallsResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.UpdateCallsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.UpdateCallsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.UpdateCallsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.UpdateCallsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.CallsClient.prototype.updateCalls =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCalls',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCalls,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.UpdateCallsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.UpdateCallsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.CallsPromiseClient.prototype.updateCalls =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Calls/UpdateCalls',
+      request,
+      metadata || {},
+      methodDescriptor_Calls_UpdateCalls);
 };
 
 

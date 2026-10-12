@@ -1,7 +1,6 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
-import * as google_protobuf_struct_pb from 'google-protobuf/google/protobuf/struct_pb'; // proto import: "google/protobuf/struct.proto"
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 
 
@@ -67,6 +66,20 @@ export class VtsiProject extends jspb.Message {
   clearTransferPhoneNumberAllowlistList(): VtsiProject;
   addTransferPhoneNumberAllowlist(value: string, index?: number): VtsiProject;
 
+  getStatusMessage(): string;
+  setStatusMessage(value: string): VtsiProject;
+
+  getStatusChangedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setStatusChangedAt(value?: google_protobuf_timestamp_pb.Timestamp): VtsiProject;
+  hasStatusChangedAt(): boolean;
+  clearStatusChangedAt(): VtsiProject;
+
+  getTrunkRegistrationState(): TrunkRegistrationState;
+  setTrunkRegistrationState(value: TrunkRegistrationState): VtsiProject;
+
+  getAsteriskVersionEffective(): string;
+  setAsteriskVersionEffective(value: string): VtsiProject;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VtsiProject.AsObject;
   static toObject(includeInstance: boolean, msg: VtsiProject): VtsiProject.AsObject;
@@ -94,6 +107,10 @@ export namespace VtsiProject {
     deployedCallers: number,
     deployedListeners: number,
     transferPhoneNumberAllowlistList: Array<string>,
+    statusMessage: string,
+    statusChangedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    trunkRegistrationState: TrunkRegistrationState,
+    asteriskVersionEffective: string,
   }
 }
 
@@ -271,6 +288,9 @@ export class CreateVtsiProjectRequest extends jspb.Message {
   getErrorMessage(): string;
   setErrorMessage(value: string): CreateVtsiProjectRequest;
 
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): CreateVtsiProjectRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateVtsiProjectRequest.AsObject;
   static toObject(includeInstance: boolean, msg: CreateVtsiProjectRequest): CreateVtsiProjectRequest.AsObject;
@@ -283,6 +303,7 @@ export namespace CreateVtsiProjectRequest {
   export type AsObject = {
     vtsiProject?: VtsiProject.AsObject,
     errorMessage: string,
+    validateOnly: boolean,
   }
 }
 
@@ -317,6 +338,11 @@ export class GetVtsiProjectRequest extends jspb.Message {
   getVtsiProjectView(): VtsiProjectView;
   setVtsiProjectView(value: VtsiProjectView): GetVtsiProjectRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetVtsiProjectRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): GetVtsiProjectRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetVtsiProjectRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetVtsiProjectRequest): GetVtsiProjectRequest.AsObject;
@@ -329,6 +355,7 @@ export namespace GetVtsiProjectRequest {
   export type AsObject = {
     name: string,
     vtsiProjectView: VtsiProjectView,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -351,6 +378,32 @@ export class ListVtsiProjectsRequest extends jspb.Message {
   clearNluAgentNamesList(): ListVtsiProjectsRequest;
   addNluAgentNames(value: string, index?: number): ListVtsiProjectsRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListVtsiProjectsRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): ListVtsiProjectsRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListVtsiProjectsRequest;
+
+  getStatusesList(): Array<VtsiProjectStatus>;
+  setStatusesList(value: Array<VtsiProjectStatus>): ListVtsiProjectsRequest;
+  clearStatusesList(): ListVtsiProjectsRequest;
+  addStatuses(value: VtsiProjectStatus, index?: number): ListVtsiProjectsRequest;
+
+  getDisplayNameContains(): string;
+  setDisplayNameContains(value: string): ListVtsiProjectsRequest;
+
+  getCreatedAfter(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setCreatedAfter(value?: google_protobuf_timestamp_pb.Timestamp): ListVtsiProjectsRequest;
+  hasCreatedAfter(): boolean;
+  clearCreatedAfter(): ListVtsiProjectsRequest;
+
+  getCreatedBefore(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setCreatedBefore(value?: google_protobuf_timestamp_pb.Timestamp): ListVtsiProjectsRequest;
+  hasCreatedBefore(): boolean;
+  clearCreatedBefore(): ListVtsiProjectsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListVtsiProjectsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListVtsiProjectsRequest): ListVtsiProjectsRequest.AsObject;
@@ -365,6 +418,12 @@ export namespace ListVtsiProjectsRequest {
     pageToken?: string,
     vtsiProjectSorting?: VtsiProjectSorting.AsObject,
     nluAgentNamesList: Array<string>,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    pageSize: number,
+    statusesList: Array<VtsiProjectStatus>,
+    displayNameContains: string,
+    createdAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    createdBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 
   export enum PageTokenCase { 
@@ -457,6 +516,14 @@ export class UpdateVtsiProjectRequest extends jspb.Message {
   hasUpdateMask(): boolean;
   clearUpdateMask(): UpdateVtsiProjectRequest;
 
+  getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateVtsiProjectRequest;
+  hasFieldMask(): boolean;
+  clearFieldMask(): UpdateVtsiProjectRequest;
+
+  getValidateOnly(): boolean;
+  setValidateOnly(value: boolean): UpdateVtsiProjectRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateVtsiProjectRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateVtsiProjectRequest): UpdateVtsiProjectRequest.AsObject;
@@ -469,6 +536,8 @@ export namespace UpdateVtsiProjectRequest {
   export type AsObject = {
     vtsiProject?: VtsiProject.AsObject,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    validateOnly: boolean,
   }
 }
 
@@ -478,6 +547,11 @@ export class UpdateVtsiProjectResponse extends jspb.Message {
 
   getErrorMessage(): string;
   setErrorMessage(value: string): UpdateVtsiProjectResponse;
+
+  getVtsiProject(): VtsiProject | undefined;
+  setVtsiProject(value?: VtsiProject): UpdateVtsiProjectResponse;
+  hasVtsiProject(): boolean;
+  clearVtsiProject(): UpdateVtsiProjectResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateVtsiProjectResponse.AsObject;
@@ -491,6 +565,7 @@ export namespace UpdateVtsiProjectResponse {
   export type AsObject = {
     name: string,
     errorMessage: string,
+    vtsiProject?: VtsiProject.AsObject,
   }
 }
 
@@ -614,6 +689,13 @@ export namespace UndeployVtsiProjectResponse {
   }
 }
 
+export enum TrunkRegistrationState { 
+  TRUNK_REGISTRATION_STATE_UNSPECIFIED = 0,
+  TRUNK_REGISTRATION_STATE_REGISTERED = 1,
+  TRUNK_REGISTRATION_STATE_UNREGISTERED = 2,
+  TRUNK_REGISTRATION_STATE_REJECTED = 3,
+  TRUNK_REGISTRATION_STATE_NOT_CONFIGURED = 4,
+}
 export enum VtsiProjectStatus { 
   UNSPECIFIED = 0,
   UNDEPLOYED = 1,
@@ -623,6 +705,7 @@ export enum VtsiProjectStatus {
   UNDEPLOYING = 5,
   DELETING = 6,
   DELETED = 7,
+  DEPLOY_FAILED = 8,
 }
 export enum SipTrunkTransport { 
   SIP_TRUNK_TRANSPORT_UNSPECIFIED = 0,

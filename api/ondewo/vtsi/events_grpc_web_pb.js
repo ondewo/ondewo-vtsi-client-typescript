@@ -759,6 +759,67 @@ proto.ondewo.vtsi.EventsPromiseClient.prototype.testWebhook =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.RedeliverWebhookEventsRequest,
+ *   !proto.ondewo.vtsi.RedeliverWebhookEventsResponse>}
+ */
+const methodDescriptor_Events_RedeliverWebhookEvents = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Events/RedeliverWebhookEvents',
+  grpc.web.MethodType.UNARY,
+  proto.ondewo.vtsi.RedeliverWebhookEventsRequest,
+  proto.ondewo.vtsi.RedeliverWebhookEventsResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.RedeliverWebhookEventsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.RedeliverWebhookEventsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RedeliverWebhookEventsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ondewo.vtsi.RedeliverWebhookEventsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.RedeliverWebhookEventsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.EventsClient.prototype.redeliverWebhookEvents =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ondewo.vtsi.Events/RedeliverWebhookEvents',
+      request,
+      metadata || {},
+      methodDescriptor_Events_RedeliverWebhookEvents,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.RedeliverWebhookEventsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ondewo.vtsi.RedeliverWebhookEventsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ondewo.vtsi.EventsPromiseClient.prototype.redeliverWebhookEvents =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ondewo.vtsi.Events/RedeliverWebhookEvents',
+      request,
+      metadata || {},
+      methodDescriptor_Events_RedeliverWebhookEvents);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.ondewo.vtsi.SubscribeVtsiEventsRequest,
  *   !proto.ondewo.vtsi.SubscribeVtsiEventsResponse>}
  */

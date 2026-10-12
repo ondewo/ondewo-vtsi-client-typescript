@@ -20,6 +20,8 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js')
+
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
 var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js')
@@ -378,6 +380,62 @@ proto.ondewo.vtsi.LogsPromiseClient.prototype.deleteCallLogs =
       request,
       metadata || {},
       methodDescriptor_Logs_DeleteCallLogs);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ondewo.vtsi.ExportCallLogsRequest,
+ *   !proto.ondewo.vtsi.ExportCallLogsResponse>}
+ */
+const methodDescriptor_Logs_ExportCallLogs = new grpc.web.MethodDescriptor(
+  '/ondewo.vtsi.Logs/ExportCallLogs',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.ondewo.vtsi.ExportCallLogsRequest,
+  proto.ondewo.vtsi.ExportCallLogsResponse,
+  /**
+   * @param {!proto.ondewo.vtsi.ExportCallLogsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ondewo.vtsi.ExportCallLogsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ondewo.vtsi.ExportCallLogsRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ExportCallLogsResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.LogsClient.prototype.exportCallLogs =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Logs/ExportCallLogs',
+      request,
+      metadata || {},
+      methodDescriptor_Logs_ExportCallLogs);
+};
+
+
+/**
+ * @param {!proto.ondewo.vtsi.ExportCallLogsRequest} request The request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ondewo.vtsi.ExportCallLogsResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.ondewo.vtsi.LogsPromiseClient.prototype.exportCallLogs =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ondewo.vtsi.Logs/ExportCallLogs',
+      request,
+      metadata || {},
+      methodDescriptor_Logs_ExportCallLogs);
 };
 
 
