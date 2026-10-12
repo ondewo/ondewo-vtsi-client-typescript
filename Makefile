@@ -100,6 +100,10 @@ release: ## Create Github and NPM Release
 	make install_precommit_hooks
 	make build
 	make check_build
+# The suite runs BEFORE anything is committed, pushed or published: 9.1.0 shipped with a stale
+# test because only the GitHub workflow ran it, after the npm publish. A red suite stops here.
+	npm install --no-audit --no-fund
+	npm test
 	make run_precommit_hooks
 	git status
 	git add api
