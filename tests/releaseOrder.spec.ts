@@ -243,6 +243,16 @@ runTestCase('the codegen source package.json carries the dev dependencies the ro
 	assert.deepEqual(restored, { ...read('package.json').devDependencies });
 });
 
+runTestCase('the build installs the locked dependencies before create_npm_package runs npx tsc', () => {
+	// In a fresh clone (the release driver's) there is no node_modules, so `npx tsc` fetched the unrelated
+	// `tsc` package ('This is not the tsc command you are looking for') and the build stopped.
+	const build: string[] = recipeLinesOf('build');
+	const install: number = build.indexOf('make install_dependencies');
+	assert.ok(install >= 0, 'build installs the dependencies');
+	assert.ok(install < build.indexOf('make create_npm_package'), 'before create_npm_package compiles auth/');
+	assert.match(recipeLinesOf('create_npm_package').join('\n'), /npx tsc /);
+});
+
 runTestCase('the build neither pushes ondewo-vtsi-api nor mounts the repository root into the codegen', () => {
 	assert.ok(!MAKEFILE.includes('make -C ${VTSI_APIS_DIR}'));
 	assert.ok(!MAKEFILE.includes('$(MAKE) -C ${VTSI_APIS_DIR}'));
