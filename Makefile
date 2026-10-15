@@ -383,15 +383,11 @@ create_npm_package: ensure_node_toolchain ## Create NPM Package for Release
 	mkdir -p npm/auth
 	$(NODE_EXEC) npx tsc auth/offlineTokenProvider.ts --ignoreConfig --declaration --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --types node --typeRoots ./node_modules/@types --rootDir auth --outDir npm/auth
 
-install_dependencies: ensure_node_toolchain ## Installs Dev-Dependencies
-	$(NODE_EXEC) npm i --save-dev \
-		@eslint/eslintrc \
-		@eslint/js \
-		@typescript-eslint/eslint-plugin \
-		eslint \
-		global \
-		husky \
-		prettier
+# src/package.json (the codegen's source) carries the dev dependencies, so the regenerated root
+# package.json keeps them and this only syncs node_modules with the lockfile. It used to
+# `npm i --save-dev <names>`, which re-resolved them to the newest release at every build.
+install_dependencies: ensure_node_toolchain ## Installs the dependencies the lockfile pins
+	$(NODE_EXEC) npm install --no-audit --no-fund
 
 # Only the api submodule's committed tag is used: `make -C src/ondewo-vtsi-api build` is NOT called,
 # because that target commits and pushes ondewo-vtsi-api whenever it is checked out on a branch.
@@ -409,12 +405,18 @@ check_out_correct_submodule_versions: ## Fetches all Submodules and checks out s
 # The repository root is never mounted, so nothing else in it (e.g. a devops-accounts clone) is exposed.
 npm_run_build: ## Runs the proto compiler and copies its output into the repository
 	@echo "START proto compilation ..."
-	rm -rf $(CODEGEN_OUTPUT_DIR) && mkdir -p $(CODEGEN_OUTPUT_DIR)
+	rm -rf $(CODEGEN_OUTPUT_DIR) && mkdir -p $(CODEGEN_OUTPUT_DIR)/auth
+# The compiler appends `export * from './auth/<module>'` to public-api.* for every module it finds in
+# <output>/auth, so the hand-written providers (not their specs) are seeded into the scratch output.
+	find auth -maxdepth 1 -type f -name '*.ts' ! -name '*.spec.ts' -exec cp {} $(CODEGEN_OUTPUT_DIR)/auth/ \;
 	docker run --rm \
 		-v "$(CURDIR)/src":/input-volume:ro \
 		-v "$(CURDIR)/$(CODEGEN_OUTPUT_DIR)":/output-volume \
 		--entrypoint bash $(PROTO_COMPILER_IMAGE) \
 		-c 'bash compile-proto-2-typescript.sh ondewo-vtsi-api ondewo; rc=$$?; chown -R "$(shell id -u):$(shell id -g)" /output-volume; exit $$rc'
+# The compiler also runs its own `npm install` in its output: that node_modules/ and freshly resolved
+# package-lock.json are dropped, so the committed lockfile stays the one the release tests and commits.
+	rm -rf $(CODEGEN_OUTPUT_DIR)/node_modules $(CODEGEN_OUTPUT_DIR)/package-lock.json
 	rm -rf api
 	cp -R $(CODEGEN_OUTPUT_DIR)/. .
 	rm -rf $(CODEGEN_OUTPUT_DIR)

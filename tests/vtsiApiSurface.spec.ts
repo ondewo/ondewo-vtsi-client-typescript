@@ -284,6 +284,23 @@ nodeTest('the entry point re-exports every generated vtsi module', (): void => {
 	assert.deepEqual(missing, []);
 });
 
+nodeTest('the entry point re-exports the hand-written auth providers', (): void => {
+	const modules: string[] = readdirSync(join(REPO_ROOT, 'auth'))
+		.filter((file: string): boolean => file.endsWith('.ts') && !file.endsWith('.spec.ts'))
+		.map((file: string): string => file.replace(/\.ts$/, ''));
+	assert.ok(modules.length > 0);
+	const missing: string[] = [];
+	for (const entryPoint of ['public-api.js', 'public-api.d.ts']) {
+		const text: string = readFileSync(join(REPO_ROOT, entryPoint), 'utf8');
+		for (const module of modules) {
+			if (!text.includes(`export * from './auth/${module}';`)) {
+				missing.push(`${entryPoint}: ${module}`);
+			}
+		}
+	}
+	assert.deepEqual(missing, []);
+});
+
 nodeTest('AsteriskConfigsFiles carries pjsipConfFileString and no longer sipConfFileString', (): void => {
 	const Files: typeof AsteriskConfigsFiles = generatedExport<typeof AsteriskConfigsFiles>('AsteriskConfigsFiles');
 	const files: AsteriskConfigsFiles = new Files();

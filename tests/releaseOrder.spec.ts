@@ -195,6 +195,25 @@ runTestCase('src/package.json is on the Makefile version', () => {
 	assert.equal(pkg.version, version[1]);
 });
 
+/** The part of a package.json the dependency check reads. */
+interface Manifest {
+	/** The dev dependencies by name. */
+	devDependencies?: Record<string, string>;
+}
+
+runTestCase('the codegen source package.json carries the dev dependencies the root declares', () => {
+	// The codegen rewrites the root package.json from src/package.json and restore_ci_test_setup merges
+	// .ci-package.json back, so a devDependency missing or older in src/package.json is downgraded by every
+	// release (it took eslint from 10 back to 9).
+	const read: (file: string) => Manifest = (file: string): Manifest =>
+		JSON.parse(readFileSync(join(REPO_ROOT, file), 'utf8')) as Manifest;
+	const restored: Record<string, string> = {
+		...read('src/package.json').devDependencies,
+		...read('.ci-package.json').devDependencies
+	};
+	assert.deepEqual(restored, { ...read('package.json').devDependencies });
+});
+
 runTestCase('the build neither pushes ondewo-vtsi-api nor mounts the repository root into the codegen', () => {
 	assert.ok(!MAKEFILE.includes('make -C ${VTSI_APIS_DIR}'));
 	assert.ok(!MAKEFILE.includes('$(MAKE) -C ${VTSI_APIS_DIR}'));
@@ -202,6 +221,7 @@ runTestCase('the build neither pushes ondewo-vtsi-api nor mounts the repository 
 	assert.ok(codegen.includes('-v "$(CURDIR)/src":/input-volume:ro'));
 	assert.ok(codegen.includes('-v "$(CURDIR)/$(CODEGEN_OUTPUT_DIR)":/output-volume'));
 	assert.ok(!/\/\.\.:\/output-volume|"\$\(CURDIR\)":\/output-volume/.test(codegen));
+	assert.ok(codegen.includes('rm -rf $(CODEGEN_OUTPUT_DIR)/node_modules $(CODEGEN_OUTPUT_DIR)/package-lock.json'));
 	assert.ok(
 		!/\bsudo\b/.test(
 			MAKEFILE.split('\n')
