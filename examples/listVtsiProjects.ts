@@ -49,6 +49,17 @@ export interface ProjectLister {
 }
 
 /**
+ * @param error - Anything a failed RPC threw.
+ * @returns Its message when it is an Error, otherwise its string form.
+ */
+function describeError(error: unknown): string {
+	if (error instanceof Error) {
+		return error.message;
+	}
+	return String(error);
+}
+
+/**
  * List every VTSI project on the server and return their display names.
  *
  * Builds a full-view {@link ListVtsiProjectsRequest}, calls the `listVtsiProjects` RPC with the
@@ -75,7 +86,7 @@ export async function fetchVtsiProjectDisplayNames(
 		if (error instanceof RpcError) {
 			console.error(`listVtsiProjects RPC failed: gRPC code ${error.code} - ${error.message}`);
 		} else {
-			console.error(`listVtsiProjects RPC failed: ${error instanceof Error ? error.message : String(error)}`);
+			console.error(`listVtsiProjects RPC failed: ${describeError(error)}`);
 		}
 		throw error;
 	}

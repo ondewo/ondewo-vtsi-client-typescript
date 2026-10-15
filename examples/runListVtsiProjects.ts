@@ -64,7 +64,10 @@ function requireEnv(name: string): string {
  */
 function optionalEnv(name: string, defaultValue: string): string {
 	const value: string | undefined = process.env[name];
-	return value === undefined || value.length === 0 ? defaultValue : value;
+	if (value === undefined || value.length === 0) {
+		return defaultValue;
+	}
+	return value;
 }
 
 /**
@@ -91,7 +94,10 @@ function buildGrpcWebUrl(): string {
 	const host: string = requireEnv('ONDEWO_HOST');
 	const port: string = requireEnv('ONDEWO_PORT');
 	const useSecureChannel: boolean = booleanEnv('ONDEWO_USE_SECURE_CHANNEL', true);
-	const scheme: string = useSecureChannel ? 'https' : 'http';
+	let scheme: string = 'http';
+	if (useSecureChannel) {
+		scheme = 'https';
+	}
 	return `${scheme}://${host}:${port}`;
 }
 
@@ -125,7 +131,11 @@ async function main(): Promise<void> {
 if (require.main === module) {
 	main().catch((error: unknown): void => {
 		console.error('FAILED: could not list VTSI projects.');
-		console.error(error instanceof Error ? `${error.name}: ${error.message}` : String(error));
+		if (error instanceof Error) {
+			console.error(`${error.name}: ${error.message}`);
+		} else {
+			console.error(String(error));
+		}
 		process.exit(1);
 	});
 }
