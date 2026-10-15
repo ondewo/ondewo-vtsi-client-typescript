@@ -160,13 +160,15 @@ runTestCase('ondewo_release deletes the devops-accounts clone before the release
 	const recipe: string = recipeLinesOf('ondewo_release').join('\n');
 	const load: number = recipe.indexOf("eval \"$$(grep -h -E '^(GITHUB_GH_TOKEN|NPM_AUTOMATION_TOKEN)='");
 	const remove: number = recipe.indexOf('if [ -n "$$clone_dir" ]; then rm -rf "$$clone_dir"; fi');
-	const release: number = recipe.indexOf('$(MAKE) release');
+	const release: number = recipe.lastIndexOf('$(MAKE) release');
 	assert.ok(load > 0 && remove > load && release > remove, 'load -> delete clone -> $(MAKE) release');
 	assert.ok(recipe.includes(`trap 'rm -rf "$$clone_dir"' EXIT INT TERM`));
 	assert.ok(recipe.includes('clone_dir=$$(mktemp -d)'), 'the clone lives outside the repository');
 	assert.ok(recipe.includes('[ -d "$(DEVOPS_ACCOUNT_DIR)" ]'), "the driver's DEVOPS_ACCOUNT_DIR is honoured");
 	assert.match(MAKEFILE, /^DEVOPS_ACCOUNT_DIR\?=$/m);
 	assert.match(MAKEFILE, /^ondewo_release: spc /m);
+	assert.ok(recipe.indexOf('if [ -n "$(DRY_RUN)" ]') < recipe.indexOf('git clone'), 'make -n never clones');
+	assert.match(MAKEFILE, /^DRY_RUN:=\$\(findstring n,\$\(firstword -\$\(MAKEFLAGS\)\)\)$/m);
 });
 
 runTestCase('spc checks branch and tag anchored, locally and on origin', () => {

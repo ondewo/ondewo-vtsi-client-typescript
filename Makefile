@@ -60,6 +60,9 @@ GH_REPO_SLUG=ondewo/ondewo-vtsi-client-typescript
 DEVOPS_ACCOUNT_GIT=ondewo-devops-accounts
 # Set by the ondewo-vtsi-api release driver to its single temporary clone; empty means clone here.
 DEVOPS_ACCOUNT_DIR?=
+# Non-empty under `make -n`. make runs a recipe line containing $(MAKE) even then, so ondewo_release
+# checks it to keep a dry run away from the devops-accounts clone and the credentials.
+DRY_RUN:=$(findstring n,$(firstword -$(MAKEFLAGS)))
 .DEFAULT_GOAL := help
 
 ########################################################
@@ -315,6 +318,7 @@ docker_npm_release: ## Release to npm with docker image
 # DEVOPS_ACCOUNT_DIR (set by the ondewo-vtsi-api driver to its own clone) is used as is and left alone.
 ondewo_release: spc ## Release with credentials from devops-accounts repo
 	@set -e; \
+	if [ -n "$(DRY_RUN)" ]; then echo "dry run: devops-accounts not cloned, no credentials loaded"; $(MAKE) release; exit 0; fi; \
 	if [ -n "$(DEVOPS_ACCOUNT_DIR)" ] && [ -d "$(DEVOPS_ACCOUNT_DIR)" ]; then \
 		accounts="$(DEVOPS_ACCOUNT_DIR)"; clone_dir=; \
 	else \
