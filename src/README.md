@@ -389,7 +389,8 @@ that clone before anything else runs (also when the release fails), and then run
 7. Create the GitHub release (refused when the notes are empty), then `release_verify`: the tag is on
    origin, the GitHub release has a body, npm serves the version.
 
-`make release_preflight` and `make release_verify` can also be run on their own; both are read-only.
+`make release_preflight` and `make release_verify` can also be run on their own; both are read-only and
+take the tokens from the environment or, when it is set, from the directory `DEVOPS_ACCOUNT_DIR` names.
 
 Host requirements: `docker`, `make`, `git`, `perl` and `curl`, plus SSH push access to this repository.
 `gh` and the npm registry calls always run in the pinned `tools` stage of `Dockerfile.utils`; `node`/`npm`

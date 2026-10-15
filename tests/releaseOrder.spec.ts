@@ -138,6 +138,23 @@ runTestCase('release_preflight probes every credential and refuses a released ve
 	assert.ok(!/\b(git (commit|tag|push(?! --dry-run))|npm publish|gh release create)\b/.test(recipe));
 });
 
+runTestCase(
+	'release_preflight and release_verify load the credentials from DEVOPS_ACCOUNT_DIR when run standalone',
+	() => {
+		assert.match(MAKEFILE, /^LOAD_CREDENTIALS=if .*\[ -d "\$\(DEVOPS_ACCOUNT_DIR\)" \]; then set -a; eval /m);
+		const tokenLines: string[] = ['release_preflight', 'release_verify'].flatMap((target: string): string[] =>
+			recipeLinesOf(target).filter((line: string): boolean =>
+				/-e (GITHUB_GH_TOKEN|NPM_AUTOMATION_TOKEN)\b|test -n "\$\$(GITHUB_GH_TOKEN|NPM_AUTOMATION_TOKEN)"/.test(line)
+			)
+		);
+		assert.ok(tokenLines.length >= 5);
+		assert.deepEqual(
+			tokenLines.filter((line: string): boolean => !line.startsWith('@$(LOAD_CREDENTIALS); ')),
+			[]
+		);
+	}
+);
+
 runTestCase('release_verify checks the tag, the GitHub release body and npm', () => {
 	const recipe: string = recipeLinesOf('release_verify').join('\n');
 	assert.ok(recipe.includes('git ls-remote --exit-code --tags origin "refs/tags/${ONDEWO_VTSI_VERSION}"'));

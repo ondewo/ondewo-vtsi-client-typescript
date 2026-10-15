@@ -63,6 +63,10 @@ DEVOPS_ACCOUNT_DIR?=
 # Non-empty under `make -n`. make runs a recipe line containing $(MAKE) even then, so ondewo_release
 # checks it to keep a dry run away from the devops-accounts clone and the credentials.
 DRY_RUN:=$(findstring n,$(firstword -$(MAKEFLAGS)))
+# release_preflight and release_verify also run standalone (the vtsi-api driver calls them with only
+# DEVOPS_ACCOUNT_DIR set): a recipe line that needs a token starts with this, which loads the anchored
+# `^NAME=` lines from that directory when the environment does not already carry both tokens.
+LOAD_CREDENTIALS=if { [ -z "$$GITHUB_GH_TOKEN" ] || [ -z "$$NPM_AUTOMATION_TOKEN" ]; } && [ -n "$(DEVOPS_ACCOUNT_DIR)" ] && [ -d "$(DEVOPS_ACCOUNT_DIR)" ]; then set -a; eval "$$(grep -h -E '^(GITHUB_GH_TOKEN|NPM_AUTOMATION_TOKEN)=' "$(DEVOPS_ACCOUNT_DIR)/account_github.env" "$(DEVOPS_ACCOUNT_DIR)/account_npm.env")"; set +a; fi
 .DEFAULT_GOAL := help
 
 ########################################################
@@ -178,13 +182,13 @@ release_preflight: spc build_tools_docker_image ## Read-only: credentials valid,
 	@for tool in docker make git perl curl; do \
 		command -v $$tool >/dev/null 2>&1 || { echo "ERROR: the release needs '$$tool' on the host"; exit 1; }; \
 	done; echo "-- host tools: docker make git perl curl present; node/npm: $(if $(HOST_HAS_NODE),host,tools image)"
-	@test -n "$$GITHUB_GH_TOKEN" || { echo "ERROR: GITHUB_GH_TOKEN is not set"; exit 1; }
-	@test -n "$$NPM_AUTOMATION_TOKEN" || { echo "ERROR: NPM_AUTOMATION_TOKEN is not set"; exit 1; }
-	@user=$$(docker run --rm -e NPM_AUTOMATION_TOKEN $(IMAGE_TOOLS_NAME) sh -c 'umask 077 && c=$$(mktemp) && printf "%s\n" "//registry.npmjs.org/:_authToken=\$${NPM_AUTOMATION_TOKEN}" > "$$c" && npm whoami --userconfig "$$c" --registry $(NPM_REGISTRY) 2>/dev/null') \
+	@$(LOAD_CREDENTIALS); test -n "$$GITHUB_GH_TOKEN" || { echo "ERROR: GITHUB_GH_TOKEN is not set"; exit 1; }
+	@$(LOAD_CREDENTIALS); test -n "$$NPM_AUTOMATION_TOKEN" || { echo "ERROR: NPM_AUTOMATION_TOKEN is not set"; exit 1; }
+	@$(LOAD_CREDENTIALS); user=$$(docker run --rm -e NPM_AUTOMATION_TOKEN $(IMAGE_TOOLS_NAME) sh -c 'umask 077 && c=$$(mktemp) && printf "%s\n" "//registry.npmjs.org/:_authToken=\$${NPM_AUTOMATION_TOKEN}" > "$$c" && npm whoami --userconfig "$$c" --registry $(NPM_REGISTRY) 2>/dev/null') \
 		&& test -n "$$user" \
 		|| { echo "ERROR: npm rejects NPM_AUTOMATION_TOKEN (npm whoami failed)"; exit 1; }; \
 		echo "-- npm: the token authenticates as $$user"
-	@push=$$(docker run --rm -e GITHUB_GH_TOKEN $(IMAGE_TOOLS_NAME) sh -c 'GH_TOKEN="$$GITHUB_GH_TOKEN" gh api repos/$(GH_REPO_SLUG) --jq .permissions.push 2>/dev/null'); \
+	@$(LOAD_CREDENTIALS); push=$$(docker run --rm -e GITHUB_GH_TOKEN $(IMAGE_TOOLS_NAME) sh -c 'GH_TOKEN="$$GITHUB_GH_TOKEN" gh api repos/$(GH_REPO_SLUG) --jq .permissions.push 2>/dev/null'); \
 		test "$$push" = "true" || { echo "ERROR: GITHUB_GH_TOKEN cannot push to $(GH_REPO_SLUG) (gh answered: '$$(printf '%s' "$$push" | tr -s '[:space:]' ' ')')"; exit 1; }; \
 		echo "-- GitHub: the token can push to $(GH_REPO_SLUG)"
 	@$(WITHOUT_CREDENTIALS) git push --dry-run --quiet origin HEAD || { echo "ERROR: git cannot push to origin"; exit 1; }; \
@@ -243,7 +247,7 @@ check_npm_published: build_tools_docker_image ## Polls npm until it serves ONDEW
 release_verify: build_tools_docker_image ## Read-only: tag on origin, GitHub release body non-empty, npm serves the version
 	@git ls-remote --exit-code --tags origin "refs/tags/${ONDEWO_VTSI_VERSION}" >/dev/null \
 		|| { echo "ERROR: tag ${ONDEWO_VTSI_VERSION} is not on origin"; exit 1; }; echo "-- tag ${ONDEWO_VTSI_VERSION} is on origin"
-	@docker run --rm -e GITHUB_GH_TOKEN $(IMAGE_TOOLS_NAME) sh -c 'GH_TOKEN="$$GITHUB_GH_TOKEN" gh release view "${ONDEWO_VTSI_VERSION}" --repo $(GH_REPO_SLUG) --json body --jq .body' \
+	@$(LOAD_CREDENTIALS); docker run --rm -e GITHUB_GH_TOKEN $(IMAGE_TOOLS_NAME) sh -c 'GH_TOKEN="$$GITHUB_GH_TOKEN" gh release view "${ONDEWO_VTSI_VERSION}" --repo $(GH_REPO_SLUG) --json body --jq .body' \
 		| grep -q '[^[:space:]]' || { echo "ERROR: GitHub release ${ONDEWO_VTSI_VERSION} is missing or has an empty body"; exit 1; }; \
 		echo "-- GitHub release ${ONDEWO_VTSI_VERSION} has notes"
 	$(MAKE) check_npm_published
