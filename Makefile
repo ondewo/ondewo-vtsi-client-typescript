@@ -35,9 +35,12 @@ GITHUB_GH_TOKEN?=
 NPM_AUTOMATION_TOKEN?=
 NPM_PACKAGE=@ondewo/vtsi-client-typescript
 NPM_REGISTRY=https://registry.npmjs.org/
-# release_verify polls npm this many times, this many seconds apart.
-NPM_VERIFY_ATTEMPTS?=20
-NPM_VERIFY_INTERVAL_S?=30
+# release_verify polls npm this many times, this many seconds apart. VERIFY_ATTEMPTS / VERIFY_INTERVAL_S
+# are the names the ondewo-vtsi-api driver sets for every client; NPM_VERIFY_* still override them.
+VERIFY_ATTEMPTS?=20
+VERIFY_INTERVAL_S?=30
+NPM_VERIFY_ATTEMPTS?=$(VERIFY_ATTEMPTS)
+NPM_VERIFY_INTERVAL_S?=$(VERIFY_INTERVAL_S)
 IMAGE_UTILS_NAME=ondewo-vtsi-client-utils-typescript:${ONDEWO_VTSI_VERSION}
 # The `tools` stage of Dockerfile.utils: node/npm, make and gh, no repository content.
 IMAGE_TOOLS_NAME=ondewo-vtsi-client-tools-typescript:${ONDEWO_VTSI_VERSION}

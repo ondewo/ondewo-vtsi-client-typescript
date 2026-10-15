@@ -167,6 +167,16 @@ runTestCase('release_verify checks the tag, the GitHub release body and npm', ()
 	);
 });
 
+runTestCase('the npm polling honours the driver-wide VERIFY_ATTEMPTS / VERIFY_INTERVAL_S and the old names', () => {
+	assert.match(MAKEFILE, /^VERIFY_ATTEMPTS\?=[0-9]+$/m);
+	assert.match(MAKEFILE, /^VERIFY_INTERVAL_S\?=[0-9]+$/m);
+	assert.match(MAKEFILE, /^NPM_VERIFY_ATTEMPTS\?=\$\(VERIFY_ATTEMPTS\)$/m);
+	assert.match(MAKEFILE, /^NPM_VERIFY_INTERVAL_S\?=\$\(VERIFY_INTERVAL_S\)$/m);
+	const poll: string = recipeLinesOf('check_npm_published').join('\n');
+	assert.ok(poll.includes('$(NPM_VERIFY_ATTEMPTS)'));
+	assert.ok(poll.includes('sleep $(NPM_VERIFY_INTERVAL_S)'));
+});
+
 runTestCase('the GitHub release refuses empty notes', () => {
 	const lines: string[] = recipeLinesOf('build_gh_release');
 	assert.match(lines[0], /^@test -n "\$\(CURRENT_RELEASE_NOTES\)" \|\| \{/);
