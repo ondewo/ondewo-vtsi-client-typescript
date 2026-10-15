@@ -23,3 +23,4 @@ dist/
 # rewrites the `[comment]: <> (START/END OF GITHUB README)` slice markers the release cuts
 # the published README with.
 README.md
+.codegen-output/
