@@ -636,7 +636,8 @@ modifiedBy: jspb.Message.getFieldWithDefault(msg, 17, ""),
 modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
 locked: jspb.Message.getBooleanFieldWithDefault(msg, 19, false),
 lockedAt: (f = msg.getLockedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-lockedReason: jspb.Message.getFieldWithDefault(msg, 21, "")
+lockedReason: jspb.Message.getFieldWithDefault(msg, 21, ""),
+description: jspb.Message.getFieldWithDefault(msg, 22, "")
   };
 
   if (includeInstance) {
@@ -763,6 +764,10 @@ proto.ondewo.vtsi.SoftphoneAccount.deserializeBinaryFromReader = function(msg, r
     case 21:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setLockedReason(value);
+      break;
+    case 22:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setDescription(value);
       break;
     default:
       reader.skipField();
@@ -944,6 +949,13 @@ jspb.internal.public_for_gencode.serializeMapToBinary(
   if (f.length > 0) {
     writer.writeString(
       21,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      22,
       f
     );
   }
@@ -1462,6 +1474,24 @@ proto.ondewo.vtsi.SoftphoneAccount.prototype.getLockedReason = function() {
  */
 proto.ondewo.vtsi.SoftphoneAccount.prototype.setLockedReason = function(value) {
   return jspb.Message.setProto3StringField(this, 21, value);
+};
+
+
+/**
+ * optional string description = 22;
+ * @return {string}
+ */
+proto.ondewo.vtsi.SoftphoneAccount.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 22, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.vtsi.SoftphoneAccount} returns this
+ */
+proto.ondewo.vtsi.SoftphoneAccount.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 22, value);
 };
 
 

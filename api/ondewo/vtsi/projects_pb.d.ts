@@ -2,9 +2,12 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
+import * as ondewo_vtsi_call_configs_pb from '../../ondewo/vtsi/call_configs_pb'; // proto import: "ondewo/vtsi/call_configs.proto"
 
 
 export class VtsiProject extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VtsiProject.AsObject);
   getName(): string;
   setName(value: string): VtsiProject;
 
@@ -80,6 +83,24 @@ export class VtsiProject extends jspb.Message {
   getAsteriskVersionEffective(): string;
   setAsteriskVersionEffective(value: string): VtsiProject;
 
+  getWarmTransferDefaults(): ondewo_vtsi_call_configs_pb.WarmTransferConfig | undefined;
+  setWarmTransferDefaults(value?: ondewo_vtsi_call_configs_pb.WarmTransferConfig): VtsiProject;
+  hasWarmTransferDefaults(): boolean;
+  clearWarmTransferDefaults(): VtsiProject;
+
+  getFeatureAvailability(): VtsiProjectFeatureAvailability | undefined;
+  setFeatureAvailability(value?: VtsiProjectFeatureAvailability): VtsiProject;
+  hasFeatureAvailability(): boolean;
+  clearFeatureAvailability(): VtsiProject;
+
+  getIvrMenusEnabled(): boolean;
+  setIvrMenusEnabled(value: boolean): VtsiProject;
+  hasIvrMenusEnabled(): boolean;
+  clearIvrMenusEnabled(): VtsiProject;
+
+  getTransferTargetDirectoryMap(): jspb.Map<string, TransferTargetDirectoryItem>;
+  clearTransferTargetDirectoryMap(): VtsiProject;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VtsiProject.AsObject;
   static toObject(includeInstance: boolean, msg: VtsiProject): VtsiProject.AsObject;
@@ -90,31 +111,94 @@ export class VtsiProject extends jspb.Message {
 
 export namespace VtsiProject {
   export type AsObject = {
-    name: string,
-    displayName: string,
-    maxCallers: number,
-    maxListeners: number,
-    asteriskConfigs?: AsteriskConfigs.AsObject,
-    vtsiProjectStatus: VtsiProjectStatus,
-    createdBy: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    modifiedBy: string,
-    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    activeCallers: number,
-    activeListeners: number,
-    asteriskPort: number,
-    nluAgentNamesList: Array<string>,
-    deployedCallers: number,
-    deployedListeners: number,
-    transferPhoneNumberAllowlistList: Array<string>,
-    statusMessage: string,
-    statusChangedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    trunkRegistrationState: TrunkRegistrationState,
-    asteriskVersionEffective: string,
+    name: string;
+    displayName: string;
+    maxCallers: number;
+    maxListeners: number;
+    asteriskConfigs?: AsteriskConfigs.AsObject;
+    vtsiProjectStatus: VtsiProjectStatus;
+    createdBy: string;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    modifiedBy: string;
+    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    activeCallers: number;
+    activeListeners: number;
+    asteriskPort: number;
+    nluAgentNamesList: Array<string>;
+    deployedCallers: number;
+    deployedListeners: number;
+    transferPhoneNumberAllowlistList: Array<string>;
+    statusMessage: string;
+    statusChangedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    trunkRegistrationState: TrunkRegistrationState;
+    asteriskVersionEffective: string;
+    warmTransferDefaults?: ondewo_vtsi_call_configs_pb.WarmTransferConfig.AsObject;
+    featureAvailability?: VtsiProjectFeatureAvailability.AsObject;
+    ivrMenusEnabled?: boolean;
+    transferTargetDirectoryMap: Array<[string, TransferTargetDirectoryItem.AsObject]>;
+  };
+
+  export enum IvrMenusEnabledCase {
+    _IVR_MENUS_ENABLED_NOT_SET = 0,
+    IVR_MENUS_ENABLED = 24,
   }
 }
 
+export class TransferTargetDirectoryItem extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TransferTargetDirectoryItem.AsObject);
+  getDisplayName(): string;
+  setDisplayName(value: string): TransferTargetDirectoryItem;
+
+  getDescription(): string;
+  setDescription(value: string): TransferTargetDirectoryItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TransferTargetDirectoryItem.AsObject;
+  static toObject(includeInstance: boolean, msg: TransferTargetDirectoryItem): TransferTargetDirectoryItem.AsObject;
+  static serializeBinaryToWriter(message: TransferTargetDirectoryItem, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TransferTargetDirectoryItem;
+  static deserializeBinaryFromReader(message: TransferTargetDirectoryItem, reader: jspb.BinaryReader): TransferTargetDirectoryItem;
+}
+
+export namespace TransferTargetDirectoryItem {
+  export type AsObject = {
+    displayName: string;
+    description: string;
+  };
+}
+
+export class VtsiProjectFeatureAvailability extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VtsiProjectFeatureAvailability.AsObject);
+  getWarmIntro(): WarmIntroAvailability;
+  setWarmIntro(value: WarmIntroAvailability): VtsiProjectFeatureAvailability;
+
+  getWarmIntroPhaseB(): boolean;
+  setWarmIntroPhaseB(value: boolean): VtsiProjectFeatureAvailability;
+
+  getIvr(): IvrAvailability;
+  setIvr(value: IvrAvailability): VtsiProjectFeatureAvailability;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): VtsiProjectFeatureAvailability.AsObject;
+  static toObject(includeInstance: boolean, msg: VtsiProjectFeatureAvailability): VtsiProjectFeatureAvailability.AsObject;
+  static serializeBinaryToWriter(message: VtsiProjectFeatureAvailability, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): VtsiProjectFeatureAvailability;
+  static deserializeBinaryFromReader(message: VtsiProjectFeatureAvailability, reader: jspb.BinaryReader): VtsiProjectFeatureAvailability;
+}
+
+export namespace VtsiProjectFeatureAvailability {
+  export type AsObject = {
+    warmIntro: WarmIntroAvailability;
+    warmIntroPhaseB: boolean;
+    ivr: IvrAvailability;
+  };
+}
+
 export class AsteriskConfigsVariables extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AsteriskConfigsVariables.AsObject);
   getSipTrunkUsername(): string;
   setSipTrunkUsername(value: string): AsteriskConfigsVariables;
 
@@ -166,36 +250,38 @@ export class AsteriskConfigsVariables extends jspb.Message {
 
 export namespace AsteriskConfigsVariables {
   export type AsObject = {
-    sipTrunkUsername: string,
-    sipTrunkPassword: string,
-    sipTrunkHost: string,
-    transferNumber: string,
-    transferNumberHost: string,
-    sipTrunkPhoneNumber: string,
-    sipTrunkTransport: SipTrunkTransport,
-    sipTrunkSourceCidr?: string,
-    sipTrunkCaCertificatesPem?: string,
-    sipTrunkVerifyServer?: boolean,
-    softphonePermitCidrsList: Array<string>,
-  }
+    sipTrunkUsername: string;
+    sipTrunkPassword: string;
+    sipTrunkHost: string;
+    transferNumber: string;
+    transferNumberHost: string;
+    sipTrunkPhoneNumber: string;
+    sipTrunkTransport: SipTrunkTransport;
+    sipTrunkSourceCidr?: string;
+    sipTrunkCaCertificatesPem?: string;
+    sipTrunkVerifyServer?: boolean;
+    softphonePermitCidrsList: Array<string>;
+  };
 
-  export enum SipTrunkSourceCidrCase { 
+  export enum SipTrunkSourceCidrCase {
     _SIP_TRUNK_SOURCE_CIDR_NOT_SET = 0,
     SIP_TRUNK_SOURCE_CIDR = 8,
   }
 
-  export enum SipTrunkCaCertificatesPemCase { 
+  export enum SipTrunkCaCertificatesPemCase {
     _SIP_TRUNK_CA_CERTIFICATES_PEM_NOT_SET = 0,
     SIP_TRUNK_CA_CERTIFICATES_PEM = 9,
   }
 
-  export enum SipTrunkVerifyServerCase { 
+  export enum SipTrunkVerifyServerCase {
     _SIP_TRUNK_VERIFY_SERVER_NOT_SET = 0,
     SIP_TRUNK_VERIFY_SERVER = 10,
   }
 }
 
 export class AsteriskConfigsFiles extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AsteriskConfigsFiles.AsObject);
   getPjsipConfFileString(): string;
   setPjsipConfFileString(value: string): AsteriskConfigsFiles;
 
@@ -218,14 +304,16 @@ export class AsteriskConfigsFiles extends jspb.Message {
 
 export namespace AsteriskConfigsFiles {
   export type AsObject = {
-    pjsipConfFileString: string,
-    extensionsConfFileString: string,
-    queuesConfFileString: string,
-    modulesConfFileString: string,
-  }
+    pjsipConfFileString: string;
+    extensionsConfFileString: string;
+    queuesConfFileString: string;
+    modulesConfFileString: string;
+  };
 }
 
 export class AsteriskConfigs extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AsteriskConfigs.AsObject);
   getAsteriskConfigsVariables(): AsteriskConfigsVariables | undefined;
   setAsteriskConfigsVariables(value?: AsteriskConfigsVariables): AsteriskConfigs;
   hasAsteriskConfigsVariables(): boolean;
@@ -238,6 +326,8 @@ export class AsteriskConfigs extends jspb.Message {
 
   getAsteriskConfigsTargetDirectoryName(): string;
   setAsteriskConfigsTargetDirectoryName(value: string): AsteriskConfigs;
+  hasAsteriskConfigsTargetDirectoryName(): boolean;
+  clearAsteriskConfigsTargetDirectoryName(): AsteriskConfigs;
 
   getAsteriskPort(): number;
   setAsteriskPort(value: number): AsteriskConfigs;
@@ -259,27 +349,29 @@ export class AsteriskConfigs extends jspb.Message {
 
 export namespace AsteriskConfigs {
   export type AsObject = {
-    asteriskConfigsVariables?: AsteriskConfigsVariables.AsObject,
-    asteriskConfigsFiles?: AsteriskConfigsFiles.AsObject,
-    asteriskConfigsTargetDirectoryName: string,
-    asteriskPort: number,
-    asteriskVersion?: string,
-  }
+    asteriskConfigsVariables?: AsteriskConfigsVariables.AsObject;
+    asteriskConfigsFiles?: AsteriskConfigsFiles.AsObject;
+    asteriskConfigsTargetDirectoryName?: string;
+    asteriskPort: number;
+    asteriskVersion?: string;
+  };
 
-  export enum AsteriskConfigsOneofCase { 
+  export enum AsteriskConfigsOneofCase {
     ASTERISK_CONFIGS_ONEOF_NOT_SET = 0,
     ASTERISK_CONFIGS_VARIABLES = 1,
     ASTERISK_CONFIGS_FILES = 2,
     ASTERISK_CONFIGS_TARGET_DIRECTORY_NAME = 3,
   }
 
-  export enum AsteriskVersionCase { 
+  export enum AsteriskVersionCase {
     _ASTERISK_VERSION_NOT_SET = 0,
     ASTERISK_VERSION = 5,
   }
 }
 
 export class CreateVtsiProjectRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CreateVtsiProjectRequest.AsObject);
   getVtsiProject(): VtsiProject | undefined;
   setVtsiProject(value?: VtsiProject): CreateVtsiProjectRequest;
   hasVtsiProject(): boolean;
@@ -301,13 +393,15 @@ export class CreateVtsiProjectRequest extends jspb.Message {
 
 export namespace CreateVtsiProjectRequest {
   export type AsObject = {
-    vtsiProject?: VtsiProject.AsObject,
-    errorMessage: string,
-    validateOnly: boolean,
-  }
+    vtsiProject?: VtsiProject.AsObject;
+    errorMessage: string;
+    validateOnly: boolean;
+  };
 }
 
 export class CreateVtsiProjectResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CreateVtsiProjectResponse.AsObject);
   getVtsiProject(): VtsiProject | undefined;
   setVtsiProject(value?: VtsiProject): CreateVtsiProjectResponse;
   hasVtsiProject(): boolean;
@@ -326,12 +420,14 @@ export class CreateVtsiProjectResponse extends jspb.Message {
 
 export namespace CreateVtsiProjectResponse {
   export type AsObject = {
-    vtsiProject?: VtsiProject.AsObject,
-    errorMessage: string,
-  }
+    vtsiProject?: VtsiProject.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class GetVtsiProjectRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetVtsiProjectRequest.AsObject);
   getName(): string;
   setName(value: string): GetVtsiProjectRequest;
 
@@ -353,13 +449,15 @@ export class GetVtsiProjectRequest extends jspb.Message {
 
 export namespace GetVtsiProjectRequest {
   export type AsObject = {
-    name: string,
-    vtsiProjectView: VtsiProjectView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    vtsiProjectView: VtsiProjectView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ListVtsiProjectsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListVtsiProjectsRequest.AsObject);
   getVtsiProjectView(): VtsiProjectView;
   setVtsiProjectView(value: VtsiProjectView): ListVtsiProjectsRequest;
 
@@ -414,30 +512,32 @@ export class ListVtsiProjectsRequest extends jspb.Message {
 
 export namespace ListVtsiProjectsRequest {
   export type AsObject = {
-    vtsiProjectView: VtsiProjectView,
-    pageToken?: string,
-    vtsiProjectSorting?: VtsiProjectSorting.AsObject,
-    nluAgentNamesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    statusesList: Array<VtsiProjectStatus>,
-    displayNameContains: string,
-    createdAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    createdBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    vtsiProjectView: VtsiProjectView;
+    pageToken?: string;
+    vtsiProjectSorting?: VtsiProjectSorting.AsObject;
+    nluAgentNamesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    statusesList: Array<VtsiProjectStatus>;
+    displayNameContains: string;
+    createdAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    createdBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 2,
   }
 
-  export enum VtsiProjectSortingCase { 
+  export enum VtsiProjectSortingCase {
     _VTSI_PROJECT_SORTING_NOT_SET = 0,
     VTSI_PROJECT_SORTING = 3,
   }
 }
 
 export class ListVtsiProjectsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListVtsiProjectsResponse.AsObject);
   getVtsiProjectsList(): Array<VtsiProject>;
   setVtsiProjectsList(value: Array<VtsiProject>): ListVtsiProjectsResponse;
   clearVtsiProjectsList(): ListVtsiProjectsResponse;
@@ -456,12 +556,14 @@ export class ListVtsiProjectsResponse extends jspb.Message {
 
 export namespace ListVtsiProjectsResponse {
   export type AsObject = {
-    vtsiProjectsList: Array<VtsiProject.AsObject>,
-    nextPageToken: string,
-  }
+    vtsiProjectsList: Array<VtsiProject.AsObject>;
+    nextPageToken: string;
+  };
 }
 
 export class VtsiProjectSorting extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VtsiProjectSorting.AsObject);
   getSortingField(): VtsiProjectSorting.VtsiProjectSortingField;
   setSortingField(value: VtsiProjectSorting.VtsiProjectSortingField): VtsiProjectSorting;
   hasSortingField(): boolean;
@@ -482,11 +584,11 @@ export class VtsiProjectSorting extends jspb.Message {
 
 export namespace VtsiProjectSorting {
   export type AsObject = {
-    sortingField?: VtsiProjectSorting.VtsiProjectSortingField,
-    sortingMode?: VtsiProjectSortingMode,
-  }
+    sortingField?: VtsiProjectSorting.VtsiProjectSortingField;
+    sortingMode?: VtsiProjectSortingMode;
+  };
 
-  export enum VtsiProjectSortingField { 
+  export enum VtsiProjectSortingField {
     NO_VTSI_PROJECT_SORTING = 0,
     SORT_VTSI_PROJECT_BY_NAME = 1,
     SORT_VTSI_PROJECT_BY_DISPLAY_NAME = 2,
@@ -494,18 +596,20 @@ export namespace VtsiProjectSorting {
     SORT_VTSI_PROJECT_BY_LAST_MODIFIED = 4,
   }
 
-  export enum SortingFieldCase { 
+  export enum SortingFieldCase {
     _SORTING_FIELD_NOT_SET = 0,
     SORTING_FIELD = 1,
   }
 
-  export enum SortingModeCase { 
+  export enum SortingModeCase {
     _SORTING_MODE_NOT_SET = 0,
     SORTING_MODE = 2,
   }
 }
 
 export class UpdateVtsiProjectRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateVtsiProjectRequest.AsObject);
   getVtsiProject(): VtsiProject | undefined;
   setVtsiProject(value?: VtsiProject): UpdateVtsiProjectRequest;
   hasVtsiProject(): boolean;
@@ -534,14 +638,16 @@ export class UpdateVtsiProjectRequest extends jspb.Message {
 
 export namespace UpdateVtsiProjectRequest {
   export type AsObject = {
-    vtsiProject?: VtsiProject.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProject?: VtsiProject.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class UpdateVtsiProjectResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateVtsiProjectResponse.AsObject);
   getName(): string;
   setName(value: string): UpdateVtsiProjectResponse;
 
@@ -563,13 +669,15 @@ export class UpdateVtsiProjectResponse extends jspb.Message {
 
 export namespace UpdateVtsiProjectResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-    vtsiProject?: VtsiProject.AsObject,
-  }
+    name: string;
+    errorMessage: string;
+    vtsiProject?: VtsiProject.AsObject;
+  };
 }
 
 export class DeleteVtsiProjectRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteVtsiProjectRequest.AsObject);
   getName(): string;
   setName(value: string): DeleteVtsiProjectRequest;
 
@@ -583,11 +691,13 @@ export class DeleteVtsiProjectRequest extends jspb.Message {
 
 export namespace DeleteVtsiProjectRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class DeleteVtsiProjectResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteVtsiProjectResponse.AsObject);
   getName(): string;
   setName(value: string): DeleteVtsiProjectResponse;
 
@@ -604,12 +714,14 @@ export class DeleteVtsiProjectResponse extends jspb.Message {
 
 export namespace DeleteVtsiProjectResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
 export class DeployVtsiProjectRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeployVtsiProjectRequest.AsObject);
   getName(): string;
   setName(value: string): DeployVtsiProjectRequest;
 
@@ -623,11 +735,13 @@ export class DeployVtsiProjectRequest extends jspb.Message {
 
 export namespace DeployVtsiProjectRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class DeployVtsiProjectResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeployVtsiProjectResponse.AsObject);
   getName(): string;
   setName(value: string): DeployVtsiProjectResponse;
 
@@ -644,12 +758,14 @@ export class DeployVtsiProjectResponse extends jspb.Message {
 
 export namespace DeployVtsiProjectResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
 export class UndeployVtsiProjectRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UndeployVtsiProjectRequest.AsObject);
   getName(): string;
   setName(value: string): UndeployVtsiProjectRequest;
 
@@ -663,11 +779,13 @@ export class UndeployVtsiProjectRequest extends jspb.Message {
 
 export namespace UndeployVtsiProjectRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class UndeployVtsiProjectResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UndeployVtsiProjectResponse.AsObject);
   getName(): string;
   setName(value: string): UndeployVtsiProjectResponse;
 
@@ -684,19 +802,33 @@ export class UndeployVtsiProjectResponse extends jspb.Message {
 
 export namespace UndeployVtsiProjectResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
-export enum TrunkRegistrationState { 
+export enum WarmIntroAvailability {
+  WARM_INTRO_AVAILABILITY_UNSPECIFIED = 0,
+  WARM_INTRO_AVAILABILITY_AVAILABLE = 1,
+  WARM_INTRO_AVAILABILITY_DISABLED_BY_DEPLOYMENT = 2,
+  WARM_INTRO_AVAILABILITY_NEEDS_LOCAL_ASTERISK = 3,
+  WARM_INTRO_AVAILABILITY_NEEDS_LISTENER = 4,
+  WARM_INTRO_AVAILABILITY_NEEDS_CALL_CONTROL_KEY = 5,
+}
+export enum IvrAvailability {
+  IVR_AVAILABILITY_UNSPECIFIED = 0,
+  IVR_AVAILABILITY_AVAILABLE = 1,
+  IVR_AVAILABILITY_DISABLED_BY_DEPLOYMENT = 2,
+  IVR_AVAILABILITY_NEEDS_LOCAL_ASTERISK = 3,
+}
+export enum TrunkRegistrationState {
   TRUNK_REGISTRATION_STATE_UNSPECIFIED = 0,
   TRUNK_REGISTRATION_STATE_REGISTERED = 1,
   TRUNK_REGISTRATION_STATE_UNREGISTERED = 2,
   TRUNK_REGISTRATION_STATE_REJECTED = 3,
   TRUNK_REGISTRATION_STATE_NOT_CONFIGURED = 4,
 }
-export enum VtsiProjectStatus { 
+export enum VtsiProjectStatus {
   UNSPECIFIED = 0,
   UNDEPLOYED = 1,
   UPDATING = 2,
@@ -707,17 +839,17 @@ export enum VtsiProjectStatus {
   DELETED = 7,
   DEPLOY_FAILED = 8,
 }
-export enum SipTrunkTransport { 
+export enum SipTrunkTransport {
   SIP_TRUNK_TRANSPORT_UNSPECIFIED = 0,
   SIP_TRUNK_TRANSPORT_TLS = 1,
   SIP_TRUNK_TRANSPORT_UDP = 2,
   SIP_TRUNK_TRANSPORT_TCP = 3,
 }
-export enum VtsiProjectSortingMode { 
+export enum VtsiProjectSortingMode {
   ASCENDING = 0,
   DESCENDING = 1,
 }
-export enum VtsiProjectView { 
+export enum VtsiProjectView {
   VTSI_PROJECT_VIEW_UNSPECIFIED = 0,
   VTSI_PROJECT_VIEW_FULL = 1,
   VTSI_PROJECT_VIEW_SHALLOW = 2,

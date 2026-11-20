@@ -6,6 +6,8 @@ import * as ondewo_vtsi_projects_pb from '../../ondewo/vtsi/projects_pb'; // pro
 
 
 export class SoftphoneAccount extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneAccount.AsObject);
   getName(): string;
   setName(value: string): SoftphoneAccount;
 
@@ -83,6 +85,9 @@ export class SoftphoneAccount extends jspb.Message {
   getLockedReason(): string;
   setLockedReason(value: string): SoftphoneAccount;
 
+  getDescription(): string;
+  setDescription(value: string): SoftphoneAccount;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SoftphoneAccount.AsObject;
   static toObject(includeInstance: boolean, msg: SoftphoneAccount): SoftphoneAccount.AsObject;
@@ -93,36 +98,39 @@ export class SoftphoneAccount extends jspb.Message {
 
 export namespace SoftphoneAccount {
   export type AsObject = {
-    name: string,
-    softphoneAccountId: string,
-    vtsiProjectName: string,
-    displayName: string,
-    sipUsername: string,
-    transportSecurity: SoftphoneTransportSecurity,
-    enabled?: boolean,
-    maxContacts: number,
-    labelsMap: Array<[string, string]>,
-    allowedDestinationsList: Array<string>,
-    currentCertificateName: string,
-    currentCertificateSha256Fingerprint: string,
-    currentCertificateExpireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    sipPasswordSetAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    createdBy: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    modifiedBy: string,
-    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    locked: boolean,
-    lockedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    lockedReason: string,
-  }
+    name: string;
+    softphoneAccountId: string;
+    vtsiProjectName: string;
+    displayName: string;
+    sipUsername: string;
+    transportSecurity: SoftphoneTransportSecurity;
+    enabled?: boolean;
+    maxContacts: number;
+    labelsMap: Array<[string, string]>;
+    allowedDestinationsList: Array<string>;
+    currentCertificateName: string;
+    currentCertificateSha256Fingerprint: string;
+    currentCertificateExpireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    sipPasswordSetAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    createdBy: string;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    modifiedBy: string;
+    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    locked: boolean;
+    lockedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    lockedReason: string;
+    description: string;
+  };
 
-  export enum EnabledCase { 
+  export enum EnabledCase {
     _ENABLED_NOT_SET = 0,
     ENABLED = 7,
   }
 }
 
 export class SoftphoneCertificate extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneCertificate.AsObject);
   getName(): string;
   setName(value: string): SoftphoneCertificate;
 
@@ -194,27 +202,29 @@ export class SoftphoneCertificate extends jspb.Message {
 
 export namespace SoftphoneCertificate {
   export type AsObject = {
-    name: string,
-    softphoneAccountName: string,
-    status: SoftphoneCertificateStatus,
-    certificatePem: string,
-    issuerCaCertificatePem: string,
-    sha256Fingerprint: string,
-    serialNumber: string,
-    subject: string,
-    notBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    notAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    createdBy: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    supersededAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    supersededByCertificateName: string,
-    revokedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    revokedBy: string,
-    revocationReason: string,
-  }
+    name: string;
+    softphoneAccountName: string;
+    status: SoftphoneCertificateStatus;
+    certificatePem: string;
+    issuerCaCertificatePem: string;
+    sha256Fingerprint: string;
+    serialNumber: string;
+    subject: string;
+    notBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    notAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    createdBy: string;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    supersededAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    supersededByCertificateName: string;
+    revokedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    revokedBy: string;
+    revocationReason: string;
+  };
 }
 
 export class SoftphoneCredentials extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneCredentials.AsObject);
   getSipPassword(): string;
   setSipPassword(value: string): SoftphoneCredentials;
 
@@ -241,14 +251,16 @@ export class SoftphoneCredentials extends jspb.Message {
 
 export namespace SoftphoneCredentials {
   export type AsObject = {
-    sipPassword: string,
-    pkcs12Bundle: Uint8Array | string,
-    pkcs12Password: string,
-    certificate?: SoftphoneCertificate.AsObject,
-  }
+    sipPassword: string;
+    pkcs12Bundle: Uint8Array | string;
+    pkcs12Password: string;
+    certificate?: SoftphoneCertificate.AsObject;
+  };
 }
 
 export class SoftphoneProvisioning extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneProvisioning.AsObject);
   getSoftphoneAccountName(): string;
   setSoftphoneAccountName(value: string): SoftphoneProvisioning;
 
@@ -323,30 +335,32 @@ export class SoftphoneProvisioning extends jspb.Message {
 
 export namespace SoftphoneProvisioning {
   export type AsObject = {
-    softphoneAccountName: string,
-    transportSecurity: SoftphoneTransportSecurity,
-    sipDomain: string,
-    sipAddress: string,
-    sipServerHost: string,
-    sipServerPort: number,
-    sipTransport: string,
-    outboundProxy: string,
-    username: string,
-    authUsername: string,
-    realm: string,
-    srtpMode: SoftphoneSrtpMode,
-    codecsList: Array<string>,
-    serverCaCertificatePem: string,
-    serverCertificateSha256Fingerprint: string,
-    clientCertificateName: string,
-    clientCertificateSha256Fingerprint: string,
-    clientCertificateExpireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    zoiperInstructions: string,
-    clientCertificateSupportNote: string,
-  }
+    softphoneAccountName: string;
+    transportSecurity: SoftphoneTransportSecurity;
+    sipDomain: string;
+    sipAddress: string;
+    sipServerHost: string;
+    sipServerPort: number;
+    sipTransport: string;
+    outboundProxy: string;
+    username: string;
+    authUsername: string;
+    realm: string;
+    srtpMode: SoftphoneSrtpMode;
+    codecsList: Array<string>;
+    serverCaCertificatePem: string;
+    serverCertificateSha256Fingerprint: string;
+    clientCertificateName: string;
+    clientCertificateSha256Fingerprint: string;
+    clientCertificateExpireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    zoiperInstructions: string;
+    clientCertificateSupportNote: string;
+  };
 }
 
 export class SoftphoneAccountFilter extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneAccountFilter.AsObject);
   getTransportSecuritiesList(): Array<SoftphoneTransportSecurity>;
   setTransportSecuritiesList(value: Array<SoftphoneTransportSecurity>): SoftphoneAccountFilter;
   clearTransportSecuritiesList(): SoftphoneAccountFilter;
@@ -391,28 +405,30 @@ export class SoftphoneAccountFilter extends jspb.Message {
 
 export namespace SoftphoneAccountFilter {
   export type AsObject = {
-    transportSecuritiesList: Array<SoftphoneTransportSecurity>,
-    enabled?: boolean,
-    labelsMap: Array<[string, string]>,
-    displayNameContains: string,
-    sipUsernameContains: string,
-    certificateExpiresBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    certificateExpiresAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    locked?: boolean,
-  }
+    transportSecuritiesList: Array<SoftphoneTransportSecurity>;
+    enabled?: boolean;
+    labelsMap: Array<[string, string]>;
+    displayNameContains: string;
+    sipUsernameContains: string;
+    certificateExpiresBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    certificateExpiresAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    locked?: boolean;
+  };
 
-  export enum EnabledCase { 
+  export enum EnabledCase {
     _ENABLED_NOT_SET = 0,
     ENABLED = 2,
   }
 
-  export enum LockedCase { 
+  export enum LockedCase {
     _LOCKED_NOT_SET = 0,
     LOCKED = 8,
   }
 }
 
 export class SoftphoneCertificateFilter extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneCertificateFilter.AsObject);
   getStatusesList(): Array<SoftphoneCertificateStatus>;
   setStatusesList(value: Array<SoftphoneCertificateStatus>): SoftphoneCertificateFilter;
   clearStatusesList(): SoftphoneCertificateFilter;
@@ -438,13 +454,15 @@ export class SoftphoneCertificateFilter extends jspb.Message {
 
 export namespace SoftphoneCertificateFilter {
   export type AsObject = {
-    statusesList: Array<SoftphoneCertificateStatus>,
-    expiresBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    expiresAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    statusesList: Array<SoftphoneCertificateStatus>;
+    expiresBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    expiresAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class SoftphoneAccountSorting extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneAccountSorting.AsObject);
   getSortingField(): SoftphoneAccountSorting.SoftphoneAccountSortingField;
   setSortingField(value: SoftphoneAccountSorting.SoftphoneAccountSortingField): SoftphoneAccountSorting;
   hasSortingField(): boolean;
@@ -465,11 +483,11 @@ export class SoftphoneAccountSorting extends jspb.Message {
 
 export namespace SoftphoneAccountSorting {
   export type AsObject = {
-    sortingField?: SoftphoneAccountSorting.SoftphoneAccountSortingField,
-    sortingMode?: ondewo_vtsi_projects_pb.VtsiProjectSortingMode,
-  }
+    sortingField?: SoftphoneAccountSorting.SoftphoneAccountSortingField;
+    sortingMode?: ondewo_vtsi_projects_pb.VtsiProjectSortingMode;
+  };
 
-  export enum SoftphoneAccountSortingField { 
+  export enum SoftphoneAccountSortingField {
     NO_SOFTPHONE_ACCOUNT_SORTING = 0,
     SORT_SOFTPHONE_ACCOUNT_BY_DISPLAY_NAME = 1,
     SORT_SOFTPHONE_ACCOUNT_BY_SIP_USERNAME = 2,
@@ -478,18 +496,20 @@ export namespace SoftphoneAccountSorting {
     SORT_SOFTPHONE_ACCOUNT_BY_CERTIFICATE_EXPIRY = 5,
   }
 
-  export enum SortingFieldCase { 
+  export enum SortingFieldCase {
     _SORTING_FIELD_NOT_SET = 0,
     SORTING_FIELD = 1,
   }
 
-  export enum SortingModeCase { 
+  export enum SortingModeCase {
     _SORTING_MODE_NOT_SET = 0,
     SORTING_MODE = 2,
   }
 }
 
 export class CreateSoftphoneAccountRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CreateSoftphoneAccountRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CreateSoftphoneAccountRequest;
 
@@ -511,13 +531,15 @@ export class CreateSoftphoneAccountRequest extends jspb.Message {
 
 export namespace CreateSoftphoneAccountRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    softphoneAccount?: SoftphoneAccount.AsObject,
-    idempotencyKey: string,
-  }
+    vtsiProjectName: string;
+    softphoneAccount?: SoftphoneAccount.AsObject;
+    idempotencyKey: string;
+  };
 }
 
 export class CreateSoftphoneAccountResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CreateSoftphoneAccountResponse.AsObject);
   getSoftphoneAccount(): SoftphoneAccount | undefined;
   setSoftphoneAccount(value?: SoftphoneAccount): CreateSoftphoneAccountResponse;
   hasSoftphoneAccount(): boolean;
@@ -538,12 +560,14 @@ export class CreateSoftphoneAccountResponse extends jspb.Message {
 
 export namespace CreateSoftphoneAccountResponse {
   export type AsObject = {
-    softphoneAccount?: SoftphoneAccount.AsObject,
-    credentials?: SoftphoneCredentials.AsObject,
-  }
+    softphoneAccount?: SoftphoneAccount.AsObject;
+    credentials?: SoftphoneCredentials.AsObject;
+  };
 }
 
 export class GetSoftphoneAccountRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetSoftphoneAccountRequest.AsObject);
   getName(): string;
   setName(value: string): GetSoftphoneAccountRequest;
 
@@ -562,12 +586,14 @@ export class GetSoftphoneAccountRequest extends jspb.Message {
 
 export namespace GetSoftphoneAccountRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateSoftphoneAccountRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateSoftphoneAccountRequest.AsObject);
   getSoftphoneAccount(): SoftphoneAccount | undefined;
   setSoftphoneAccount(value?: SoftphoneAccount): UpdateSoftphoneAccountRequest;
   hasSoftphoneAccount(): boolean;
@@ -588,12 +614,14 @@ export class UpdateSoftphoneAccountRequest extends jspb.Message {
 
 export namespace UpdateSoftphoneAccountRequest {
   export type AsObject = {
-    softphoneAccount?: SoftphoneAccount.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    softphoneAccount?: SoftphoneAccount.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteSoftphoneAccountRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteSoftphoneAccountRequest.AsObject);
   getName(): string;
   setName(value: string): DeleteSoftphoneAccountRequest;
 
@@ -607,11 +635,13 @@ export class DeleteSoftphoneAccountRequest extends jspb.Message {
 
 export namespace DeleteSoftphoneAccountRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class DeleteSoftphoneAccountResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteSoftphoneAccountResponse.AsObject);
   getName(): string;
   setName(value: string): DeleteSoftphoneAccountResponse;
 
@@ -628,12 +658,14 @@ export class DeleteSoftphoneAccountResponse extends jspb.Message {
 
 export namespace DeleteSoftphoneAccountResponse {
   export type AsObject = {
-    name: string,
-    revokedCertificateCount: number,
-  }
+    name: string;
+    revokedCertificateCount: number;
+  };
 }
 
 export class ListSoftphoneAccountsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListSoftphoneAccountsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListSoftphoneAccountsRequest;
 
@@ -670,21 +702,23 @@ export class ListSoftphoneAccountsRequest extends jspb.Message {
 
 export namespace ListSoftphoneAccountsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    filter?: SoftphoneAccountFilter.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken?: string,
-    softphoneAccountSorting?: SoftphoneAccountSorting.AsObject,
-  }
+    vtsiProjectName: string;
+    filter?: SoftphoneAccountFilter.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken?: string;
+    softphoneAccountSorting?: SoftphoneAccountSorting.AsObject;
+  };
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 5,
   }
 }
 
 export class ListSoftphoneAccountsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListSoftphoneAccountsResponse.AsObject);
   getSoftphoneAccountsList(): Array<SoftphoneAccount>;
   setSoftphoneAccountsList(value: Array<SoftphoneAccount>): ListSoftphoneAccountsResponse;
   clearSoftphoneAccountsList(): ListSoftphoneAccountsResponse;
@@ -703,12 +737,14 @@ export class ListSoftphoneAccountsResponse extends jspb.Message {
 
 export namespace ListSoftphoneAccountsResponse {
   export type AsObject = {
-    softphoneAccountsList: Array<SoftphoneAccount.AsObject>,
-    nextPageToken: string,
-  }
+    softphoneAccountsList: Array<SoftphoneAccount.AsObject>;
+    nextPageToken: string;
+  };
 }
 
 export class RotateSoftphoneCredentialsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RotateSoftphoneCredentialsRequest.AsObject);
   getName(): string;
   setName(value: string): RotateSoftphoneCredentialsRequest;
 
@@ -728,13 +764,15 @@ export class RotateSoftphoneCredentialsRequest extends jspb.Message {
 
 export namespace RotateSoftphoneCredentialsRequest {
   export type AsObject = {
-    name: string,
-    rotateSipPassword: boolean,
-    rotateCertificate: boolean,
-  }
+    name: string;
+    rotateSipPassword: boolean;
+    rotateCertificate: boolean;
+  };
 }
 
 export class RotateSoftphoneCredentialsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RotateSoftphoneCredentialsResponse.AsObject);
   getSoftphoneAccount(): SoftphoneAccount | undefined;
   setSoftphoneAccount(value?: SoftphoneAccount): RotateSoftphoneCredentialsResponse;
   hasSoftphoneAccount(): boolean;
@@ -755,17 +793,23 @@ export class RotateSoftphoneCredentialsResponse extends jspb.Message {
 
 export namespace RotateSoftphoneCredentialsResponse {
   export type AsObject = {
-    softphoneAccount?: SoftphoneAccount.AsObject,
-    credentials?: SoftphoneCredentials.AsObject,
-  }
+    softphoneAccount?: SoftphoneAccount.AsObject;
+    credentials?: SoftphoneCredentials.AsObject;
+  };
 }
 
 export class ListSoftphoneCertificatesRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListSoftphoneCertificatesRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListSoftphoneCertificatesRequest;
+  hasVtsiProjectName(): boolean;
+  clearVtsiProjectName(): ListSoftphoneCertificatesRequest;
 
   getSoftphoneAccountName(): string;
   setSoftphoneAccountName(value: string): ListSoftphoneCertificatesRequest;
+  hasSoftphoneAccountName(): boolean;
+  clearSoftphoneAccountName(): ListSoftphoneCertificatesRequest;
 
   getFilter(): SoftphoneCertificateFilter | undefined;
   setFilter(value?: SoftphoneCertificateFilter): ListSoftphoneCertificatesRequest;
@@ -797,27 +841,29 @@ export class ListSoftphoneCertificatesRequest extends jspb.Message {
 
 export namespace ListSoftphoneCertificatesRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    softphoneAccountName: string,
-    filter?: SoftphoneCertificateFilter.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken?: string,
-  }
+    vtsiProjectName?: string;
+    softphoneAccountName?: string;
+    filter?: SoftphoneCertificateFilter.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken?: string;
+  };
 
-  export enum ScopeCase { 
+  export enum ScopeCase {
     SCOPE_NOT_SET = 0,
     VTSI_PROJECT_NAME = 1,
     SOFTPHONE_ACCOUNT_NAME = 2,
   }
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 6,
   }
 }
 
 export class ListSoftphoneCertificatesResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListSoftphoneCertificatesResponse.AsObject);
   getSoftphoneCertificatesList(): Array<SoftphoneCertificate>;
   setSoftphoneCertificatesList(value: Array<SoftphoneCertificate>): ListSoftphoneCertificatesResponse;
   clearSoftphoneCertificatesList(): ListSoftphoneCertificatesResponse;
@@ -836,12 +882,14 @@ export class ListSoftphoneCertificatesResponse extends jspb.Message {
 
 export namespace ListSoftphoneCertificatesResponse {
   export type AsObject = {
-    softphoneCertificatesList: Array<SoftphoneCertificate.AsObject>,
-    nextPageToken: string,
-  }
+    softphoneCertificatesList: Array<SoftphoneCertificate.AsObject>;
+    nextPageToken: string;
+  };
 }
 
 export class GetSoftphoneCertificateRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetSoftphoneCertificateRequest.AsObject);
   getName(): string;
   setName(value: string): GetSoftphoneCertificateRequest;
 
@@ -860,12 +908,14 @@ export class GetSoftphoneCertificateRequest extends jspb.Message {
 
 export namespace GetSoftphoneCertificateRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class RevokeSoftphoneCertificateRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RevokeSoftphoneCertificateRequest.AsObject);
   getName(): string;
   setName(value: string): RevokeSoftphoneCertificateRequest;
 
@@ -882,12 +932,14 @@ export class RevokeSoftphoneCertificateRequest extends jspb.Message {
 
 export namespace RevokeSoftphoneCertificateRequest {
   export type AsObject = {
-    name: string,
-    reason: string,
-  }
+    name: string;
+    reason: string;
+  };
 }
 
 export class GetSoftphoneProvisioningRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetSoftphoneProvisioningRequest.AsObject);
   getName(): string;
   setName(value: string): GetSoftphoneProvisioningRequest;
 
@@ -901,11 +953,13 @@ export class GetSoftphoneProvisioningRequest extends jspb.Message {
 
 export namespace GetSoftphoneProvisioningRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class GetSoftphoneRegistrationRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetSoftphoneRegistrationRequest.AsObject);
   getName(): string;
   setName(value: string): GetSoftphoneRegistrationRequest;
 
@@ -924,12 +978,14 @@ export class GetSoftphoneRegistrationRequest extends jspb.Message {
 
 export namespace GetSoftphoneRegistrationRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class SoftphoneRegistration extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneRegistration.AsObject);
   getSoftphoneAccountName(): string;
   setSoftphoneAccountName(value: string): SoftphoneRegistration;
 
@@ -953,13 +1009,15 @@ export class SoftphoneRegistration extends jspb.Message {
 
 export namespace SoftphoneRegistration {
   export type AsObject = {
-    softphoneAccountName: string,
-    contactsList: Array<SoftphoneContact.AsObject>,
-    observedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    softphoneAccountName: string;
+    contactsList: Array<SoftphoneContact.AsObject>;
+    observedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class SoftphoneContact extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftphoneContact.AsObject);
   getUri(): string;
   setUri(value: string): SoftphoneContact;
 
@@ -990,34 +1048,34 @@ export class SoftphoneContact extends jspb.Message {
 
 export namespace SoftphoneContact {
   export type AsObject = {
-    uri: string,
-    userAgent: string,
-    sourceAddress: string,
-    expireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    roundTripMs: number,
-    status: SoftphoneContactStatus,
-  }
+    uri: string;
+    userAgent: string;
+    sourceAddress: string;
+    expireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    roundTripMs: number;
+    status: SoftphoneContactStatus;
+  };
 }
 
-export enum SoftphoneTransportSecurity { 
+export enum SoftphoneTransportSecurity {
   SOFTPHONE_TRANSPORT_SECURITY_UNSPECIFIED = 0,
   SOFTPHONE_TRANSPORT_SECURITY_CLIENT_CERTIFICATE = 1,
   SOFTPHONE_TRANSPORT_SECURITY_SERVER_TLS_ONLY = 2,
 }
-export enum SoftphoneCertificateStatus { 
+export enum SoftphoneCertificateStatus {
   SOFTPHONE_CERTIFICATE_STATUS_UNSPECIFIED = 0,
   SOFTPHONE_CERTIFICATE_STATUS_ACTIVE = 1,
   SOFTPHONE_CERTIFICATE_STATUS_SUPERSEDED = 2,
   SOFTPHONE_CERTIFICATE_STATUS_REVOKED = 3,
 }
-export enum SoftphoneContactStatus { 
+export enum SoftphoneContactStatus {
   SOFTPHONE_CONTACT_STATUS_UNSPECIFIED = 0,
   SOFTPHONE_CONTACT_STATUS_AVAILABLE = 1,
   SOFTPHONE_CONTACT_STATUS_UNAVAILABLE = 2,
   SOFTPHONE_CONTACT_STATUS_NOT_QUALIFIED = 3,
   SOFTPHONE_CONTACT_STATUS_UNKNOWN = 4,
 }
-export enum SoftphoneSrtpMode { 
+export enum SoftphoneSrtpMode {
   SOFTPHONE_SRTP_MODE_UNSPECIFIED = 0,
   SOFTPHONE_SRTP_MODE_SDES_MANDATORY = 1,
 }

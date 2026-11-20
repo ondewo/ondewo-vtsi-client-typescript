@@ -7,6 +7,8 @@ import * as ondewo_vtsi_calls_pb from '../../ondewo/vtsi/calls_pb'; // proto imp
 
 
 export class CallLogEntry extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallLogEntry.AsObject);
   getSeq(): number;
   setSeq(value: number): CallLogEntry;
 
@@ -64,25 +66,27 @@ export class CallLogEntry extends jspb.Message {
 
 export namespace CallLogEntry {
   export type AsObject = {
-    seq: number,
-    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    timestampIsExact: boolean,
-    level: ondewo_nlu_common_pb.LogSeverity,
-    message: string,
-    containerId: string,
-    containerName: string,
-    logSource: LogSource,
-    channel: LogStreamChannel,
-    emitter: string,
-    threadName: string,
-    logStream: string,
-    call: string,
-    nluSessionName: string,
-    physicalLineCount: number,
-  }
+    seq: number;
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    timestampIsExact: boolean;
+    level: ondewo_nlu_common_pb.LogSeverity;
+    message: string;
+    containerId: string;
+    containerName: string;
+    logSource: LogSource;
+    channel: LogStreamChannel;
+    emitter: string;
+    threadName: string;
+    logStream: string;
+    call: string;
+    nluSessionName: string;
+    physicalLineCount: number;
+  };
 }
 
 export class SipHeaderFilter extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SipHeaderFilter.AsObject);
   getKey(): string;
   setKey(value: string): SipHeaderFilter;
 
@@ -99,12 +103,14 @@ export class SipHeaderFilter extends jspb.Message {
 
 export namespace SipHeaderFilter {
   export type AsObject = {
-    key: string,
-    value: string,
-  }
+    key: string;
+    value: string;
+  };
 }
 
 export class CallLogFilter extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallLogFilter.AsObject);
   getCallNamesList(): Array<string>;
   setCallNamesList(value: Array<string>): CallLogFilter;
   clearCallNamesList(): CallLogFilter;
@@ -283,69 +289,71 @@ export class CallLogFilter extends jspb.Message {
 
 export namespace CallLogFilter {
   export type AsObject = {
-    callNamesList: Array<string>,
-    callerNamesList: Array<string>,
-    listenerNamesList: Array<string>,
-    callerIdsList: Array<string>,
-    listenerIdsList: Array<string>,
-    callIdsList: Array<string>,
-    containerNamesList: Array<string>,
-    containerIdsList: Array<string>,
-    logStreamNamesList: Array<string>,
-    sipAccountsList: Array<string>,
-    sipPortsList: Array<string>,
-    csiPortsList: Array<string>,
-    asteriskPortsList: Array<string>,
-    phoneNumbersList: Array<string>,
-    calleeIdsList: Array<string>,
-    nluSessionNamesList: Array<string>,
-    nluSessionUuidsList: Array<string>,
-    nluProjectUuidsList: Array<string>,
-    callTypesList: Array<ondewo_vtsi_calls_pb.CallType>,
-    sipHeadersList: Array<SipHeaderFilter.AsObject>,
-    logSourcesList: Array<LogSource>,
-    channelsList: Array<LogStreamChannel>,
-    minLogLevel: ondewo_nlu_common_pb.LogSeverity,
-    logLevelsList: Array<ondewo_nlu_common_pb.LogSeverity>,
-    includeUnleveledLines?: boolean,
-    text?: string,
-    regex?: string,
-    emitterPrefixesList: Array<string>,
-    threadNamesList: Array<string>,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    sipPortNumbersList: Array<number>,
-    csiPortNumbersList: Array<number>,
-    asteriskPortNumbersList: Array<number>,
-  }
+    callNamesList: Array<string>;
+    callerNamesList: Array<string>;
+    listenerNamesList: Array<string>;
+    callerIdsList: Array<string>;
+    listenerIdsList: Array<string>;
+    callIdsList: Array<string>;
+    containerNamesList: Array<string>;
+    containerIdsList: Array<string>;
+    logStreamNamesList: Array<string>;
+    sipAccountsList: Array<string>;
+    sipPortsList: Array<string>;
+    csiPortsList: Array<string>;
+    asteriskPortsList: Array<string>;
+    phoneNumbersList: Array<string>;
+    calleeIdsList: Array<string>;
+    nluSessionNamesList: Array<string>;
+    nluSessionUuidsList: Array<string>;
+    nluProjectUuidsList: Array<string>;
+    callTypesList: Array<ondewo_vtsi_calls_pb.CallType>;
+    sipHeadersList: Array<SipHeaderFilter.AsObject>;
+    logSourcesList: Array<LogSource>;
+    channelsList: Array<LogStreamChannel>;
+    minLogLevel: ondewo_nlu_common_pb.LogSeverity;
+    logLevelsList: Array<ondewo_nlu_common_pb.LogSeverity>;
+    includeUnleveledLines?: boolean;
+    text?: string;
+    regex?: string;
+    emitterPrefixesList: Array<string>;
+    threadNamesList: Array<string>;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    sipPortNumbersList: Array<number>;
+    csiPortNumbersList: Array<number>;
+    asteriskPortNumbersList: Array<number>;
+  };
 
-  export enum IncludeUnleveledLinesCase { 
+  export enum IncludeUnleveledLinesCase {
     _INCLUDE_UNLEVELED_LINES_NOT_SET = 0,
     INCLUDE_UNLEVELED_LINES = 25,
   }
 
-  export enum TextCase { 
+  export enum TextCase {
     _TEXT_NOT_SET = 0,
     TEXT = 26,
   }
 
-  export enum RegexCase { 
+  export enum RegexCase {
     _REGEX_NOT_SET = 0,
     REGEX = 27,
   }
 
-  export enum StartTimeCase { 
+  export enum StartTimeCase {
     _START_TIME_NOT_SET = 0,
     START_TIME = 30,
   }
 
-  export enum EndTimeCase { 
+  export enum EndTimeCase {
     _END_TIME_NOT_SET = 0,
     END_TIME = 31,
   }
 }
 
 export class CallLogStream extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallLogStream.AsObject);
   getName(): string;
   setName(value: string): CallLogStream;
 
@@ -426,32 +434,34 @@ export class CallLogStream extends jspb.Message {
 
 export namespace CallLogStream {
   export type AsObject = {
-    name: string,
-    containerName: string,
-    containerId: string,
-    channel: LogStreamChannel,
-    projectId: string,
-    voipCallName: string,
-    callType: ondewo_vtsi_calls_pb.CallType,
-    sipAccount: string,
-    sipPort: number,
-    csiPort: number,
-    asteriskPort: number,
-    image: string,
-    captureState: LogCaptureState,
-    captureError: string,
-    captureStartedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    captureFinishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    partialCapture: boolean,
-    minAvailableSeq: number,
-    maxAvailableSeq: number,
-    lineCount: number,
-    droppedLineCount: number,
-    vtsiProjectName: string,
-  }
+    name: string;
+    containerName: string;
+    containerId: string;
+    channel: LogStreamChannel;
+    projectId: string;
+    voipCallName: string;
+    callType: ondewo_vtsi_calls_pb.CallType;
+    sipAccount: string;
+    sipPort: number;
+    csiPort: number;
+    asteriskPort: number;
+    image: string;
+    captureState: LogCaptureState;
+    captureError: string;
+    captureStartedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    captureFinishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    partialCapture: boolean;
+    minAvailableSeq: number;
+    maxAvailableSeq: number;
+    lineCount: number;
+    droppedLineCount: number;
+    vtsiProjectName: string;
+  };
 }
 
 export class StreamCallLogsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallLogsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StreamCallLogsRequest;
 
@@ -485,35 +495,37 @@ export class StreamCallLogsRequest extends jspb.Message {
 
 export namespace StreamCallLogsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    filter?: CallLogFilter.AsObject,
-    tailLines?: number,
-    resumeToken?: string,
-    afterSeq?: number,
-  }
+    vtsiProjectName: string;
+    filter?: CallLogFilter.AsObject;
+    tailLines?: number;
+    resumeToken?: string;
+    afterSeq?: number;
+  };
 
-  export enum FilterCase { 
+  export enum FilterCase {
     _FILTER_NOT_SET = 0,
     FILTER = 2,
   }
 
-  export enum TailLinesCase { 
+  export enum TailLinesCase {
     _TAIL_LINES_NOT_SET = 0,
     TAIL_LINES = 3,
   }
 
-  export enum ResumeTokenCase { 
+  export enum ResumeTokenCase {
     _RESUME_TOKEN_NOT_SET = 0,
     RESUME_TOKEN = 4,
   }
 
-  export enum AfterSeqCase { 
+  export enum AfterSeqCase {
     _AFTER_SEQ_NOT_SET = 0,
     AFTER_SEQ = 5,
   }
 }
 
 export class StreamCallLogsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallLogsResponse.AsObject);
   getLogEntriesList(): Array<CallLogEntry>;
   setLogEntriesList(value: Array<CallLogEntry>): StreamCallLogsResponse;
   clearLogEntriesList(): StreamCallLogsResponse;
@@ -547,17 +559,19 @@ export class StreamCallLogsResponse extends jspb.Message {
 
 export namespace StreamCallLogsResponse {
   export type AsObject = {
-    logEntriesList: Array<CallLogEntry.AsObject>,
-    captureState: LogCaptureState,
-    captureError: string,
-    droppedLineCount: number,
-    resumeToken: string,
-    endReason: string,
-    endReasonCode: LogStreamEndReason,
-  }
+    logEntriesList: Array<CallLogEntry.AsObject>;
+    captureState: LogCaptureState;
+    captureError: string;
+    droppedLineCount: number;
+    resumeToken: string;
+    endReason: string;
+    endReasonCode: LogStreamEndReason;
+  };
 }
 
 export class ListCallLogsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallLogsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListCallLogsRequest;
 
@@ -609,49 +623,51 @@ export class ListCallLogsRequest extends jspb.Message {
 
 export namespace ListCallLogsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    filter?: CallLogFilter.AsObject,
-    maxLines?: number,
-    beforeSeq?: number,
-    afterSeq?: number,
-    resumeToken?: string,
-    oldestFirst?: boolean,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    includeCounts: boolean,
-  }
+    vtsiProjectName: string;
+    filter?: CallLogFilter.AsObject;
+    maxLines?: number;
+    beforeSeq?: number;
+    afterSeq?: number;
+    resumeToken?: string;
+    oldestFirst?: boolean;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    includeCounts: boolean;
+  };
 
-  export enum FilterCase { 
+  export enum FilterCase {
     _FILTER_NOT_SET = 0,
     FILTER = 2,
   }
 
-  export enum MaxLinesCase { 
+  export enum MaxLinesCase {
     _MAX_LINES_NOT_SET = 0,
     MAX_LINES = 3,
   }
 
-  export enum BeforeSeqCase { 
+  export enum BeforeSeqCase {
     _BEFORE_SEQ_NOT_SET = 0,
     BEFORE_SEQ = 4,
   }
 
-  export enum AfterSeqCase { 
+  export enum AfterSeqCase {
     _AFTER_SEQ_NOT_SET = 0,
     AFTER_SEQ = 5,
   }
 
-  export enum ResumeTokenCase { 
+  export enum ResumeTokenCase {
     _RESUME_TOKEN_NOT_SET = 0,
     RESUME_TOKEN = 6,
   }
 
-  export enum OldestFirstCase { 
+  export enum OldestFirstCase {
     _OLDEST_FIRST_NOT_SET = 0,
     OLDEST_FIRST = 7,
   }
 }
 
 export class ListCallLogsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallLogsResponse.AsObject);
   getLogEntriesList(): Array<CallLogEntry>;
   setLogEntriesList(value: Array<CallLogEntry>): ListCallLogsResponse;
   clearLogEntriesList(): ListCallLogsResponse;
@@ -698,25 +714,27 @@ export class ListCallLogsResponse extends jspb.Message {
 
 export namespace ListCallLogsResponse {
   export type AsObject = {
-    logEntriesList: Array<CallLogEntry.AsObject>,
-    truncated: boolean,
-    minAvailableSeq: number,
-    maxAvailableSeq: number,
-    hasMoreOlder: boolean,
-    hasMoreNewer: boolean,
-    nextResumeToken: string,
-    scopeLimitedFiltersList: Array<CallLogFilterField>,
-    totalMatchingCount?: number,
-    countByLevelMap: Array<[string, number]>,
-  }
+    logEntriesList: Array<CallLogEntry.AsObject>;
+    truncated: boolean;
+    minAvailableSeq: number;
+    maxAvailableSeq: number;
+    hasMoreOlder: boolean;
+    hasMoreNewer: boolean;
+    nextResumeToken: string;
+    scopeLimitedFiltersList: Array<CallLogFilterField>;
+    totalMatchingCount?: number;
+    countByLevelMap: Array<[string, number]>;
+  };
 
-  export enum TotalMatchingCountCase { 
+  export enum TotalMatchingCountCase {
     _TOTAL_MATCHING_COUNT_NOT_SET = 0,
     TOTAL_MATCHING_COUNT = 9,
   }
 }
 
 export class GetCallLogStreamRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetCallLogStreamRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): GetCallLogStreamRequest;
 
@@ -738,13 +756,15 @@ export class GetCallLogStreamRequest extends jspb.Message {
 
 export namespace GetCallLogStreamRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ListCallLogStreamsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallLogStreamsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListCallLogStreamsRequest;
 
@@ -781,26 +801,28 @@ export class ListCallLogStreamsRequest extends jspb.Message {
 
 export namespace ListCallLogStreamsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    filter?: CallLogFilter.AsObject,
-    pageToken?: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    captureStatesList: Array<LogCaptureState>,
-  }
+    vtsiProjectName: string;
+    filter?: CallLogFilter.AsObject;
+    pageToken?: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    captureStatesList: Array<LogCaptureState>;
+  };
 
-  export enum FilterCase { 
+  export enum FilterCase {
     _FILTER_NOT_SET = 0,
     FILTER = 2,
   }
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 3,
   }
 }
 
 export class ListCallLogStreamsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallLogStreamsResponse.AsObject);
   getLogStreamsList(): Array<CallLogStream>;
   setLogStreamsList(value: Array<CallLogStream>): ListCallLogStreamsResponse;
   clearLogStreamsList(): ListCallLogStreamsResponse;
@@ -819,12 +841,14 @@ export class ListCallLogStreamsResponse extends jspb.Message {
 
 export namespace ListCallLogStreamsResponse {
   export type AsObject = {
-    logStreamsList: Array<CallLogStream.AsObject>,
-    nextPageToken: string,
-  }
+    logStreamsList: Array<CallLogStream.AsObject>;
+    nextPageToken: string;
+  };
 }
 
 export class DeleteCallLogsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteCallLogsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): DeleteCallLogsRequest;
 
@@ -846,13 +870,15 @@ export class DeleteCallLogsRequest extends jspb.Message {
 
 export namespace DeleteCallLogsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    filter?: CallLogFilter.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    filter?: CallLogFilter.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class DeleteCallLogsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteCallLogsResponse.AsObject);
   getDeletedLogEntryCount(): number;
   setDeletedLogEntryCount(value: number): DeleteCallLogsResponse;
 
@@ -869,12 +895,14 @@ export class DeleteCallLogsResponse extends jspb.Message {
 
 export namespace DeleteCallLogsResponse {
   export type AsObject = {
-    deletedLogEntryCount: number,
-    deletedLogStreamCount: number,
-  }
+    deletedLogEntryCount: number;
+    deletedLogStreamCount: number;
+  };
 }
 
 export class ExportCallLogsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ExportCallLogsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ExportCallLogsRequest;
 
@@ -899,14 +927,16 @@ export class ExportCallLogsRequest extends jspb.Message {
 
 export namespace ExportCallLogsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    filter?: CallLogFilter.AsObject,
-    format: LogExportFormat,
-    includeMetadata: boolean,
-  }
+    vtsiProjectName: string;
+    filter?: CallLogFilter.AsObject;
+    format: LogExportFormat;
+    includeMetadata: boolean;
+  };
 }
 
 export class ExportCallLogsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ExportCallLogsResponse.AsObject);
   getChunk(): Uint8Array | string;
   getChunk_asU8(): Uint8Array;
   getChunk_asB64(): string;
@@ -931,14 +961,14 @@ export class ExportCallLogsResponse extends jspb.Message {
 
 export namespace ExportCallLogsResponse {
   export type AsObject = {
-    chunk: Uint8Array | string,
-    entryCount: number,
-    last: boolean,
-    truncated: boolean,
-  }
+    chunk: Uint8Array | string;
+    entryCount: number;
+    last: boolean;
+    truncated: boolean;
+  };
 }
 
-export enum LogSource { 
+export enum LogSource {
   LOG_SOURCE_UNSPECIFIED = 0,
   LOG_SOURCE_SIP = 1,
   LOG_SOURCE_CSI = 2,
@@ -946,19 +976,19 @@ export enum LogSource {
   LOG_SOURCE_PULSEAUDIO = 4,
   LOG_SOURCE_SYSTEM = 5,
 }
-export enum LogStreamChannel { 
+export enum LogStreamChannel {
   LOG_STREAM_CHANNEL_UNSPECIFIED = 0,
   LOG_STREAM_CHANNEL_STDOUT = 1,
   LOG_STREAM_CHANNEL_STDERR = 2,
 }
-export enum LogCaptureState { 
+export enum LogCaptureState {
   LOG_CAPTURE_STATE_UNSPECIFIED = 0,
   LOG_CAPTURE_STATE_CAPTURING = 1,
   LOG_CAPTURE_STATE_STOPPED = 2,
   LOG_CAPTURE_STATE_FAILED = 3,
   LOG_CAPTURE_STATE_DETACHED = 4,
 }
-export enum CallLogFilterField { 
+export enum CallLogFilterField {
   CALL_LOG_FILTER_FIELD_UNSPECIFIED = 0,
   CALL_LOG_FILTER_FIELD_TEXT = 1,
   CALL_LOG_FILTER_FIELD_REGEX = 2,
@@ -968,7 +998,7 @@ export enum CallLogFilterField {
   CALL_LOG_FILTER_FIELD_THREAD_NAMES = 6,
   CALL_LOG_FILTER_FIELD_SIP_HEADERS = 7,
 }
-export enum LogStreamEndReason { 
+export enum LogStreamEndReason {
   LOG_STREAM_END_REASON_UNSPECIFIED = 0,
   LOG_STREAM_END_REASON_ALL_CAPTURES_TERMINATED = 1,
   LOG_STREAM_END_REASON_MAX_DURATION = 2,
@@ -976,7 +1006,7 @@ export enum LogStreamEndReason {
   LOG_STREAM_END_REASON_PERMISSION_REVOKED = 4,
   LOG_STREAM_END_REASON_CREDENTIALS_EXPIRED = 5,
 }
-export enum LogExportFormat { 
+export enum LogExportFormat {
   LOG_EXPORT_FORMAT_UNSPECIFIED = 0,
   LOG_EXPORT_FORMAT_TEXT = 1,
   LOG_EXPORT_FORMAT_NDJSON = 2,

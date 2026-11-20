@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb'; // proto import: "google/protobuf/duration.proto"
 import * as ondewo_nlu_context_pb from '../../ondewo/nlu/context_pb'; // proto import: "ondewo/nlu/context.proto"
 import * as ondewo_nlu_intent_pb from '../../ondewo/nlu/intent_pb'; // proto import: "ondewo/nlu/intent.proto"
 import * as ondewo_s2t_speech$to$text_pb from '../../ondewo/s2t/speech-to-text_pb'; // proto import: "ondewo/s2t/speech-to-text.proto"
@@ -7,6 +8,8 @@ import * as ondewo_t2s_text$to$speech_pb from '../../ondewo/t2s/text-to-speech_p
 
 
 export class BaseServiceConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: BaseServiceConfig.AsObject);
   getHost(): string;
   setHost(value: string): BaseServiceConfig;
 
@@ -26,13 +29,15 @@ export class BaseServiceConfig extends jspb.Message {
 
 export namespace BaseServiceConfig {
   export type AsObject = {
-    host: string,
-    port: number,
-    grpcCert: string,
-  }
+    host: string;
+    port: number;
+    grpcCert: string;
+  };
 }
 
 export class Credentials extends jspb.Message {
+  constructor();
+  constructor(opt_data?: Credentials.AsObject);
   getAccountName(): string;
   setAccountName(value: string): Credentials;
 
@@ -49,12 +54,14 @@ export class Credentials extends jspb.Message {
 
 export namespace Credentials {
   export type AsObject = {
-    accountName: string,
-    password: string,
-  }
+    accountName: string;
+    password: string;
+  };
 }
 
 export class NluVtsiConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: NluVtsiConfig.AsObject);
   getNluBaseConfig(): BaseServiceConfig | undefined;
   setNluBaseConfig(value?: BaseServiceConfig): NluVtsiConfig;
   hasNluBaseConfig(): boolean;
@@ -67,6 +74,8 @@ export class NluVtsiConfig extends jspb.Message {
 
   getAuthToken(): string;
   setAuthToken(value: string): NluVtsiConfig;
+  hasAuthToken(): boolean;
+  clearAuthToken(): NluVtsiConfig;
 
   getAgentName(): string;
   setAgentName(value: string): NluVtsiConfig;
@@ -90,6 +99,11 @@ export class NluVtsiConfig extends jspb.Message {
   hasPlatform(): boolean;
   clearPlatform(): NluVtsiConfig;
 
+  getPreemptiveGenerationConfig(): NluPreemptiveGenerationConfig | undefined;
+  setPreemptiveGenerationConfig(value?: NluPreemptiveGenerationConfig): NluVtsiConfig;
+  hasPreemptiveGenerationConfig(): boolean;
+  clearPreemptiveGenerationConfig(): NluVtsiConfig;
+
   getAuthenticationCase(): NluVtsiConfig.AuthenticationCase;
 
   serializeBinary(): Uint8Array;
@@ -102,30 +116,82 @@ export class NluVtsiConfig extends jspb.Message {
 
 export namespace NluVtsiConfig {
   export type AsObject = {
-    nluBaseConfig?: BaseServiceConfig.AsObject,
-    credentials?: Credentials.AsObject,
-    authToken: string,
-    agentName: string,
-    languageCode: string,
-    initialIntent: string,
-    contextsList: Array<ondewo_nlu_context_pb.Context.AsObject>,
-    httpBasicAuthToken: string,
-    platform?: ondewo_nlu_intent_pb.Intent.Message.Platform,
-  }
+    nluBaseConfig?: BaseServiceConfig.AsObject;
+    credentials?: Credentials.AsObject;
+    authToken?: string;
+    agentName: string;
+    languageCode: string;
+    initialIntent: string;
+    contextsList: Array<ondewo_nlu_context_pb.Context.AsObject>;
+    httpBasicAuthToken: string;
+    platform?: ondewo_nlu_intent_pb.Intent.Message.Platform;
+    preemptiveGenerationConfig?: NluPreemptiveGenerationConfig.AsObject;
+  };
 
-  export enum AuthenticationCase { 
+  export enum AuthenticationCase {
     AUTHENTICATION_NOT_SET = 0,
     CREDENTIALS = 2,
     AUTH_TOKEN = 3,
   }
 
-  export enum PlatformCase { 
+  export enum PlatformCase {
     _PLATFORM_NOT_SET = 0,
     PLATFORM = 9,
   }
 }
 
+export class NluPreemptiveGenerationConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: NluPreemptiveGenerationConfig.AsObject);
+  getMaxDraftsPerTurn(): number;
+  setMaxDraftsPerTurn(value: number): NluPreemptiveGenerationConfig;
+  hasMaxDraftsPerTurn(): boolean;
+  clearMaxDraftsPerTurn(): NluPreemptiveGenerationConfig;
+
+  getMinStableDwellSeconds(): number;
+  setMinStableDwellSeconds(value: number): NluPreemptiveGenerationConfig;
+  hasMinStableDwellSeconds(): boolean;
+  clearMinStableDwellSeconds(): NluPreemptiveGenerationConfig;
+
+  getMinIntervalSeconds(): number;
+  setMinIntervalSeconds(value: number): NluPreemptiveGenerationConfig;
+  hasMinIntervalSeconds(): boolean;
+  clearMinIntervalSeconds(): NluPreemptiveGenerationConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): NluPreemptiveGenerationConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: NluPreemptiveGenerationConfig): NluPreemptiveGenerationConfig.AsObject;
+  static serializeBinaryToWriter(message: NluPreemptiveGenerationConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NluPreemptiveGenerationConfig;
+  static deserializeBinaryFromReader(message: NluPreemptiveGenerationConfig, reader: jspb.BinaryReader): NluPreemptiveGenerationConfig;
+}
+
+export namespace NluPreemptiveGenerationConfig {
+  export type AsObject = {
+    maxDraftsPerTurn?: number;
+    minStableDwellSeconds?: number;
+    minIntervalSeconds?: number;
+  };
+
+  export enum MaxDraftsPerTurnCase {
+    _MAX_DRAFTS_PER_TURN_NOT_SET = 0,
+    MAX_DRAFTS_PER_TURN = 1,
+  }
+
+  export enum MinStableDwellSecondsCase {
+    _MIN_STABLE_DWELL_SECONDS_NOT_SET = 0,
+    MIN_STABLE_DWELL_SECONDS = 2,
+  }
+
+  export enum MinIntervalSecondsCase {
+    _MIN_INTERVAL_SECONDS_NOT_SET = 0,
+    MIN_INTERVAL_SECONDS = 3,
+  }
+}
+
 export class T2sVtsiConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: T2sVtsiConfig.AsObject);
   getT2sBaseConfig(): BaseServiceConfig | undefined;
   setT2sBaseConfig(value?: BaseServiceConfig): T2sVtsiConfig;
   hasT2sBaseConfig(): boolean;
@@ -135,6 +201,11 @@ export class T2sVtsiConfig extends jspb.Message {
   setT2sRequestConfig(value?: ondewo_t2s_text$to$speech_pb.RequestConfig): T2sVtsiConfig;
   hasT2sRequestConfig(): boolean;
   clearT2sRequestConfig(): T2sVtsiConfig;
+
+  getPreemptiveSynthesisConfig(): T2sPreemptiveSynthesisConfig | undefined;
+  setPreemptiveSynthesisConfig(value?: T2sPreemptiveSynthesisConfig): T2sVtsiConfig;
+  hasPreemptiveSynthesisConfig(): boolean;
+  clearPreemptiveSynthesisConfig(): T2sVtsiConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): T2sVtsiConfig.AsObject;
@@ -146,12 +217,53 @@ export class T2sVtsiConfig extends jspb.Message {
 
 export namespace T2sVtsiConfig {
   export type AsObject = {
-    t2sBaseConfig?: BaseServiceConfig.AsObject,
-    t2sRequestConfig?: ondewo_t2s_text$to$speech_pb.RequestConfig.AsObject,
+    t2sBaseConfig?: BaseServiceConfig.AsObject;
+    t2sRequestConfig?: ondewo_t2s_text$to$speech_pb.RequestConfig.AsObject;
+    preemptiveSynthesisConfig?: T2sPreemptiveSynthesisConfig.AsObject;
+  };
+}
+
+export class T2sPreemptiveSynthesisConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: T2sPreemptiveSynthesisConfig.AsObject);
+  getEnabled(): boolean;
+  setEnabled(value: boolean): T2sPreemptiveSynthesisConfig;
+  hasEnabled(): boolean;
+  clearEnabled(): T2sPreemptiveSynthesisConfig;
+
+  getChunked(): boolean;
+  setChunked(value: boolean): T2sPreemptiveSynthesisConfig;
+  hasChunked(): boolean;
+  clearChunked(): T2sPreemptiveSynthesisConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): T2sPreemptiveSynthesisConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: T2sPreemptiveSynthesisConfig): T2sPreemptiveSynthesisConfig.AsObject;
+  static serializeBinaryToWriter(message: T2sPreemptiveSynthesisConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): T2sPreemptiveSynthesisConfig;
+  static deserializeBinaryFromReader(message: T2sPreemptiveSynthesisConfig, reader: jspb.BinaryReader): T2sPreemptiveSynthesisConfig;
+}
+
+export namespace T2sPreemptiveSynthesisConfig {
+  export type AsObject = {
+    enabled?: boolean;
+    chunked?: boolean;
+  };
+
+  export enum EnabledCase {
+    _ENABLED_NOT_SET = 0,
+    ENABLED = 1,
+  }
+
+  export enum ChunkedCase {
+    _CHUNKED_NOT_SET = 0,
+    CHUNKED = 2,
   }
 }
 
 export class S2tVtsiConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: S2tVtsiConfig.AsObject);
   getS2tBaseConfig(): BaseServiceConfig | undefined;
   setS2tBaseConfig(value?: BaseServiceConfig): S2tVtsiConfig;
   hasS2tBaseConfig(): boolean;
@@ -172,12 +284,14 @@ export class S2tVtsiConfig extends jspb.Message {
 
 export namespace S2tVtsiConfig {
   export type AsObject = {
-    s2tBaseConfig?: BaseServiceConfig.AsObject,
-    s2tTranscribeRequestConfig?: ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig.AsObject,
-  }
+    s2tBaseConfig?: BaseServiceConfig.AsObject;
+    s2tTranscribeRequestConfig?: ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig.AsObject;
+  };
 }
 
 export class CommonServicesConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CommonServicesConfig.AsObject);
   getS2tVtsiConfig(): S2tVtsiConfig | undefined;
   setS2tVtsiConfig(value?: S2tVtsiConfig): CommonServicesConfig;
   hasS2tVtsiConfig(): boolean;
@@ -213,15 +327,17 @@ export class CommonServicesConfig extends jspb.Message {
 
 export namespace CommonServicesConfig {
   export type AsObject = {
-    s2tVtsiConfig?: S2tVtsiConfig.AsObject,
-    nluVtsiConfig?: NluVtsiConfig.AsObject,
-    t2sVtsiConfig?: T2sVtsiConfig.AsObject,
-    csiVtsiConfig?: CsiVtsiConfig.AsObject,
-    voiceInteractionConfig?: VoiceInteractionConfig.AsObject,
-  }
+    s2tVtsiConfig?: S2tVtsiConfig.AsObject;
+    nluVtsiConfig?: NluVtsiConfig.AsObject;
+    t2sVtsiConfig?: T2sVtsiConfig.AsObject;
+    csiVtsiConfig?: CsiVtsiConfig.AsObject;
+    voiceInteractionConfig?: VoiceInteractionConfig.AsObject;
+  };
 }
 
 export class VoiceInteractionConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VoiceInteractionConfig.AsObject);
   getTurnDetectionConfig(): TurnDetectionConfig | undefined;
   setTurnDetectionConfig(value?: TurnDetectionConfig): VoiceInteractionConfig;
   hasTurnDetectionConfig(): boolean;
@@ -242,6 +358,16 @@ export class VoiceInteractionConfig extends jspb.Message {
   hasAnsweringMachineDetectionConfig(): boolean;
   clearAnsweringMachineDetectionConfig(): VoiceInteractionConfig;
 
+  getDtmfConfig(): DtmfConfig | undefined;
+  setDtmfConfig(value?: DtmfConfig): VoiceInteractionConfig;
+  hasDtmfConfig(): boolean;
+  clearDtmfConfig(): VoiceInteractionConfig;
+
+  getWarmTransferConfig(): WarmTransferConfig | undefined;
+  setWarmTransferConfig(value?: WarmTransferConfig): VoiceInteractionConfig;
+  hasWarmTransferConfig(): boolean;
+  clearWarmTransferConfig(): VoiceInteractionConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VoiceInteractionConfig.AsObject;
   static toObject(includeInstance: boolean, msg: VoiceInteractionConfig): VoiceInteractionConfig.AsObject;
@@ -252,14 +378,418 @@ export class VoiceInteractionConfig extends jspb.Message {
 
 export namespace VoiceInteractionConfig {
   export type AsObject = {
-    turnDetectionConfig?: TurnDetectionConfig.AsObject,
-    interruptionHandlingConfig?: InterruptionHandlingConfig.AsObject,
-    responseTimingConfig?: ResponseTimingConfig.AsObject,
-    answeringMachineDetectionConfig?: AnsweringMachineDetectionConfig.AsObject,
+    turnDetectionConfig?: TurnDetectionConfig.AsObject;
+    interruptionHandlingConfig?: InterruptionHandlingConfig.AsObject;
+    responseTimingConfig?: ResponseTimingConfig.AsObject;
+    answeringMachineDetectionConfig?: AnsweringMachineDetectionConfig.AsObject;
+    dtmfConfig?: DtmfConfig.AsObject;
+    warmTransferConfig?: WarmTransferConfig.AsObject;
+  };
+}
+
+export class DtmfConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DtmfConfig.AsObject);
+  getEnabled(): boolean;
+  setEnabled(value: boolean): DtmfConfig;
+  hasEnabled(): boolean;
+  clearEnabled(): DtmfConfig;
+
+  getBargeIn(): boolean;
+  setBargeIn(value: boolean): DtmfConfig;
+  hasBargeIn(): boolean;
+  clearBargeIn(): DtmfConfig;
+
+  getInterDigitTimeoutMs(): number;
+  setInterDigitTimeoutMs(value: number): DtmfConfig;
+  hasInterDigitTimeoutMs(): boolean;
+  clearInterDigitTimeoutMs(): DtmfConfig;
+
+  getUndeclaredPolicy(): string;
+  setUndeclaredPolicy(value: string): DtmfConfig;
+  hasUndeclaredPolicy(): boolean;
+  clearUndeclaredPolicy(): DtmfConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DtmfConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: DtmfConfig): DtmfConfig.AsObject;
+  static serializeBinaryToWriter(message: DtmfConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DtmfConfig;
+  static deserializeBinaryFromReader(message: DtmfConfig, reader: jspb.BinaryReader): DtmfConfig;
+}
+
+export namespace DtmfConfig {
+  export type AsObject = {
+    enabled?: boolean;
+    bargeIn?: boolean;
+    interDigitTimeoutMs?: number;
+    undeclaredPolicy?: string;
+  };
+
+  export enum EnabledCase {
+    _ENABLED_NOT_SET = 0,
+    ENABLED = 1,
+  }
+
+  export enum BargeInCase {
+    _BARGE_IN_NOT_SET = 0,
+    BARGE_IN = 2,
+  }
+
+  export enum InterDigitTimeoutMsCase {
+    _INTER_DIGIT_TIMEOUT_MS_NOT_SET = 0,
+    INTER_DIGIT_TIMEOUT_MS = 3,
+  }
+
+  export enum UndeclaredPolicyCase {
+    _UNDECLARED_POLICY_NOT_SET = 0,
+    UNDECLARED_POLICY = 4,
   }
 }
 
+export class WarmTransferConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: WarmTransferConfig.AsObject);
+  getEnabled(): boolean;
+  setEnabled(value: boolean): WarmTransferConfig;
+  hasEnabled(): boolean;
+  clearEnabled(): WarmTransferConfig;
+
+  getIntroPrompt(): string;
+  setIntroPrompt(value: string): WarmTransferConfig;
+  hasIntroPrompt(): boolean;
+  clearIntroPrompt(): WarmTransferConfig;
+
+  getIntroTextSource(): WarmIntroTextSource;
+  setIntroTextSource(value: WarmIntroTextSource): WarmTransferConfig;
+
+  getReadyQuestion(): string;
+  setReadyQuestion(value: string): WarmTransferConfig;
+  hasReadyQuestion(): boolean;
+  clearReadyQuestion(): WarmTransferConfig;
+
+  getConfirmHumanBeforeIntro(): boolean;
+  setConfirmHumanBeforeIntro(value: boolean): WarmTransferConfig;
+  hasConfirmHumanBeforeIntro(): boolean;
+  clearConfirmHumanBeforeIntro(): WarmTransferConfig;
+
+  getAcceptQuestion(): string;
+  setAcceptQuestion(value: string): WarmTransferConfig;
+  hasAcceptQuestion(): boolean;
+  clearAcceptQuestion(): WarmTransferConfig;
+
+  getDeclineReasonQuestion(): string;
+  setDeclineReasonQuestion(value: string): WarmTransferConfig;
+  hasDeclineReasonQuestion(): boolean;
+  clearDeclineReasonQuestion(): WarmTransferConfig;
+
+  getCallerDeclinedMessage(): string;
+  setCallerDeclinedMessage(value: string): WarmTransferConfig;
+  hasCallerDeclinedMessage(): boolean;
+  clearCallerDeclinedMessage(): WarmTransferConfig;
+
+  getCallerUnreachableMessage(): string;
+  setCallerUnreachableMessage(value: string): WarmTransferConfig;
+  hasCallerUnreachableMessage(): boolean;
+  clearCallerUnreachableMessage(): WarmTransferConfig;
+
+  getAcceptDtmf(): string;
+  setAcceptDtmf(value: string): WarmTransferConfig;
+  hasAcceptDtmf(): boolean;
+  clearAcceptDtmf(): WarmTransferConfig;
+
+  getDeclineDtmf(): string;
+  setDeclineDtmf(value: string): WarmTransferConfig;
+  hasDeclineDtmf(): boolean;
+  clearDeclineDtmf(): WarmTransferConfig;
+
+  getDecisionTimeoutS(): number;
+  setDecisionTimeoutS(value: number): WarmTransferConfig;
+  hasDecisionTimeoutS(): boolean;
+  clearDecisionTimeoutS(): WarmTransferConfig;
+
+  getMaxIntroDurationS(): number;
+  setMaxIntroDurationS(value: number): WarmTransferConfig;
+  hasMaxIntroDurationS(): boolean;
+  clearMaxIntroDurationS(): WarmTransferConfig;
+
+  getCalleeDisplayName(): string;
+  setCalleeDisplayName(value: string): WarmTransferConfig;
+  hasCalleeDisplayName(): boolean;
+  clearCalleeDisplayName(): WarmTransferConfig;
+
+  getCalleeDescription(): string;
+  setCalleeDescription(value: string): WarmTransferConfig;
+  hasCalleeDescription(): boolean;
+  clearCalleeDescription(): WarmTransferConfig;
+
+  getOnIntroUnavailable(): WarmIntroUnavailablePolicy;
+  setOnIntroUnavailable(value: WarmIntroUnavailablePolicy): WarmTransferConfig;
+
+  getApplyToBotTransfers(): boolean;
+  setApplyToBotTransfers(value: boolean): WarmTransferConfig;
+  hasApplyToBotTransfers(): boolean;
+  clearApplyToBotTransfers(): WarmTransferConfig;
+
+  getCallerHoldMessage(): string;
+  setCallerHoldMessage(value: string): WarmTransferConfig;
+  hasCallerHoldMessage(): boolean;
+  clearCallerHoldMessage(): WarmTransferConfig;
+
+  getCallerHoldMusic(): boolean;
+  setCallerHoldMusic(value: boolean): WarmTransferConfig;
+  hasCallerHoldMusic(): boolean;
+  clearCallerHoldMusic(): WarmTransferConfig;
+
+  getCallerReassureIntervalS(): number;
+  setCallerReassureIntervalS(value: number): WarmTransferConfig;
+  hasCallerReassureIntervalS(): boolean;
+  clearCallerReassureIntervalS(): WarmTransferConfig;
+
+  getLlmCcaiServiceName(): string;
+  setLlmCcaiServiceName(value: string): WarmTransferConfig;
+  hasLlmCcaiServiceName(): boolean;
+  clearLlmCcaiServiceName(): WarmTransferConfig;
+
+  getCallerDisclosureMessage(): string;
+  setCallerDisclosureMessage(value: string): WarmTransferConfig;
+  hasCallerDisclosureMessage(): boolean;
+  clearCallerDisclosureMessage(): WarmTransferConfig;
+
+  getCallerAcceptedMessage(): string;
+  setCallerAcceptedMessage(value: string): WarmTransferConfig;
+  hasCallerAcceptedMessage(): boolean;
+  clearCallerAcceptedMessage(): WarmTransferConfig;
+
+  getStoreIntroAudio(): boolean;
+  setStoreIntroAudio(value: boolean): WarmTransferConfig;
+  hasStoreIntroAudio(): boolean;
+  clearStoreIntroAudio(): WarmTransferConfig;
+
+  getIntroListenerNamesList(): Array<string>;
+  setIntroListenerNamesList(value: Array<string>): WarmTransferConfig;
+  clearIntroListenerNamesList(): WarmTransferConfig;
+  addIntroListenerNames(value: string, index?: number): WarmTransferConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WarmTransferConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: WarmTransferConfig): WarmTransferConfig.AsObject;
+  static serializeBinaryToWriter(message: WarmTransferConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WarmTransferConfig;
+  static deserializeBinaryFromReader(message: WarmTransferConfig, reader: jspb.BinaryReader): WarmTransferConfig;
+}
+
+export namespace WarmTransferConfig {
+  export type AsObject = {
+    enabled?: boolean;
+    introPrompt?: string;
+    introTextSource: WarmIntroTextSource;
+    readyQuestion?: string;
+    confirmHumanBeforeIntro?: boolean;
+    acceptQuestion?: string;
+    declineReasonQuestion?: string;
+    callerDeclinedMessage?: string;
+    callerUnreachableMessage?: string;
+    acceptDtmf?: string;
+    declineDtmf?: string;
+    decisionTimeoutS?: number;
+    maxIntroDurationS?: number;
+    calleeDisplayName?: string;
+    calleeDescription?: string;
+    onIntroUnavailable: WarmIntroUnavailablePolicy;
+    applyToBotTransfers?: boolean;
+    callerHoldMessage?: string;
+    callerHoldMusic?: boolean;
+    callerReassureIntervalS?: number;
+    llmCcaiServiceName?: string;
+    callerDisclosureMessage?: string;
+    callerAcceptedMessage?: string;
+    storeIntroAudio?: boolean;
+    introListenerNamesList: Array<string>;
+  };
+
+  export enum EnabledCase {
+    _ENABLED_NOT_SET = 0,
+    ENABLED = 1,
+  }
+
+  export enum IntroPromptCase {
+    _INTRO_PROMPT_NOT_SET = 0,
+    INTRO_PROMPT = 2,
+  }
+
+  export enum ReadyQuestionCase {
+    _READY_QUESTION_NOT_SET = 0,
+    READY_QUESTION = 4,
+  }
+
+  export enum ConfirmHumanBeforeIntroCase {
+    _CONFIRM_HUMAN_BEFORE_INTRO_NOT_SET = 0,
+    CONFIRM_HUMAN_BEFORE_INTRO = 5,
+  }
+
+  export enum AcceptQuestionCase {
+    _ACCEPT_QUESTION_NOT_SET = 0,
+    ACCEPT_QUESTION = 6,
+  }
+
+  export enum DeclineReasonQuestionCase {
+    _DECLINE_REASON_QUESTION_NOT_SET = 0,
+    DECLINE_REASON_QUESTION = 7,
+  }
+
+  export enum CallerDeclinedMessageCase {
+    _CALLER_DECLINED_MESSAGE_NOT_SET = 0,
+    CALLER_DECLINED_MESSAGE = 8,
+  }
+
+  export enum CallerUnreachableMessageCase {
+    _CALLER_UNREACHABLE_MESSAGE_NOT_SET = 0,
+    CALLER_UNREACHABLE_MESSAGE = 9,
+  }
+
+  export enum AcceptDtmfCase {
+    _ACCEPT_DTMF_NOT_SET = 0,
+    ACCEPT_DTMF = 10,
+  }
+
+  export enum DeclineDtmfCase {
+    _DECLINE_DTMF_NOT_SET = 0,
+    DECLINE_DTMF = 11,
+  }
+
+  export enum DecisionTimeoutSCase {
+    _DECISION_TIMEOUT_S_NOT_SET = 0,
+    DECISION_TIMEOUT_S = 12,
+  }
+
+  export enum MaxIntroDurationSCase {
+    _MAX_INTRO_DURATION_S_NOT_SET = 0,
+    MAX_INTRO_DURATION_S = 13,
+  }
+
+  export enum CalleeDisplayNameCase {
+    _CALLEE_DISPLAY_NAME_NOT_SET = 0,
+    CALLEE_DISPLAY_NAME = 14,
+  }
+
+  export enum CalleeDescriptionCase {
+    _CALLEE_DESCRIPTION_NOT_SET = 0,
+    CALLEE_DESCRIPTION = 15,
+  }
+
+  export enum ApplyToBotTransfersCase {
+    _APPLY_TO_BOT_TRANSFERS_NOT_SET = 0,
+    APPLY_TO_BOT_TRANSFERS = 17,
+  }
+
+  export enum CallerHoldMessageCase {
+    _CALLER_HOLD_MESSAGE_NOT_SET = 0,
+    CALLER_HOLD_MESSAGE = 18,
+  }
+
+  export enum CallerHoldMusicCase {
+    _CALLER_HOLD_MUSIC_NOT_SET = 0,
+    CALLER_HOLD_MUSIC = 19,
+  }
+
+  export enum CallerReassureIntervalSCase {
+    _CALLER_REASSURE_INTERVAL_S_NOT_SET = 0,
+    CALLER_REASSURE_INTERVAL_S = 20,
+  }
+
+  export enum LlmCcaiServiceNameCase {
+    _LLM_CCAI_SERVICE_NAME_NOT_SET = 0,
+    LLM_CCAI_SERVICE_NAME = 21,
+  }
+
+  export enum CallerDisclosureMessageCase {
+    _CALLER_DISCLOSURE_MESSAGE_NOT_SET = 0,
+    CALLER_DISCLOSURE_MESSAGE = 22,
+  }
+
+  export enum CallerAcceptedMessageCase {
+    _CALLER_ACCEPTED_MESSAGE_NOT_SET = 0,
+    CALLER_ACCEPTED_MESSAGE = 23,
+  }
+
+  export enum StoreIntroAudioCase {
+    _STORE_INTRO_AUDIO_NOT_SET = 0,
+    STORE_INTRO_AUDIO = 24,
+  }
+}
+
+export class WarmIntroRecord extends jspb.Message {
+  constructor();
+  constructor(opt_data?: WarmIntroRecord.AsObject);
+  getIntroId(): string;
+  setIntroId(value: string): WarmIntroRecord;
+
+  getDecision(): WarmIntroDecision;
+  setDecision(value: WarmIntroDecision): WarmIntroRecord;
+
+  getDecidedBy(): WarmIntroDecidedBy;
+  setDecidedBy(value: WarmIntroDecidedBy): WarmIntroRecord;
+
+  getDeclineReasonPresent(): boolean;
+  setDeclineReasonPresent(value: boolean): WarmIntroRecord;
+
+  getIntroCallName(): string;
+  setIntroCallName(value: string): WarmIntroRecord;
+
+  getRingDuration(): google_protobuf_duration_pb.Duration | undefined;
+  setRingDuration(value?: google_protobuf_duration_pb.Duration): WarmIntroRecord;
+  hasRingDuration(): boolean;
+  clearRingDuration(): WarmIntroRecord;
+
+  getIntroDuration(): google_protobuf_duration_pb.Duration | undefined;
+  setIntroDuration(value?: google_protobuf_duration_pb.Duration): WarmIntroRecord;
+  hasIntroDuration(): boolean;
+  clearIntroDuration(): WarmIntroRecord;
+
+  getTextSource(): WarmIntroTextSource;
+  setTextSource(value: WarmIntroTextSource): WarmIntroRecord;
+
+  getTextFellBack(): boolean;
+  setTextFellBack(value: boolean): WarmIntroRecord;
+
+  getCause(): string;
+  setCause(value: string): WarmIntroRecord;
+
+  getNoticeDelivered(): boolean;
+  setNoticeDelivered(value: boolean): WarmIntroRecord;
+
+  getIntroStarted(): boolean;
+  setIntroStarted(value: boolean): WarmIntroRecord;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WarmIntroRecord.AsObject;
+  static toObject(includeInstance: boolean, msg: WarmIntroRecord): WarmIntroRecord.AsObject;
+  static serializeBinaryToWriter(message: WarmIntroRecord, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WarmIntroRecord;
+  static deserializeBinaryFromReader(message: WarmIntroRecord, reader: jspb.BinaryReader): WarmIntroRecord;
+}
+
+export namespace WarmIntroRecord {
+  export type AsObject = {
+    introId: string;
+    decision: WarmIntroDecision;
+    decidedBy: WarmIntroDecidedBy;
+    declineReasonPresent: boolean;
+    introCallName: string;
+    ringDuration?: google_protobuf_duration_pb.Duration.AsObject;
+    introDuration?: google_protobuf_duration_pb.Duration.AsObject;
+    textSource: WarmIntroTextSource;
+    textFellBack: boolean;
+    cause: string;
+    noticeDelivered: boolean;
+    introStarted: boolean;
+  };
+}
+
 export class TurnDetectionConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TurnDetectionConfig.AsObject);
   getMode(): TurnDetectionConfig.TurnDetectionMode;
   setMode(value: TurnDetectionConfig.TurnDetectionMode): TurnDetectionConfig;
 
@@ -286,6 +816,51 @@ export class TurnDetectionConfig extends jspb.Message {
   hasTurnDetectionUserPrompt(): boolean;
   clearTurnDetectionUserPrompt(): TurnDetectionConfig;
 
+  getConversationContextTurns(): number;
+  setConversationContextTurns(value: number): TurnDetectionConfig;
+  hasConversationContextTurns(): boolean;
+  clearConversationContextTurns(): TurnDetectionConfig;
+
+  getSemanticModelName(): string;
+  setSemanticModelName(value: string): TurnDetectionConfig;
+  hasSemanticModelName(): boolean;
+  clearSemanticModelName(): TurnDetectionConfig;
+
+  getEndOfTurnProbabilityThreshold(): number;
+  setEndOfTurnProbabilityThreshold(value: number): TurnDetectionConfig;
+  hasEndOfTurnProbabilityThreshold(): boolean;
+  clearEndOfTurnProbabilityThreshold(): TurnDetectionConfig;
+
+  getHoldBands(): TurnDetectionConfig.EndOfTurnHoldBands | undefined;
+  setHoldBands(value?: TurnDetectionConfig.EndOfTurnHoldBands): TurnDetectionConfig;
+  hasHoldBands(): boolean;
+  clearHoldBands(): TurnDetectionConfig;
+
+  getUncertainMinWords(): number;
+  setUncertainMinWords(value: number): TurnDetectionConfig;
+  hasUncertainMinWords(): boolean;
+  clearUncertainMinWords(): TurnDetectionConfig;
+
+  getIncompleteMaxSilenceSeconds(): number;
+  setIncompleteMaxSilenceSeconds(value: number): TurnDetectionConfig;
+  hasIncompleteMaxSilenceSeconds(): boolean;
+  clearIncompleteMaxSilenceSeconds(): TurnDetectionConfig;
+
+  getExactProbability(): boolean;
+  setExactProbability(value: boolean): TurnDetectionConfig;
+  hasExactProbability(): boolean;
+  clearExactProbability(): TurnDetectionConfig;
+
+  getFinalMergeWindowSeconds(): number;
+  setFinalMergeWindowSeconds(value: number): TurnDetectionConfig;
+  hasFinalMergeWindowSeconds(): boolean;
+  clearFinalMergeWindowSeconds(): TurnDetectionConfig;
+
+  getDictationConfig(): DictationConfig | undefined;
+  setDictationConfig(value?: DictationConfig): TurnDetectionConfig;
+  hasDictationConfig(): boolean;
+  clearDictationConfig(): TurnDetectionConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TurnDetectionConfig.AsObject;
   static toObject(includeInstance: boolean, msg: TurnDetectionConfig): TurnDetectionConfig.AsObject;
@@ -296,50 +871,252 @@ export class TurnDetectionConfig extends jspb.Message {
 
 export namespace TurnDetectionConfig {
   export type AsObject = {
-    mode: TurnDetectionConfig.TurnDetectionMode,
-    minEndpointingDelaySeconds?: number,
-    maxEndpointingDelaySeconds?: number,
-    turnEagerness: TurnDetectionConfig.TurnEagerness,
-    turnDetectionSystemPrompt?: string,
-    turnDetectionUserPrompt?: string,
+    mode: TurnDetectionConfig.TurnDetectionMode;
+    minEndpointingDelaySeconds?: number;
+    maxEndpointingDelaySeconds?: number;
+    turnEagerness: TurnDetectionConfig.TurnEagerness;
+    turnDetectionSystemPrompt?: string;
+    turnDetectionUserPrompt?: string;
+    conversationContextTurns?: number;
+    semanticModelName?: string;
+    endOfTurnProbabilityThreshold?: number;
+    holdBands?: TurnDetectionConfig.EndOfTurnHoldBands.AsObject;
+    uncertainMinWords?: number;
+    incompleteMaxSilenceSeconds?: number;
+    exactProbability?: boolean;
+    finalMergeWindowSeconds?: number;
+    dictationConfig?: DictationConfig.AsObject;
+  };
+
+  export class EndOfTurnHoldBands extends jspb.Message {
+    constructor();
+    constructor(opt_data?: EndOfTurnHoldBands.AsObject);
+    getBandsList(): Array<TurnDetectionConfig.EndOfTurnHoldBand>;
+    setBandsList(value: Array<TurnDetectionConfig.EndOfTurnHoldBand>): EndOfTurnHoldBands;
+    clearBandsList(): EndOfTurnHoldBands;
+    addBands(value?: TurnDetectionConfig.EndOfTurnHoldBand, index?: number): TurnDetectionConfig.EndOfTurnHoldBand;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EndOfTurnHoldBands.AsObject;
+    static toObject(includeInstance: boolean, msg: EndOfTurnHoldBands): EndOfTurnHoldBands.AsObject;
+    static serializeBinaryToWriter(message: EndOfTurnHoldBands, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EndOfTurnHoldBands;
+    static deserializeBinaryFromReader(message: EndOfTurnHoldBands, reader: jspb.BinaryReader): EndOfTurnHoldBands;
   }
 
-  export enum TurnDetectionMode { 
+  export namespace EndOfTurnHoldBands {
+    export type AsObject = {
+      bandsList: Array<TurnDetectionConfig.EndOfTurnHoldBand.AsObject>;
+    };
+  }
+
+
+  export class EndOfTurnHoldBand extends jspb.Message {
+    constructor();
+    constructor(opt_data?: EndOfTurnHoldBand.AsObject);
+    getUpperProbability(): number;
+    setUpperProbability(value: number): EndOfTurnHoldBand;
+
+    getMaxSilenceSeconds(): number;
+    setMaxSilenceSeconds(value: number): EndOfTurnHoldBand;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EndOfTurnHoldBand.AsObject;
+    static toObject(includeInstance: boolean, msg: EndOfTurnHoldBand): EndOfTurnHoldBand.AsObject;
+    static serializeBinaryToWriter(message: EndOfTurnHoldBand, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EndOfTurnHoldBand;
+    static deserializeBinaryFromReader(message: EndOfTurnHoldBand, reader: jspb.BinaryReader): EndOfTurnHoldBand;
+  }
+
+  export namespace EndOfTurnHoldBand {
+    export type AsObject = {
+      upperProbability: number;
+      maxSilenceSeconds: number;
+    };
+  }
+
+
+  export enum TurnDetectionMode {
     TURN_DETECTION_MODE_UNSPECIFIED = 0,
     VAD = 1,
     SEMANTIC_MODEL = 2,
     AUDIO_MODEL = 3,
   }
 
-  export enum TurnEagerness { 
+  export enum TurnEagerness {
     TURN_EAGERNESS_UNSPECIFIED = 0,
     PATIENT = 1,
     NORMAL = 2,
     EAGER = 3,
   }
 
-  export enum MinEndpointingDelaySecondsCase { 
+  export enum MinEndpointingDelaySecondsCase {
     _MIN_ENDPOINTING_DELAY_SECONDS_NOT_SET = 0,
     MIN_ENDPOINTING_DELAY_SECONDS = 2,
   }
 
-  export enum MaxEndpointingDelaySecondsCase { 
+  export enum MaxEndpointingDelaySecondsCase {
     _MAX_ENDPOINTING_DELAY_SECONDS_NOT_SET = 0,
     MAX_ENDPOINTING_DELAY_SECONDS = 3,
   }
 
-  export enum TurnDetectionSystemPromptCase { 
+  export enum TurnDetectionSystemPromptCase {
     _TURN_DETECTION_SYSTEM_PROMPT_NOT_SET = 0,
     TURN_DETECTION_SYSTEM_PROMPT = 5,
   }
 
-  export enum TurnDetectionUserPromptCase { 
+  export enum TurnDetectionUserPromptCase {
     _TURN_DETECTION_USER_PROMPT_NOT_SET = 0,
     TURN_DETECTION_USER_PROMPT = 6,
+  }
+
+  export enum ConversationContextTurnsCase {
+    _CONVERSATION_CONTEXT_TURNS_NOT_SET = 0,
+    CONVERSATION_CONTEXT_TURNS = 7,
+  }
+
+  export enum SemanticModelNameCase {
+    _SEMANTIC_MODEL_NAME_NOT_SET = 0,
+    SEMANTIC_MODEL_NAME = 8,
+  }
+
+  export enum EndOfTurnProbabilityThresholdCase {
+    _END_OF_TURN_PROBABILITY_THRESHOLD_NOT_SET = 0,
+    END_OF_TURN_PROBABILITY_THRESHOLD = 9,
+  }
+
+  export enum UncertainMinWordsCase {
+    _UNCERTAIN_MIN_WORDS_NOT_SET = 0,
+    UNCERTAIN_MIN_WORDS = 11,
+  }
+
+  export enum IncompleteMaxSilenceSecondsCase {
+    _INCOMPLETE_MAX_SILENCE_SECONDS_NOT_SET = 0,
+    INCOMPLETE_MAX_SILENCE_SECONDS = 12,
+  }
+
+  export enum ExactProbabilityCase {
+    _EXACT_PROBABILITY_NOT_SET = 0,
+    EXACT_PROBABILITY = 13,
+  }
+
+  export enum FinalMergeWindowSecondsCase {
+    _FINAL_MERGE_WINDOW_SECONDS_NOT_SET = 0,
+    FINAL_MERGE_WINDOW_SECONDS = 14,
+  }
+}
+
+export class DictationConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DictationConfig.AsObject);
+  getHoldEnabled(): boolean;
+  setHoldEnabled(value: boolean): DictationConfig;
+  hasHoldEnabled(): boolean;
+  clearHoldEnabled(): DictationConfig;
+
+  getExpectedInputEnabled(): boolean;
+  setExpectedInputEnabled(value: boolean): DictationConfig;
+  hasExpectedInputEnabled(): boolean;
+  clearExpectedInputEnabled(): DictationConfig;
+
+  getReadBackFromBotTextEnabled(): boolean;
+  setReadBackFromBotTextEnabled(value: boolean): DictationConfig;
+  hasReadBackFromBotTextEnabled(): boolean;
+  clearReadBackFromBotTextEnabled(): DictationConfig;
+
+  getHoldGenericMaxSeconds(): number;
+  setHoldGenericMaxSeconds(value: number): DictationConfig;
+  hasHoldGenericMaxSeconds(): boolean;
+  clearHoldGenericMaxSeconds(): DictationConfig;
+
+  getHoldMaxSecondsByCategoryMap(): jspb.Map<string, number>;
+  clearHoldMaxSecondsByCategoryMap(): DictationConfig;
+
+  getHoldInvalidChecksumSeconds(): number;
+  setHoldInvalidChecksumSeconds(value: number): DictationConfig;
+  hasHoldInvalidChecksumSeconds(): boolean;
+  clearHoldInvalidChecksumSeconds(): DictationConfig;
+
+  getEarlyCommitOnCompleteValue(): boolean;
+  setEarlyCommitOnCompleteValue(value: boolean): DictationConfig;
+  hasEarlyCommitOnCompleteValue(): boolean;
+  clearEarlyCommitOnCompleteValue(): DictationConfig;
+
+  getS2tSlotMinDurationOffSeconds(): number;
+  setS2tSlotMinDurationOffSeconds(value: number): DictationConfig;
+  hasS2tSlotMinDurationOffSeconds(): boolean;
+  clearS2tSlotMinDurationOffSeconds(): DictationConfig;
+
+  getS2tSlotMinDurationOffRestoreSeconds(): number;
+  setS2tSlotMinDurationOffRestoreSeconds(value: number): DictationConfig;
+  hasS2tSlotMinDurationOffRestoreSeconds(): boolean;
+  clearS2tSlotMinDurationOffRestoreSeconds(): DictationConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DictationConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: DictationConfig): DictationConfig.AsObject;
+  static serializeBinaryToWriter(message: DictationConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DictationConfig;
+  static deserializeBinaryFromReader(message: DictationConfig, reader: jspb.BinaryReader): DictationConfig;
+}
+
+export namespace DictationConfig {
+  export type AsObject = {
+    holdEnabled?: boolean;
+    expectedInputEnabled?: boolean;
+    readBackFromBotTextEnabled?: boolean;
+    holdGenericMaxSeconds?: number;
+    holdMaxSecondsByCategoryMap: Array<[string, number]>;
+    holdInvalidChecksumSeconds?: number;
+    earlyCommitOnCompleteValue?: boolean;
+    s2tSlotMinDurationOffSeconds?: number;
+    s2tSlotMinDurationOffRestoreSeconds?: number;
+  };
+
+  export enum HoldEnabledCase {
+    _HOLD_ENABLED_NOT_SET = 0,
+    HOLD_ENABLED = 1,
+  }
+
+  export enum ExpectedInputEnabledCase {
+    _EXPECTED_INPUT_ENABLED_NOT_SET = 0,
+    EXPECTED_INPUT_ENABLED = 2,
+  }
+
+  export enum ReadBackFromBotTextEnabledCase {
+    _READ_BACK_FROM_BOT_TEXT_ENABLED_NOT_SET = 0,
+    READ_BACK_FROM_BOT_TEXT_ENABLED = 3,
+  }
+
+  export enum HoldGenericMaxSecondsCase {
+    _HOLD_GENERIC_MAX_SECONDS_NOT_SET = 0,
+    HOLD_GENERIC_MAX_SECONDS = 4,
+  }
+
+  export enum HoldInvalidChecksumSecondsCase {
+    _HOLD_INVALID_CHECKSUM_SECONDS_NOT_SET = 0,
+    HOLD_INVALID_CHECKSUM_SECONDS = 6,
+  }
+
+  export enum EarlyCommitOnCompleteValueCase {
+    _EARLY_COMMIT_ON_COMPLETE_VALUE_NOT_SET = 0,
+    EARLY_COMMIT_ON_COMPLETE_VALUE = 7,
+  }
+
+  export enum S2tSlotMinDurationOffSecondsCase {
+    _S2T_SLOT_MIN_DURATION_OFF_SECONDS_NOT_SET = 0,
+    S2T_SLOT_MIN_DURATION_OFF_SECONDS = 8,
+  }
+
+  export enum S2tSlotMinDurationOffRestoreSecondsCase {
+    _S2T_SLOT_MIN_DURATION_OFF_RESTORE_SECONDS_NOT_SET = 0,
+    S2T_SLOT_MIN_DURATION_OFF_RESTORE_SECONDS = 9,
   }
 }
 
 export class InterruptionHandlingConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: InterruptionHandlingConfig.AsObject);
   getEnabled(): boolean;
   setEnabled(value: boolean): InterruptionHandlingConfig;
   hasEnabled(): boolean;
@@ -380,6 +1157,11 @@ export class InterruptionHandlingConfig extends jspb.Message {
   hasTranscribeOnDisabledInterruptions(): boolean;
   clearTranscribeOnDisabledInterruptions(): InterruptionHandlingConfig;
 
+  getInterruptionFadeOutMs(): number;
+  setInterruptionFadeOutMs(value: number): InterruptionHandlingConfig;
+  hasInterruptionFadeOutMs(): boolean;
+  clearInterruptionFadeOutMs(): InterruptionHandlingConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): InterruptionHandlingConfig.AsObject;
   static toObject(includeInstance: boolean, msg: InterruptionHandlingConfig): InterruptionHandlingConfig.AsObject;
@@ -390,58 +1172,66 @@ export class InterruptionHandlingConfig extends jspb.Message {
 
 export namespace InterruptionHandlingConfig {
   export type AsObject = {
-    enabled?: boolean,
-    minInterruptionDurationSeconds?: number,
-    minInterruptionWords?: number,
-    falseInterruptionTimeoutSeconds?: number,
-    resumeAfterFalseInterruption?: boolean,
-    backoffSeconds?: number,
-    firstMessageProtectedSeconds?: number,
-    transcribeOnDisabledInterruptions?: boolean,
-  }
+    enabled?: boolean;
+    minInterruptionDurationSeconds?: number;
+    minInterruptionWords?: number;
+    falseInterruptionTimeoutSeconds?: number;
+    resumeAfterFalseInterruption?: boolean;
+    backoffSeconds?: number;
+    firstMessageProtectedSeconds?: number;
+    transcribeOnDisabledInterruptions?: boolean;
+    interruptionFadeOutMs?: number;
+  };
 
-  export enum EnabledCase { 
+  export enum EnabledCase {
     _ENABLED_NOT_SET = 0,
     ENABLED = 1,
   }
 
-  export enum MinInterruptionDurationSecondsCase { 
+  export enum MinInterruptionDurationSecondsCase {
     _MIN_INTERRUPTION_DURATION_SECONDS_NOT_SET = 0,
     MIN_INTERRUPTION_DURATION_SECONDS = 2,
   }
 
-  export enum MinInterruptionWordsCase { 
+  export enum MinInterruptionWordsCase {
     _MIN_INTERRUPTION_WORDS_NOT_SET = 0,
     MIN_INTERRUPTION_WORDS = 3,
   }
 
-  export enum FalseInterruptionTimeoutSecondsCase { 
+  export enum FalseInterruptionTimeoutSecondsCase {
     _FALSE_INTERRUPTION_TIMEOUT_SECONDS_NOT_SET = 0,
     FALSE_INTERRUPTION_TIMEOUT_SECONDS = 4,
   }
 
-  export enum ResumeAfterFalseInterruptionCase { 
+  export enum ResumeAfterFalseInterruptionCase {
     _RESUME_AFTER_FALSE_INTERRUPTION_NOT_SET = 0,
     RESUME_AFTER_FALSE_INTERRUPTION = 5,
   }
 
-  export enum BackoffSecondsCase { 
+  export enum BackoffSecondsCase {
     _BACKOFF_SECONDS_NOT_SET = 0,
     BACKOFF_SECONDS = 6,
   }
 
-  export enum FirstMessageProtectedSecondsCase { 
+  export enum FirstMessageProtectedSecondsCase {
     _FIRST_MESSAGE_PROTECTED_SECONDS_NOT_SET = 0,
     FIRST_MESSAGE_PROTECTED_SECONDS = 7,
   }
 
-  export enum TranscribeOnDisabledInterruptionsCase { 
+  export enum TranscribeOnDisabledInterruptionsCase {
     _TRANSCRIBE_ON_DISABLED_INTERRUPTIONS_NOT_SET = 0,
     TRANSCRIBE_ON_DISABLED_INTERRUPTIONS = 8,
+  }
+
+  export enum InterruptionFadeOutMsCase {
+    _INTERRUPTION_FADE_OUT_MS_NOT_SET = 0,
+    INTERRUPTION_FADE_OUT_MS = 9,
   }
 }
 
 export class ResponseTimingConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ResponseTimingConfig.AsObject);
   getTurnTimeoutSeconds(): number;
   setTurnTimeoutSeconds(value: number): ResponseTimingConfig;
   hasTurnTimeoutSeconds(): boolean;
@@ -477,35 +1267,37 @@ export class ResponseTimingConfig extends jspb.Message {
 
 export namespace ResponseTimingConfig {
   export type AsObject = {
-    turnTimeoutSeconds?: number,
-    silenceEndCallTimeoutSeconds?: number,
-    softTimeoutConfig?: SoftTimeoutConfig.AsObject,
-    preemptiveGenerationEnabled?: boolean,
-    t2sChunkedStreamingEnabled?: boolean,
-  }
+    turnTimeoutSeconds?: number;
+    silenceEndCallTimeoutSeconds?: number;
+    softTimeoutConfig?: SoftTimeoutConfig.AsObject;
+    preemptiveGenerationEnabled?: boolean;
+    t2sChunkedStreamingEnabled?: boolean;
+  };
 
-  export enum TurnTimeoutSecondsCase { 
+  export enum TurnTimeoutSecondsCase {
     _TURN_TIMEOUT_SECONDS_NOT_SET = 0,
     TURN_TIMEOUT_SECONDS = 1,
   }
 
-  export enum SilenceEndCallTimeoutSecondsCase { 
+  export enum SilenceEndCallTimeoutSecondsCase {
     _SILENCE_END_CALL_TIMEOUT_SECONDS_NOT_SET = 0,
     SILENCE_END_CALL_TIMEOUT_SECONDS = 2,
   }
 
-  export enum PreemptiveGenerationEnabledCase { 
+  export enum PreemptiveGenerationEnabledCase {
     _PREEMPTIVE_GENERATION_ENABLED_NOT_SET = 0,
     PREEMPTIVE_GENERATION_ENABLED = 4,
   }
 
-  export enum T2sChunkedStreamingEnabledCase { 
+  export enum T2sChunkedStreamingEnabledCase {
     _T2S_CHUNKED_STREAMING_ENABLED_NOT_SET = 0,
     T2S_CHUNKED_STREAMING_ENABLED = 5,
   }
 }
 
 export class SoftTimeoutConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SoftTimeoutConfig.AsObject);
   getTimeoutSeconds(): number;
   setTimeoutSeconds(value: number): SoftTimeoutConfig;
   hasTimeoutSeconds(): boolean;
@@ -531,23 +1323,25 @@ export class SoftTimeoutConfig extends jspb.Message {
 
 export namespace SoftTimeoutConfig {
   export type AsObject = {
-    timeoutSeconds?: number,
-    messagesList: Array<string>,
-    maxPerGeneration?: number,
-  }
+    timeoutSeconds?: number;
+    messagesList: Array<string>;
+    maxPerGeneration?: number;
+  };
 
-  export enum TimeoutSecondsCase { 
+  export enum TimeoutSecondsCase {
     _TIMEOUT_SECONDS_NOT_SET = 0,
     TIMEOUT_SECONDS = 1,
   }
 
-  export enum MaxPerGenerationCase { 
+  export enum MaxPerGenerationCase {
     _MAX_PER_GENERATION_NOT_SET = 0,
     MAX_PER_GENERATION = 3,
   }
 }
 
 export class AnsweringMachineDetectionConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AnsweringMachineDetectionConfig.AsObject);
   getActive(): boolean;
   setActive(value: boolean): AnsweringMachineDetectionConfig;
   hasActive(): boolean;
@@ -663,140 +1457,142 @@ export class AnsweringMachineDetectionConfig extends jspb.Message {
 
 export namespace AnsweringMachineDetectionConfig {
   export type AsObject = {
-    active?: boolean,
-    action?: AnsweringMachineDetectionConfig.AmdAction,
-    sensitivity?: AnsweringMachineDetectionConfig.AmdSensitivity,
-    maxDecisionTimeMs?: number,
-    maxMachineWaitMs?: number,
-    beepWaitAfterGreetingMs?: number,
-    initialSilenceMs?: number,
-    maxHumanGreetingMs?: number,
-    greetingEndSilenceMs?: number,
-    beepDetectionActive?: boolean,
-    additionalMachinePhrasesList: Array<string>,
-    additionalHumanPhrasesList: Array<string>,
-    hangUpOnFax?: boolean,
-    hangUpOnNetworkAnnouncement?: boolean,
-    hangUpOnIvr?: boolean,
-    hangUpOnCallScreening?: boolean,
-    voiceMessageIntent?: string,
-    voiceMessageMaxBeepWaitMs?: number,
-    voiceMessageTimeoutMs?: number,
-    keywordDetectionActive?: boolean,
-    cadenceDetectionActive?: boolean,
-  }
+    active?: boolean;
+    action?: AnsweringMachineDetectionConfig.AmdAction;
+    sensitivity?: AnsweringMachineDetectionConfig.AmdSensitivity;
+    maxDecisionTimeMs?: number;
+    maxMachineWaitMs?: number;
+    beepWaitAfterGreetingMs?: number;
+    initialSilenceMs?: number;
+    maxHumanGreetingMs?: number;
+    greetingEndSilenceMs?: number;
+    beepDetectionActive?: boolean;
+    additionalMachinePhrasesList: Array<string>;
+    additionalHumanPhrasesList: Array<string>;
+    hangUpOnFax?: boolean;
+    hangUpOnNetworkAnnouncement?: boolean;
+    hangUpOnIvr?: boolean;
+    hangUpOnCallScreening?: boolean;
+    voiceMessageIntent?: string;
+    voiceMessageMaxBeepWaitMs?: number;
+    voiceMessageTimeoutMs?: number;
+    keywordDetectionActive?: boolean;
+    cadenceDetectionActive?: boolean;
+  };
 
-  export enum AmdAction { 
+  export enum AmdAction {
     AMD_ACTION_UNSPECIFIED = 0,
     HANG_UP = 1,
     DETECT_ONLY = 2,
     LEAVE_VOICE_MESSAGE = 3,
   }
 
-  export enum AmdSensitivity { 
+  export enum AmdSensitivity {
     AMD_SENSITIVITY_UNSPECIFIED = 0,
     LOW = 1,
     MEDIUM = 2,
     HIGH = 3,
   }
 
-  export enum ActiveCase { 
+  export enum ActiveCase {
     _ACTIVE_NOT_SET = 0,
     ACTIVE = 1,
   }
 
-  export enum ActionCase { 
+  export enum ActionCase {
     _ACTION_NOT_SET = 0,
     ACTION = 2,
   }
 
-  export enum SensitivityCase { 
+  export enum SensitivityCase {
     _SENSITIVITY_NOT_SET = 0,
     SENSITIVITY = 3,
   }
 
-  export enum MaxDecisionTimeMsCase { 
+  export enum MaxDecisionTimeMsCase {
     _MAX_DECISION_TIME_MS_NOT_SET = 0,
     MAX_DECISION_TIME_MS = 4,
   }
 
-  export enum MaxMachineWaitMsCase { 
+  export enum MaxMachineWaitMsCase {
     _MAX_MACHINE_WAIT_MS_NOT_SET = 0,
     MAX_MACHINE_WAIT_MS = 5,
   }
 
-  export enum BeepWaitAfterGreetingMsCase { 
+  export enum BeepWaitAfterGreetingMsCase {
     _BEEP_WAIT_AFTER_GREETING_MS_NOT_SET = 0,
     BEEP_WAIT_AFTER_GREETING_MS = 6,
   }
 
-  export enum InitialSilenceMsCase { 
+  export enum InitialSilenceMsCase {
     _INITIAL_SILENCE_MS_NOT_SET = 0,
     INITIAL_SILENCE_MS = 7,
   }
 
-  export enum MaxHumanGreetingMsCase { 
+  export enum MaxHumanGreetingMsCase {
     _MAX_HUMAN_GREETING_MS_NOT_SET = 0,
     MAX_HUMAN_GREETING_MS = 8,
   }
 
-  export enum GreetingEndSilenceMsCase { 
+  export enum GreetingEndSilenceMsCase {
     _GREETING_END_SILENCE_MS_NOT_SET = 0,
     GREETING_END_SILENCE_MS = 9,
   }
 
-  export enum BeepDetectionActiveCase { 
+  export enum BeepDetectionActiveCase {
     _BEEP_DETECTION_ACTIVE_NOT_SET = 0,
     BEEP_DETECTION_ACTIVE = 10,
   }
 
-  export enum HangUpOnFaxCase { 
+  export enum HangUpOnFaxCase {
     _HANG_UP_ON_FAX_NOT_SET = 0,
     HANG_UP_ON_FAX = 13,
   }
 
-  export enum HangUpOnNetworkAnnouncementCase { 
+  export enum HangUpOnNetworkAnnouncementCase {
     _HANG_UP_ON_NETWORK_ANNOUNCEMENT_NOT_SET = 0,
     HANG_UP_ON_NETWORK_ANNOUNCEMENT = 14,
   }
 
-  export enum HangUpOnIvrCase { 
+  export enum HangUpOnIvrCase {
     _HANG_UP_ON_IVR_NOT_SET = 0,
     HANG_UP_ON_IVR = 15,
   }
 
-  export enum HangUpOnCallScreeningCase { 
+  export enum HangUpOnCallScreeningCase {
     _HANG_UP_ON_CALL_SCREENING_NOT_SET = 0,
     HANG_UP_ON_CALL_SCREENING = 16,
   }
 
-  export enum VoiceMessageIntentCase { 
+  export enum VoiceMessageIntentCase {
     _VOICE_MESSAGE_INTENT_NOT_SET = 0,
     VOICE_MESSAGE_INTENT = 17,
   }
 
-  export enum VoiceMessageMaxBeepWaitMsCase { 
+  export enum VoiceMessageMaxBeepWaitMsCase {
     _VOICE_MESSAGE_MAX_BEEP_WAIT_MS_NOT_SET = 0,
     VOICE_MESSAGE_MAX_BEEP_WAIT_MS = 18,
   }
 
-  export enum VoiceMessageTimeoutMsCase { 
+  export enum VoiceMessageTimeoutMsCase {
     _VOICE_MESSAGE_TIMEOUT_MS_NOT_SET = 0,
     VOICE_MESSAGE_TIMEOUT_MS = 19,
   }
 
-  export enum KeywordDetectionActiveCase { 
+  export enum KeywordDetectionActiveCase {
     _KEYWORD_DETECTION_ACTIVE_NOT_SET = 0,
     KEYWORD_DETECTION_ACTIVE = 20,
   }
 
-  export enum CadenceDetectionActiveCase { 
+  export enum CadenceDetectionActiveCase {
     _CADENCE_DETECTION_ACTIVE_NOT_SET = 0,
     CADENCE_DETECTION_ACTIVE = 21,
   }
 }
 
 export class SipBaseConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SipBaseConfig.AsObject);
   getSipSimVersion(): string;
   setSipSimVersion(value: string): SipBaseConfig;
 
@@ -810,11 +1606,13 @@ export class SipBaseConfig extends jspb.Message {
 
 export namespace SipBaseConfig {
   export type AsObject = {
-    sipSimVersion: string,
-  }
+    sipSimVersion: string;
+  };
 }
 
 export class SipCallerConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SipCallerConfig.AsObject);
   getSipBaseConfig(): SipBaseConfig | undefined;
   setSipBaseConfig(value?: SipBaseConfig): SipCallerConfig;
   hasSipBaseConfig(): boolean;
@@ -836,13 +1634,15 @@ export class SipCallerConfig extends jspb.Message {
 
 export namespace SipCallerConfig {
   export type AsObject = {
-    sipBaseConfig?: SipBaseConfig.AsObject,
-    calleeId: string,
-    sipHeadersMap: Array<[string, string]>,
-  }
+    sipBaseConfig?: SipBaseConfig.AsObject;
+    calleeId: string;
+    sipHeadersMap: Array<[string, string]>;
+  };
 }
 
 export class CsiVtsiConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CsiVtsiConfig.AsObject);
   getS2tVtsiCallbacks(): S2tVtsiCallbacks | undefined;
   setS2tVtsiCallbacks(value?: S2tVtsiCallbacks): CsiVtsiConfig;
   hasS2tVtsiCallbacks(): boolean;
@@ -873,6 +1673,11 @@ export class CsiVtsiConfig extends jspb.Message {
   hasActivateControlMessages(): boolean;
   clearActivateControlMessages(): CsiVtsiConfig;
 
+  getPreemptiveGenerationConfig(): CsiPreemptiveGenerationConfig | undefined;
+  setPreemptiveGenerationConfig(value?: CsiPreemptiveGenerationConfig): CsiVtsiConfig;
+  hasPreemptiveGenerationConfig(): boolean;
+  clearPreemptiveGenerationConfig(): CsiVtsiConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsiVtsiConfig.AsObject;
   static toObject(includeInstance: boolean, msg: CsiVtsiConfig): CsiVtsiConfig.AsObject;
@@ -883,21 +1688,62 @@ export class CsiVtsiConfig extends jspb.Message {
 
 export namespace CsiVtsiConfig {
   export type AsObject = {
-    s2tVtsiCallbacks?: S2tVtsiCallbacks.AsObject,
-    nluVtsiCallbacks?: NluVtsiCallbacks.AsObject,
-    t2sVtsiCallbacks?: T2sVtsiCallbacks.AsObject,
-    audioObjectStoreConfig?: AudioObjectStorageConfig.AsObject,
-    messageBrokerConfig?: MessageBrokerConfig.AsObject,
-    activateControlMessages?: boolean,
-  }
+    s2tVtsiCallbacks?: S2tVtsiCallbacks.AsObject;
+    nluVtsiCallbacks?: NluVtsiCallbacks.AsObject;
+    t2sVtsiCallbacks?: T2sVtsiCallbacks.AsObject;
+    audioObjectStoreConfig?: AudioObjectStorageConfig.AsObject;
+    messageBrokerConfig?: MessageBrokerConfig.AsObject;
+    activateControlMessages?: boolean;
+    preemptiveGenerationConfig?: CsiPreemptiveGenerationConfig.AsObject;
+  };
 
-  export enum ActivateControlMessagesCase { 
+  export enum ActivateControlMessagesCase {
     _ACTIVATE_CONTROL_MESSAGES_NOT_SET = 0,
     ACTIVATE_CONTROL_MESSAGES = 6,
   }
 }
 
+export class CsiPreemptiveGenerationConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CsiPreemptiveGenerationConfig.AsObject);
+  getEnabled(): boolean;
+  setEnabled(value: boolean): CsiPreemptiveGenerationConfig;
+  hasEnabled(): boolean;
+  clearEnabled(): CsiPreemptiveGenerationConfig;
+
+  getCommitWaitTimeoutSeconds(): number;
+  setCommitWaitTimeoutSeconds(value: number): CsiPreemptiveGenerationConfig;
+  hasCommitWaitTimeoutSeconds(): boolean;
+  clearCommitWaitTimeoutSeconds(): CsiPreemptiveGenerationConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CsiPreemptiveGenerationConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: CsiPreemptiveGenerationConfig): CsiPreemptiveGenerationConfig.AsObject;
+  static serializeBinaryToWriter(message: CsiPreemptiveGenerationConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsiPreemptiveGenerationConfig;
+  static deserializeBinaryFromReader(message: CsiPreemptiveGenerationConfig, reader: jspb.BinaryReader): CsiPreemptiveGenerationConfig;
+}
+
+export namespace CsiPreemptiveGenerationConfig {
+  export type AsObject = {
+    enabled?: boolean;
+    commitWaitTimeoutSeconds?: number;
+  };
+
+  export enum EnabledCase {
+    _ENABLED_NOT_SET = 0,
+    ENABLED = 1,
+  }
+
+  export enum CommitWaitTimeoutSecondsCase {
+    _COMMIT_WAIT_TIMEOUT_SECONDS_NOT_SET = 0,
+    COMMIT_WAIT_TIMEOUT_SECONDS = 2,
+  }
+}
+
 export class AudioObjectStorageConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AudioObjectStorageConfig.AsObject);
   getActivateAudioObjectStorage(): boolean;
   setActivateAudioObjectStorage(value: boolean): AudioObjectStorageConfig;
   hasActivateAudioObjectStorage(): boolean;
@@ -918,17 +1764,19 @@ export class AudioObjectStorageConfig extends jspb.Message {
 
 export namespace AudioObjectStorageConfig {
   export type AsObject = {
-    activateAudioObjectStorage?: boolean,
-    audioObjectStorageServicesActivationConfig?: AudioObjectStorageServicesActivationConfig.AsObject,
-  }
+    activateAudioObjectStorage?: boolean;
+    audioObjectStorageServicesActivationConfig?: AudioObjectStorageServicesActivationConfig.AsObject;
+  };
 
-  export enum ActivateAudioObjectStorageCase { 
+  export enum ActivateAudioObjectStorageCase {
     _ACTIVATE_AUDIO_OBJECT_STORAGE_NOT_SET = 0,
     ACTIVATE_AUDIO_OBJECT_STORAGE = 1,
   }
 }
 
 export class AudioObjectStorageServicesActivationConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AudioObjectStorageServicesActivationConfig.AsObject);
   getActivateS2t(): boolean;
   setActivateS2t(value: boolean): AudioObjectStorageServicesActivationConfig;
   hasActivateS2t(): boolean;
@@ -949,22 +1797,24 @@ export class AudioObjectStorageServicesActivationConfig extends jspb.Message {
 
 export namespace AudioObjectStorageServicesActivationConfig {
   export type AsObject = {
-    activateS2t?: boolean,
-    activateT2s?: boolean,
-  }
+    activateS2t?: boolean;
+    activateT2s?: boolean;
+  };
 
-  export enum ActivateS2tCase { 
+  export enum ActivateS2tCase {
     _ACTIVATE_S2T_NOT_SET = 0,
     ACTIVATE_S2T = 1,
   }
 
-  export enum ActivateT2sCase { 
+  export enum ActivateT2sCase {
     _ACTIVATE_T2S_NOT_SET = 0,
     ACTIVATE_T2S = 2,
   }
 }
 
 export class MessageBrokerConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: MessageBrokerConfig.AsObject);
   getActivateMessageBroker(): boolean;
   setActivateMessageBroker(value: boolean): MessageBrokerConfig;
   hasActivateMessageBroker(): boolean;
@@ -992,23 +1842,25 @@ export class MessageBrokerConfig extends jspb.Message {
 
 export namespace MessageBrokerConfig {
   export type AsObject = {
-    activateMessageBroker?: boolean,
-    messageBrokerServicesActivationConfig?: MessageBrokerServicesActivationConfig.AsObject,
-    rabbitMqConfig?: RabbitMqConfig.AsObject,
-  }
+    activateMessageBroker?: boolean;
+    messageBrokerServicesActivationConfig?: MessageBrokerServicesActivationConfig.AsObject;
+    rabbitMqConfig?: RabbitMqConfig.AsObject;
+  };
 
-  export enum MessageBrokerConfigCase { 
+  export enum MessageBrokerConfigCase {
     MESSAGE_BROKER_CONFIG_NOT_SET = 0,
     RABBIT_MQ_CONFIG = 3,
   }
 
-  export enum ActivateMessageBrokerCase { 
+  export enum ActivateMessageBrokerCase {
     _ACTIVATE_MESSAGE_BROKER_NOT_SET = 0,
     ACTIVATE_MESSAGE_BROKER = 1,
   }
 }
 
 export class MessageBrokerServicesActivationConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: MessageBrokerServicesActivationConfig.AsObject);
   getActivateS2t(): boolean;
   setActivateS2t(value: boolean): MessageBrokerServicesActivationConfig;
   hasActivateS2t(): boolean;
@@ -1039,34 +1891,36 @@ export class MessageBrokerServicesActivationConfig extends jspb.Message {
 
 export namespace MessageBrokerServicesActivationConfig {
   export type AsObject = {
-    activateS2t?: boolean,
-    activateNlu?: boolean,
-    activateT2s?: boolean,
-    activateSip?: boolean,
-  }
+    activateS2t?: boolean;
+    activateNlu?: boolean;
+    activateT2s?: boolean;
+    activateSip?: boolean;
+  };
 
-  export enum ActivateS2tCase { 
+  export enum ActivateS2tCase {
     _ACTIVATE_S2T_NOT_SET = 0,
     ACTIVATE_S2T = 1,
   }
 
-  export enum ActivateNluCase { 
+  export enum ActivateNluCase {
     _ACTIVATE_NLU_NOT_SET = 0,
     ACTIVATE_NLU = 2,
   }
 
-  export enum ActivateT2sCase { 
+  export enum ActivateT2sCase {
     _ACTIVATE_T2S_NOT_SET = 0,
     ACTIVATE_T2S = 3,
   }
 
-  export enum ActivateSipCase { 
+  export enum ActivateSipCase {
     _ACTIVATE_SIP_NOT_SET = 0,
     ACTIVATE_SIP = 4,
   }
 }
 
 export class RabbitMqConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RabbitMqConfig.AsObject);
   getHost(): string;
   setHost(value: string): RabbitMqConfig;
 
@@ -1092,15 +1946,17 @@ export class RabbitMqConfig extends jspb.Message {
 
 export namespace RabbitMqConfig {
   export type AsObject = {
-    host: string,
-    port: number,
-    port2: number,
-    user: string,
-    password: string,
-  }
+    host: string;
+    port: number;
+    port2: number;
+    user: string;
+    password: string;
+  };
 }
 
 export class S2tVtsiCallbacks extends jspb.Message {
+  constructor();
+  constructor(opt_data?: S2tVtsiCallbacks.AsObject);
   getPreS2tCallbacksList(): Array<string>;
   setPreS2tCallbacksList(value: Array<string>): S2tVtsiCallbacks;
   clearPreS2tCallbacksList(): S2tVtsiCallbacks;
@@ -1121,12 +1977,14 @@ export class S2tVtsiCallbacks extends jspb.Message {
 
 export namespace S2tVtsiCallbacks {
   export type AsObject = {
-    preS2tCallbacksList: Array<string>,
-    postS2tCallbacksList: Array<string>,
-  }
+    preS2tCallbacksList: Array<string>;
+    postS2tCallbacksList: Array<string>;
+  };
 }
 
 export class NluVtsiCallbacks extends jspb.Message {
+  constructor();
+  constructor(opt_data?: NluVtsiCallbacks.AsObject);
   getPreNluCallbacksList(): Array<string>;
   setPreNluCallbacksList(value: Array<string>): NluVtsiCallbacks;
   clearPreNluCallbacksList(): NluVtsiCallbacks;
@@ -1147,12 +2005,14 @@ export class NluVtsiCallbacks extends jspb.Message {
 
 export namespace NluVtsiCallbacks {
   export type AsObject = {
-    preNluCallbacksList: Array<string>,
-    postNluCallbacksList: Array<string>,
-  }
+    preNluCallbacksList: Array<string>;
+    postNluCallbacksList: Array<string>;
+  };
 }
 
 export class T2sVtsiCallbacks extends jspb.Message {
+  constructor();
+  constructor(opt_data?: T2sVtsiCallbacks.AsObject);
   getPreT2sCallbacksList(): Array<string>;
   setPreT2sCallbacksList(value: Array<string>): T2sVtsiCallbacks;
   clearPreT2sCallbacksList(): T2sVtsiCallbacks;
@@ -1173,8 +2033,30 @@ export class T2sVtsiCallbacks extends jspb.Message {
 
 export namespace T2sVtsiCallbacks {
   export type AsObject = {
-    preT2sCallbacksList: Array<string>,
-    postT2sCallbacksList: Array<string>,
-  }
+    preT2sCallbacksList: Array<string>;
+    postT2sCallbacksList: Array<string>;
+  };
 }
 
+export enum WarmIntroTextSource {
+  WARM_INTRO_TEXT_SOURCE_UNSPECIFIED = 0,
+  WARM_INTRO_TEXT_SOURCE_TEMPLATE = 1,
+  WARM_INTRO_TEXT_SOURCE_LLM_SUMMARY = 2,
+}
+export enum WarmIntroUnavailablePolicy {
+  WARM_INTRO_UNAVAILABLE_POLICY_UNSPECIFIED = 0,
+  WARM_INTRO_UNAVAILABLE_POLICY_CONNECT_WITHOUT_INTRO = 1,
+  WARM_INTRO_UNAVAILABLE_POLICY_RETURN_TO_CALLER = 2,
+}
+export enum WarmIntroDecision {
+  WARM_INTRO_DECISION_UNSPECIFIED = 0,
+  WARM_INTRO_DECISION_ACCEPTED = 1,
+  WARM_INTRO_DECISION_DECLINED = 2,
+  WARM_INTRO_DECISION_NO_DECISION = 3,
+}
+export enum WarmIntroDecidedBy {
+  WARM_INTRO_DECIDED_BY_UNSPECIFIED = 0,
+  WARM_INTRO_DECIDED_BY_DTMF = 1,
+  WARM_INTRO_DECIDED_BY_SPEECH = 2,
+  WARM_INTRO_DECIDED_BY_TIMEOUT = 3,
+}

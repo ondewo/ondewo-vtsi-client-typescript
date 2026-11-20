@@ -324,6 +324,13 @@ export class CallsClient {
                response: ondewo_vtsi_calls_pb.SetCallMediaControlResponse) => void
   ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.SetCallMediaControlResponse>;
 
+  sendCallDtmf(
+    request: ondewo_vtsi_calls_pb.SendCallDtmfRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: ondewo_vtsi_calls_pb.SendCallDtmfResponse) => void
+  ): grpcWeb.ClientReadableStream<ondewo_vtsi_calls_pb.SendCallDtmfResponse>;
+
   listenCallAudio(
     request: ondewo_vtsi_calls_pb.ListenCallAudioRequest,
     metadata?: grpcWeb.Metadata
@@ -565,6 +572,11 @@ export class CallsPromiseClient {
     request: ondewo_vtsi_calls_pb.SetCallMediaControlRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<ondewo_vtsi_calls_pb.SetCallMediaControlResponse>;
+
+  sendCallDtmf(
+    request: ondewo_vtsi_calls_pb.SendCallDtmfRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<ondewo_vtsi_calls_pb.SendCallDtmfResponse>;
 
   listenCallAudio(
     request: ondewo_vtsi_calls_pb.ListenCallAudioRequest,

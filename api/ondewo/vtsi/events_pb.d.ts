@@ -8,6 +8,8 @@ import * as ondewo_vtsi_campaigns_pb from '../../ondewo/vtsi/campaigns_pb'; // p
 
 
 export class VtsiEventMessage extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VtsiEventMessage.AsObject);
   getEventId(): string;
   setEventId(value: string): VtsiEventMessage;
 
@@ -68,34 +70,36 @@ export class VtsiEventMessage extends jspb.Message {
 
 export namespace VtsiEventMessage {
   export type AsObject = {
-    eventId: string,
-    event: VtsiEvent,
-    vtsiProjectName: string,
-    resourceName: string,
-    eventTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    sipStatusType?: ondewo_sip_sip_pb.SipStatus.StatusType,
-    sipStatusDescription: string,
-    previousSipStatusType?: ondewo_sip_sip_pb.SipStatus.StatusType,
-    callName: string,
-    campaignName: string,
-    description: string,
-    attributesMap: Array<[string, string]>,
-    campaignStatistics?: ondewo_vtsi_campaigns_pb.CampaignStatistics.AsObject,
-    resourceSequence: number,
-  }
+    eventId: string;
+    event: VtsiEvent;
+    vtsiProjectName: string;
+    resourceName: string;
+    eventTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    sipStatusType?: ondewo_sip_sip_pb.SipStatus.StatusType;
+    sipStatusDescription: string;
+    previousSipStatusType?: ondewo_sip_sip_pb.SipStatus.StatusType;
+    callName: string;
+    campaignName: string;
+    description: string;
+    attributesMap: Array<[string, string]>;
+    campaignStatistics?: ondewo_vtsi_campaigns_pb.CampaignStatistics.AsObject;
+    resourceSequence: number;
+  };
 
-  export enum SipStatusTypeCase { 
+  export enum SipStatusTypeCase {
     _SIP_STATUS_TYPE_NOT_SET = 0,
     SIP_STATUS_TYPE = 6,
   }
 
-  export enum PreviousSipStatusTypeCase { 
+  export enum PreviousSipStatusTypeCase {
     _PREVIOUS_SIP_STATUS_TYPE_NOT_SET = 0,
     PREVIOUS_SIP_STATUS_TYPE = 8,
   }
 }
 
 export class VtsiEventSubscription extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VtsiEventSubscription.AsObject);
   getName(): string;
   setName(value: string): VtsiEventSubscription;
 
@@ -162,24 +166,26 @@ export class VtsiEventSubscription extends jspb.Message {
 
 export namespace VtsiEventSubscription {
   export type AsObject = {
-    name: string,
-    vtsiProjectName: string,
-    displayName: string,
-    eventsList: Array<VtsiEvent>,
-    allEvents: boolean,
-    resourceNamePrefixesList: Array<string>,
-    webhookNamesList: Array<string>,
-    disabled: boolean,
-    createdBy: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    modifiedBy: string,
-    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    campaignNamesList: Array<string>,
-    excludedEventsList: Array<VtsiEvent>,
-  }
+    name: string;
+    vtsiProjectName: string;
+    displayName: string;
+    eventsList: Array<VtsiEvent>;
+    allEvents: boolean;
+    resourceNamePrefixesList: Array<string>;
+    webhookNamesList: Array<string>;
+    disabled: boolean;
+    createdBy: string;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    modifiedBy: string;
+    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    campaignNamesList: Array<string>;
+    excludedEventsList: Array<VtsiEvent>;
+  };
 }
 
 export class WebhookDeliveryStatistics extends jspb.Message {
+  constructor();
+  constructor(opt_data?: WebhookDeliveryStatistics.AsObject);
   getDeliveredCount(): number;
   setDeliveredCount(value: number): WebhookDeliveryStatistics;
 
@@ -215,17 +221,19 @@ export class WebhookDeliveryStatistics extends jspb.Message {
 
 export namespace WebhookDeliveryStatistics {
   export type AsObject = {
-    deliveredCount: number,
-    failedCount: number,
-    droppedCount: number,
-    lastDeliveryTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    lastSuccessTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    lastHttpStatusCode: number,
-    lastError: string,
-  }
+    deliveredCount: number;
+    failedCount: number;
+    droppedCount: number;
+    lastDeliveryTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    lastSuccessTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    lastHttpStatusCode: number;
+    lastError: string;
+  };
 }
 
 export class Webhook extends jspb.Message {
+  constructor();
+  constructor(opt_data?: Webhook.AsObject);
   getName(): string;
   setName(value: string): Webhook;
 
@@ -286,24 +294,26 @@ export class Webhook extends jspb.Message {
 
 export namespace Webhook {
   export type AsObject = {
-    name: string,
-    vtsiProjectName: string,
-    displayName: string,
-    url: string,
-    httpMethod: WebhookHttpMethod,
-    customHeadersMap: Array<[string, string]>,
-    disabled: boolean,
-    timeout?: google_protobuf_duration_pb.Duration.AsObject,
-    deliveryStatistics?: WebhookDeliveryStatistics.AsObject,
-    createdBy: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    modifiedBy: string,
-    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    signingSecret: string,
-  }
+    name: string;
+    vtsiProjectName: string;
+    displayName: string;
+    url: string;
+    httpMethod: WebhookHttpMethod;
+    customHeadersMap: Array<[string, string]>;
+    disabled: boolean;
+    timeout?: google_protobuf_duration_pb.Duration.AsObject;
+    deliveryStatistics?: WebhookDeliveryStatistics.AsObject;
+    createdBy: string;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    modifiedBy: string;
+    modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    signingSecret: string;
+  };
 }
 
 export class VtsiEventFilter extends jspb.Message {
+  constructor();
+  constructor(opt_data?: VtsiEventFilter.AsObject);
   getEventsList(): Array<VtsiEvent>;
   setEventsList(value: Array<VtsiEvent>): VtsiEventFilter;
   clearEventsList(): VtsiEventFilter;
@@ -337,15 +347,17 @@ export class VtsiEventFilter extends jspb.Message {
 
 export namespace VtsiEventFilter {
   export type AsObject = {
-    eventsList: Array<VtsiEvent>,
-    resourceNamePrefixesList: Array<string>,
-    campaignNamesList: Array<string>,
-    allEvents: boolean,
-    excludedEventsList: Array<VtsiEvent>,
-  }
+    eventsList: Array<VtsiEvent>;
+    resourceNamePrefixesList: Array<string>;
+    campaignNamesList: Array<string>;
+    allEvents: boolean;
+    excludedEventsList: Array<VtsiEvent>;
+  };
 }
 
 export class CreateVtsiEventSubscriptionRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CreateVtsiEventSubscriptionRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CreateVtsiEventSubscriptionRequest;
 
@@ -369,13 +381,15 @@ export class CreateVtsiEventSubscriptionRequest extends jspb.Message {
 
 export namespace CreateVtsiEventSubscriptionRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    eventSubscription?: VtsiEventSubscription.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    eventSubscription?: VtsiEventSubscription.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class GetVtsiEventSubscriptionRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetVtsiEventSubscriptionRequest.AsObject);
   getName(): string;
   setName(value: string): GetVtsiEventSubscriptionRequest;
 
@@ -394,12 +408,14 @@ export class GetVtsiEventSubscriptionRequest extends jspb.Message {
 
 export namespace GetVtsiEventSubscriptionRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateVtsiEventSubscriptionRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateVtsiEventSubscriptionRequest.AsObject);
   getEventSubscription(): VtsiEventSubscription | undefined;
   setEventSubscription(value?: VtsiEventSubscription): UpdateVtsiEventSubscriptionRequest;
   hasEventSubscription(): boolean;
@@ -425,13 +441,15 @@ export class UpdateVtsiEventSubscriptionRequest extends jspb.Message {
 
 export namespace UpdateVtsiEventSubscriptionRequest {
   export type AsObject = {
-    eventSubscription?: VtsiEventSubscription.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    eventSubscription?: VtsiEventSubscription.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteVtsiEventSubscriptionRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteVtsiEventSubscriptionRequest.AsObject);
   getName(): string;
   setName(value: string): DeleteVtsiEventSubscriptionRequest;
 
@@ -450,12 +468,14 @@ export class DeleteVtsiEventSubscriptionRequest extends jspb.Message {
 
 export namespace DeleteVtsiEventSubscriptionRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteVtsiEventSubscriptionResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteVtsiEventSubscriptionResponse.AsObject);
   getName(): string;
   setName(value: string): DeleteVtsiEventSubscriptionResponse;
 
@@ -469,11 +489,13 @@ export class DeleteVtsiEventSubscriptionResponse extends jspb.Message {
 
 export namespace DeleteVtsiEventSubscriptionResponse {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class ListVtsiEventSubscriptionsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListVtsiEventSubscriptionsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListVtsiEventSubscriptionsRequest;
 
@@ -500,19 +522,21 @@ export class ListVtsiEventSubscriptionsRequest extends jspb.Message {
 
 export namespace ListVtsiEventSubscriptionsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    pageSize: number,
-    pageToken?: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    pageSize: number;
+    pageToken?: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 3,
   }
 }
 
 export class ListVtsiEventSubscriptionsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListVtsiEventSubscriptionsResponse.AsObject);
   getEventSubscriptionsList(): Array<VtsiEventSubscription>;
   setEventSubscriptionsList(value: Array<VtsiEventSubscription>): ListVtsiEventSubscriptionsResponse;
   clearEventSubscriptionsList(): ListVtsiEventSubscriptionsResponse;
@@ -531,12 +555,14 @@ export class ListVtsiEventSubscriptionsResponse extends jspb.Message {
 
 export namespace ListVtsiEventSubscriptionsResponse {
   export type AsObject = {
-    eventSubscriptionsList: Array<VtsiEventSubscription.AsObject>,
-    nextPageToken: string,
-  }
+    eventSubscriptionsList: Array<VtsiEventSubscription.AsObject>;
+    nextPageToken: string;
+  };
 }
 
 export class CreateWebhookRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CreateWebhookRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CreateWebhookRequest;
 
@@ -560,13 +586,15 @@ export class CreateWebhookRequest extends jspb.Message {
 
 export namespace CreateWebhookRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    webhook?: Webhook.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    webhook?: Webhook.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class GetWebhookRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetWebhookRequest.AsObject);
   getName(): string;
   setName(value: string): GetWebhookRequest;
 
@@ -585,12 +613,14 @@ export class GetWebhookRequest extends jspb.Message {
 
 export namespace GetWebhookRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateWebhookRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateWebhookRequest.AsObject);
   getWebhook(): Webhook | undefined;
   setWebhook(value?: Webhook): UpdateWebhookRequest;
   hasWebhook(): boolean;
@@ -616,13 +646,15 @@ export class UpdateWebhookRequest extends jspb.Message {
 
 export namespace UpdateWebhookRequest {
   export type AsObject = {
-    webhook?: Webhook.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    webhook?: Webhook.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteWebhookRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteWebhookRequest.AsObject);
   getName(): string;
   setName(value: string): DeleteWebhookRequest;
 
@@ -641,12 +673,14 @@ export class DeleteWebhookRequest extends jspb.Message {
 
 export namespace DeleteWebhookRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteWebhookResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteWebhookResponse.AsObject);
   getName(): string;
   setName(value: string): DeleteWebhookResponse;
 
@@ -663,12 +697,14 @@ export class DeleteWebhookResponse extends jspb.Message {
 
 export namespace DeleteWebhookResponse {
   export type AsObject = {
-    name: string,
-    detachedSubscriptionCount: number,
-  }
+    name: string;
+    detachedSubscriptionCount: number;
+  };
 }
 
 export class ListWebhooksRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListWebhooksRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListWebhooksRequest;
 
@@ -695,19 +731,21 @@ export class ListWebhooksRequest extends jspb.Message {
 
 export namespace ListWebhooksRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    pageSize: number,
-    pageToken?: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    pageSize: number;
+    pageToken?: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 3,
   }
 }
 
 export class ListWebhooksResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListWebhooksResponse.AsObject);
   getWebhooksList(): Array<Webhook>;
   setWebhooksList(value: Array<Webhook>): ListWebhooksResponse;
   clearWebhooksList(): ListWebhooksResponse;
@@ -726,12 +764,14 @@ export class ListWebhooksResponse extends jspb.Message {
 
 export namespace ListWebhooksResponse {
   export type AsObject = {
-    webhooksList: Array<Webhook.AsObject>,
-    nextPageToken: string,
-  }
+    webhooksList: Array<Webhook.AsObject>;
+    nextPageToken: string;
+  };
 }
 
 export class TestWebhookRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TestWebhookRequest.AsObject);
   getName(): string;
   setName(value: string): TestWebhookRequest;
 
@@ -748,12 +788,14 @@ export class TestWebhookRequest extends jspb.Message {
 
 export namespace TestWebhookRequest {
   export type AsObject = {
-    name: string,
-    sampleEvent: VtsiEvent,
-  }
+    name: string;
+    sampleEvent: VtsiEvent;
+  };
 }
 
 export class TestWebhookResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TestWebhookResponse.AsObject);
   getSuccess(): boolean;
   setSuccess(value: boolean): TestWebhookResponse;
 
@@ -781,20 +823,24 @@ export class TestWebhookResponse extends jspb.Message {
 
 export namespace TestWebhookResponse {
   export type AsObject = {
-    success: boolean,
-    httpStatusCode: number,
-    latency?: google_protobuf_duration_pb.Duration.AsObject,
-    errorMessage: string,
-    eventId: string,
-  }
+    success: boolean;
+    httpStatusCode: number;
+    latency?: google_protobuf_duration_pb.Duration.AsObject;
+    errorMessage: string;
+    eventId: string;
+  };
 }
 
 export class SubscribeVtsiEventsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SubscribeVtsiEventsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): SubscribeVtsiEventsRequest;
 
   getEventSubscriptionName(): string;
   setEventSubscriptionName(value: string): SubscribeVtsiEventsRequest;
+  hasEventSubscriptionName(): boolean;
+  clearEventSubscriptionName(): SubscribeVtsiEventsRequest;
 
   getFilter(): VtsiEventFilter | undefined;
   setFilter(value?: VtsiEventFilter): SubscribeVtsiEventsRequest;
@@ -823,26 +869,28 @@ export class SubscribeVtsiEventsRequest extends jspb.Message {
 
 export namespace SubscribeVtsiEventsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    eventSubscriptionName: string,
-    filter?: VtsiEventFilter.AsObject,
-    resumeToken?: string,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    vtsiProjectName: string;
+    eventSubscriptionName?: string;
+    filter?: VtsiEventFilter.AsObject;
+    resumeToken?: string;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 
-  export enum SelectorCase { 
+  export enum SelectorCase {
     SELECTOR_NOT_SET = 0,
     EVENT_SUBSCRIPTION_NAME = 2,
     FILTER = 3,
   }
 
-  export enum ResumeTokenCase { 
+  export enum ResumeTokenCase {
     _RESUME_TOKEN_NOT_SET = 0,
     RESUME_TOKEN = 4,
   }
 }
 
 export class SubscribeVtsiEventsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SubscribeVtsiEventsResponse.AsObject);
   getEventsList(): Array<VtsiEventMessage>;
   setEventsList(value: Array<VtsiEventMessage>): SubscribeVtsiEventsResponse;
   clearEventsList(): SubscribeVtsiEventsResponse;
@@ -870,15 +918,17 @@ export class SubscribeVtsiEventsResponse extends jspb.Message {
 
 export namespace SubscribeVtsiEventsResponse {
   export type AsObject = {
-    eventsList: Array<VtsiEventMessage.AsObject>,
-    resumeToken: string,
-    droppedEventCount: number,
-    endReason: string,
-    endReasonType: ondewo_vtsi_campaigns_pb.StreamEndReason,
-  }
+    eventsList: Array<VtsiEventMessage.AsObject>;
+    resumeToken: string;
+    droppedEventCount: number;
+    endReason: string;
+    endReasonType: ondewo_vtsi_campaigns_pb.StreamEndReason;
+  };
 }
 
 export class RedeliverWebhookEventsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RedeliverWebhookEventsRequest.AsObject);
   getWebhookName(): string;
   setWebhookName(value: string): RedeliverWebhookEventsRequest;
 
@@ -912,15 +962,17 @@ export class RedeliverWebhookEventsRequest extends jspb.Message {
 
 export namespace RedeliverWebhookEventsRequest {
   export type AsObject = {
-    webhookName: string,
-    eventIdsList: Array<string>,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    filter?: VtsiEventFilter.AsObject,
-  }
+    webhookName: string;
+    eventIdsList: Array<string>;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    filter?: VtsiEventFilter.AsObject;
+  };
 }
 
 export class RedeliverWebhookEventsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RedeliverWebhookEventsResponse.AsObject);
   getEnqueuedCount(): number;
   setEnqueuedCount(value: number): RedeliverWebhookEventsResponse;
 
@@ -945,14 +997,14 @@ export class RedeliverWebhookEventsResponse extends jspb.Message {
 
 export namespace RedeliverWebhookEventsResponse {
   export type AsObject = {
-    enqueuedCount: number,
-    notInJournalCount: number,
-    notEnqueuedCount: number,
-    nextStartTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    enqueuedCount: number;
+    notInJournalCount: number;
+    notEnqueuedCount: number;
+    nextStartTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
-export enum VtsiEvent { 
+export enum VtsiEvent {
   VTSI_EVENT_UNSPECIFIED = 0,
   VTSI_EVENT_CALL_CREATED = 100,
   VTSI_EVENT_CALL_INITIATED = 101,
@@ -977,6 +1029,13 @@ export enum VtsiEvent {
   VTSI_EVENT_CALL_AUDIO_STREAM_CONNECTED = 120,
   VTSI_EVENT_CALL_AUDIO_STREAM_DISCONNECTED = 121,
   VTSI_EVENT_CALL_UPDATED = 122,
+  VTSI_EVENT_CALL_DTMF_SENT = 123,
+  VTSI_EVENT_CALL_WARM_INTRO_STARTED = 124,
+  VTSI_EVENT_CALL_WARM_INTRO_ACCEPTED = 125,
+  VTSI_EVENT_CALL_WARM_INTRO_DECLINED = 126,
+  VTSI_EVENT_CALL_WARM_INTRO_NO_DECISION = 127,
+  VTSI_EVENT_CALL_WARM_INTRO_TARGET_UNAVAILABLE = 128,
+  VTSI_EVENT_CALL_WARM_TRANSFER_OUTCOME_NOTICE_UNDELIVERED = 129,
   VTSI_EVENT_CALLER_STARTED = 200,
   VTSI_EVENT_CALLER_START_FAILED = 201,
   VTSI_EVENT_CALLER_STOPPED = 202,
@@ -1051,8 +1110,14 @@ export enum VtsiEvent {
   VTSI_EVENT_EVENT_SUBSCRIPTION_CREATED = 904,
   VTSI_EVENT_EVENT_SUBSCRIPTION_UPDATED = 905,
   VTSI_EVENT_EVENT_SUBSCRIPTION_DELETED = 906,
+  VTSI_EVENT_IVR_MENU_CREATED = 1001,
+  VTSI_EVENT_IVR_MENU_UPDATED = 1002,
+  VTSI_EVENT_IVR_MENU_DELETED = 1003,
+  VTSI_EVENT_IVR_MENU_PUBLISHED = 1004,
+  VTSI_EVENT_IVR_MENU_PUBLISH_FAILED = 1005,
+  VTSI_EVENT_IVR_MENU_TESTED = 1006,
 }
-export enum WebhookHttpMethod { 
+export enum WebhookHttpMethod {
   WEBHOOK_HTTP_METHOD_UNSPECIFIED = 0,
   WEBHOOK_HTTP_METHOD_POST = 1,
   WEBHOOK_HTTP_METHOD_PUT = 2,

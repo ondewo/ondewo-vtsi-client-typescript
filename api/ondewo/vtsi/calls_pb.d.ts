@@ -10,6 +10,8 @@ import * as ondewo_vtsi_projects_pb from '../../ondewo/vtsi/projects_pb'; // pro
 
 
 export class AsteriskConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AsteriskConfig.AsObject);
   getAsteriskBaseConfig(): ondewo_vtsi_call_configs_pb.BaseServiceConfig | undefined;
   setAsteriskBaseConfig(value?: ondewo_vtsi_call_configs_pb.BaseServiceConfig): AsteriskConfig;
   hasAsteriskBaseConfig(): boolean;
@@ -25,11 +27,13 @@ export class AsteriskConfig extends jspb.Message {
 
 export namespace AsteriskConfig {
   export type AsObject = {
-    asteriskBaseConfig?: ondewo_vtsi_call_configs_pb.BaseServiceConfig.AsObject,
-  }
+    asteriskBaseConfig?: ondewo_vtsi_call_configs_pb.BaseServiceConfig.AsObject;
+  };
 }
 
 export class Listener extends jspb.Message {
+  constructor();
+  constructor(opt_data?: Listener.AsObject);
   getName(): string;
   setName(value: string): Listener;
 
@@ -70,18 +74,20 @@ export class Listener extends jspb.Message {
 
 export namespace Listener {
   export type AsObject = {
-    name: string,
-    callName: string,
-    sipBaseConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject,
-    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
-    vtsiProjectName: string,
-    active: boolean,
-    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    name: string;
+    callName: string;
+    sipBaseConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject;
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject;
+    vtsiProjectName: string;
+    active: boolean;
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class Caller extends jspb.Message {
+  constructor();
+  constructor(opt_data?: Caller.AsObject);
   getName(): string;
   setName(value: string): Caller;
 
@@ -128,20 +134,22 @@ export class Caller extends jspb.Message {
 
 export namespace Caller {
   export type AsObject = {
-    name: string,
-    callName: string,
-    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject,
-    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
-    vtsiProjectName: string,
-    active: boolean,
-    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    pooled: boolean,
-    campaignName: string,
-  }
+    name: string;
+    callName: string;
+    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject;
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject;
+    vtsiProjectName: string;
+    active: boolean;
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    pooled: boolean;
+    campaignName: string;
+  };
 }
 
 export class StartListenerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartListenerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartListenerRequest;
 
@@ -173,15 +181,17 @@ export class StartListenerRequest extends jspb.Message {
 
 export namespace StartListenerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    sipBaseConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject,
-    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    sipBaseConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject;
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class StartListenerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartListenerResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartListenerResponse;
 
@@ -203,13 +213,15 @@ export class StartListenerResponse extends jspb.Message {
 
 export namespace StartListenerResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    listener?: Listener.AsObject,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    listener?: Listener.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class StartListenersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartListenersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartListenersRequest;
 
@@ -239,15 +251,17 @@ export class StartListenersRequest extends jspb.Message {
 
 export namespace StartListenersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    listenerRequestsList: Array<StartListenerRequest.AsObject>,
-    idempotencyKey: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    listenerRequestsList: Array<StartListenerRequest.AsObject>;
+    idempotencyKey: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class StartListenersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartListenersResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartListenersResponse;
 
@@ -269,13 +283,15 @@ export class StartListenersResponse extends jspb.Message {
 
 export namespace StartListenersResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    listenerResponsesList: Array<StartListenerResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    listenerResponsesList: Array<StartListenerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class StartCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartCallerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartCallerRequest;
 
@@ -307,15 +323,17 @@ export class StartCallerRequest extends jspb.Message {
 
 export namespace StartCallerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject,
-    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject;
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class StartCallerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartCallerResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartCallerResponse;
 
@@ -337,13 +355,15 @@ export class StartCallerResponse extends jspb.Message {
 
 export namespace StartCallerResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    caller?: Caller.AsObject,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    caller?: Caller.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class StartCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartCallersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartCallersRequest;
 
@@ -373,15 +393,17 @@ export class StartCallersRequest extends jspb.Message {
 
 export namespace StartCallersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callerRequestsList: Array<StartCallerRequest.AsObject>,
-    idempotencyKey: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    callerRequestsList: Array<StartCallerRequest.AsObject>;
+    idempotencyKey: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class StartCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartCallersResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartCallersResponse;
 
@@ -403,13 +425,15 @@ export class StartCallersResponse extends jspb.Message {
 
 export namespace StartCallersResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    callerResponsesList: Array<StartCallerResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    callerResponsesList: Array<StartCallerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class ListCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListCallersRequest;
 
@@ -430,9 +454,13 @@ export class ListCallersRequest extends jspb.Message {
 
   getCampaignName(): string;
   setCampaignName(value: string): ListCallersRequest;
+  hasCampaignName(): boolean;
+  clearCampaignName(): ListCallersRequest;
 
   getCampaignDisplayName(): string;
   setCampaignDisplayName(value: string): ListCallersRequest;
+  hasCampaignDisplayName(): boolean;
+  clearCampaignDisplayName(): ListCallersRequest;
 
   getPageSize(): number;
   setPageSize(value: number): ListCallersRequest;
@@ -457,35 +485,37 @@ export class ListCallersRequest extends jspb.Message {
 
 export namespace ListCallersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    pageToken?: string,
-    callView?: CallView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    campaignName: string,
-    campaignDisplayName: string,
-    pageSize: number,
-    activeOnly: boolean,
-    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>,
-  }
+    vtsiProjectName: string;
+    pageToken?: string;
+    callView?: CallView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    campaignName?: string;
+    campaignDisplayName?: string;
+    pageSize: number;
+    activeOnly: boolean;
+    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>;
+  };
 
-  export enum CampaignCase { 
+  export enum CampaignCase {
     CAMPAIGN_NOT_SET = 0,
     CAMPAIGN_NAME = 5,
     CAMPAIGN_DISPLAY_NAME = 6,
   }
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 2,
   }
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class ListCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallersResponse.AsObject);
   getCallersList(): Array<Caller>;
   setCallersList(value: Array<Caller>): ListCallersResponse;
   clearCallersList(): ListCallersResponse;
@@ -507,13 +537,15 @@ export class ListCallersResponse extends jspb.Message {
 
 export namespace ListCallersResponse {
   export type AsObject = {
-    callersList: Array<Caller.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    callersList: Array<Caller.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class GetCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetCallerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): GetCallerRequest;
 
@@ -540,19 +572,21 @@ export class GetCallerRequest extends jspb.Message {
 
 export namespace GetCallerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    name: string,
-    callView?: CallView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    name: string;
+    callView?: CallView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class ListListenersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListListenersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListListenersRequest;
 
@@ -592,27 +626,29 @@ export class ListListenersRequest extends jspb.Message {
 
 export namespace ListListenersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    pageToken?: string,
-    callView?: CallView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    activeOnly: boolean,
-    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>,
-  }
+    vtsiProjectName: string;
+    pageToken?: string;
+    callView?: CallView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    activeOnly: boolean;
+    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>;
+  };
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 2,
   }
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class ListListenersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListListenersResponse.AsObject);
   getListenersList(): Array<Listener>;
   setListenersList(value: Array<Listener>): ListListenersResponse;
   clearListenersList(): ListListenersResponse;
@@ -634,13 +670,15 @@ export class ListListenersResponse extends jspb.Message {
 
 export namespace ListListenersResponse {
   export type AsObject = {
-    listenersList: Array<Listener.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    listenersList: Array<Listener.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class GetListenerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetListenerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): GetListenerRequest;
 
@@ -667,19 +705,21 @@ export class GetListenerRequest extends jspb.Message {
 
 export namespace GetListenerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    name: string,
-    callView?: CallView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    name: string;
+    callView?: CallView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class StopListenerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopListenerRequest.AsObject);
   getName(): string;
   setName(value: string): StopListenerRequest;
 
@@ -698,12 +738,14 @@ export class StopListenerRequest extends jspb.Message {
 
 export namespace StopListenerRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopListenerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopListenerResponse.AsObject);
   getName(): string;
   setName(value: string): StopListenerResponse;
 
@@ -720,12 +762,14 @@ export class StopListenerResponse extends jspb.Message {
 
 export namespace StopListenerResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
 export class StopListenersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopListenersRequest.AsObject);
   getNamesList(): Array<string>;
   setNamesList(value: Array<string>): StopListenersRequest;
   clearNamesList(): StopListenersRequest;
@@ -749,13 +793,15 @@ export class StopListenersRequest extends jspb.Message {
 
 export namespace StopListenersRequest {
   export type AsObject = {
-    namesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    vtsiProjectName: string,
-  }
+    namesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    vtsiProjectName: string;
+  };
 }
 
 export class StopListenersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopListenersResponse.AsObject);
   getStopListenerResponsesList(): Array<StopListenerResponse>;
   setStopListenerResponsesList(value: Array<StopListenerResponse>): StopListenersResponse;
   clearStopListenerResponsesList(): StopListenersResponse;
@@ -774,12 +820,14 @@ export class StopListenersResponse extends jspb.Message {
 
 export namespace StopListenersResponse {
   export type AsObject = {
-    stopListenerResponsesList: Array<StopListenerResponse.AsObject>,
-    errorMessage: string,
-  }
+    stopListenerResponsesList: Array<StopListenerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class StopCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallerRequest.AsObject);
   getName(): string;
   setName(value: string): StopCallerRequest;
 
@@ -798,12 +846,14 @@ export class StopCallerRequest extends jspb.Message {
 
 export namespace StopCallerRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopCallerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallerResponse.AsObject);
   getName(): string;
   setName(value: string): StopCallerResponse;
 
@@ -820,12 +870,14 @@ export class StopCallerResponse extends jspb.Message {
 
 export namespace StopCallerResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
 export class StopCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallersRequest.AsObject);
   getNamesList(): Array<string>;
   setNamesList(value: Array<string>): StopCallersRequest;
   clearNamesList(): StopCallersRequest;
@@ -849,13 +901,15 @@ export class StopCallersRequest extends jspb.Message {
 
 export namespace StopCallersRequest {
   export type AsObject = {
-    namesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    vtsiProjectName: string,
-  }
+    namesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    vtsiProjectName: string;
+  };
 }
 
 export class StopCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallersResponse.AsObject);
   getStopCallerResponsesList(): Array<StopCallerResponse>;
   setStopCallerResponsesList(value: Array<StopCallerResponse>): StopCallersResponse;
   clearStopCallerResponsesList(): StopCallersResponse;
@@ -874,12 +928,14 @@ export class StopCallersResponse extends jspb.Message {
 
 export namespace StopCallersResponse {
   export type AsObject = {
-    stopCallerResponsesList: Array<StopCallerResponse.AsObject>,
-    errorMessage: string,
-  }
+    stopCallerResponsesList: Array<StopCallerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class DeleteListenerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteListenerRequest.AsObject);
   getName(): string;
   setName(value: string): DeleteListenerRequest;
 
@@ -898,12 +954,14 @@ export class DeleteListenerRequest extends jspb.Message {
 
 export namespace DeleteListenerRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteListenerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteListenerResponse.AsObject);
   getName(): string;
   setName(value: string): DeleteListenerResponse;
 
@@ -920,12 +978,14 @@ export class DeleteListenerResponse extends jspb.Message {
 
 export namespace DeleteListenerResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
 export class DeleteListenersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteListenersRequest.AsObject);
   getNamesList(): Array<string>;
   setNamesList(value: Array<string>): DeleteListenersRequest;
   clearNamesList(): DeleteListenersRequest;
@@ -949,13 +1009,15 @@ export class DeleteListenersRequest extends jspb.Message {
 
 export namespace DeleteListenersRequest {
   export type AsObject = {
-    namesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    vtsiProjectName: string,
-  }
+    namesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    vtsiProjectName: string;
+  };
 }
 
 export class DeleteListenersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteListenersResponse.AsObject);
   getDeleteListenerResponsesList(): Array<DeleteListenerResponse>;
   setDeleteListenerResponsesList(value: Array<DeleteListenerResponse>): DeleteListenersResponse;
   clearDeleteListenerResponsesList(): DeleteListenersResponse;
@@ -974,12 +1036,14 @@ export class DeleteListenersResponse extends jspb.Message {
 
 export namespace DeleteListenersResponse {
   export type AsObject = {
-    deleteListenerResponsesList: Array<DeleteListenerResponse.AsObject>,
-    errorMessage: string,
-  }
+    deleteListenerResponsesList: Array<DeleteListenerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class DeleteCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteCallerRequest.AsObject);
   getName(): string;
   setName(value: string): DeleteCallerRequest;
 
@@ -998,12 +1062,14 @@ export class DeleteCallerRequest extends jspb.Message {
 
 export namespace DeleteCallerRequest {
   export type AsObject = {
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteCallerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteCallerResponse.AsObject);
   getName(): string;
   setName(value: string): DeleteCallerResponse;
 
@@ -1020,12 +1086,14 @@ export class DeleteCallerResponse extends jspb.Message {
 
 export namespace DeleteCallerResponse {
   export type AsObject = {
-    name: string,
-    errorMessage: string,
-  }
+    name: string;
+    errorMessage: string;
+  };
 }
 
 export class DeleteCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteCallersRequest.AsObject);
   getNamesList(): Array<string>;
   setNamesList(value: Array<string>): DeleteCallersRequest;
   clearNamesList(): DeleteCallersRequest;
@@ -1049,13 +1117,15 @@ export class DeleteCallersRequest extends jspb.Message {
 
 export namespace DeleteCallersRequest {
   export type AsObject = {
-    namesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    vtsiProjectName: string,
-  }
+    namesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    vtsiProjectName: string;
+  };
 }
 
 export class DeleteCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: DeleteCallersResponse.AsObject);
   getDeleteCallerResponsesList(): Array<DeleteCallerResponse>;
   setDeleteCallerResponsesList(value: Array<DeleteCallerResponse>): DeleteCallersResponse;
   clearDeleteCallerResponsesList(): DeleteCallersResponse;
@@ -1074,12 +1144,14 @@ export class DeleteCallersResponse extends jspb.Message {
 
 export namespace DeleteCallersResponse {
   export type AsObject = {
-    deleteCallerResponsesList: Array<DeleteCallerResponse.AsObject>,
-    errorMessage: string,
-  }
+    deleteCallerResponsesList: Array<DeleteCallerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class UpdateCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallerRequest.AsObject);
   getCaller(): Caller | undefined;
   setCaller(value?: Caller): UpdateCallerRequest;
   hasCaller(): boolean;
@@ -1108,14 +1180,16 @@ export class UpdateCallerRequest extends jspb.Message {
 
 export namespace UpdateCallerRequest {
   export type AsObject = {
-    caller?: Caller.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    caller?: Caller.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class UpdateCallerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallerResponse.AsObject);
   getName(): string;
   setName(value: string): UpdateCallerResponse;
 
@@ -1137,13 +1211,15 @@ export class UpdateCallerResponse extends jspb.Message {
 
 export namespace UpdateCallerResponse {
   export type AsObject = {
-    name: string,
-    caller?: Caller.AsObject,
-    errorMessage: string,
-  }
+    name: string;
+    caller?: Caller.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class UpdateCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): UpdateCallersRequest;
 
@@ -1170,14 +1246,16 @@ export class UpdateCallersRequest extends jspb.Message {
 
 export namespace UpdateCallersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    updateCallerRequestsList: Array<UpdateCallerRequest.AsObject>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    updateCallerRequestsList: Array<UpdateCallerRequest.AsObject>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class UpdateCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallersResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): UpdateCallersResponse;
 
@@ -1199,13 +1277,15 @@ export class UpdateCallersResponse extends jspb.Message {
 
 export namespace UpdateCallersResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    updateCallerResponsesList: Array<UpdateCallerResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    updateCallerResponsesList: Array<UpdateCallerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class UpdateListenerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateListenerRequest.AsObject);
   getListener(): Listener | undefined;
   setListener(value?: Listener): UpdateListenerRequest;
   hasListener(): boolean;
@@ -1234,14 +1314,16 @@ export class UpdateListenerRequest extends jspb.Message {
 
 export namespace UpdateListenerRequest {
   export type AsObject = {
-    listener?: Listener.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    listener?: Listener.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class UpdateListenerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateListenerResponse.AsObject);
   getName(): string;
   setName(value: string): UpdateListenerResponse;
 
@@ -1263,13 +1345,15 @@ export class UpdateListenerResponse extends jspb.Message {
 
 export namespace UpdateListenerResponse {
   export type AsObject = {
-    name: string,
-    listener?: Listener.AsObject,
-    errorMessage: string,
-  }
+    name: string;
+    listener?: Listener.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class UpdateListenersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateListenersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): UpdateListenersRequest;
 
@@ -1296,14 +1380,16 @@ export class UpdateListenersRequest extends jspb.Message {
 
 export namespace UpdateListenersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    updateListenerRequestsList: Array<UpdateListenerRequest.AsObject>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    validateOnly: boolean,
-  }
+    vtsiProjectName: string;
+    updateListenerRequestsList: Array<UpdateListenerRequest.AsObject>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    validateOnly: boolean;
+  };
 }
 
 export class UpdateListenersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateListenersResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): UpdateListenersResponse;
 
@@ -1325,13 +1411,15 @@ export class UpdateListenersResponse extends jspb.Message {
 
 export namespace UpdateListenersResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    updateListenerResponsesList: Array<UpdateListenerResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    updateListenerResponsesList: Array<UpdateListenerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class StartScheduledCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartScheduledCallerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartScheduledCallerRequest;
 
@@ -1360,14 +1448,16 @@ export class StartScheduledCallerRequest extends jspb.Message {
 
 export namespace StartScheduledCallerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    request?: StartCallerRequest.AsObject,
-    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    request?: StartCallerRequest.AsObject;
+    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StartScheduledCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartScheduledCallersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartScheduledCallersRequest;
 
@@ -1394,14 +1484,16 @@ export class StartScheduledCallersRequest extends jspb.Message {
 
 export namespace StartScheduledCallersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    scheduledCallerRequestsList: Array<StartScheduledCallerRequest.AsObject>,
-    idempotencyKey: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    scheduledCallerRequestsList: Array<StartScheduledCallerRequest.AsObject>;
+    idempotencyKey: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StartScheduledCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartScheduledCallersResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartScheduledCallersResponse;
 
@@ -1420,12 +1512,14 @@ export class StartScheduledCallersResponse extends jspb.Message {
 
 export namespace StartScheduledCallersResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    scheduledCallerResponsesList: Array<StartScheduledCallerResponse.AsObject>,
-  }
+    vtsiProjectName: string;
+    scheduledCallerResponsesList: Array<StartScheduledCallerResponse.AsObject>;
+  };
 }
 
 export class AddCallersToCampaignRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AddCallersToCampaignRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): AddCallersToCampaignRequest;
 
@@ -1452,14 +1546,16 @@ export class AddCallersToCampaignRequest extends jspb.Message {
 
 export namespace AddCallersToCampaignRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callerRequestsList: Array<StartCallerRequest.AsObject>,
-    campaignAssignment?: ondewo_vtsi_campaigns_pb.CampaignAssignment.AsObject,
-    idempotencyKey: string,
-  }
+    vtsiProjectName: string;
+    callerRequestsList: Array<StartCallerRequest.AsObject>;
+    campaignAssignment?: ondewo_vtsi_campaigns_pb.CampaignAssignment.AsObject;
+    idempotencyKey: string;
+  };
 }
 
 export class AddCallersToCampaignResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AddCallersToCampaignResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): AddCallersToCampaignResponse;
 
@@ -1483,13 +1579,15 @@ export class AddCallersToCampaignResponse extends jspb.Message {
 
 export namespace AddCallersToCampaignResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    campaign?: ondewo_vtsi_campaigns_pb.Campaign.AsObject,
-    campaignCallNamesList: Array<string>,
-  }
+    vtsiProjectName: string;
+    campaign?: ondewo_vtsi_campaigns_pb.Campaign.AsObject;
+    campaignCallNamesList: Array<string>;
+  };
 }
 
 export class AddScheduledCallersToCampaignRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AddScheduledCallersToCampaignRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): AddScheduledCallersToCampaignRequest;
 
@@ -1516,14 +1614,16 @@ export class AddScheduledCallersToCampaignRequest extends jspb.Message {
 
 export namespace AddScheduledCallersToCampaignRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    scheduledCallerRequestsList: Array<StartScheduledCallerRequest.AsObject>,
-    campaignAssignment?: ondewo_vtsi_campaigns_pb.CampaignAssignment.AsObject,
-    idempotencyKey: string,
-  }
+    vtsiProjectName: string;
+    scheduledCallerRequestsList: Array<StartScheduledCallerRequest.AsObject>;
+    campaignAssignment?: ondewo_vtsi_campaigns_pb.CampaignAssignment.AsObject;
+    idempotencyKey: string;
+  };
 }
 
 export class AddScheduledCallersToCampaignResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AddScheduledCallersToCampaignResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): AddScheduledCallersToCampaignResponse;
 
@@ -1552,14 +1652,16 @@ export class AddScheduledCallersToCampaignResponse extends jspb.Message {
 
 export namespace AddScheduledCallersToCampaignResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    scheduledCallerResponsesList: Array<StartScheduledCallerResponse.AsObject>,
-    campaign?: ondewo_vtsi_campaigns_pb.Campaign.AsObject,
-    campaignCallNamesList: Array<string>,
-  }
+    vtsiProjectName: string;
+    scheduledCallerResponsesList: Array<StartScheduledCallerResponse.AsObject>;
+    campaign?: ondewo_vtsi_campaigns_pb.Campaign.AsObject;
+    campaignCallNamesList: Array<string>;
+  };
 }
 
 export class StartScheduledCallerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StartScheduledCallerResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StartScheduledCallerResponse;
 
@@ -1581,13 +1683,15 @@ export class StartScheduledCallerResponse extends jspb.Message {
 
 export namespace StartScheduledCallerResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    scheduledCaller?: ScheduledCaller.AsObject,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    scheduledCaller?: ScheduledCaller.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class ScheduledCaller extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ScheduledCaller.AsObject);
   getName(): string;
   setName(value: string): ScheduledCaller;
 
@@ -1652,24 +1756,26 @@ export class ScheduledCaller extends jspb.Message {
 
 export namespace ScheduledCaller {
   export type AsObject = {
-    name: string,
-    callName: string,
-    sipConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject,
-    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
-    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject,
-    status: ScheduledCallerStatus,
-    vtsiProjectName: string,
-    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    firedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    errorMessage: string,
-    campaignName: string,
-    retryOfScheduledCallerName: string,
-    retriedByScheduledCallerName: string,
-  }
+    name: string;
+    callName: string;
+    sipConfig?: ondewo_vtsi_call_configs_pb.SipBaseConfig.AsObject;
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject;
+    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    sipCallerConfig?: ondewo_vtsi_call_configs_pb.SipCallerConfig.AsObject;
+    status: ScheduledCallerStatus;
+    vtsiProjectName: string;
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    firedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    errorMessage: string;
+    campaignName: string;
+    retryOfScheduledCallerName: string;
+    retriedByScheduledCallerName: string;
+  };
 }
 
 export class GetScheduledCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetScheduledCallerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): GetScheduledCallerRequest;
 
@@ -1696,19 +1802,21 @@ export class GetScheduledCallerRequest extends jspb.Message {
 
 export namespace GetScheduledCallerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    name: string,
-    callView?: CallView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    name: string;
+    callView?: CallView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class ListScheduledCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListScheduledCallersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListScheduledCallersRequest;
 
@@ -1758,29 +1866,31 @@ export class ListScheduledCallersRequest extends jspb.Message {
 
 export namespace ListScheduledCallersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    pageToken?: string,
-    callView?: CallView,
-    statusesList: Array<ScheduledCallerStatus>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    campaignName: string,
-    scheduledAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    scheduledBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    vtsiProjectName: string;
+    pageToken?: string;
+    callView?: CallView;
+    statusesList: Array<ScheduledCallerStatus>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    campaignName: string;
+    scheduledAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    scheduledBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 2,
   }
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class ListScheduledCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListScheduledCallersResponse.AsObject);
   getScheduledCallersList(): Array<ScheduledCaller>;
   setScheduledCallersList(value: Array<ScheduledCaller>): ListScheduledCallersResponse;
   clearScheduledCallersList(): ListScheduledCallersResponse;
@@ -1802,13 +1912,15 @@ export class ListScheduledCallersResponse extends jspb.Message {
 
 export namespace ListScheduledCallersResponse {
   export type AsObject = {
-    scheduledCallersList: Array<ScheduledCaller.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    scheduledCallersList: Array<ScheduledCaller.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class CancelScheduledCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CancelScheduledCallerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CancelScheduledCallerRequest;
 
@@ -1830,13 +1942,15 @@ export class CancelScheduledCallerRequest extends jspb.Message {
 
 export namespace CancelScheduledCallerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    name: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    name: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class CancelScheduledCallerResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CancelScheduledCallerResponse.AsObject);
   getName(): string;
   setName(value: string): CancelScheduledCallerResponse;
 
@@ -1859,14 +1973,16 @@ export class CancelScheduledCallerResponse extends jspb.Message {
 
 export namespace CancelScheduledCallerResponse {
   export type AsObject = {
-    name: string,
-    status: ScheduledCallerStatus,
-    cancelled: boolean,
-    errorMessage: string,
-  }
+    name: string;
+    status: ScheduledCallerStatus;
+    cancelled: boolean;
+    errorMessage: string;
+  };
 }
 
 export class CancelScheduledCallersRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CancelScheduledCallersRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CancelScheduledCallersRequest;
 
@@ -1890,13 +2006,15 @@ export class CancelScheduledCallersRequest extends jspb.Message {
 
 export namespace CancelScheduledCallersRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    namesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    namesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class CancelScheduledCallersResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CancelScheduledCallersResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CancelScheduledCallersResponse;
 
@@ -1918,13 +2036,15 @@ export class CancelScheduledCallersResponse extends jspb.Message {
 
 export namespace CancelScheduledCallersResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    cancelScheduledCallerResponsesList: Array<CancelScheduledCallerResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    cancelScheduledCallerResponsesList: Array<CancelScheduledCallerResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class UpdateScheduledCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateScheduledCallerRequest.AsObject);
   getScheduledCaller(): ScheduledCaller | undefined;
   setScheduledCaller(value?: ScheduledCaller): UpdateScheduledCallerRequest;
   hasScheduledCaller(): boolean;
@@ -1950,13 +2070,15 @@ export class UpdateScheduledCallerRequest extends jspb.Message {
 
 export namespace UpdateScheduledCallerRequest {
   export type AsObject = {
-    scheduledCaller?: ScheduledCaller.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    scheduledCaller?: ScheduledCaller.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class RetryScheduledCallerRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RetryScheduledCallerRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): RetryScheduledCallerRequest;
 
@@ -1983,14 +2105,16 @@ export class RetryScheduledCallerRequest extends jspb.Message {
 
 export namespace RetryScheduledCallerRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    name: string,
-    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    name: string;
+    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopCallRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StopCallRequest;
 
@@ -2012,13 +2136,15 @@ export class StopCallRequest extends jspb.Message {
 
 export namespace StopCallRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopCallResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StopCallResponse;
 
@@ -2038,13 +2164,15 @@ export class StopCallResponse extends jspb.Message {
 
 export namespace StopCallResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    errorMessage: string;
+  };
 }
 
 export class StopCallsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StopCallsRequest;
 
@@ -2068,13 +2196,15 @@ export class StopCallsRequest extends jspb.Message {
 
 export namespace StopCallsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callNamesList: Array<string>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    callNamesList: Array<string>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopCallsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopCallsResponse.AsObject);
   getStopCallResponsesList(): Array<StopCallResponse>;
   setStopCallResponsesList(value: Array<StopCallResponse>): StopCallsResponse;
   clearStopCallResponsesList(): StopCallsResponse;
@@ -2093,12 +2223,14 @@ export class StopCallsResponse extends jspb.Message {
 
 export namespace StopCallsResponse {
   export type AsObject = {
-    stopCallResponsesList: Array<StopCallResponse.AsObject>,
-    errorMessage: string,
-  }
+    stopCallResponsesList: Array<StopCallResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class StopAllCallsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StopAllCallsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StopAllCallsRequest;
 
@@ -2122,13 +2254,15 @@ export class StopAllCallsRequest extends jspb.Message {
 
 export namespace StopAllCallsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    callFilter?: CallFilter.AsObject,
-  }
+    vtsiProjectName: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    callFilter?: CallFilter.AsObject;
+  };
 }
 
 export class TransferCallRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TransferCallRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): TransferCallRequest;
 
@@ -2155,6 +2289,11 @@ export class TransferCallRequest extends jspb.Message {
   getRequestId(): string;
   setRequestId(value: string): TransferCallRequest;
 
+  getWarmTransferConfig(): ondewo_vtsi_call_configs_pb.WarmTransferConfig | undefined;
+  setWarmTransferConfig(value?: ondewo_vtsi_call_configs_pb.WarmTransferConfig): TransferCallRequest;
+  hasWarmTransferConfig(): boolean;
+  clearWarmTransferConfig(): TransferCallRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TransferCallRequest.AsObject;
   static toObject(includeInstance: boolean, msg: TransferCallRequest): TransferCallRequest.AsObject;
@@ -2165,31 +2304,45 @@ export class TransferCallRequest extends jspb.Message {
 
 export namespace TransferCallRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    transferId: string,
-    target?: CallTarget.AsObject,
-    mode: TransferMode,
-    headersMap: Array<[string, string]>,
-    ringTimeoutS: number,
-    requestId: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    transferId: string;
+    target?: CallTarget.AsObject;
+    mode: TransferMode;
+    headersMap: Array<[string, string]>;
+    ringTimeoutS: number;
+    requestId: string;
+    warmTransferConfig?: ondewo_vtsi_call_configs_pb.WarmTransferConfig.AsObject;
+  };
 }
 
 export class CallTarget extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallTarget.AsObject);
   getPhoneNumber(): string;
   setPhoneNumber(value: string): CallTarget;
+  hasPhoneNumber(): boolean;
+  clearPhoneNumber(): CallTarget;
 
   getSoftphoneAccountName(): string;
   setSoftphoneAccountName(value: string): CallTarget;
+  hasSoftphoneAccountName(): boolean;
+  clearSoftphoneAccountName(): CallTarget;
 
   getListenerName(): string;
   setListenerName(value: string): CallTarget;
+  hasListenerName(): boolean;
+  clearListenerName(): CallTarget;
 
   getListenerQueue(): ListenerQueueTarget | undefined;
   setListenerQueue(value?: ListenerQueueTarget): CallTarget;
   hasListenerQueue(): boolean;
   clearListenerQueue(): CallTarget;
+
+  getIvrMenuName(): string;
+  setIvrMenuName(value: string): CallTarget;
+  hasIvrMenuName(): boolean;
+  clearIvrMenuName(): CallTarget;
 
   getTargetCase(): CallTarget.TargetCase;
 
@@ -2203,22 +2356,26 @@ export class CallTarget extends jspb.Message {
 
 export namespace CallTarget {
   export type AsObject = {
-    phoneNumber: string,
-    softphoneAccountName: string,
-    listenerName: string,
-    listenerQueue?: ListenerQueueTarget.AsObject,
-  }
+    phoneNumber?: string;
+    softphoneAccountName?: string;
+    listenerName?: string;
+    listenerQueue?: ListenerQueueTarget.AsObject;
+    ivrMenuName?: string;
+  };
 
-  export enum TargetCase { 
+  export enum TargetCase {
     TARGET_NOT_SET = 0,
     PHONE_NUMBER = 1,
     SOFTPHONE_ACCOUNT_NAME = 2,
     LISTENER_NAME = 3,
     LISTENER_QUEUE = 4,
+    IVR_MENU_NAME = 5,
   }
 }
 
 export class ListenerQueueTarget extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListenerQueueTarget.AsObject);
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListenerQueueTarget.AsObject;
   static toObject(includeInstance: boolean, msg: ListenerQueueTarget): ListenerQueueTarget.AsObject;
@@ -2229,10 +2386,12 @@ export class ListenerQueueTarget extends jspb.Message {
 
 export namespace ListenerQueueTarget {
   export type AsObject = {
-  }
+  };
 }
 
 export class TransferCallResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TransferCallResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): TransferCallResponse;
 
@@ -2267,18 +2426,20 @@ export class TransferCallResponse extends jspb.Message {
 
 export namespace TransferCallResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    transferId: string,
-    errorMessage: string,
-    outcome: TransferOutcome,
-    resolvedTarget: string,
-    sipResponseCode: number,
-    errorReason: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    transferId: string;
+    errorMessage: string;
+    outcome: TransferOutcome;
+    resolvedTarget: string;
+    sipResponseCode: number;
+    errorReason: string;
+  };
 }
 
 export class CallTransferRecord extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallTransferRecord.AsObject);
   getTarget(): CallTarget | undefined;
   setTarget(value?: CallTarget): CallTransferRecord;
   hasTarget(): boolean;
@@ -2301,6 +2462,16 @@ export class CallTransferRecord extends jspb.Message {
   hasTime(): boolean;
   clearTime(): CallTransferRecord;
 
+  getWarmIntro(): ondewo_vtsi_call_configs_pb.WarmIntroRecord | undefined;
+  setWarmIntro(value?: ondewo_vtsi_call_configs_pb.WarmIntroRecord): CallTransferRecord;
+  hasWarmIntro(): boolean;
+  clearWarmIntro(): CallTransferRecord;
+
+  getEffectiveWarmTransferConfig(): ondewo_vtsi_call_configs_pb.WarmTransferConfig | undefined;
+  setEffectiveWarmTransferConfig(value?: ondewo_vtsi_call_configs_pb.WarmTransferConfig): CallTransferRecord;
+  hasEffectiveWarmTransferConfig(): boolean;
+  clearEffectiveWarmTransferConfig(): CallTransferRecord;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CallTransferRecord.AsObject;
   static toObject(includeInstance: boolean, msg: CallTransferRecord): CallTransferRecord.AsObject;
@@ -2311,16 +2482,20 @@ export class CallTransferRecord extends jspb.Message {
 
 export namespace CallTransferRecord {
   export type AsObject = {
-    target?: CallTarget.AsObject,
-    resolvedTarget: string,
-    mode: TransferMode,
-    outcome: TransferOutcome,
-    sipResponseCode: number,
-    time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    target?: CallTarget.AsObject;
+    resolvedTarget: string;
+    mode: TransferMode;
+    outcome: TransferOutcome;
+    sipResponseCode: number;
+    time?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    warmIntro?: ondewo_vtsi_call_configs_pb.WarmIntroRecord.AsObject;
+    effectiveWarmTransferConfig?: ondewo_vtsi_call_configs_pb.WarmTransferConfig.AsObject;
+  };
 }
 
 export class CallMediaControlState extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallMediaControlState.AsObject);
   getBotMuted(): boolean;
   setBotMuted(value: boolean): CallMediaControlState;
 
@@ -2343,14 +2518,16 @@ export class CallMediaControlState extends jspb.Message {
 
 export namespace CallMediaControlState {
   export type AsObject = {
-    botMuted: boolean,
-    listeningPaused: boolean,
-    connectedAudioStreams: number,
-    joinedParticipants: number,
-  }
+    botMuted: boolean;
+    listeningPaused: boolean;
+    connectedAudioStreams: number;
+    joinedParticipants: number;
+  };
 }
 
 export class CallParticipant extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallParticipant.AsObject);
   getParticipantId(): string;
   setParticipantId(value: string): CallParticipant;
 
@@ -2400,21 +2577,23 @@ export class CallParticipant extends jspb.Message {
 
 export namespace CallParticipant {
   export type AsObject = {
-    participantId: string,
-    softphoneAccountName: string,
-    mode: ParticipantMode,
-    state: ParticipantState,
-    invitedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    joinedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    leftAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endReason: string,
-    invitedBy: string,
-    botPolicy: BotPolicyOnJoin,
-    endReasonType: ParticipantEndReason,
-  }
+    participantId: string;
+    softphoneAccountName: string;
+    mode: ParticipantMode;
+    state: ParticipantState;
+    invitedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    joinedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    leftAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endReason: string;
+    invitedBy: string;
+    botPolicy: BotPolicyOnJoin;
+    endReasonType: ParticipantEndReason;
+  };
 }
 
 export class InviteToCallRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: InviteToCallRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): InviteToCallRequest;
 
@@ -2449,18 +2628,20 @@ export class InviteToCallRequest extends jspb.Message {
 
 export namespace InviteToCallRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    softphoneAccountName: string,
-    mode: ParticipantMode,
-    ringTimeoutS: number,
-    botPolicy: BotPolicyOnJoin,
-    callerIdDisplayName: string,
-    requestId: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    softphoneAccountName: string;
+    mode: ParticipantMode;
+    ringTimeoutS: number;
+    botPolicy: BotPolicyOnJoin;
+    callerIdDisplayName: string;
+    requestId: string;
+  };
 }
 
 export class InviteToCallResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: InviteToCallResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): InviteToCallResponse;
 
@@ -2485,14 +2666,72 @@ export class InviteToCallResponse extends jspb.Message {
 
 export namespace InviteToCallResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    participant?: CallParticipant.AsObject,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    participant?: CallParticipant.AsObject;
+    errorMessage: string;
+  };
+}
+
+export class SendCallDtmfRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SendCallDtmfRequest.AsObject);
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): SendCallDtmfRequest;
+
+  getCallName(): string;
+  setCallName(value: string): SendCallDtmfRequest;
+
+  getDigits(): string;
+  setDigits(value: string): SendCallDtmfRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SendCallDtmfRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SendCallDtmfRequest): SendCallDtmfRequest.AsObject;
+  static serializeBinaryToWriter(message: SendCallDtmfRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SendCallDtmfRequest;
+  static deserializeBinaryFromReader(message: SendCallDtmfRequest, reader: jspb.BinaryReader): SendCallDtmfRequest;
+}
+
+export namespace SendCallDtmfRequest {
+  export type AsObject = {
+    vtsiProjectName: string;
+    callName: string;
+    digits: string;
+  };
+}
+
+export class SendCallDtmfResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SendCallDtmfResponse.AsObject);
+  getVtsiProjectName(): string;
+  setVtsiProjectName(value: string): SendCallDtmfResponse;
+
+  getCallName(): string;
+  setCallName(value: string): SendCallDtmfResponse;
+
+  getQueuedKeys(): number;
+  setQueuedKeys(value: number): SendCallDtmfResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SendCallDtmfResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SendCallDtmfResponse): SendCallDtmfResponse.AsObject;
+  static serializeBinaryToWriter(message: SendCallDtmfResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SendCallDtmfResponse;
+  static deserializeBinaryFromReader(message: SendCallDtmfResponse, reader: jspb.BinaryReader): SendCallDtmfResponse;
+}
+
+export namespace SendCallDtmfResponse {
+  export type AsObject = {
+    vtsiProjectName: string;
+    callName: string;
+    queuedKeys: number;
+  };
 }
 
 export class RemoveCallParticipantRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RemoveCallParticipantRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): RemoveCallParticipantRequest;
 
@@ -2512,13 +2751,15 @@ export class RemoveCallParticipantRequest extends jspb.Message {
 
 export namespace RemoveCallParticipantRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    participantId: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    participantId: string;
+  };
 }
 
 export class RemoveCallParticipantResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: RemoveCallParticipantResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): RemoveCallParticipantResponse;
 
@@ -2543,14 +2784,16 @@ export class RemoveCallParticipantResponse extends jspb.Message {
 
 export namespace RemoveCallParticipantResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    participant?: CallParticipant.AsObject,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    participant?: CallParticipant.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class SetCallMediaControlRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SetCallMediaControlRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): SetCallMediaControlRequest;
 
@@ -2573,14 +2816,16 @@ export class SetCallMediaControlRequest extends jspb.Message {
 
 export namespace SetCallMediaControlRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    botVoice: CallMediaSetting,
-    botListening: CallMediaSetting,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    botVoice: CallMediaSetting;
+    botListening: CallMediaSetting;
+  };
 }
 
 export class SetCallMediaControlResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SetCallMediaControlResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): SetCallMediaControlResponse;
 
@@ -2608,15 +2853,17 @@ export class SetCallMediaControlResponse extends jspb.Message {
 
 export namespace SetCallMediaControlResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    state?: CallMediaControlState.AsObject,
-    changed: boolean,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    state?: CallMediaControlState.AsObject;
+    changed: boolean;
+    errorMessage: string;
+  };
 }
 
 export class StreamCallAudioConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallAudioConfig.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StreamCallAudioConfig;
 
@@ -2645,16 +2892,18 @@ export class StreamCallAudioConfig extends jspb.Message {
 
 export namespace StreamCallAudioConfig {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    mode: CallAudioMode,
-    sampleRateHz: number,
-    takeOver: boolean,
-    maxDurationS: number,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    mode: CallAudioMode;
+    sampleRateHz: number;
+    takeOver: boolean;
+    maxDurationS: number;
+  };
 }
 
 export class CallAudioFrame extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallAudioFrame.AsObject);
   getPcmS16le(): Uint8Array | string;
   getPcmS16le_asU8(): Uint8Array;
   getPcmS16le_asB64(): string;
@@ -2673,12 +2922,14 @@ export class CallAudioFrame extends jspb.Message {
 
 export namespace CallAudioFrame {
   export type AsObject = {
-    pcmS16le: Uint8Array | string,
-    sequence: number,
-  }
+    pcmS16le: Uint8Array | string;
+    sequence: number;
+  };
 }
 
 export class StreamCallAudioRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallAudioRequest.AsObject);
   getConfig(): StreamCallAudioConfig | undefined;
   setConfig(value?: StreamCallAudioConfig): StreamCallAudioRequest;
   hasConfig(): boolean;
@@ -2691,6 +2942,8 @@ export class StreamCallAudioRequest extends jspb.Message {
 
   getAgentMuted(): boolean;
   setAgentMuted(value: boolean): StreamCallAudioRequest;
+  hasAgentMuted(): boolean;
+  clearAgentMuted(): StreamCallAudioRequest;
 
   getRequestCase(): StreamCallAudioRequest.RequestCase;
 
@@ -2704,12 +2957,12 @@ export class StreamCallAudioRequest extends jspb.Message {
 
 export namespace StreamCallAudioRequest {
   export type AsObject = {
-    config?: StreamCallAudioConfig.AsObject,
-    audio?: CallAudioFrame.AsObject,
-    agentMuted: boolean,
-  }
+    config?: StreamCallAudioConfig.AsObject;
+    audio?: CallAudioFrame.AsObject;
+    agentMuted?: boolean;
+  };
 
-  export enum RequestCase { 
+  export enum RequestCase {
     REQUEST_NOT_SET = 0,
     CONFIG = 1,
     AUDIO = 2,
@@ -2718,6 +2971,8 @@ export namespace StreamCallAudioRequest {
 }
 
 export class CallAudioStarted extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallAudioStarted.AsObject);
   getStreamId(): string;
   setStreamId(value: string): CallAudioStarted;
 
@@ -2740,14 +2995,16 @@ export class CallAudioStarted extends jspb.Message {
 
 export namespace CallAudioStarted {
   export type AsObject = {
-    streamId: string,
-    sampleRateHz: number,
-    frameMs: number,
-    mode: CallAudioMode,
-  }
+    streamId: string;
+    sampleRateHz: number;
+    frameMs: number;
+    mode: CallAudioMode;
+  };
 }
 
 export class CallAudioStats extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallAudioStats.AsObject);
   getFramesSent(): number;
   setFramesSent(value: number): CallAudioStats;
 
@@ -2773,15 +3030,17 @@ export class CallAudioStats extends jspb.Message {
 
 export namespace CallAudioStats {
   export type AsObject = {
-    framesSent: number,
-    framesDropped: number,
-    framesReceived: number,
-    underruns: number,
-    framesDiscarded: number,
-  }
+    framesSent: number;
+    framesDropped: number;
+    framesReceived: number;
+    underruns: number;
+    framesDiscarded: number;
+  };
 }
 
 export class CallAudioEnded extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallAudioEnded.AsObject);
   getReason(): CallAudioEndReason;
   setReason(value: CallAudioEndReason): CallAudioEnded;
 
@@ -2798,12 +3057,14 @@ export class CallAudioEnded extends jspb.Message {
 
 export namespace CallAudioEnded {
   export type AsObject = {
-    reason: CallAudioEndReason,
-    detail: string,
-  }
+    reason: CallAudioEndReason;
+    detail: string;
+  };
 }
 
 export class StreamCallAudioResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallAudioResponse.AsObject);
   getStarted(): CallAudioStarted | undefined;
   setStarted(value?: CallAudioStarted): StreamCallAudioResponse;
   hasStarted(): boolean;
@@ -2836,13 +3097,13 @@ export class StreamCallAudioResponse extends jspb.Message {
 
 export namespace StreamCallAudioResponse {
   export type AsObject = {
-    started?: CallAudioStarted.AsObject,
-    audio?: CallAudioFrame.AsObject,
-    stats?: CallAudioStats.AsObject,
-    ended?: CallAudioEnded.AsObject,
-  }
+    started?: CallAudioStarted.AsObject;
+    audio?: CallAudioFrame.AsObject;
+    stats?: CallAudioStats.AsObject;
+    ended?: CallAudioEnded.AsObject;
+  };
 
-  export enum ResponseCase { 
+  export enum ResponseCase {
     RESPONSE_NOT_SET = 0,
     STARTED = 1,
     AUDIO = 2,
@@ -2852,6 +3113,8 @@ export namespace StreamCallAudioResponse {
 }
 
 export class ListenCallAudioRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListenCallAudioRequest.AsObject);
   getConfig(): StreamCallAudioConfig | undefined;
   setConfig(value?: StreamCallAudioConfig): ListenCallAudioRequest;
   hasConfig(): boolean;
@@ -2867,11 +3130,13 @@ export class ListenCallAudioRequest extends jspb.Message {
 
 export namespace ListenCallAudioRequest {
   export type AsObject = {
-    config?: StreamCallAudioConfig.AsObject,
-  }
+    config?: StreamCallAudioConfig.AsObject;
+  };
 }
 
 export class TransferCallsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TransferCallsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): TransferCallsRequest;
 
@@ -2890,12 +3155,14 @@ export class TransferCallsRequest extends jspb.Message {
 
 export namespace TransferCallsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    transferCallRequestsList: Array<TransferCallRequest.AsObject>,
-  }
+    vtsiProjectName: string;
+    transferCallRequestsList: Array<TransferCallRequest.AsObject>;
+  };
 }
 
 export class TransferCallsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TransferCallsResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): TransferCallsResponse;
 
@@ -2917,13 +3184,15 @@ export class TransferCallsResponse extends jspb.Message {
 
 export namespace TransferCallsResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    transferCallResponsesList: Array<TransferCallResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    transferCallResponsesList: Array<TransferCallResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class GetCallRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetCallRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): GetCallRequest;
 
@@ -2950,19 +3219,21 @@ export class GetCallRequest extends jspb.Message {
 
 export namespace GetCallRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callName: string,
-    callView?: CallView,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    callName: string;
+    callView?: CallView;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 3,
   }
 }
 
 export class Call extends jspb.Message {
+  constructor();
+  constructor(opt_data?: Call.AsObject);
   getName(): string;
   setName(value: string): Call;
 
@@ -3073,6 +3344,15 @@ export class Call extends jspb.Message {
   getLabelsMap(): jspb.Map<string, string>;
   clearLabelsMap(): Call;
 
+  getIvrMenuDisplayName(): string;
+  setIvrMenuDisplayName(value: string): Call;
+
+  getIvrPath(): string;
+  setIvrPath(value: string): Call;
+
+  getIvrMenuName(): string;
+  setIvrMenuName(value: string): Call;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Call.AsObject;
   static toObject(includeInstance: boolean, msg: Call): Call.AsObject;
@@ -3083,91 +3363,96 @@ export class Call extends jspb.Message {
 
 export namespace Call {
   export type AsObject = {
-    name: string,
-    sipAccount: string,
-    containerName: string,
-    callType: CallType,
-    phoneNumber: string,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
-    sipStatus?: ondewo_sip_sip_pb.SipStatus.AsObject,
-    sipStatusHistory?: ondewo_sip_sip_pb.SipStatusHistoryResponse.AsObject,
-    servicesStatuses?: AllServicesStatuses.AsObject,
-    active: boolean,
-    vtsiProjectName: string,
-    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject,
-    sipPort?: number,
-    csiPort?: number,
-    nluSessionName?: string,
-    platforms?: ondewo_nlu_intent_pb.Intent.Message.Platform,
-    redialRecommended?: boolean,
-    redialReason?: string,
-    answeringMachineDetectionEndDescription?: string,
-    mediaControl?: CallMediaControlState.AsObject,
-    participantsList: Array<CallParticipant.AsObject>,
-    lastTransfer?: CallTransferRecord.AsObject,
-    sipCallId: string,
-    labelsMap: Array<[string, string]>,
-  }
+    name: string;
+    sipAccount: string;
+    containerName: string;
+    callType: CallType;
+    phoneNumber: string;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType;
+    sipStatus?: ondewo_sip_sip_pb.SipStatus.AsObject;
+    sipStatusHistory?: ondewo_sip_sip_pb.SipStatusHistoryResponse.AsObject;
+    servicesStatuses?: AllServicesStatuses.AsObject;
+    active: boolean;
+    vtsiProjectName: string;
+    commonServicesConfig?: ondewo_vtsi_call_configs_pb.CommonServicesConfig.AsObject;
+    sipPort?: number;
+    csiPort?: number;
+    nluSessionName?: string;
+    platforms?: ondewo_nlu_intent_pb.Intent.Message.Platform;
+    redialRecommended?: boolean;
+    redialReason?: string;
+    answeringMachineDetectionEndDescription?: string;
+    mediaControl?: CallMediaControlState.AsObject;
+    participantsList: Array<CallParticipant.AsObject>;
+    lastTransfer?: CallTransferRecord.AsObject;
+    sipCallId: string;
+    labelsMap: Array<[string, string]>;
+    ivrMenuDisplayName: string;
+    ivrPath: string;
+    ivrMenuName: string;
+  };
 
-  export enum SipStatusCase { 
+  export enum SipStatusCase {
     _SIP_STATUS_NOT_SET = 0,
     SIP_STATUS = 9,
   }
 
-  export enum SipStatusHistoryCase { 
+  export enum SipStatusHistoryCase {
     _SIP_STATUS_HISTORY_NOT_SET = 0,
     SIP_STATUS_HISTORY = 10,
   }
 
-  export enum ServicesStatusesCase { 
+  export enum ServicesStatusesCase {
     _SERVICES_STATUSES_NOT_SET = 0,
     SERVICES_STATUSES = 11,
   }
 
-  export enum CommonServicesConfigCase { 
+  export enum CommonServicesConfigCase {
     _COMMON_SERVICES_CONFIG_NOT_SET = 0,
     COMMON_SERVICES_CONFIG = 14,
   }
 
-  export enum SipPortCase { 
+  export enum SipPortCase {
     _SIP_PORT_NOT_SET = 0,
     SIP_PORT = 15,
   }
 
-  export enum CsiPortCase { 
+  export enum CsiPortCase {
     _CSI_PORT_NOT_SET = 0,
     CSI_PORT = 16,
   }
 
-  export enum NluSessionNameCase { 
+  export enum NluSessionNameCase {
     _NLU_SESSION_NAME_NOT_SET = 0,
     NLU_SESSION_NAME = 17,
   }
 
-  export enum PlatformsCase { 
+  export enum PlatformsCase {
     _PLATFORMS_NOT_SET = 0,
     PLATFORMS = 18,
   }
 
-  export enum RedialRecommendedCase { 
+  export enum RedialRecommendedCase {
     _REDIAL_RECOMMENDED_NOT_SET = 0,
     REDIAL_RECOMMENDED = 19,
   }
 
-  export enum RedialReasonCase { 
+  export enum RedialReasonCase {
     _REDIAL_REASON_NOT_SET = 0,
     REDIAL_REASON = 20,
   }
 
-  export enum AnsweringMachineDetectionEndDescriptionCase { 
+  export enum AnsweringMachineDetectionEndDescriptionCase {
     _ANSWERING_MACHINE_DETECTION_END_DESCRIPTION_NOT_SET = 0,
     ANSWERING_MACHINE_DETECTION_END_DESCRIPTION = 21,
   }
 }
 
 export class CallFilter extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallFilter.AsObject);
   getCallNamesList(): Array<string>;
   setCallNamesList(value: Array<string>): CallFilter;
   clearCallNamesList(): CallFilter;
@@ -3245,9 +3530,13 @@ export class CallFilter extends jspb.Message {
 
   getCampaignName(): string;
   setCampaignName(value: string): CallFilter;
+  hasCampaignName(): boolean;
+  clearCampaignName(): CallFilter;
 
   getCampaignDisplayName(): string;
   setCampaignDisplayName(value: string): CallFilter;
+  hasCampaignDisplayName(): boolean;
+  clearCampaignDisplayName(): CallFilter;
 
   getLabelsMap(): jspb.Map<string, string>;
   clearLabelsMap(): CallFilter;
@@ -3294,70 +3583,72 @@ export class CallFilter extends jspb.Message {
 
 export namespace CallFilter {
   export type AsObject = {
-    callNamesList: Array<string>,
-    nluSessionNamesList: Array<string>,
-    sipAccountsList: Array<string>,
-    phoneNumbersList: Array<string>,
-    containerNamesList: Array<string>,
-    sipPortsList: Array<string>,
-    csiPortsList: Array<string>,
-    callTypesList: Array<CallType>,
-    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>,
-    callStatus?: CallStatus,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    durationInSMin?: number,
-    durationInSMax?: number,
-    platformsList: Array<ondewo_nlu_intent_pb.Intent.Message.Platform>,
-    campaignName: string,
-    campaignDisplayName: string,
-    labelsMap: Array<[string, string]>,
-    callerNamesList: Array<string>,
-    listenerNamesList: Array<string>,
-    redialRecommended?: boolean,
-    transferOutcomesList: Array<TransferOutcome>,
-    sipPortNumbersList: Array<number>,
-    csiPortNumbersList: Array<number>,
-  }
+    callNamesList: Array<string>;
+    nluSessionNamesList: Array<string>;
+    sipAccountsList: Array<string>;
+    phoneNumbersList: Array<string>;
+    containerNamesList: Array<string>;
+    sipPortsList: Array<string>;
+    csiPortsList: Array<string>;
+    callTypesList: Array<CallType>;
+    sipStatusTypesList: Array<ondewo_sip_sip_pb.SipStatus.StatusType>;
+    callStatus?: CallStatus;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    durationInSMin?: number;
+    durationInSMax?: number;
+    platformsList: Array<ondewo_nlu_intent_pb.Intent.Message.Platform>;
+    campaignName?: string;
+    campaignDisplayName?: string;
+    labelsMap: Array<[string, string]>;
+    callerNamesList: Array<string>;
+    listenerNamesList: Array<string>;
+    redialRecommended?: boolean;
+    transferOutcomesList: Array<TransferOutcome>;
+    sipPortNumbersList: Array<number>;
+    csiPortNumbersList: Array<number>;
+  };
 
-  export enum CampaignCase { 
+  export enum CampaignCase {
     CAMPAIGN_NOT_SET = 0,
     CAMPAIGN_NAME = 16,
     CAMPAIGN_DISPLAY_NAME = 17,
   }
 
-  export enum CallStatusCase { 
+  export enum CallStatusCase {
     _CALL_STATUS_NOT_SET = 0,
     CALL_STATUS = 10,
   }
 
-  export enum StartTimeCase { 
+  export enum StartTimeCase {
     _START_TIME_NOT_SET = 0,
     START_TIME = 11,
   }
 
-  export enum EndTimeCase { 
+  export enum EndTimeCase {
     _END_TIME_NOT_SET = 0,
     END_TIME = 12,
   }
 
-  export enum DurationInSMinCase { 
+  export enum DurationInSMinCase {
     _DURATION_IN_S_MIN_NOT_SET = 0,
     DURATION_IN_S_MIN = 13,
   }
 
-  export enum DurationInSMaxCase { 
+  export enum DurationInSMaxCase {
     _DURATION_IN_S_MAX_NOT_SET = 0,
     DURATION_IN_S_MAX = 14,
   }
 
-  export enum RedialRecommendedCase { 
+  export enum RedialRecommendedCase {
     _REDIAL_RECOMMENDED_NOT_SET = 0,
     REDIAL_RECOMMENDED = 21,
   }
 }
 
 export class CallSorting extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallSorting.AsObject);
   getSortingField(): CallSorting.CallSortingField;
   setSortingField(value: CallSorting.CallSortingField): CallSorting;
 
@@ -3374,17 +3665,19 @@ export class CallSorting extends jspb.Message {
 
 export namespace CallSorting {
   export type AsObject = {
-    sortingField: CallSorting.CallSortingField,
-    sortingMode: ondewo_vtsi_projects_pb.VtsiProjectSortingMode,
-  }
+    sortingField: CallSorting.CallSortingField;
+    sortingMode: ondewo_vtsi_projects_pb.VtsiProjectSortingMode;
+  };
 
-  export enum CallSortingField { 
+  export enum CallSortingField {
     NO_CALL_SORTING = 0,
     SORT_CALL_BY_START_TIME = 1,
   }
 }
 
 export class ListCallsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): ListCallsRequest;
 
@@ -3426,32 +3719,34 @@ export class ListCallsRequest extends jspb.Message {
 
 export namespace ListCallsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callView?: CallView,
-    callFilter?: CallFilter.AsObject,
-    pageToken?: string,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    callSorting?: CallSorting.AsObject,
-  }
+    vtsiProjectName: string;
+    callView?: CallView;
+    callFilter?: CallFilter.AsObject;
+    pageToken?: string;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    callSorting?: CallSorting.AsObject;
+  };
 
-  export enum CallViewCase { 
+  export enum CallViewCase {
     _CALL_VIEW_NOT_SET = 0,
     CALL_VIEW = 2,
   }
 
-  export enum CallFilterCase { 
+  export enum CallFilterCase {
     _CALL_FILTER_NOT_SET = 0,
     CALL_FILTER = 3,
   }
 
-  export enum PageTokenCase { 
+  export enum PageTokenCase {
     _PAGE_TOKEN_NOT_SET = 0,
     PAGE_TOKEN = 4,
   }
 }
 
 export class ListCallsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ListCallsResponse.AsObject);
   getCallsList(): Array<Call>;
   setCallsList(value: Array<Call>): ListCallsResponse;
   clearCallsList(): ListCallsResponse;
@@ -3473,13 +3768,15 @@ export class ListCallsResponse extends jspb.Message {
 
 export namespace ListCallsResponse {
   export type AsObject = {
-    callsList: Array<Call.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    callsList: Array<Call.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class UpdateCallRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallRequest.AsObject);
   getCall(): Call | undefined;
   setCall(value?: Call): UpdateCallRequest;
   hasCall(): boolean;
@@ -3505,13 +3802,15 @@ export class UpdateCallRequest extends jspb.Message {
 
 export namespace UpdateCallRequest {
   export type AsObject = {
-    call?: Call.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    call?: Call.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateCallResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallResponse.AsObject);
   getName(): string;
   setName(value: string): UpdateCallResponse;
 
@@ -3533,13 +3832,15 @@ export class UpdateCallResponse extends jspb.Message {
 
 export namespace UpdateCallResponse {
   export type AsObject = {
-    name: string,
-    call?: Call.AsObject,
-    errorMessage: string,
-  }
+    name: string;
+    call?: Call.AsObject;
+    errorMessage: string;
+  };
 }
 
 export class UpdateCallsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): UpdateCallsRequest;
 
@@ -3563,13 +3864,15 @@ export class UpdateCallsRequest extends jspb.Message {
 
 export namespace UpdateCallsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    updateCallRequestsList: Array<UpdateCallRequest.AsObject>,
-    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    vtsiProjectName: string;
+    updateCallRequestsList: Array<UpdateCallRequest.AsObject>;
+    fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateCallsResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: UpdateCallsResponse.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): UpdateCallsResponse;
 
@@ -3591,13 +3894,15 @@ export class UpdateCallsResponse extends jspb.Message {
 
 export namespace UpdateCallsResponse {
   export type AsObject = {
-    vtsiProjectName: string,
-    updateCallResponsesList: Array<UpdateCallResponse.AsObject>,
-    errorMessage: string,
-  }
+    vtsiProjectName: string;
+    updateCallResponsesList: Array<UpdateCallResponse.AsObject>;
+    errorMessage: string;
+  };
 }
 
 export class GetCallStatisticsRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: GetCallStatisticsRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): GetCallStatisticsRequest;
 
@@ -3616,12 +3921,14 @@ export class GetCallStatisticsRequest extends jspb.Message {
 
 export namespace GetCallStatisticsRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callFilter?: CallFilter.AsObject,
-  }
+    vtsiProjectName: string;
+    callFilter?: CallFilter.AsObject;
+  };
 }
 
 export class SipStatusTypeCount extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SipStatusTypeCount.AsObject);
   getSipStatusType(): ondewo_sip_sip_pb.SipStatus.StatusType;
   setSipStatusType(value: ondewo_sip_sip_pb.SipStatus.StatusType): SipStatusTypeCount;
 
@@ -3638,12 +3945,14 @@ export class SipStatusTypeCount extends jspb.Message {
 
 export namespace SipStatusTypeCount {
   export type AsObject = {
-    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
-    count: number,
-  }
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType;
+    count: number;
+  };
 }
 
 export class CallTypeCount extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallTypeCount.AsObject);
   getCallType(): CallType;
   setCallType(value: CallType): CallTypeCount;
 
@@ -3660,12 +3969,14 @@ export class CallTypeCount extends jspb.Message {
 
 export namespace CallTypeCount {
   export type AsObject = {
-    callType: CallType,
-    count: number,
-  }
+    callType: CallType;
+    count: number;
+  };
 }
 
 export class AmdVerdictCount extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AmdVerdictCount.AsObject);
   getVerdict(): ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict;
   setVerdict(value: ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict): AmdVerdictCount;
 
@@ -3682,12 +3993,14 @@ export class AmdVerdictCount extends jspb.Message {
 
 export namespace AmdVerdictCount {
   export type AsObject = {
-    verdict: ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict,
-    count: number,
-  }
+    verdict: ondewo_sip_sip_pb.AnsweringMachineDetectionResult.Verdict;
+    count: number;
+  };
 }
 
 export class TransferOutcomeCount extends jspb.Message {
+  constructor();
+  constructor(opt_data?: TransferOutcomeCount.AsObject);
   getOutcome(): TransferOutcome;
   setOutcome(value: TransferOutcome): TransferOutcomeCount;
 
@@ -3704,12 +4017,14 @@ export class TransferOutcomeCount extends jspb.Message {
 
 export namespace TransferOutcomeCount {
   export type AsObject = {
-    outcome: TransferOutcome,
-    count: number,
-  }
+    outcome: TransferOutcome;
+    count: number;
+  };
 }
 
 export class CallStatistics extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallStatistics.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): CallStatistics;
 
@@ -3761,21 +4076,23 @@ export class CallStatistics extends jspb.Message {
 
 export namespace CallStatistics {
   export type AsObject = {
-    vtsiProjectName: string,
-    total: number,
-    active: number,
-    sipStatusTypeCountsList: Array<SipStatusTypeCount.AsObject>,
-    callTypeCountsList: Array<CallTypeCount.AsObject>,
-    endedCalls: number,
-    totalDurationS: number,
-    averageDurationS: number,
-    redialRecommended: number,
-    amdVerdictCountsList: Array<AmdVerdictCount.AsObject>,
-    transferOutcomeCountsList: Array<TransferOutcomeCount.AsObject>,
-  }
+    vtsiProjectName: string;
+    total: number;
+    active: number;
+    sipStatusTypeCountsList: Array<SipStatusTypeCount.AsObject>;
+    callTypeCountsList: Array<CallTypeCount.AsObject>;
+    endedCalls: number;
+    totalDurationS: number;
+    averageDurationS: number;
+    redialRecommended: number;
+    amdVerdictCountsList: Array<AmdVerdictCount.AsObject>;
+    transferOutcomeCountsList: Array<TransferOutcomeCount.AsObject>;
+  };
 }
 
 export class AllServicesStatuses extends jspb.Message {
+  constructor();
+  constructor(opt_data?: AllServicesStatuses.AsObject);
   getStatusSip(): ServiceStatus | undefined;
   setStatusSip(value?: ServiceStatus): AllServicesStatuses;
   hasStatusSip(): boolean;
@@ -3811,15 +4128,17 @@ export class AllServicesStatuses extends jspb.Message {
 
 export namespace AllServicesStatuses {
   export type AsObject = {
-    statusSip?: ServiceStatus.AsObject,
-    statusAsterisk?: ServiceStatus.AsObject,
-    statusNlu?: ServiceStatus.AsObject,
-    statusStt?: ServiceStatus.AsObject,
-    statusTts?: ServiceStatus.AsObject,
-  }
+    statusSip?: ServiceStatus.AsObject;
+    statusAsterisk?: ServiceStatus.AsObject;
+    statusNlu?: ServiceStatus.AsObject;
+    statusStt?: ServiceStatus.AsObject;
+    statusTts?: ServiceStatus.AsObject;
+  };
 }
 
 export class ServiceStatus extends jspb.Message {
+  constructor();
+  constructor(opt_data?: ServiceStatus.AsObject);
   getHealthy(): boolean;
   setHealthy(value: boolean): ServiceStatus;
 
@@ -3836,12 +4155,14 @@ export class ServiceStatus extends jspb.Message {
 
 export namespace ServiceStatus {
   export type AsObject = {
-    healthy: boolean,
-    errorMessage: string,
-  }
+    healthy: boolean;
+    errorMessage: string;
+  };
 }
 
 export class CallResourceStatus extends jspb.Message {
+  constructor();
+  constructor(opt_data?: CallResourceStatus.AsObject);
   getResourceName(): string;
   setResourceName(value: string): CallResourceStatus;
 
@@ -3897,23 +4218,25 @@ export class CallResourceStatus extends jspb.Message {
 
 export namespace CallResourceStatus {
   export type AsObject = {
-    resourceName: string,
-    callType: CallType,
-    callName: string,
-    active: boolean,
-    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType,
-    sipStatusDescription: string,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    phoneNumber: string,
-    scheduledCallerStatus: ScheduledCallerStatus,
-    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    campaignName: string,
-    errorMessage: string,
-  }
+    resourceName: string;
+    callType: CallType;
+    callName: string;
+    active: boolean;
+    sipStatusType: ondewo_sip_sip_pb.SipStatus.StatusType;
+    sipStatusDescription: string;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    phoneNumber: string;
+    scheduledCallerStatus: ScheduledCallerStatus;
+    scheduledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    campaignName: string;
+    errorMessage: string;
+  };
 }
 
 export class StreamCallerStatusRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallerStatusRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StreamCallerStatusRequest;
 
@@ -3935,13 +4258,15 @@ export class StreamCallerStatusRequest extends jspb.Message {
 
 export namespace StreamCallerStatusRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    callerNamesList: Array<string>,
-    activeOnly: boolean,
-  }
+    vtsiProjectName: string;
+    callerNamesList: Array<string>;
+    activeOnly: boolean;
+  };
 }
 
 export class StreamListenerStatusRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamListenerStatusRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StreamListenerStatusRequest;
 
@@ -3963,13 +4288,15 @@ export class StreamListenerStatusRequest extends jspb.Message {
 
 export namespace StreamListenerStatusRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    listenerNamesList: Array<string>,
-    activeOnly: boolean,
-  }
+    vtsiProjectName: string;
+    listenerNamesList: Array<string>;
+    activeOnly: boolean;
+  };
 }
 
 export class StreamScheduledCallerStatusRequest extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamScheduledCallerStatusRequest.AsObject);
   getVtsiProjectName(): string;
   setVtsiProjectName(value: string): StreamScheduledCallerStatusRequest;
 
@@ -3996,14 +4323,16 @@ export class StreamScheduledCallerStatusRequest extends jspb.Message {
 
 export namespace StreamScheduledCallerStatusRequest {
   export type AsObject = {
-    vtsiProjectName: string,
-    scheduledCallerNamesList: Array<string>,
-    statusesList: Array<ScheduledCallerStatus>,
-    campaignName: string,
-  }
+    vtsiProjectName: string;
+    scheduledCallerNamesList: Array<string>;
+    statusesList: Array<ScheduledCallerStatus>;
+    campaignName: string;
+  };
 }
 
 export class StreamCallResourceStatusResponse extends jspb.Message {
+  constructor();
+  constructor(opt_data?: StreamCallResourceStatusResponse.AsObject);
   getStatusesList(): Array<CallResourceStatus>;
   setStatusesList(value: Array<CallResourceStatus>): StreamCallResourceStatusResponse;
   clearStatusesList(): StreamCallResourceStatusResponse;
@@ -4033,15 +4362,15 @@ export class StreamCallResourceStatusResponse extends jspb.Message {
 
 export namespace StreamCallResourceStatusResponse {
   export type AsObject = {
-    statusesList: Array<CallResourceStatus.AsObject>,
-    removedResourceNamesList: Array<string>,
-    snapshot: boolean,
-    snapshotTruncated: boolean,
-    endReason: string,
-  }
+    statusesList: Array<CallResourceStatus.AsObject>;
+    removedResourceNamesList: Array<string>;
+    snapshot: boolean;
+    snapshotTruncated: boolean;
+    endReason: string;
+  };
 }
 
-export enum ScheduledCallerStatus { 
+export enum ScheduledCallerStatus {
   SCHEDULED_CALLER_STATUS_UNSPECIFIED = 0,
   SCHEDULED_CALLER_STATUS_PENDING = 1,
   SCHEDULED_CALLER_STATUS_FIRING = 2,
@@ -4049,12 +4378,12 @@ export enum ScheduledCallerStatus {
   SCHEDULED_CALLER_STATUS_FAILED = 4,
   SCHEDULED_CALLER_STATUS_CANCELLED = 5,
 }
-export enum TransferMode { 
+export enum TransferMode {
   TRANSFER_MODE_UNSPECIFIED = 0,
   TRANSFER_MODE_BLIND = 1,
   TRANSFER_MODE_WARM = 2,
 }
-export enum TransferOutcome { 
+export enum TransferOutcome {
   TRANSFER_OUTCOME_UNSPECIFIED = 0,
   TRANSFER_OUTCOME_ACCEPTED = 1,
   TRANSFER_OUTCOME_PENDING = 2,
@@ -4064,31 +4393,35 @@ export enum TransferOutcome {
   TRANSFER_OUTCOME_CALL_ENDED = 6,
   TRANSFER_OUTCOME_CALL_SCOPE_MISMATCH = 7,
   TRANSFER_OUTCOME_SIP_UNREACHABLE = 8,
+  TRANSFER_OUTCOME_DECLINED = 9,
+  TRANSFER_OUTCOME_NO_DECISION = 10,
+  TRANSFER_OUTCOME_TARGET_UNAVAILABLE = 11,
+  TRANSFER_OUTCOME_INTRO_UNAVAILABLE = 12,
 }
-export enum CallMediaSetting { 
+export enum CallMediaSetting {
   CALL_MEDIA_SETTING_UNCHANGED = 0,
   CALL_MEDIA_SETTING_ON = 1,
   CALL_MEDIA_SETTING_OFF = 2,
 }
-export enum ParticipantMode { 
+export enum ParticipantMode {
   PARTICIPANT_MODE_UNSPECIFIED = 0,
   PARTICIPANT_MODE_CONFERENCE = 1,
   PARTICIPANT_MODE_MONITOR = 2,
 }
-export enum BotPolicyOnJoin { 
+export enum BotPolicyOnJoin {
   BOT_POLICY_ON_JOIN_UNSPECIFIED = 0,
   BOT_POLICY_ON_JOIN_PAUSE = 1,
   BOT_POLICY_ON_JOIN_PAUSE_LISTENING = 2,
   BOT_POLICY_ON_JOIN_KEEP = 3,
 }
-export enum ParticipantState { 
+export enum ParticipantState {
   PARTICIPANT_STATE_UNSPECIFIED = 0,
   PARTICIPANT_STATE_RINGING = 1,
   PARTICIPANT_STATE_JOINED = 2,
   PARTICIPANT_STATE_FAILED = 3,
   PARTICIPANT_STATE_LEFT = 4,
 }
-export enum ParticipantEndReason { 
+export enum ParticipantEndReason {
   PARTICIPANT_END_REASON_UNSPECIFIED = 0,
   PARTICIPANT_END_REASON_NO_ANSWER = 1,
   PARTICIPANT_END_REASON_BUSY = 2,
@@ -4100,12 +4433,12 @@ export enum ParticipantEndReason {
   PARTICIPANT_END_REASON_JOIN_FAILED = 8,
   PARTICIPANT_END_REASON_TIMEOUT = 9,
 }
-export enum CallAudioMode { 
+export enum CallAudioMode {
   CALL_AUDIO_MODE_UNSPECIFIED = 0,
   CALL_AUDIO_MODE_LISTEN = 1,
   CALL_AUDIO_MODE_TALK = 2,
 }
-export enum CallAudioEndReason { 
+export enum CallAudioEndReason {
   CALL_AUDIO_END_REASON_UNSPECIFIED = 0,
   CALL_AUDIO_END_REASON_CLIENT_CLOSED = 1,
   CALL_AUDIO_END_REASON_CALL_ENDED = 2,
@@ -4114,17 +4447,17 @@ export enum CallAudioEndReason {
   CALL_AUDIO_END_REASON_STALLED = 5,
   CALL_AUDIO_END_REASON_INTERNAL = 6,
 }
-export enum CallView { 
+export enum CallView {
   MINIMUM = 0,
   SHALLOW = 1,
   FULL = 2,
 }
-export enum CallStatus { 
+export enum CallStatus {
   CALL_STATUS_UNSPECIFIED = 0,
   CALL_STATUS_ACTIVE = 1,
   CALL_STATUS_INACTIVE = 2,
 }
-export enum CallType { 
+export enum CallType {
   BOTH = 0,
   LISTENER = 1,
   CALLER = 2,

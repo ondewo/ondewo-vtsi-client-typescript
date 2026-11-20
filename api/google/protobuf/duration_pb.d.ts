@@ -3,6 +3,8 @@ import * as jspb from 'google-protobuf'
 
 
 export class Duration extends jspb.Message {
+  constructor();
+  constructor(opt_data?: Duration.AsObject);
   getSeconds(): number;
   setSeconds(value: number): Duration;
 
@@ -19,8 +21,8 @@ export class Duration extends jspb.Message {
 
 export namespace Duration {
   export type AsObject = {
-    seconds: number,
-    nanos: number,
-  }
+    seconds: number;
+    nanos: number;
+  };
 }
 
