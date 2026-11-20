@@ -31,6 +31,11 @@ CODEGEN_OUTPUT_DIR=.codegen-output
 VTSI_APIS_DIR=src/ondewo-vtsi-api
 VTSI_PROTOS_DIR=${VTSI_APIS_DIR}/ondewo
 GOOGLE_PROTOS_DIR=${VTSI_APIS_DIR}/google
+# Vendored protos (paths under ${VTSI_APIS_DIR}) left out of the codegen. ondewo/nlu/logs.proto
+# declares a second `service Logs`, and the barrel `export *`s both stubs, so the root name LogsClient
+# (and LogsPromiseClient) is ambiguous and ends up bound by module order, not to this client's
+# ondewo.vtsi service. No compiled proto imports it; @ondewo/nlu-client-typescript ships it.
+CODEGEN_EXCLUDED_PROTOS=ondewo/nlu/logs.proto
 GITHUB_GH_TOKEN?=
 NPM_AUTOMATION_TOKEN?=
 NPM_PACKAGE=@ondewo/vtsi-client-typescript
@@ -422,7 +427,9 @@ npm_run_build: ## Runs the proto compiler and copies its output into the reposit
 # The compiler appends `export * from './auth/<module>'` to public-api.* for every module it finds in
 # <output>/auth, so the hand-written providers (not their specs) are seeded into the scratch output.
 	find auth -maxdepth 1 -type f -name '*.ts' ! -name '*.spec.ts' -exec cp {} $(CODEGEN_OUTPUT_DIR)/auth/ \;
-	docker run --rm \
+	# The excluded protos leave the input tree for the codegen run only; the EXIT trap restores them
+	# from git whatever the outcome, and the shell still exits with the codegen's status.
+	trap 'git -C ${VTSI_APIS_DIR} checkout -- ${CODEGEN_EXCLUDED_PROTOS}' EXIT; rm -f $(addprefix ${VTSI_APIS_DIR}/,${CODEGEN_EXCLUDED_PROTOS}); docker run --rm \
 		-v "$(CURDIR)/src":/input-volume:ro \
 		-v "$(CURDIR)/$(CODEGEN_OUTPUT_DIR)":/output-volume \
 		--entrypoint bash $(PROTO_COMPILER_IMAGE) \

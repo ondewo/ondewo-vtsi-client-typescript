@@ -44,6 +44,8 @@ import type {
 	AsteriskConfigsFiles,
 	AsteriskConfigsVariables,
 	Campaign,
+	LogsClient,
+	LogsPromiseClient,
 	MessageBrokerServicesActivationConfig,
 	SipTrunkTransport,
 	SoftphoneAccount
@@ -282,6 +284,49 @@ nodeTest('the entry point re-exports every generated vtsi module', (): void => {
 		}
 	}
 	assert.deepEqual(missing, []);
+});
+
+// Compile-time half of the next test: the root's LogsClient must be the ondewo.vtsi one. The vendored
+// ondewo.nlu LogsClient (ondewo-nlu-api 7.6.0) has no listCallLogs, so binding the root name to it fails
+// the build of this spec.
+const ROOT_LOGS_CLIENT_RPC: keyof LogsClient & keyof LogsPromiseClient = 'listCallLogs';
+
+nodeTest('every service client name the entry point exports comes from the vtsi module only', (): void => {
+	// ondewo-nlu-api 7.6.0 declares a second `service Logs`. Two `export *` of one name are ambiguous, and
+	// the generated public-api.d.ts then binds it explicitly to the first stub in sorted order, the nlu one;
+	// the Makefile keeps ondewo/nlu/logs.proto out of the codegen (CODEGEN_EXCLUDED_PROTOS) for that.
+	const starModules: string[] = [
+		...readFileSync(join(REPO_ROOT, 'public-api.js'), 'utf8').matchAll(/^export \* from '\.\/(api\/[^']+)';$/gm)
+	].map((match: RegExpExecArray): string => match[1]);
+	const declarations: string = readFileSync(join(REPO_ROOT, 'public-api.d.ts'), 'utf8');
+	const misbound: string[] = [];
+	for (const service of SERVICES) {
+		const own: string = `api/ondewo/vtsi/${service.file}_grpc_web_pb`;
+		for (const flavour of ['Client', 'PromiseClient']) {
+			const name: string = `${service.name}${flavour}`;
+			// goog's vtsi modules share one `proto.ondewo.vtsi` namespace, so a vtsi `_pb` module exports the
+			// same constructor too: what must not exist is a DIFFERENT value under the same name.
+			const expected: unknown = generatedModule(`${service.file}_grpc_web_pb`)[name];
+			const foreign: string[] = starModules.filter((module: string): boolean => {
+				const value: unknown = (loadModule(join(REPO_ROOT, module)) as Record<string, unknown>)[name];
+				return value !== undefined && value !== expected;
+			});
+			if (expected === undefined || foreign.length > 0) {
+				misbound.push(`public-api.js: ${name} also from ${foreign.join(', ')}`);
+			}
+			for (const explicit of declarations.matchAll(new RegExp(`^export \\{ ${name} \\} from '\\./([^']+)';$`, 'gm'))) {
+				if (explicit[1] !== `${own}.d`) {
+					misbound.push(`public-api.d.ts: ${name} from ${explicit[1]}`);
+				}
+			}
+		}
+	}
+	assert.deepEqual(misbound, []);
+	assert.equal(ROOT_LOGS_CLIENT_RPC, 'listCallLogs');
+	assert.ok(
+		readFileSync(join(API_DIR, 'logs_grpc_web_pb.js'), 'utf8').includes("'/ondewo.vtsi.Logs/ListCallLogs'"),
+		'the vtsi LogsClient does not call /ondewo.vtsi.Logs/'
+	);
 });
 
 nodeTest('the entry point re-exports the hand-written auth providers', (): void => {
