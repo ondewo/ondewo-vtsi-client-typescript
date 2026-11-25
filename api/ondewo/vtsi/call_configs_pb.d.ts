@@ -104,6 +104,31 @@ export class NluVtsiConfig extends jspb.Message {
   hasPreemptiveGenerationConfig(): boolean;
   clearPreemptiveGenerationConfig(): NluVtsiConfig;
 
+  getAiTeamsFillersAudible(): boolean;
+  setAiTeamsFillersAudible(value: boolean): NluVtsiConfig;
+  hasAiTeamsFillersAudible(): boolean;
+  clearAiTeamsFillersAudible(): NluVtsiConfig;
+
+  getFailureApologyMessage(): string;
+  setFailureApologyMessage(value: string): NluVtsiConfig;
+  hasFailureApologyMessage(): boolean;
+  clearFailureApologyMessage(): NluVtsiConfig;
+
+  getSessionIdFromSipContext(): boolean;
+  setSessionIdFromSipContext(value: boolean): NluVtsiConfig;
+  hasSessionIdFromSipContext(): boolean;
+  clearSessionIdFromSipContext(): NluVtsiConfig;
+
+  getAiTeamsPushMaxAgeSeconds(): number;
+  setAiTeamsPushMaxAgeSeconds(value: number): NluVtsiConfig;
+  hasAiTeamsPushMaxAgeSeconds(): boolean;
+  clearAiTeamsPushMaxAgeSeconds(): NluVtsiConfig;
+
+  getAiTeamsPushMaxSpoken(): number;
+  setAiTeamsPushMaxSpoken(value: number): NluVtsiConfig;
+  hasAiTeamsPushMaxSpoken(): boolean;
+  clearAiTeamsPushMaxSpoken(): NluVtsiConfig;
+
   getAuthenticationCase(): NluVtsiConfig.AuthenticationCase;
 
   serializeBinary(): Uint8Array;
@@ -126,6 +151,11 @@ export namespace NluVtsiConfig {
     httpBasicAuthToken: string;
     platform?: ondewo_nlu_intent_pb.Intent.Message.Platform;
     preemptiveGenerationConfig?: NluPreemptiveGenerationConfig.AsObject;
+    aiTeamsFillersAudible?: boolean;
+    failureApologyMessage?: string;
+    sessionIdFromSipContext?: boolean;
+    aiTeamsPushMaxAgeSeconds?: number;
+    aiTeamsPushMaxSpoken?: number;
   };
 
   export enum AuthenticationCase {
@@ -137,6 +167,31 @@ export namespace NluVtsiConfig {
   export enum PlatformCase {
     _PLATFORM_NOT_SET = 0,
     PLATFORM = 9,
+  }
+
+  export enum AiTeamsFillersAudibleCase {
+    _AI_TEAMS_FILLERS_AUDIBLE_NOT_SET = 0,
+    AI_TEAMS_FILLERS_AUDIBLE = 11,
+  }
+
+  export enum FailureApologyMessageCase {
+    _FAILURE_APOLOGY_MESSAGE_NOT_SET = 0,
+    FAILURE_APOLOGY_MESSAGE = 12,
+  }
+
+  export enum SessionIdFromSipContextCase {
+    _SESSION_ID_FROM_SIP_CONTEXT_NOT_SET = 0,
+    SESSION_ID_FROM_SIP_CONTEXT = 13,
+  }
+
+  export enum AiTeamsPushMaxAgeSecondsCase {
+    _AI_TEAMS_PUSH_MAX_AGE_SECONDS_NOT_SET = 0,
+    AI_TEAMS_PUSH_MAX_AGE_SECONDS = 14,
+  }
+
+  export enum AiTeamsPushMaxSpokenCase {
+    _AI_TEAMS_PUSH_MAX_SPOKEN_NOT_SET = 0,
+    AI_TEAMS_PUSH_MAX_SPOKEN = 15,
   }
 }
 
@@ -207,6 +262,16 @@ export class T2sVtsiConfig extends jspb.Message {
   hasPreemptiveSynthesisConfig(): boolean;
   clearPreemptiveSynthesisConfig(): T2sVtsiConfig;
 
+  getSynthesizeTimeoutSeconds(): number;
+  setSynthesizeTimeoutSeconds(value: number): T2sVtsiConfig;
+  hasSynthesizeTimeoutSeconds(): boolean;
+  clearSynthesizeTimeoutSeconds(): T2sVtsiConfig;
+
+  getCacheRetention(): string;
+  setCacheRetention(value: string): T2sVtsiConfig;
+  hasCacheRetention(): boolean;
+  clearCacheRetention(): T2sVtsiConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): T2sVtsiConfig.AsObject;
   static toObject(includeInstance: boolean, msg: T2sVtsiConfig): T2sVtsiConfig.AsObject;
@@ -220,7 +285,19 @@ export namespace T2sVtsiConfig {
     t2sBaseConfig?: BaseServiceConfig.AsObject;
     t2sRequestConfig?: ondewo_t2s_text$to$speech_pb.RequestConfig.AsObject;
     preemptiveSynthesisConfig?: T2sPreemptiveSynthesisConfig.AsObject;
+    synthesizeTimeoutSeconds?: number;
+    cacheRetention?: string;
   };
+
+  export enum SynthesizeTimeoutSecondsCase {
+    _SYNTHESIZE_TIMEOUT_SECONDS_NOT_SET = 0,
+    SYNTHESIZE_TIMEOUT_SECONDS = 4,
+  }
+
+  export enum CacheRetentionCase {
+    _CACHE_RETENTION_NOT_SET = 0,
+    CACHE_RETENTION = 5,
+  }
 }
 
 export class T2sPreemptiveSynthesisConfig extends jspb.Message {
@@ -274,6 +351,11 @@ export class S2tVtsiConfig extends jspb.Message {
   hasS2tTranscribeRequestConfig(): boolean;
   clearS2tTranscribeRequestConfig(): S2tVtsiConfig;
 
+  getFailureSipTrigger(): string;
+  setFailureSipTrigger(value: string): S2tVtsiConfig;
+  hasFailureSipTrigger(): boolean;
+  clearFailureSipTrigger(): S2tVtsiConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): S2tVtsiConfig.AsObject;
   static toObject(includeInstance: boolean, msg: S2tVtsiConfig): S2tVtsiConfig.AsObject;
@@ -286,7 +368,13 @@ export namespace S2tVtsiConfig {
   export type AsObject = {
     s2tBaseConfig?: BaseServiceConfig.AsObject;
     s2tTranscribeRequestConfig?: ondewo_s2t_speech$to$text_pb.TranscribeRequestConfig.AsObject;
+    failureSipTrigger?: string;
   };
+
+  export enum FailureSipTriggerCase {
+    _FAILURE_SIP_TRIGGER_NOT_SET = 0,
+    FAILURE_SIP_TRIGGER = 3,
+  }
 }
 
 export class CommonServicesConfig extends jspb.Message {
@@ -317,6 +405,16 @@ export class CommonServicesConfig extends jspb.Message {
   hasVoiceInteractionConfig(): boolean;
   clearVoiceInteractionConfig(): CommonServicesConfig;
 
+  getSipVtsiConfig(): SipVtsiConfig | undefined;
+  setSipVtsiConfig(value?: SipVtsiConfig): CommonServicesConfig;
+  hasSipVtsiConfig(): boolean;
+  clearSipVtsiConfig(): CommonServicesConfig;
+
+  getMaxCallDurationSeconds(): number;
+  setMaxCallDurationSeconds(value: number): CommonServicesConfig;
+  hasMaxCallDurationSeconds(): boolean;
+  clearMaxCallDurationSeconds(): CommonServicesConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CommonServicesConfig.AsObject;
   static toObject(includeInstance: boolean, msg: CommonServicesConfig): CommonServicesConfig.AsObject;
@@ -332,7 +430,118 @@ export namespace CommonServicesConfig {
     t2sVtsiConfig?: T2sVtsiConfig.AsObject;
     csiVtsiConfig?: CsiVtsiConfig.AsObject;
     voiceInteractionConfig?: VoiceInteractionConfig.AsObject;
+    sipVtsiConfig?: SipVtsiConfig.AsObject;
+    maxCallDurationSeconds?: number;
   };
+
+  export enum MaxCallDurationSecondsCase {
+    _MAX_CALL_DURATION_SECONDS_NOT_SET = 0,
+    MAX_CALL_DURATION_SECONDS = 7,
+  }
+}
+
+export class SipVtsiConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: SipVtsiConfig.AsObject);
+  getPlaybackLatencyMs(): number;
+  setPlaybackLatencyMs(value: number): SipVtsiConfig;
+  hasPlaybackLatencyMs(): boolean;
+  clearPlaybackLatencyMs(): SipVtsiConfig;
+
+  getSoftwareClockEnabled(): boolean;
+  setSoftwareClockEnabled(value: boolean): SipVtsiConfig;
+  hasSoftwareClockEnabled(): boolean;
+  clearSoftwareClockEnabled(): SipVtsiConfig;
+
+  getRtpStatsSampleIntervalSeconds(): number;
+  setRtpStatsSampleIntervalSeconds(value: number): SipVtsiConfig;
+  hasRtpStatsSampleIntervalSeconds(): boolean;
+  clearRtpStatsSampleIntervalSeconds(): SipVtsiConfig;
+
+  getHangupWaitForPlaybackTimeoutSeconds(): number;
+  setHangupWaitForPlaybackTimeoutSeconds(value: number): SipVtsiConfig;
+  hasHangupWaitForPlaybackTimeoutSeconds(): boolean;
+  clearHangupWaitForPlaybackTimeoutSeconds(): SipVtsiConfig;
+
+  getOutgoingDialWatchdogSeconds(): number;
+  setOutgoingDialWatchdogSeconds(value: number): SipVtsiConfig;
+  hasOutgoingDialWatchdogSeconds(): boolean;
+  clearOutgoingDialWatchdogSeconds(): SipVtsiConfig;
+
+  getRegisterIntervalSeconds(): number;
+  setRegisterIntervalSeconds(value: number): SipVtsiConfig;
+  hasRegisterIntervalSeconds(): boolean;
+  clearRegisterIntervalSeconds(): SipVtsiConfig;
+
+  getCallAudioStreamMaxConcurrent(): number;
+  setCallAudioStreamMaxConcurrent(value: number): SipVtsiConfig;
+  hasCallAudioStreamMaxConcurrent(): boolean;
+  clearCallAudioStreamMaxConcurrent(): SipVtsiConfig;
+
+  getCallAudioStreamMaxDurationSeconds(): number;
+  setCallAudioStreamMaxDurationSeconds(value: number): SipVtsiConfig;
+  hasCallAudioStreamMaxDurationSeconds(): boolean;
+  clearCallAudioStreamMaxDurationSeconds(): SipVtsiConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SipVtsiConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: SipVtsiConfig): SipVtsiConfig.AsObject;
+  static serializeBinaryToWriter(message: SipVtsiConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SipVtsiConfig;
+  static deserializeBinaryFromReader(message: SipVtsiConfig, reader: jspb.BinaryReader): SipVtsiConfig;
+}
+
+export namespace SipVtsiConfig {
+  export type AsObject = {
+    playbackLatencyMs?: number;
+    softwareClockEnabled?: boolean;
+    rtpStatsSampleIntervalSeconds?: number;
+    hangupWaitForPlaybackTimeoutSeconds?: number;
+    outgoingDialWatchdogSeconds?: number;
+    registerIntervalSeconds?: number;
+    callAudioStreamMaxConcurrent?: number;
+    callAudioStreamMaxDurationSeconds?: number;
+  };
+
+  export enum PlaybackLatencyMsCase {
+    _PLAYBACK_LATENCY_MS_NOT_SET = 0,
+    PLAYBACK_LATENCY_MS = 1,
+  }
+
+  export enum SoftwareClockEnabledCase {
+    _SOFTWARE_CLOCK_ENABLED_NOT_SET = 0,
+    SOFTWARE_CLOCK_ENABLED = 2,
+  }
+
+  export enum RtpStatsSampleIntervalSecondsCase {
+    _RTP_STATS_SAMPLE_INTERVAL_SECONDS_NOT_SET = 0,
+    RTP_STATS_SAMPLE_INTERVAL_SECONDS = 3,
+  }
+
+  export enum HangupWaitForPlaybackTimeoutSecondsCase {
+    _HANGUP_WAIT_FOR_PLAYBACK_TIMEOUT_SECONDS_NOT_SET = 0,
+    HANGUP_WAIT_FOR_PLAYBACK_TIMEOUT_SECONDS = 4,
+  }
+
+  export enum OutgoingDialWatchdogSecondsCase {
+    _OUTGOING_DIAL_WATCHDOG_SECONDS_NOT_SET = 0,
+    OUTGOING_DIAL_WATCHDOG_SECONDS = 5,
+  }
+
+  export enum RegisterIntervalSecondsCase {
+    _REGISTER_INTERVAL_SECONDS_NOT_SET = 0,
+    REGISTER_INTERVAL_SECONDS = 6,
+  }
+
+  export enum CallAudioStreamMaxConcurrentCase {
+    _CALL_AUDIO_STREAM_MAX_CONCURRENT_NOT_SET = 0,
+    CALL_AUDIO_STREAM_MAX_CONCURRENT = 7,
+  }
+
+  export enum CallAudioStreamMaxDurationSecondsCase {
+    _CALL_AUDIO_STREAM_MAX_DURATION_SECONDS_NOT_SET = 0,
+    CALL_AUDIO_STREAM_MAX_DURATION_SECONDS = 8,
+  }
 }
 
 export class VoiceInteractionConfig extends jspb.Message {
@@ -368,6 +577,11 @@ export class VoiceInteractionConfig extends jspb.Message {
   hasWarmTransferConfig(): boolean;
   clearWarmTransferConfig(): VoiceInteractionConfig;
 
+  getBotTransferConfig(): BotTransferConfig | undefined;
+  setBotTransferConfig(value?: BotTransferConfig): VoiceInteractionConfig;
+  hasBotTransferConfig(): boolean;
+  clearBotTransferConfig(): VoiceInteractionConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VoiceInteractionConfig.AsObject;
   static toObject(includeInstance: boolean, msg: VoiceInteractionConfig): VoiceInteractionConfig.AsObject;
@@ -384,7 +598,57 @@ export namespace VoiceInteractionConfig {
     answeringMachineDetectionConfig?: AnsweringMachineDetectionConfig.AsObject;
     dtmfConfig?: DtmfConfig.AsObject;
     warmTransferConfig?: WarmTransferConfig.AsObject;
+    botTransferConfig?: BotTransferConfig.AsObject;
   };
+}
+
+export class BotTransferConfig extends jspb.Message {
+  constructor();
+  constructor(opt_data?: BotTransferConfig.AsObject);
+  getOutcomeTimeoutMs(): number;
+  setOutcomeTimeoutMs(value: number): BotTransferConfig;
+  hasOutcomeTimeoutMs(): boolean;
+  clearOutcomeTimeoutMs(): BotTransferConfig;
+
+  getFailedAction(): string;
+  setFailedAction(value: string): BotTransferConfig;
+  hasFailedAction(): boolean;
+  clearFailedAction(): BotTransferConfig;
+
+  getWarmTransferOutcomeCommitTimeoutSeconds(): number;
+  setWarmTransferOutcomeCommitTimeoutSeconds(value: number): BotTransferConfig;
+  hasWarmTransferOutcomeCommitTimeoutSeconds(): boolean;
+  clearWarmTransferOutcomeCommitTimeoutSeconds(): BotTransferConfig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BotTransferConfig.AsObject;
+  static toObject(includeInstance: boolean, msg: BotTransferConfig): BotTransferConfig.AsObject;
+  static serializeBinaryToWriter(message: BotTransferConfig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BotTransferConfig;
+  static deserializeBinaryFromReader(message: BotTransferConfig, reader: jspb.BinaryReader): BotTransferConfig;
+}
+
+export namespace BotTransferConfig {
+  export type AsObject = {
+    outcomeTimeoutMs?: number;
+    failedAction?: string;
+    warmTransferOutcomeCommitTimeoutSeconds?: number;
+  };
+
+  export enum OutcomeTimeoutMsCase {
+    _OUTCOME_TIMEOUT_MS_NOT_SET = 0,
+    OUTCOME_TIMEOUT_MS = 1,
+  }
+
+  export enum FailedActionCase {
+    _FAILED_ACTION_NOT_SET = 0,
+    FAILED_ACTION = 2,
+  }
+
+  export enum WarmTransferOutcomeCommitTimeoutSecondsCase {
+    _WARM_TRANSFER_OUTCOME_COMMIT_TIMEOUT_SECONDS_NOT_SET = 0,
+    WARM_TRANSFER_OUTCOME_COMMIT_TIMEOUT_SECONDS = 3,
+  }
 }
 
 export class DtmfConfig extends jspb.Message {
@@ -410,6 +674,16 @@ export class DtmfConfig extends jspb.Message {
   hasUndeclaredPolicy(): boolean;
   clearUndeclaredPolicy(): DtmfConfig;
 
+  getSpeechGuardMs(): number;
+  setSpeechGuardMs(value: number): DtmfConfig;
+  hasSpeechGuardMs(): boolean;
+  clearSpeechGuardMs(): DtmfConfig;
+
+  getTextTemplate(): string;
+  setTextTemplate(value: string): DtmfConfig;
+  hasTextTemplate(): boolean;
+  clearTextTemplate(): DtmfConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DtmfConfig.AsObject;
   static toObject(includeInstance: boolean, msg: DtmfConfig): DtmfConfig.AsObject;
@@ -424,6 +698,8 @@ export namespace DtmfConfig {
     bargeIn?: boolean;
     interDigitTimeoutMs?: number;
     undeclaredPolicy?: string;
+    speechGuardMs?: number;
+    textTemplate?: string;
   };
 
   export enum EnabledCase {
@@ -444,6 +720,16 @@ export namespace DtmfConfig {
   export enum UndeclaredPolicyCase {
     _UNDECLARED_POLICY_NOT_SET = 0,
     UNDECLARED_POLICY = 4,
+  }
+
+  export enum SpeechGuardMsCase {
+    _SPEECH_GUARD_MS_NOT_SET = 0,
+    SPEECH_GUARD_MS = 5,
+  }
+
+  export enum TextTemplateCase {
+    _TEXT_TEMPLATE_NOT_SET = 0,
+    TEXT_TEMPLATE = 6,
   }
 }
 
@@ -861,6 +1147,31 @@ export class TurnDetectionConfig extends jspb.Message {
   hasDictationConfig(): boolean;
   clearDictationConfig(): TurnDetectionConfig;
 
+  getS2tEmitMs(): number;
+  setS2tEmitMs(value: number): TurnDetectionConfig;
+  hasS2tEmitMs(): boolean;
+  clearS2tEmitMs(): TurnDetectionConfig;
+
+  getS2tRequestPartials(): boolean;
+  setS2tRequestPartials(value: boolean): TurnDetectionConfig;
+  hasS2tRequestPartials(): boolean;
+  clearS2tRequestPartials(): TurnDetectionConfig;
+
+  getS2tRequestEndOfSpeechCandidate(): boolean;
+  setS2tRequestEndOfSpeechCandidate(value: boolean): TurnDetectionConfig;
+  hasS2tRequestEndOfSpeechCandidate(): boolean;
+  clearS2tRequestEndOfSpeechCandidate(): TurnDetectionConfig;
+
+  getSmartTurnThreshold(): number;
+  setSmartTurnThreshold(value: number): TurnDetectionConfig;
+  hasSmartTurnThreshold(): boolean;
+  clearSmartTurnThreshold(): TurnDetectionConfig;
+
+  getPostUnmutePhantomWindowSeconds(): number;
+  setPostUnmutePhantomWindowSeconds(value: number): TurnDetectionConfig;
+  hasPostUnmutePhantomWindowSeconds(): boolean;
+  clearPostUnmutePhantomWindowSeconds(): TurnDetectionConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TurnDetectionConfig.AsObject;
   static toObject(includeInstance: boolean, msg: TurnDetectionConfig): TurnDetectionConfig.AsObject;
@@ -886,6 +1197,11 @@ export namespace TurnDetectionConfig {
     exactProbability?: boolean;
     finalMergeWindowSeconds?: number;
     dictationConfig?: DictationConfig.AsObject;
+    s2tEmitMs?: number;
+    s2tRequestPartials?: boolean;
+    s2tRequestEndOfSpeechCandidate?: boolean;
+    smartTurnThreshold?: number;
+    postUnmutePhantomWindowSeconds?: number;
   };
 
   export class EndOfTurnHoldBands extends jspb.Message {
@@ -1003,6 +1319,31 @@ export namespace TurnDetectionConfig {
   export enum FinalMergeWindowSecondsCase {
     _FINAL_MERGE_WINDOW_SECONDS_NOT_SET = 0,
     FINAL_MERGE_WINDOW_SECONDS = 14,
+  }
+
+  export enum S2tEmitMsCase {
+    _S2T_EMIT_MS_NOT_SET = 0,
+    S2T_EMIT_MS = 16,
+  }
+
+  export enum S2tRequestPartialsCase {
+    _S2T_REQUEST_PARTIALS_NOT_SET = 0,
+    S2T_REQUEST_PARTIALS = 17,
+  }
+
+  export enum S2tRequestEndOfSpeechCandidateCase {
+    _S2T_REQUEST_END_OF_SPEECH_CANDIDATE_NOT_SET = 0,
+    S2T_REQUEST_END_OF_SPEECH_CANDIDATE = 18,
+  }
+
+  export enum SmartTurnThresholdCase {
+    _SMART_TURN_THRESHOLD_NOT_SET = 0,
+    SMART_TURN_THRESHOLD = 19,
+  }
+
+  export enum PostUnmutePhantomWindowSecondsCase {
+    _POST_UNMUTE_PHANTOM_WINDOW_SECONDS_NOT_SET = 0,
+    POST_UNMUTE_PHANTOM_WINDOW_SECONDS = 20,
   }
 }
 
@@ -1162,6 +1503,36 @@ export class InterruptionHandlingConfig extends jspb.Message {
   hasInterruptionFadeOutMs(): boolean;
   clearInterruptionFadeOutMs(): InterruptionHandlingConfig;
 
+  getCancelOnSpeechWhileThinking(): boolean;
+  setCancelOnSpeechWhileThinking(value: boolean): InterruptionHandlingConfig;
+  hasCancelOnSpeechWhileThinking(): boolean;
+  clearCancelOnSpeechWhileThinking(): InterruptionHandlingConfig;
+
+  getAiTeamsCancelPendingOnInterrupt(): boolean;
+  setAiTeamsCancelPendingOnInterrupt(value: boolean): InterruptionHandlingConfig;
+  hasAiTeamsCancelPendingOnInterrupt(): boolean;
+  clearAiTeamsCancelPendingOnInterrupt(): InterruptionHandlingConfig;
+
+  getT2sCancelOnBargeIn(): boolean;
+  setT2sCancelOnBargeIn(value: boolean): InterruptionHandlingConfig;
+  hasT2sCancelOnBargeIn(): boolean;
+  clearT2sCancelOnBargeIn(): InterruptionHandlingConfig;
+
+  getNluTurnControlEnabled(): boolean;
+  setNluTurnControlEnabled(value: boolean): InterruptionHandlingConfig;
+  hasNluTurnControlEnabled(): boolean;
+  clearNluTurnControlEnabled(): InterruptionHandlingConfig;
+
+  getHeardReportEnabled(): boolean;
+  setHeardReportEnabled(value: boolean): InterruptionHandlingConfig;
+  hasHeardReportEnabled(): boolean;
+  clearHeardReportEnabled(): InterruptionHandlingConfig;
+
+  getHeardTextAlignmentEnabled(): boolean;
+  setHeardTextAlignmentEnabled(value: boolean): InterruptionHandlingConfig;
+  hasHeardTextAlignmentEnabled(): boolean;
+  clearHeardTextAlignmentEnabled(): InterruptionHandlingConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): InterruptionHandlingConfig.AsObject;
   static toObject(includeInstance: boolean, msg: InterruptionHandlingConfig): InterruptionHandlingConfig.AsObject;
@@ -1181,6 +1552,12 @@ export namespace InterruptionHandlingConfig {
     firstMessageProtectedSeconds?: number;
     transcribeOnDisabledInterruptions?: boolean;
     interruptionFadeOutMs?: number;
+    cancelOnSpeechWhileThinking?: boolean;
+    aiTeamsCancelPendingOnInterrupt?: boolean;
+    t2sCancelOnBargeIn?: boolean;
+    nluTurnControlEnabled?: boolean;
+    heardReportEnabled?: boolean;
+    heardTextAlignmentEnabled?: boolean;
   };
 
   export enum EnabledCase {
@@ -1227,6 +1604,36 @@ export namespace InterruptionHandlingConfig {
     _INTERRUPTION_FADE_OUT_MS_NOT_SET = 0,
     INTERRUPTION_FADE_OUT_MS = 9,
   }
+
+  export enum CancelOnSpeechWhileThinkingCase {
+    _CANCEL_ON_SPEECH_WHILE_THINKING_NOT_SET = 0,
+    CANCEL_ON_SPEECH_WHILE_THINKING = 10,
+  }
+
+  export enum AiTeamsCancelPendingOnInterruptCase {
+    _AI_TEAMS_CANCEL_PENDING_ON_INTERRUPT_NOT_SET = 0,
+    AI_TEAMS_CANCEL_PENDING_ON_INTERRUPT = 11,
+  }
+
+  export enum T2sCancelOnBargeInCase {
+    _T2S_CANCEL_ON_BARGE_IN_NOT_SET = 0,
+    T2S_CANCEL_ON_BARGE_IN = 12,
+  }
+
+  export enum NluTurnControlEnabledCase {
+    _NLU_TURN_CONTROL_ENABLED_NOT_SET = 0,
+    NLU_TURN_CONTROL_ENABLED = 13,
+  }
+
+  export enum HeardReportEnabledCase {
+    _HEARD_REPORT_ENABLED_NOT_SET = 0,
+    HEARD_REPORT_ENABLED = 14,
+  }
+
+  export enum HeardTextAlignmentEnabledCase {
+    _HEARD_TEXT_ALIGNMENT_ENABLED_NOT_SET = 0,
+    HEARD_TEXT_ALIGNMENT_ENABLED = 15,
+  }
 }
 
 export class ResponseTimingConfig extends jspb.Message {
@@ -1257,6 +1664,36 @@ export class ResponseTimingConfig extends jspb.Message {
   hasT2sChunkedStreamingEnabled(): boolean;
   clearT2sChunkedStreamingEnabled(): ResponseTimingConfig;
 
+  getStreamingEnabled(): boolean;
+  setStreamingEnabled(value: boolean): ResponseTimingConfig;
+  hasStreamingEnabled(): boolean;
+  clearStreamingEnabled(): ResponseTimingConfig;
+
+  getNluCallStreamEnabled(): boolean;
+  setNluCallStreamEnabled(value: boolean): ResponseTimingConfig;
+  hasNluCallStreamEnabled(): boolean;
+  clearNluCallStreamEnabled(): ResponseTimingConfig;
+
+  getTurnTimeoutIntent(): string;
+  setTurnTimeoutIntent(value: string): ResponseTimingConfig;
+  hasTurnTimeoutIntent(): boolean;
+  clearTurnTimeoutIntent(): ResponseTimingConfig;
+
+  getT2sMaxEdgeSilenceMs(): number;
+  setT2sMaxEdgeSilenceMs(value: number): ResponseTimingConfig;
+  hasT2sMaxEdgeSilenceMs(): boolean;
+  clearT2sMaxEdgeSilenceMs(): ResponseTimingConfig;
+
+  getNluCallStreamTurnTimeoutSeconds(): number;
+  setNluCallStreamTurnTimeoutSeconds(value: number): ResponseTimingConfig;
+  hasNluCallStreamTurnTimeoutSeconds(): boolean;
+  clearNluCallStreamTurnTimeoutSeconds(): ResponseTimingConfig;
+
+  getNluCallStreamTurnQuietSeconds(): number;
+  setNluCallStreamTurnQuietSeconds(value: number): ResponseTimingConfig;
+  hasNluCallStreamTurnQuietSeconds(): boolean;
+  clearNluCallStreamTurnQuietSeconds(): ResponseTimingConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ResponseTimingConfig.AsObject;
   static toObject(includeInstance: boolean, msg: ResponseTimingConfig): ResponseTimingConfig.AsObject;
@@ -1272,6 +1709,12 @@ export namespace ResponseTimingConfig {
     softTimeoutConfig?: SoftTimeoutConfig.AsObject;
     preemptiveGenerationEnabled?: boolean;
     t2sChunkedStreamingEnabled?: boolean;
+    streamingEnabled?: boolean;
+    nluCallStreamEnabled?: boolean;
+    turnTimeoutIntent?: string;
+    t2sMaxEdgeSilenceMs?: number;
+    nluCallStreamTurnTimeoutSeconds?: number;
+    nluCallStreamTurnQuietSeconds?: number;
   };
 
   export enum TurnTimeoutSecondsCase {
@@ -1292,6 +1735,36 @@ export namespace ResponseTimingConfig {
   export enum T2sChunkedStreamingEnabledCase {
     _T2S_CHUNKED_STREAMING_ENABLED_NOT_SET = 0,
     T2S_CHUNKED_STREAMING_ENABLED = 5,
+  }
+
+  export enum StreamingEnabledCase {
+    _STREAMING_ENABLED_NOT_SET = 0,
+    STREAMING_ENABLED = 6,
+  }
+
+  export enum NluCallStreamEnabledCase {
+    _NLU_CALL_STREAM_ENABLED_NOT_SET = 0,
+    NLU_CALL_STREAM_ENABLED = 7,
+  }
+
+  export enum TurnTimeoutIntentCase {
+    _TURN_TIMEOUT_INTENT_NOT_SET = 0,
+    TURN_TIMEOUT_INTENT = 8,
+  }
+
+  export enum T2sMaxEdgeSilenceMsCase {
+    _T2S_MAX_EDGE_SILENCE_MS_NOT_SET = 0,
+    T2S_MAX_EDGE_SILENCE_MS = 9,
+  }
+
+  export enum NluCallStreamTurnTimeoutSecondsCase {
+    _NLU_CALL_STREAM_TURN_TIMEOUT_SECONDS_NOT_SET = 0,
+    NLU_CALL_STREAM_TURN_TIMEOUT_SECONDS = 10,
+  }
+
+  export enum NluCallStreamTurnQuietSecondsCase {
+    _NLU_CALL_STREAM_TURN_QUIET_SECONDS_NOT_SET = 0,
+    NLU_CALL_STREAM_TURN_QUIET_SECONDS = 11,
   }
 }
 

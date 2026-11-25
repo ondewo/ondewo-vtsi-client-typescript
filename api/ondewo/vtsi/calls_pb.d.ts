@@ -3353,6 +3353,9 @@ export class Call extends jspb.Message {
   getIvrMenuName(): string;
   setIvrMenuName(value: string): Call;
 
+  getDialedNumber(): string;
+  setDialedNumber(value: string): Call;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Call.AsObject;
   static toObject(includeInstance: boolean, msg: Call): Call.AsObject;
@@ -3392,6 +3395,7 @@ export namespace Call {
     ivrMenuDisplayName: string;
     ivrPath: string;
     ivrMenuName: string;
+    dialedNumber: string;
   };
 
   export enum SipStatusCase {
